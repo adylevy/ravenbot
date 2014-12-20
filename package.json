@@ -1,0 +1,32 @@
+{
+  "name": "node-js-adybot",
+  "version": "0.1.2",
+  "description": "A sample Node.js AdyBot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "director": "",
+    "google-spreadsheets":"",
+   "levenshtein": "~1.0",
+   "async": "~0.2.9",
+    "underscore": "~1.5.1",
+    "request": "~2.27.0",
+    "formidable": "~1.0.14",
+    "node-env-file":""
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/heroku/node-js-getting-started"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
