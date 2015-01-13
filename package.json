@@ -14,7 +14,10 @@
     "underscore": "~1.5.1",
     "request": "~2.27.0",
     "formidable": "~1.0.14",
-    "node-env-file":""
+    "node-env-file":"",
+    "mongoose": "",
+    "googleclientlogin":"",
+    "q":""
   },
   "engines": {
     "node": "0.10.x"

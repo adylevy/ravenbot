@@ -1,0 +1,1774 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="9">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/images/boom.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.crl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/img/director.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/googledoodle.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/img/hashRoute.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/images/hawk.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/images/hoek.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/images/logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/unicycle.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/.dir-locals.el" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/.editorconfig" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.0" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.1" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.3" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.4" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env2" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/.gitattributes" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.gitmodules" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/CHANGELOG" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/CONTRIBUTING.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/History.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/LICENSE.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/async/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/aws-sign/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/forever-agent/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/json-stringify-safe/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/oauth-sign/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/tunnel-agent/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/underscore/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/License" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/License" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/License" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/MIT-LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/async/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/aws-sign/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/forever-agent/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/assert-plus/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/json-stringify-safe/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/benchmark/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/oauth-sign/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/tunnel-agent/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/underscore/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/README.old" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/README" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/Readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/ReleaseNotes.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/TODO" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/accept-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/addChainableMethod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/addMethod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/addProperty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/adybot.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/helpers/api.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/assert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/assert-plus/assert.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/assertion.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/core/assertions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/async/lib/async.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/lib/async.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/attach-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/backend/backend.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/basic.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/before-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/benchmark/bench.gnu" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/benchmark/bench.sh" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/benchmark/benchmark-native.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/benchmark/benchmark.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/browser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/browserify-harness.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/bin/build" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.cnf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.crt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.csr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.key" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/ca.srl" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/chai.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/cli.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/client.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/lib/combined_stream.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/common.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/test/compare_v1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/async/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/component.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/lib/copy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/crypto.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/crypto.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/ctf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/man/man3ctype/ctio.3ctype" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/ctio.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/ctype.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/lib/debug.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/lib/delayed_stream.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/build/director.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/build/director.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/cli/dispatch-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/dispatch-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/build/ender.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/lib/eql.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/errors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/lib/escape.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/test/escaper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/expect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/file.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/flag.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/float.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/lib/form_data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getActual.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getEnumerableProperties.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getMessage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getName.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getPathValue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getProperties.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/lib/getSafe.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/helper.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/html5-routes-harness.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/html5-routes-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/http-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/examples/http.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/http_signing.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/http/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/helpers/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/aws-sign/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/forever-agent/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/oauth-sign/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/tunnel-agent/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/insert-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/inspect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/int.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/jar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tools/jsl.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/json_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tools/jsstyle" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/karma.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/karma.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/karma.sauce.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/helpers/macros.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/message.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/methods-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/http/methods.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/mime.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/types/mime.types" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/mocha.opts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/cli/mount-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/mount-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/multipart_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/types/node.types" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/npm-ca.crt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/objDisplay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/octet_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/examples/offset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/on-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/overwriteChainableMethod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/overwriteMethod.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/overwriteProperty.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/async/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/http/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/aws-sign/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/forever-agent/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/async/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/boom/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/cryptiles/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/assert-plus/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/json-stringify-safe/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/oauth-sign/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/qs/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/tunnel-agent/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/underscore/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/lib/parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/cli/path-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/path-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/psinfo.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/querystring_parser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/reader.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/tst/ber/reader.test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/readme.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/regifystring-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/request.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/responses-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/http/responses.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/router.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/routes-harness.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/browser/routes-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/tests/run.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/run.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/run.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/sauce.browsers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/server.cnf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/server.crt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/server.csr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/server.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/ca/server.key" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/should.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/lib/signer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/squid.conf" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/stream-test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/json-stringify-safe/stringify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/struct.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-agentOptions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-basic-auth.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-body.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/tests/test-cookie.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/cookie-jar/tests/test-cookiejar.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-defaults.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-delayed-http-upload.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-delayed-stream-auto-pause.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-delayed-stream-pause.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-delayed-stream.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-digest-auth.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-emptyBody.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-errors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-follow-all-303.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-follow-all.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-form.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-handle-source-errors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-hawk.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-headers.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-http-signature.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-httpModule.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-https-strict.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-https.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-isUrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-localAddress.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-max-data-size.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-oauth.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-onelineproxy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-params.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-pipe-resumes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-piped-redirect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-pipes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-pool.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-protocol-changing-redirect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/test/integration/test-proxy-readable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-proxy.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-qs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-redirect.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-s3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-timeout.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-toJSON.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/test-tunnel.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/test.crt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/test/test.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/json-stringify-safe/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/mime/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/test/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/oauth-sign/test.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/tests/ssl/test.key" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/test/modules/test1.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/test/modules/test2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/hoek/test/modules/test3.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/node_modules/sntp/examples/time.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/transferFlags.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.64.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.64.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.basicr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.basicw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.char.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.endian.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.fail.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.float.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.int.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.oldwrite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.psinfo.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.readSize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/float/tst.rfloat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.rint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.roundtrip.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.ruint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.struct.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.structw.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/tst.typedef.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.wbounds.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/float/tst.wfloat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/int/tst.wint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctype/tst.writeStruct.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctio/uint/tst.wuint.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/type.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/lib/type.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/ctype/tst/ctf/typedef.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/types.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/underscore/underscore-min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/underscore/underscore.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/uri.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/example/usage.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/lib/util.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/lib/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/hawk/test/utils.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/.bin/uuid.cmd" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/uuid.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/.bin/uuid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/node-uuid/bin/uuid" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/lib/verify.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/lib/ber/writer.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/node_modules/request/node_modules/http-signature/node_modules/asn1/tst/ber/writer.test.js" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\bot.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\component.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\lib\async.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\file.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\incoming_form.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\json_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\multipart_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\octet_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\querystring_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\copy.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\debug.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\getSafe.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\.bin\uuid" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\.bin\uuid.cmd" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\jar.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\run.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\test-cookie.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\test-cookiejar.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\License" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\lib\form_data.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\component.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\lib\async.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\License" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\lib\combined_stream.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\License" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\lib\delayed_stream.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\common.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-http-upload.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream-auto-pause.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream-pause.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-handle-source-errors.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-max-data-size.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-pipe-resumes.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-proxy-readable.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\run.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\example\usage.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\images\hawk.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\images\logo.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\browser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\client.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\crypto.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\server.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\images\boom.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\images\hoek.png" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\lib\escape.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\escaper.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test1.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test2.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test3.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\Makefile" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\examples\offset.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\examples\time.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\browser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\client.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\crypto.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\message.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\readme.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\server.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\uri.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\utils.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\.dir-locals.el" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\http_signing.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\parser.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\signer.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\util.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\verify.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\errors.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\reader.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\types.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\writer.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\tst\ber\reader.test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\tst\ber\writer.test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\assert.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\CHANGELOG" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\README" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\README.old" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctf.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctio.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctype.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\man\man3ctype\ctio.3ctype" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tools\jsl.conf" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tools\jsstyle" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\float.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\int.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\psinfo.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\struct.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.fail.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.float.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.int.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.psinfo.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.struct.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.typedef.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\typedef.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\float\tst.rfloat.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\float\tst.wfloat.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.64.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.rint.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.wbounds.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.wint.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.64.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.roundtrip.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.ruint.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.wuint.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.basicr.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.basicw.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.char.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.endian.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.oldwrite.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.readSize.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.structw.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.writeStruct.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\stringify.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\mime.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\types\mime.types" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\types\node.types" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\LICENSE.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\bench.gnu" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\bench.sh" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\benchmark-native.c" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\benchmark.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\bin\uuid" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\component.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\compare_v1.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\test.html" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\uuid.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\test.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\Readme.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\index.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\request.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\googledoodle.jpg" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\run.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\server.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\squid.conf" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.cnf" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.crl" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.crt" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.csr" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.key" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.srl" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.cnf" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.crt" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.csr" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.key" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\npm-ca.crt" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\test.crt" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\test.key" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-agentOptions.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-basic-auth.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-body.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-defaults.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-digest-auth.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-emptyBody.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-errors.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-follow-all-303.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-follow-all.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-form.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-hawk.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-headers.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-http-signature.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-httpModule.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-https-strict.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-https.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-isUrl.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-localAddress.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-oauth.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-onelineproxy.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-params.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-piped-redirect.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-pipes.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-pool.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-protocol-changing-redirect.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-proxy.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-qs.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-redirect.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-s3.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-timeout.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-toJSON.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-tunnel.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\unicycle.jpg" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\README.md" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\package.json" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\underscore-min.js" afterPath="" />
+      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\underscore.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/index.js" afterPath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+    </list>
+    <ignored path="adybot.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="adybot" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+              <caret line="17" column="30" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+              <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chuckJokes.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/chuckJokes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1037">
+              <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mongoData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2176">
+              <caret line="14" column="98" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="98" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sheets.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-56.275864" vertical-offset="0" max-vertical-offset="3298">
+              <caret line="96" column="39" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bot.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/bot.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-27.724138" vertical-offset="3599" max-vertical-offset="8687">
+              <caret line="259" column="58" selection-start-line="259" selection-start-column="51" selection-end-line="259" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="players.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/modules/players.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="1.9356436" vertical-offset="0" max-vertical-offset="1513">
+              <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/player.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1972">
+              <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#39#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Class.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/Class.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js" />
+        <option value="$PROJECT_DIR$/giphy.js" />
+        <option value="$PROJECT_DIR$/modules/Class.js" />
+        <option value="$PROJECT_DIR$/mongoData.js" />
+        <option value="$PROJECT_DIR$/sheets.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/bot.js" />
+        <option value="$PROJECT_DIR$/modules/chuckJokes.js" />
+        <option value="$PROJECT_DIR$/modules/sheets.js" />
+        <option value="$PROJECT_DIR$/modules/Player.js" />
+        <option value="$PROJECT_DIR$/modules/botsmanager.js" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/modules/mongoData.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/modules/players.js" />
+        <option value="$PROJECT_DIR$/modules/bot.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <OptionsSetting value="true" id="Undo Check Out" />
+    <OptionsSetting value="true" id="Get Latest Version" />
+    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="71" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="71" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="71" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="703" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="71" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="70" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="71" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="704" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FullScreen" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Ady\Dropbox\Apps\Heroku\adybot\modules" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <pass-parent-envs>true</pass-parent-envs>
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="FlashPlayerDebugger.exe" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="executeSpecs" factoryName="Gauge Execution">
+      <setting name="environment" value="" />
+      <setting name="specsToExecute" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <list size="0" />
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="" />
+      <created>1419067017231</created>
+      <option name="number" value="Default" />
+      <updated>1419067017231</updated>
+      <workItem from="1419278452203" duration="111000" />
+      <workItem from="1419278587786" duration="21716000" />
+      <workItem from="1419602857765" duration="29867000" />
+      <workItem from="1420310121285" duration="14960000" />
+      <workItem from="1420567783730" duration="599000" />
+      <workItem from="1420660845072" duration="29650000" />
+      <workItem from="1421003669723" duration="1531000" />
+      <workItem from="1421134473532" duration="741000" />
+      <workItem from="1421176330837" duration="7521000" />
+    </task>
+    <task id="LOCAL-00001" summary="9">
+      <created>1419067052610</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1419067052610</updated>
+    </task>
+    <task id="LOCAL-00002" summary="9">
+      <created>1419067148106</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1419067148106</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="106696000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33122364" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.056962024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18229167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="9" />
+    <option name="LAST_COMMIT_MESSAGE" value="9" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1915" max-vertical-offset="3383">
+          <caret line="127" column="32" selection-start-line="127" selection-start-column="32" selection-end-line="127" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="963" max-vertical-offset="3162">
+          <caret line="63" column="80" selection-start-line="63" selection-start-column="80" selection-end-line="63" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/bot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10353">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1719" max-vertical-offset="4012">
+          <caret line="113" column="9" selection-start-line="113" selection-start-column="9" selection-end-line="113" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="4658">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1241">
+          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3978">
+          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="4658">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3978">
+          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="4658">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
+          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3978">
+          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="4658">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="884">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="680">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="843" max-vertical-offset="3978">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="29" max-vertical-offset="4658">
+          <caret line="253" column="40" selection-start-line="253" selection-start-column="40" selection-end-line="253" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3540587" vertical-offset="4079" max-vertical-offset="4658">
+          <caret line="252" column="37" selection-start-line="252" selection-start-column="37" selection-end-line="252" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/giphy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.147059" vertical-offset="0" max-vertical-offset="2567">
+          <caret line="141" column="1" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-28.137932" vertical-offset="0" max-vertical-offset="4658">
+          <caret line="48" column="58" selection-start-line="48" selection-start-column="55" selection-end-line="48" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/formidable/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.027960526" vertical-offset="0" max-vertical-offset="608">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/chuckJokes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1037">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Procfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="608">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/images/raven.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npm-debug.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1666">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/mongoose/examples/statics/statics.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2236842" vertical-offset="0" max-vertical-offset="748">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/Class.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1190">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3383">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="238">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="444" max-vertical-offset="1972">
+          <caret line="46" column="54" selection-start-line="46" selection-start-column="54" selection-end-line="46" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/bot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-27.724138" vertical-offset="3599" max-vertical-offset="8687">
+          <caret line="259" column="58" selection-start-line="259" selection-start-column="51" selection-end-line="259" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-56.275864" vertical-offset="0" max-vertical-offset="3298">
+          <caret line="96" column="39" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2176">
+          <caret line="14" column="98" selection-start-line="14" selection-start-column="83" selection-end-line="14" selection-end-column="98" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9356436" vertical-offset="0" max-vertical-offset="1513">
+          <caret line="69" column="36" selection-start-line="69" selection-start-column="36" selection-end-line="69" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
