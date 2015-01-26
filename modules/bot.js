@@ -128,7 +128,7 @@ var Bot = BotBase.extend(function () {
                                     var guild = data.foundGuild;
                                     var bestMatch = data.bestMatch;
                                     var ownData = data.ownData;
-                                    console.log('-------------->',ownData);
+                                  //  console.log('-------------->',guild);
                                     if (guild == null && (ownData == null || ownData.__v == undefined)) {
                                         if (bestMatch.guild.guildName) {
                                             var msg = new Array();

@@ -42,12 +42,12 @@ function loadDataFromSS(firstLetter, callback) {
                     return;
                 }
                 console.log('looking at',title);
-                getSheetColumns(worksheet).then(function (headCells) {
+              //  getSheetColumns(worksheet).then(function (headCells) {
                     getRows(worksheet).then(function (rows) {
+                        console.log(rows);
                         _.each(rows, function (row) {
-                            var gd = parseRow(row, headCells);
+                            var gd = parseRow(row);
                             if (gd != null) {
-
                                 guildsData.push(gd);
                             }
                         });
@@ -60,7 +60,7 @@ function loadDataFromSS(firstLetter, callback) {
 
                     });
 
-                });
+              //  });
 
             });
 
@@ -92,16 +92,23 @@ function getRows(worksheet, callback) {
 function getSheetColumns(worksheet) {
     var deferred = Q.defer();
     var cellRange = ('A1:' + String.fromCharCode(64 + Number(worksheet.colCount)) + '1');
+    var minRow=1;
+    var maxRow=1;
+    console.log(cellRange);
     worksheet.cells({
         key: sheetKey,
         worksheet: worksheet.id,
-        range: cellRange
+       /* range: cellRange,*/
+        minRow:minRow,
+        maxRow:maxRow
     }, function (err, cells) {
         // Cells will contain a 2 dimensional array with all cell data in the
         // range requested.
         if (err){
             deferred.reject(err);
         }else{
+            console.log(cells.cells);
+            console.log('---');
             deferred.resolve(cells.cells);
         }
     });
@@ -110,9 +117,6 @@ function getSheetColumns(worksheet) {
 
 
 function parseRow(row, headCells) {
-    if (_.isUndefined(row.content)) {
-        return '';
-    }
 
     var guildData = {};
     guildData.guildName = row.title.trim().toLowerCase().replace(/(\r\n|\n|\r)/gm, "");
@@ -121,19 +125,17 @@ function parseRow(row, headCells) {
         return null;
     }
 
-    _.each(headCells[1], function (cell, idx) {
+    _.each(row.cells, function (cell, idx) {
         if (idx == 0) {
             return;
         }
-        var cellName = (cell.value).toLowerCase().trim().replace(/\s/g, '').replace(/\//g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/\:/g, '');
+        var cellValue = cell;//.toLowerCase().trim().replace(/\s/g, '').replace(/\//g, '').replace(/\(/g, '').replace(/\)/g, '').replace(/\:/g, '');
 
-        if (_.isString(row[cellName])) {
-            guildData.lastIntel = row[cellName];
-            guildData.allIntel += row[cellName];
+        if (cellValue!='') {
+            guildData.lastIntel = cellValue;
+            guildData.allIntel += cellValue;
         }
 
-    //   console.log(headCells[1],idx);
-///
     });
 
     return guildData;

@@ -22,13 +22,13 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 //mongoData.reBuildGuildDB();
 
 var Bot = require('./modules/bot.js');
-var AdminBot = require('./modules/adminBot.js');
-var b=new AdminBot({},11615015);
-b.on('botRegister',function(e,t){
+//var AdminBot = require('./modules/adminBot.js');
+var b=new Bot({},11615015);
+/*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
-})
+})*/
 //b.mainSwitch('matched northcliff dragon squad');
-b.mainSwitch('register 123');
+b.mainSwitch('matched Johnny\'s Heroes');
 /*b.mainSwitch('myt',{
     name:'MB 409.8m/109.7k/3.0k'
 });*/
