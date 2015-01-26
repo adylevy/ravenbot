@@ -121,14 +121,17 @@ var BotsManager = Class.extend(function () {
 
                         }.bind(this));
                         manager.on('botUnregister',function(ctx,groupId){
-                            this.allBots= _.filter(this.allBots,function(bot){
-                                return bot.group_id!=groupId;
-                            });
-                            this.removeGroupFromSettings(groupId);
-                            this.unregisterBot(groupId).then(function(){
-                                ctx.botUnregistered(groupId);
-                                
-                            }.bind(this));
+                            var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                            if (botObj!=null) {
+                                this.allBots = _.filter(this.allBots, function (bot) {
+                                    return bot.group_id != groupId;
+                                });
+                                this.removeGroupFromSettings(groupId);
+                                this.unregisterBot(botObj.bot_id).then(function () {
+                                    ctx.botUnregistered(groupId);
+
+                                }.bind(this));
+                            }
 
                         }.bind(this));
                         var botResponse = response.response.bot;
