@@ -4,8 +4,8 @@ var GoogleSpreadsheets = require('./spreadsheets');
 var GoogleClientLogin = require("googleclientlogin").GoogleClientLogin;
 var Q = require('q');
 var _ = require('underscore');
-var sheetKey = '0AorXt_5bia2PdHFZWE8zUUJBTlhsZG9tQmFWdjF1ZkE';
-
+//var sheetKey = '0AorXt_5bia2PdHFZWE8zUUJBTlhsZG9tQmFWdjF1ZkE';
+var sheetKey = '0AorXt_5bia2PdE5iMm83WVhpTUNBZ2JId252Q3BRN3c';
 var googleAuth = new GoogleClientLogin({
     email: 'gmadybot@gmail.com',
     password: 'gmadybotgm',
@@ -131,9 +131,9 @@ function parseRow(row, headCells) {
             guildData.lastIntel = row[cellName];
             guildData.allIntel += row[cellName];
         }
-        
-        // console.log(cellName+':'+row[cellName]);
 
+    //   console.log(headCells[1],idx);
+///
     });
 
     return guildData;

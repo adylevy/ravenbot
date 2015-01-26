@@ -17,12 +17,10 @@ const CONFIG = {token: TOKEN, name: NAME, url: URL, adminGroup: ADMIN_GROUP, ava
 
 var whenConnected=function(){
     console.log('mongo is connected');
-    require('./modules/botsmanager.js')(CONFIG);
-
+    var manager = require('./modules/botsmanager.js')(CONFIG);
+    manager.
 };
 
 var mongoData = require('./modules/mongoData.js')(process.env['MONGOLAB_URI'],false);
 mongoData.on('someThing',whenConnected);
 mongoData.connect();
-
-

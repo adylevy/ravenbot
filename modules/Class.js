@@ -1,3 +1,4 @@
+const events = require('events');
 /* Simple JavaScript Inheritance
  * By John Resig http://ejohn.org/
  * MIT Licensed.
@@ -59,7 +60,9 @@ var obj={};
 
         // And make this class extendable
         Class.extend = arguments.callee;
-
+        this.eventEmitter = new events.EventEmitter();
+        Class.prototype.on=this.eventEmitter.on;
+        Class.prototype.emit=this.eventEmitter.emit;
         return Class;
     };
 })(obj);

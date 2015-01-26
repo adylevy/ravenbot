@@ -1,4 +1,4 @@
-var Player = require('./player.js');
+var Player = require('./player_cls.js');
 var Class = require('./Class.js').Class;
 var _ = require('underscore');
 
@@ -29,44 +29,69 @@ var Players = Class.extend(function () {
          }
          */
         init: function (options) {
-            console.log('players constructor')
+         //   console.log('players constructor')
         },
         getPlayers: function (intel) {
             var splitData = intel.split('\n');
             var players = [];
             _.each(splitData, function (line) {
-                if (line.split(' ')[0] == '' || _.isNaN(Number(line.split(' ')[0]))) {
 
-                } else {
                     try {
-                        var player = new player(line);
-                        if (player.isPlayer()) players.push(player);
+                        var player = new Player(line);
+                        if (player.isPlayer()){ players.push(player);}else{
+                       //     console.log('not a player:',line);
+                            
+                        }
                     } catch (e) {
                         console.log(line);
 
                     }
-                }
+
             });
             return players;
         },
         getPlayerObjFromDBPlayers: function(dbPlayers){
             var players=[];
-            _.each(dbPlayers,function(dbplayer){
-                var newP=new player();
+            _.each(dbPlayers,function(p0){
+                var newP=new Player();
                 newP.create(p0.lvl,p0.name,p0.def,p0.eqDef,p0.heroDef);
-                newP.insertBy=dbplayer.insertedByGuild;
-                newP.insertDate=dbplayer.date;
-                players.push(player);
+
+                newP.insertBy=p0.insertedByGuild;
+                newP.insertDate=p0.date;
+                players.push(newP);
             })
             return players;
         },
         getPlayersIntelFromOwnData: function(players){
+
             var intel=[];
             var p=this.getPlayerObjFromDBPlayers(players);
+            var oldIntel=[];
+            var newIntel=[];
+            var d = new Date(2015, 0, 15);
+
+            p = _.sortBy(p, function (player) {
+                return player.lvl;
+            }).reverse();
+            
             _.each(p,function(player){
-                intel.push(player.toString());
-                
+               // console.log(d,player.insertDate,player.insertDate.getTime(),d.getTime())
+                if (player.insertDate.getTime()<=d.getTime()){
+                    oldIntel.push(player.toString());
+                }else{
+                    newIntel.push(player.toString())
+                }
             })
+
+            if (newIntel.length!=0){
+                intel.push('Fresh intel:');
+                intel=intel.concat(newIntel);
+            }
+            if (oldIntel.length!=0){
+                intel.push('Old intel:');
+                intel=intel.concat(oldIntel);
+            }
+            
             return intel.join('\n');
         }
 
