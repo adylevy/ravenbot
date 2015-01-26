@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="9">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/botsmanager.js" afterPath="$PROJECT_DIR$/modules/botsmanager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/player_cls.js" afterPath="$PROJECT_DIR$/modules/player_cls.js" />
     </list>
     <ignored path="adybot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,7 +70,7 @@
       <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16568047" vertical-offset="2143" max-vertical-offset="5185">
+            <state vertical-scroll-proportion="0.3668639" vertical-offset="2041" max-vertical-offset="5185">
               <caret line="131" column="67" selection-start-line="131" selection-start-column="67" selection-end-line="131" selection-end-column="67" />
               <folding />
             </state>
@@ -83,16 +82,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-6.8461537" vertical-offset="145" max-vertical-offset="680">
               <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="botBase.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/botBase.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.1034484" vertical-offset="792" max-vertical-offset="2431">
-              <caret line="57" column="27" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -116,6 +105,16 @@
               <folding>
                 <element signature="e#34#122#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="player_cls.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2380">
+              <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -149,7 +148,6 @@
         <option value="$PROJECT_DIR$/test2.js" />
         <option value="$PROJECT_DIR$/modules/sheets.js" />
         <option value="$PROJECT_DIR$/modules/players.js" />
-        <option value="$PROJECT_DIR$/modules/player_cls.js" />
         <option value="$PROJECT_DIR$/modules/bot.js" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/modules/botBase.js" />
@@ -161,6 +159,7 @@
         <option value="$PROJECT_DIR$/modules/adminBot.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/modules/botsmanager.js" />
+        <option value="$PROJECT_DIR$/modules/player_cls.js" />
       </list>
     </option>
   </component>
@@ -621,7 +620,7 @@
       <workItem from="1421176330837" duration="13725000" />
       <workItem from="1421394395429" duration="1035000" />
       <workItem from="1421409435934" duration="31643000" />
-      <workItem from="1422221274356" duration="11041000" />
+      <workItem from="1422221274356" duration="12872000" />
     </task>
     <task id="LOCAL-00001" summary="9">
       <created>1419067052610</created>
@@ -639,7 +638,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156619000" />
+    <option name="totallyTimeSpent" value="158450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -996,14 +995,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1326" max-vertical-offset="2380">
-          <caret line="94" column="60" selection-start-line="94" selection-start-column="60" selection-end-line="94" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
@@ -1094,9 +1085,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="2380">
+          <caret line="34" column="38" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16568047" vertical-offset="2143" max-vertical-offset="5185">
+        <state vertical-scroll-proportion="0.3668639" vertical-offset="2041" max-vertical-offset="5185">
           <caret line="131" column="67" selection-start-line="131" selection-start-column="67" selection-end-line="131" selection-end-column="67" />
           <folding />
         </state>

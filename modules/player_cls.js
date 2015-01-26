@@ -23,7 +23,7 @@ var Player = Class.extend(function () {
                 return;
                 
             }
-            line=line.toLowerCase();
+            //line=line.toLowerCase();
             this.line = line;
             var playerRgx = /(\d+)\s+([\w\-@\.,\s\(\)]+)\s+([\d\.,\s?bmk]+)[\s?\/?,?(]+([\d\.,mk]+)[\s?\/?,?()]+([\d\.,mk]+)/;
             var nameLvlRgx = /([\w\-@\.,\s\(\)]+)\s+(\d+)\s+([\d\.,\s?bmk]+)[\s?\/?,?(]+([\d\.,mk]+)[\s?\/?,?()]+([\d\.,mk]+)/;
