@@ -37,7 +37,7 @@ function loadDataFromSS(firstLetter, callback) {
 
             _.each(spreadsheet.worksheets, function (worksheet, idx) {
                 var title = worksheet.title.toLowerCase();
-                if (title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() || idx >= spreadsheet.worksheets.length - 3) {
+                if (title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() ) {
                     ctr++;
                     return;
                 }

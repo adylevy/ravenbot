@@ -28,7 +28,7 @@ var b=new Bot({},11615015);
     console.log('----->',e,t);
 })*/
 //b.mainSwitch('matched northcliff dragon squad');
-b.mainSwitch('matched Johnny\'s Heroes');
+b.mainSwitch('matched xw\'s royal knights');
 /*b.mainSwitch('myt',{
     name:'MB 409.8m/109.7k/3.0k'
 });*/
