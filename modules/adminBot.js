@@ -75,10 +75,20 @@ var AdminBot = BotBase.extend(function () {
                         this.postMessage('Registering !',regexmatch[1]);
                         this.emit('botRegister', this, regexmatch[1]);
                     }
+
+                    var regMatch= /^unregister\s(\d+)$/;
+                    if (regMatch.test(txt)) {
+                        var regexmatch = regMatch.exec(txt);
+                        this.postMessage('Unregistering !',regexmatch[1]);
+                        this.emit('botUnregister', this, regexmatch[1]);
+                    }
                     
                 },
                 botRegistered: function(groupId){
                     this.postMessage('Bot Registered : '+groupId);
+                },
+                botUnregistered: function(groupId){
+                    this.postMessage('Bot UnRegistered : '+groupId);
                     
                 }
             }

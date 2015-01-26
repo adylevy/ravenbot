@@ -2,325 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="9">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/player_cls.js" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\modules\player.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\component.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\lib\async.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\async\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\file.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\incoming_form.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\json_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\multipart_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\octet_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\lib\querystring_parser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\formidable\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\copy.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\debug.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\lib\getSafe.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\.bin\uuid" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\.bin\uuid.cmd" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\aws-sign\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\jar.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\run.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\test-cookie.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\cookie-jar\tests\test-cookiejar.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\forever-agent\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\License" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\lib\form_data.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\component.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\lib\async.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\async\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\License" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\lib\combined_stream.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\License" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\lib\delayed_stream.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\common.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-http-upload.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream-auto-pause.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream-pause.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-delayed-stream.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-handle-source-errors.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-max-data-size.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-pipe-resumes.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\integration\test-proxy-readable.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\node_modules\delayed-stream\test\run.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\node_modules\combined-stream\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\form-data\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\example\usage.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\images\hawk.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\images\logo.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\browser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\client.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\crypto.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\server.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\lib\utils.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\images\boom.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\boom\test\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\cryptiles\test\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\images\hoek.png" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\lib\escape.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\escaper.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test1.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test2.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\hoek\test\modules\test3.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\.travis.yml" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\Makefile" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\examples\offset.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\examples\time.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\node_modules\sntp\test\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\browser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\client.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\crypto.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\message.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\readme.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\server.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\uri.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\hawk\test\utils.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\.dir-locals.el" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\http_signing.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\parser.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\signer.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\util.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\lib\verify.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\errors.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\reader.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\types.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\ber\writer.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\lib\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\tst\ber\reader.test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\asn1\tst\ber\writer.test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\assert.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\assert-plus\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\CHANGELOG" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\README" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\README.old" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctf.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctio.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\ctype.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\man\man3ctype\ctio.3ctype" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tools\jsl.conf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tools\jsstyle" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\float.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\int.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\psinfo.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\struct.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.fail.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.float.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.int.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.psinfo.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.struct.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\tst.typedef.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctf\typedef.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\float\tst.rfloat.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\float\tst.wfloat.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.64.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.rint.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.wbounds.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\int\tst.wint.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.64.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.roundtrip.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.ruint.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctio\uint\tst.wuint.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.basicr.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.basicw.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.char.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.endian.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.oldwrite.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.readSize.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.structw.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\node_modules\ctype\tst\ctype\tst.writeStruct.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\http-signature\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\stringify.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\json-stringify-safe\test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\mime.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\types\mime.types" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\mime\types\node.types" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\LICENSE.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\bench.gnu" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\bench.sh" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\benchmark-native.c" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\benchmark\benchmark.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\bin\uuid" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\component.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\compare_v1.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\test.html" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\test\test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\node-uuid\uuid.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\oauth-sign\test.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\.gitmodules" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\Readme.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\qs\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\index.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\node_modules\tunnel-agent\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\request.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\googledoodle.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\run.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\server.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\squid.conf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.cnf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.crl" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.crt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.csr" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.key" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\ca.srl" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.cnf" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.crt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.csr" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\ca\server.key" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\npm-ca.crt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\test.crt" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\ssl\test.key" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-agentOptions.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-basic-auth.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-body.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-defaults.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-digest-auth.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-emptyBody.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-errors.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-follow-all-303.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-follow-all.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-form.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-hawk.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-headers.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-http-signature.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-httpModule.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-https-strict.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-https.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-isUrl.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-localAddress.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-oauth.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-onelineproxy.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-params.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-piped-redirect.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-pipes.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-pool.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-protocol-changing-redirect.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-proxy.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-qs.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-redirect.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-s3.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-timeout.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-toJSON.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\test-tunnel.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\request\tests\unicycle.jpg" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\LICENSE" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\README.md" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\package.json" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\underscore-min.js" afterPath="" />
-      <change type="DELETED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\node_modules\fancy-groupme-bot\node_modules\underscore\underscore.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/Class.js" afterPath="$PROJECT_DIR$/modules/Class.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bot.js" afterPath="$PROJECT_DIR$/modules/bot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/adminBot.js" afterPath="$PROJECT_DIR$/modules/adminBot.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/botsmanager.js" afterPath="$PROJECT_DIR$/modules/botsmanager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/mongoData.js" afterPath="$PROJECT_DIR$/modules/mongoData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/players.js" afterPath="$PROJECT_DIR$/modules/players.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/sheets.js" afterPath="$PROJECT_DIR$/modules/sheets.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="adybot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -388,8 +71,8 @@
       <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.65225565" vertical-offset="1013" max-vertical-offset="4539">
-              <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.71240604" vertical-offset="4194" max-vertical-offset="4964">
+              <caret line="269" column="43" selection-start-line="269" selection-start-column="43" selection-end-line="269" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -408,8 +91,8 @@
       <file leaf-file-name="adminBot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.24138" vertical-offset="918" max-vertical-offset="1717">
-              <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
+            <state vertical-scroll-proportion="-11.137931" vertical-offset="1071" max-vertical-offset="1887">
+              <caret line="82" column="48" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="48" />
               <folding />
             </state>
           </provider>
@@ -475,8 +158,8 @@
         <option value="$PROJECT_DIR$/modules/Class.js" />
         <option value="$PROJECT_DIR$/test3.js" />
         <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/modules/adminBot.js" />
         <option value="$PROJECT_DIR$/modules/mongoData.js" />
+        <option value="$PROJECT_DIR$/modules/adminBot.js" />
         <option value="$PROJECT_DIR$/modules/botsmanager.js" />
       </list>
     </option>
@@ -938,7 +621,7 @@
       <workItem from="1421176330837" duration="13725000" />
       <workItem from="1421394395429" duration="1035000" />
       <workItem from="1421409435934" duration="31643000" />
-      <workItem from="1422221274356" duration="8753000" />
+      <workItem from="1422221274356" duration="9381000" />
     </task>
     <task id="LOCAL-00001" summary="9">
       <created>1419067052610</created>
@@ -956,7 +639,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154331000" />
+    <option name="totallyTimeSpent" value="154959000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1394,14 +1077,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.24138" vertical-offset="918" max-vertical-offset="1717">
-          <caret line="80" column="66" selection-start-line="80" selection-start-column="66" selection-end-line="80" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.1034484" vertical-offset="1625" max-vertical-offset="2907">
@@ -1410,10 +1085,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.137931" vertical-offset="1071" max-vertical-offset="1887">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65225565" vertical-offset="1013" max-vertical-offset="4539">
-          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.71240604" vertical-offset="4194" max-vertical-offset="4964">
+          <caret line="269" column="43" selection-start-line="269" selection-start-column="43" selection-end-line="269" selection-end-column="43" />
           <folding />
         </state>
       </provider>

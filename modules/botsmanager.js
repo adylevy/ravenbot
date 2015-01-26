@@ -119,7 +119,18 @@ var BotsManager = Class.extend(function () {
                                this.addGroupToSettings(groupId);
                            }.bind(this));
 
-                        }.bind(this))
+                        }.bind(this));
+                        manager.on('botUnregister',function(ctx,groupId){
+                            this.allBots= _.filter(this.allBots,function(bot){
+                                return bot.group_id!=groupId;
+                            });
+                            this.removeGroupFromSettings(groupId);
+                            this.unregisterBot(groupId).then(function(){
+                                ctx.botUnregistered(groupId);
+                                
+                            }.bind(this));
+
+                        }.bind(this));
                         var botResponse = response.response.bot;
                         botResponse.manager = manager;
                         this.allBots.push(botResponse);
@@ -245,6 +256,20 @@ var BotsManager = Class.extend(function () {
                 var groupIds = settings.groups;
                 if (!_.contains(groupIds,groupId)){
                     groupIds.push(groupId);
+                    settings.groups=groupIds;
+                    settings.save();
+                }
+            })
+            
+        },
+        removeGroupFromSettings: function(groupId){
+            mongoData.getSettings().then(function(settings){
+                var groupIds = settings.groups;
+                if (_.contains(groupIds,groupId)){
+                    groupIds = _.filter(groupIds,function(id){
+                        return id!=groupId;
+                        
+                    })
                     settings.groups=groupIds;
                     settings.save();
                 }
