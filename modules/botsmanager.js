@@ -116,8 +116,9 @@ var BotsManager = Class.extend(function () {
                         manager.on('botRegister',function(ctx,groupId){
                             var botObj = _.findWhere(this.allBots, {group_id: groupId});
                             if (botObj==undefined) {
-                                this.registerBotAndCreateManager(groupId).then(function () {
+                                this.registerBotAndCreateManager(groupId).then(function (newBot) {
                                     ctx.botRegistered(groupId);
+                                    newBot.postMessage('RavenBot is successfully registered in this room.');
                                     this.addGroupToSettings(groupId);
                                 }.bind(this));
                             }else{
@@ -128,6 +129,7 @@ var BotsManager = Class.extend(function () {
                         manager.on('botUnregister',function(ctx,groupId){
                             var botObj = _.findWhere(this.allBots, {group_id: groupId});
                             if (botObj!=undefined) {
+                                botObj.manager.postMessage('Bye.');
                                 this.allBots = _.filter(this.allBots, function (bot) {
                                     return bot.group_id != groupId;
                                 });
