@@ -70,8 +70,8 @@
       <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7161654" vertical-offset="1880" max-vertical-offset="5015">
-              <caret line="133" column="29" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
+            <state vertical-scroll-proportion="0.8698225" vertical-offset="1922" max-vertical-offset="5151">
+              <caret line="139" column="70" selection-start-line="139" selection-start-column="70" selection-end-line="139" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -620,7 +620,7 @@
       <workItem from="1421176330837" duration="13725000" />
       <workItem from="1421394395429" duration="1035000" />
       <workItem from="1421409435934" duration="31643000" />
-      <workItem from="1422221274356" duration="9683000" />
+      <workItem from="1422221274356" duration="9842000" />
     </task>
     <task id="LOCAL-00001" summary="9">
       <created>1419067052610</created>
@@ -638,7 +638,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="155261000" />
+    <option name="totallyTimeSpent" value="155420000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
@@ -1094,8 +1094,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7161654" vertical-offset="1880" max-vertical-offset="5015">
-          <caret line="133" column="29" selection-start-line="133" selection-start-column="29" selection-end-line="133" selection-end-column="29" />
+        <state vertical-scroll-proportion="0.8698225" vertical-offset="1922" max-vertical-offset="5151">
+          <caret line="139" column="70" selection-start-line="139" selection-start-column="70" selection-end-line="139" selection-end-column="70" />
           <folding />
         </state>
       </provider>

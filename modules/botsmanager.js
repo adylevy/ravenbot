@@ -114,10 +114,15 @@ var BotsManager = Class.extend(function () {
                     try {
                         var manager = this.options.adminGroup==groupIdx? new AdminBot(response.response.bot, groupIdx) : new Bot(response.response.bot, groupIdx);
                         manager.on('botRegister',function(ctx,groupId){
-                           this.registerBotAndCreateManager(groupId).then(function(){
-                               ctx.botRegistered(groupId);
-                               this.addGroupToSettings(groupId);
-                           }.bind(this));
+                            var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                            if (botObj!=null) {
+                                this.registerBotAndCreateManager(groupId).then(function () {
+                                    ctx.botRegistered(groupId);
+                                    this.addGroupToSettings(groupId);
+                                }.bind(this));
+                            }else{
+                                ctx.postMessage('Bot already registered');
+                            }
 
                         }.bind(this));
                         manager.on('botUnregister',function(ctx,groupId){
@@ -131,6 +136,9 @@ var BotsManager = Class.extend(function () {
                                     ctx.botUnregistered(groupId);
 
                                 }.bind(this));
+                            }else{
+                                ctx.postMessage('Bot is not registered');
+                                
                             }
 
                         }.bind(this));
