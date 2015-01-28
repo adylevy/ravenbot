@@ -321,11 +321,11 @@ var Bot = BotBase.extend(function () {
                     mongoData.getGuildData(guildName, function (item) {
 
                         var players = _.filter(item.players, function (el) {
-                            return el.name.toLowerCase() != player.name.toLowerCase()
+                            return el.name != player.name;
                         });
-                        var mode=player.length==item.players.length ? 'added' : 'updated';
+                        var mode=players.length==item.players.length ? 'added' : 'updated';
                         var gpo = player.getGuildPlayerObj();
-                        gpo.insertedByGuild = 'tbd';
+                        gpo.insertedByGuild = addingUserGuild;
                         gpo.insertedByUser = addingUserName;
                         players.push(gpo);
                         item.players = players;
@@ -337,13 +337,13 @@ var Bot = BotBase.extend(function () {
                 removeUserFromOwnData: function (guildName, mtch) {
                     var defered = Q.defer();
                     var lvl = mtch[1];
-                    var user = mtch[2];
-                    console.log('remove', lvl, user);
+                    var username = mtch[2];
+                    console.log('remove', lvl, username);
                     mongoData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
                         var players = _.filter(guildPlayers, function (el) {
-                            return el.name.toLowerCase() != user.toLowerCase() && el.lvl != lvl;
+                            return el.name != username && el.lvl != lvl;
                         });
                         if (guildPlayers.length == players.length) {
                             defered.resolve(false);
