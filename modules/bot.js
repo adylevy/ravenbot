@@ -72,7 +72,7 @@ var Bot = BotBase.extend(function () {
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
-                    var caseinsensitive=txt.toLowerCase();
+                    var caseinsensitive=txt;
                     txt=txt.toLowerCase();
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
@@ -223,8 +223,8 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     };
 
-                    var miniRgx = /^mymini\s(.*)/;
-                    if (miniRgx.test(txt)) {
+                    var miniRgx = /^[mM][yY][mM][iI][nN][iI]\s(.*)/;
+                    if (miniRgx.test(caseinsensitive)) {
                         var match = miniRgx.exec(caseinsensitive);
                         var miniP = new Player('9 ' + match[1]);
                         if (miniP.isPlayer()) {
@@ -241,8 +241,8 @@ var Bot = BotBase.extend(function () {
                         this.showHelp();
                     }
 
-                    var removeRgx = /^remove\s(\d+)\s(.*)/;
-                    if (removeRgx.test(txt)) {
+                    var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s(\d+)\s(.*)/;
+                    if (removeRgx.test(caseinsensitive)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 console.log('removing user');
