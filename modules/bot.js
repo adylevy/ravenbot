@@ -526,7 +526,7 @@ var Bot = BotBase.extend(function () {
                                 return player.lvl;
                             }).reverse();
                             // console.log(candidates);
-                            candidates = candidates.slice(0, 5);
+
                             _.each(candidates, function (candidate) {
                                 var crank = candidate.rank;
                                 var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
