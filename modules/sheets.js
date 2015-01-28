@@ -44,7 +44,7 @@ function loadDataFromSS(firstLetter, callback) {
                 console.log('looking at',title);
               //  getSheetColumns(worksheet).then(function (headCells) {
                     getRows(worksheet).then(function (rows) {
-                        console.log(rows);
+                       // console.log(rows);
                         _.each(rows, function (row) {
                             var gd = parseRow(row);
                             if (gd != null) {

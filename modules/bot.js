@@ -3,9 +3,6 @@
  */
 
 var Q = require('q');
-var Class = require('./Class.js').Class;
-
-const request = require('request');
 const _ = require('underscore');
 var giphy = require('./giphy.js')('dc6zaTOxFJmzC');
 var chuckJokes = require('./chuckJokes.js');
@@ -62,14 +59,15 @@ var Bot = BotBase.extend(function () {
                      "attachments": []
                      }*/
                     if (!msg.system) {
-                        this.mainSwitch(msg.text.toLowerCase().trim(), msg);
+                        this.mainSwitch(msg.text.trim(), msg);
                     }
 
                 },
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
-
+                    var caseinsensitive=txt;
+                    txt=txt.toLowerCase();
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
                     }
@@ -79,7 +77,6 @@ var Bot = BotBase.extend(function () {
                             if (roomData.warData.inWar == true) {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
-                                    var bestMatch = data.bestMatch;
                                     var ownData = data.ownData;
 
                                     self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, true);
@@ -97,7 +94,6 @@ var Bot = BotBase.extend(function () {
                             if (roomData.warData.inWar == true) {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
-                                    var bestMatch = data.bestMatch;
                                     var ownData = data.ownData;
 
                                     self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, false);
@@ -131,7 +127,7 @@ var Bot = BotBase.extend(function () {
                                   //  console.log('-------------->',guild);
                                     if (guild == null && (ownData == null || ownData.__v == undefined)) {
                                         if (bestMatch.guild.guildName) {
-                                            var msg = new Array();
+                                            var msg = [];
                                             msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
                                             msg.push('or you can use [matched new GuildName]');
                                             self.postMessage(msg.join('\n'));
@@ -175,7 +171,7 @@ var Bot = BotBase.extend(function () {
 
                     }
 
-                    var gifRgx = /^gif\s(.*)+$/
+                    var gifRgx = /^gif\s(.*)+$/;
                     if (gifRgx.test(txt)) {
                         var match = gifRgx.exec(txt);
                         this.tellGifJoke(match[1]);
@@ -219,12 +215,11 @@ var Bot = BotBase.extend(function () {
 
                             }
                         }.bind(this));
-                    }
-                    ;
+                    };
 
                     var miniRgx = /^mymini\s(.*)/;
                     if (miniRgx.test(txt)) {
-                        var match = miniRgx.exec(txt);
+                        var match = miniRgx.exec(caseinsensitive);
                         var miniP = new Player('9 ' + match[1]);
                         if (miniP.isPlayer()) {
                             console.log('adding mini : ' + miniP.toString());
@@ -245,7 +240,7 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(txt)).then(function (status) {
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseinsensitive)).then(function (status) {
                                     if (status) {
                                         self.postMessage('User removed from our DB');
                                     } else {
@@ -262,9 +257,9 @@ var Bot = BotBase.extend(function () {
 
                     // handle insertion
 
-                    var addUser = new Player(txt);
+                    var addUser = new Player(caseinsensitive);
                     // console.log(addUser);
-                    if (addUser.isPlayer() && txt.indexOf('changed name to') == -1) {
+                    if (addUser.isPlayer()) {
                         // console.log('add user ?')
                         this.getRoomPrefs().then(function (roomData) {
                             //  console.log(roomData);
@@ -363,11 +358,11 @@ var Bot = BotBase.extend(function () {
                     var self = this;
                     var user = new Player('99 ' + userName);
                     if (!user.isPlayer()) {
-                        this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk')
+                        this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
                     console.log('find user targets ...', user.name);
-                    ;
+
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
                             //  console.log('got parsed intel',guildData);
@@ -467,7 +462,7 @@ var Bot = BotBase.extend(function () {
                 },
 
                 enterWarMode: function (guildName, ssData, ownData) {
-                    console.log('enter war mode', arguments);
+                 //   console.log('enter war mode', arguments);
                     this.getRoomPrefs().then(function (roomData) {
                         console.log('enter war mode with room data', roomData);
                         try {
@@ -547,8 +542,7 @@ var Bot = BotBase.extend(function () {
                 }
 
             }
-        }
-        ()
+        }()
     )
     ;
 
