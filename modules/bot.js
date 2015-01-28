@@ -59,12 +59,12 @@ var Bot = BotBase.extend(function () {
                      "attachments": []
                      }*/
                     if (!msg.system) {
-                       try {
-                           this.mainSwitch(msg.text.trim(), msg);
-                       }
-                        catch(e){
-                            console.log('-------->',e,' <<---');
-                            
+                        try {
+                            this.mainSwitch(msg.text.trim(), msg);
+                        }
+                        catch (e) {
+                            console.log('-------->', e, ' <<---');
+
                         }
                     }
 
@@ -72,8 +72,8 @@ var Bot = BotBase.extend(function () {
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
-                    var caseinsensitive=txt;
-                    txt=txt.toLowerCase();
+                    var caseinsensitive = txt;
+                    txt = txt.toLowerCase();
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
                     }
@@ -90,6 +90,15 @@ var Bot = BotBase.extend(function () {
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
+                            }
+                        }.bind(this));
+
+                    }
+
+                    if (/^targets2$/.test(txt)) {
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                this.sendGuildTargetsUnified(roomData.warData.guildName);
                             }
                         }.bind(this));
 
@@ -120,7 +129,7 @@ var Bot = BotBase.extend(function () {
                         if (regexmatch != null) {
                             var guildName = regexmatch[2];
                             if (regexmatch[1] == 'new') {
-                                var g=mongoData.createNewGuild(guildName);
+                                var g = mongoData.createNewGuild(guildName);
                                 g.save();
                                 self.enterWarMode(guildName, null, null, false);
 
@@ -130,7 +139,7 @@ var Bot = BotBase.extend(function () {
                                     var guild = data.foundGuild;
                                     var bestMatch = data.bestMatch;
                                     var ownData = data.ownData;
-                                  //  console.log('-------------->',guild);
+                                    //  console.log('-------------->',guild);
                                     if (guild == null && (ownData == null || ownData.__v == undefined)) {
                                         if (bestMatch.guild.guildName) {
                                             var msg = [];
@@ -221,7 +230,8 @@ var Bot = BotBase.extend(function () {
 
                             }
                         }.bind(this));
-                    };
+                    }
+                    ;
 
                     var miniRgx = /^[mM][yY][mM][iI][nN][iI]\s(.*)/;
                     if (miniRgx.test(caseinsensitive)) {
@@ -247,7 +257,7 @@ var Bot = BotBase.extend(function () {
                             if (roomData.warData.inWar) {
                                 console.log('removing user');
                                 this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseinsensitive)).then(function (msg) {
-                                    if (msg!='') {
+                                    if (msg != '') {
                                         self.postMessage(msg);
                                     }
 
@@ -285,12 +295,12 @@ var Bot = BotBase.extend(function () {
                     theme = typeof(theme) == 'string' ? theme : 'minions';
                     console.log('gif ', theme);
                     giphy.random(encodeURI(theme), function (err, response) {
-                       if (err==null) {
-                           self.postMessage('', response.data.image_url);
-                       }else{
-                           self.postMessage('could not find this theme.');
-                           
-                       }
+                        if (err == null) {
+                            self.postMessage('', response.data.image_url);
+                        } else {
+                            self.postMessage('could not find this theme.');
+
+                        }
                     })
                 },
 
@@ -318,28 +328,28 @@ var Bot = BotBase.extend(function () {
                     mongoData.getGuildData(guildName, function (item) {
 
                         var players = _.filter(item.players, function (el) {
-                            
-                            return  !(el.name == player.name && el.lvl == player.lvl);
+
+                            return !(el.name == player.name && el.lvl == player.lvl);
                         });
-                        var mode=players.length==item.players.length ? 'added' : 'updated';
-                        if (mode=='added'){
-                          /*  var similarPlayer= _.find(item.players,function(el){
-                                var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
-                                var 
-                                
-                            })*/
+                        var mode = players.length == item.players.length ? 'added' : 'updated';
+                        if (mode == 'added') {
+                            /*  var similarPlayer= _.find(item.players,function(el){
+                             var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
+                             var 
+
+                             })*/
                             //TODO: similar users - create context
-                            
+
                         }
-                        
-                        
+
+
                         var gpo = player.getGuildPlayerObj();
                         gpo.insertedByGuild = addingUserGuild;
                         gpo.insertedByUser = addingUserName;
                         players.push(gpo);
                         item.players = players;
                         item.save(function () {
-                            self.postMessage(mode+' [' + player.toString() + ']');
+                            self.postMessage(mode + ' [' + player.toString() + ']');
                         });
                     }.bind(this))
                 },
@@ -355,14 +365,14 @@ var Bot = BotBase.extend(function () {
                             return !(el.name == username && el.lvl == lvl);
                         });
                         if (guildPlayers.length == players.length) {
-                            defered.resolve("Can\'t find "+lvl+' '+username+' in RavenDB');
+                            defered.resolve("Can\'t find " + lvl + ' ' + username + ' in RavenDB');
                             return;
                         }
 
                         item.players = players;
 
-                       item.save(function () {
-                            defered.resolve('removed '+lvl+' '+username+' from RavenDB');
+                        item.save(function () {
+                            defered.resolve('removed ' + lvl + ' ' + username + ' from RavenDB');
                         });
                     }.bind(this));
                     return defered.promise;
@@ -396,7 +406,7 @@ var Bot = BotBase.extend(function () {
                                     var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
                                     // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
                                     if (all > 1.2 && line1 > .65 && line2 > .9 && line3 > .7) {
-                                        player.rank=all;
+                                        player.rank = all;
                                         candidates.push(player);
                                         // console.log(player.name,all)
                                     } else {
@@ -416,12 +426,12 @@ var Bot = BotBase.extend(function () {
                             candidates = _.sortBy(candidates, function (player) {
                                 return player.lvl;
                             }).reverse();
-                           // console.log(candidates);
+                            // console.log(candidates);
                             candidates = candidates.slice(0, 5);
-                            _.each(candidates, function (candidate) {  
-                                var crank=candidate.rank;
-                                var rank=crank>2 ? 'A' : crank>1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' ['+candidate.origin+'|'+(candidate.isFresh()?'Old':'Fresh')+'|'+rank+']');
+                            _.each(candidates, function (candidate) {
+                                var crank = candidate.rank;
+                                var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
+                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Old' : 'Fresh') + '|' + rank + ']');
                             });
 
                             this.postMessage(msg.join('\n'));
@@ -442,7 +452,7 @@ var Bot = BotBase.extend(function () {
                         var playerCls = new Players();
                         // console.log('2-31=23-',guildData.lastIntel);
 
-                        players = guildData==null?[]:playerCls.getPlayers(guildData.lastIntel,guildData.lastIntelCell>=3);
+                        players = guildData == null ? [] : playerCls.getPlayers(guildData.lastIntel, guildData.lastIntelCell >= 3);
 
                         // console.log('2-31=23-',players);
                         mongoData.getGuildData(guildName, function (ourData) {
@@ -480,7 +490,7 @@ var Bot = BotBase.extend(function () {
                 },
 
                 enterWarMode: function (guildName, ssData, ownData) {
-                 //   console.log('enter war mode', arguments);
+                    //   console.log('enter war mode', arguments);
                     this.getRoomPrefs().then(function (roomData) {
                         console.log('enter war mode with room data', roomData);
                         try {
@@ -496,6 +506,35 @@ var Bot = BotBase.extend(function () {
                             console.log('-------->', e);
 
                         }
+                    }.bind(this));
+
+                },
+                sendGuildTargetsUnified: function (guildName) {
+                    this.getParsedIntelForGuild(guildName).then(function (guildData) {
+                        try {
+                            var msg=[];
+                            var uniqData = _.uniq(guildData, function (player) {
+                                return player.name + '_' + Math.floor(player.lvl / 10);
+                            });
+                            var candidates = [];
+                            _.each(uniqData, function (player) {
+                                if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
+                                    candidates.push(player);
+                                }
+                            });
+                            candidates = _.sortBy(candidates, function (player) {
+                                return player.lvl;
+                            }).reverse();
+                            // console.log(candidates);
+                            candidates = candidates.slice(0, 5);
+                            _.each(candidates, function (candidate) {
+                                var crank = candidate.rank;
+                                var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
+                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Old' : 'Fresh') + '|' + rank + ']');
+                            });
+
+                            this.postMessage(msg.join('\n'));
+                        }catch(e){console.log(e);}
                     }.bind(this));
 
                 },
