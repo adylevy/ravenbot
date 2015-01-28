@@ -31,16 +31,20 @@ var Players = Class.extend(function () {
         init: function (options) {
          //   console.log('players constructor')
         },
-        getPlayers: function (intel) {
+        getPlayers: function (intel,isFresh) {
             var splitData = intel.split('\n');
             var players = [];
             _.each(splitData, function (line) {
 
                     try {
                         var player = new Player(line);
-                        if (player.isPlayer()){ players.push(player);}else{
-                       //     console.log('not a player:',line);
-                            
+                        if (player.isPlayer()){ 
+                            player.origin='SS';
+                            if (isFresh){
+                                player.insertDate=new Date();
+                            }
+                            players.push(player);
+                        }else{
                         }
                     } catch (e) {
                         console.log(line);
@@ -58,6 +62,7 @@ var Players = Class.extend(function () {
 
                 newP.insertBy=p0.insertedByGuild;
                 newP.insertDate=p0.date;
+                newP.origin='R';
                 players.push(newP);
             })
             return players;
@@ -68,7 +73,8 @@ var Players = Class.extend(function () {
             var p=this.getPlayerObjFromDBPlayers(players);
             var oldIntel=[];
             var newIntel=[];
-            var d = new Date(2015, 0, 15);
+            var d = new Date();
+            d.setDate(d.getDate()-6);
 
             p = _.sortBy(p, function (player) {
                 return player.lvl;

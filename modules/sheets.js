@@ -133,6 +133,7 @@ function parseRow(row, headCells) {
 
         if (cellValue!='') {
             guildData.lastIntel = cellValue;
+            guildData.lastIntelCell=idx;
             guildData.allIntel += cellValue;
         }
 

@@ -27,11 +27,12 @@ var b=new Bot({},11615015);
 /*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
 })*/
-//b.mainSwitch('matched northcliff dragon squad');
-b.mainSwitch('matched xw\'s royal knights');
-/*b.mainSwitch('myt',{
+
+//b.mainSwitch('matched xw\'s royal knights');
+b.mainSwitch('myt',{
+    user_id:1,
     name:'MB 409.8m/109.7k/3.0k'
-});*/
+});
 /*
 b.mainSwitch('mymini Gamba 80m/20k/2000',{
     name:'MB 409.8m/109.7k/3.0k',

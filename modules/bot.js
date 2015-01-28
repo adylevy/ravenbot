@@ -387,6 +387,7 @@ var Bot = BotBase.extend(function () {
                                     var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
                                     // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
                                     if (all > 1.2 && line1 > .65 && line2 > .9 && line3 > .7) {
+                                        player.rank=all;
                                         candidates.push(player);
                                         // console.log(player.name,all)
                                     } else {
@@ -406,10 +407,12 @@ var Bot = BotBase.extend(function () {
                             candidates = _.sortBy(candidates, function (player) {
                                 return player.lvl;
                             }).reverse();
+                           // console.log(candidates);
                             candidates = candidates.slice(0, 5);
-                            _.each(candidates, function (candidate) {
-
-                                msg.push(candidate.toString());
+                            _.each(candidates, function (candidate) {  
+                                var crank=candidate.rank;
+                                var rank=crank>2 ? 'A' : crank>1.5 ? 'B' : 'C';
+                                msg.push(candidate.toString() + ' ['+candidate.origin+'|'+(candidate.isFresh()?'O':'F')+'|'+rank+']');
                             });
 
                             this.postMessage(msg.join('\n'));
@@ -430,7 +433,7 @@ var Bot = BotBase.extend(function () {
                         var playerCls = new Players();
                         // console.log('2-31=23-',guildData.lastIntel);
 
-                        players = guildData==null?[]:playerCls.getPlayers(guildData.lastIntel);
+                        players = guildData==null?[]:playerCls.getPlayers(guildData.lastIntel,guildData.lastIntelCell>=3);
 
                         // console.log('2-31=23-',players);
                         mongoData.getGuildData(guildName, function (ourData) {
@@ -492,6 +495,7 @@ var Bot = BotBase.extend(function () {
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
                     var guildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
+
                     if (guildData != null) {
                         msg.push('SS data:');
                         msg.push(guildData);

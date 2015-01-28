@@ -42,8 +42,7 @@ var Player = Class.extend(function () {
                 this.def = this.normalize(matches[3].replace(/,/g,'.'), 'm', this.lvl>100?10:0);
                 this.eqDef = this.normalize(matches[4].replace(/,/g,'.') || 0, 'k',this.lvl>140?100:0);
                 this.heroDef = this.normalize(matches[5].replace(/,/g,'.') || 0, 'k',0);
-
-
+                this.insertDate = new Date(2014,1,1);
             } else {
                 this.player = false;
                // console.log('no match', line);
@@ -51,13 +50,19 @@ var Player = Class.extend(function () {
 
         },
         
+        isFresh: function(){
+            var d=new Date();
+            d.setDate(d.getDate()-6);
+            return this.insertDate.getTime()>=d.getTime();
+            
+        },
         create: function(_lvl,_name,_def,_eqDef,_heroDef){
 
             this.player = true;
             this.lvl = Number(_lvl);
             this.name = _name;
-            this.def = this.normalize(_def || 0, 'm', this.lvl>40?10:0);
-            this.eqDef = this.normalize(_eqDef || 0, 'k',0);
+            this.def = this.normalize(_def || 0, 'm', this.lvl>100?10:0);
+            this.eqDef = this.normalize(_eqDef || 0, 'k',this.lvl>140?100:0);
             this.heroDef = this.normalize(_heroDef || 0, 'k',0);
           //  console.log('--->',this);
         },
