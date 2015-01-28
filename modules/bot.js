@@ -59,14 +59,20 @@ var Bot = BotBase.extend(function () {
                      "attachments": []
                      }*/
                     if (!msg.system) {
-                        this.mainSwitch(msg.text.trim(), msg);
+                       try {
+                           this.mainSwitch(msg.text.trim(), msg);
+                       }
+                        catch(e){
+                            console.log('-------->',e,' <<---');
+                            
+                        }
                     }
 
                 },
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
-                    var caseinsensitive=txt;
+                    var caseinsensitive=txt.toLowerCase();
                     txt=txt.toLowerCase();
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
