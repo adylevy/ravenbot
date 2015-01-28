@@ -246,12 +246,9 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseinsensitive)).then(function (status) {
-                                    if (status) {
-                                        self.postMessage('User removed from our DB');
-                                    } else {
-                                        self.postMessage('Error removing user from our DB');
-
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseinsensitive)).then(function (msg) {
+                                    if (msg!='') {
+                                        self.postMessage(msg);
                                     }
 
                                 });
@@ -321,9 +318,21 @@ var Bot = BotBase.extend(function () {
                     mongoData.getGuildData(guildName, function (item) {
 
                         var players = _.filter(item.players, function (el) {
-                            return el.name != player.name;
+                            
+                            return  !(el.name == player.name && el.lvl == player.lvl);
                         });
                         var mode=players.length==item.players.length ? 'added' : 'updated';
+                        if (mode=='added'){
+                          /*  var similarPlayer= _.find(item.players,function(el){
+                                var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
+                                var 
+                                
+                            })*/
+                            //TODO: similar users - create context
+                            
+                        }
+                        
+                        
                         var gpo = player.getGuildPlayerObj();
                         gpo.insertedByGuild = addingUserGuild;
                         gpo.insertedByUser = addingUserName;
@@ -343,17 +352,17 @@ var Bot = BotBase.extend(function () {
 
                         var guildPlayers = item.players;
                         var players = _.filter(guildPlayers, function (el) {
-                            return el.name != username && el.lvl != lvl;
+                            return !(el.name == username && el.lvl == lvl);
                         });
                         if (guildPlayers.length == players.length) {
-                            defered.resolve(false);
+                            defered.resolve("Can\'t find "+lvl+' '+username+' in RavenDB');
                             return;
                         }
 
                         item.players = players;
 
-                        item.save(function () {
-                            defered.resolve(true);
+                       item.save(function () {
+                            defered.resolve('removed '+lvl+' '+username+' from RavenDB');
                         });
                     }.bind(this));
                     return defered.promise;

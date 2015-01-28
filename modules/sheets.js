@@ -4,8 +4,8 @@ var GoogleSpreadsheets = require('./spreadsheets');
 var GoogleClientLogin = require("googleclientlogin").GoogleClientLogin;
 var Q = require('q');
 var _ = require('underscore');
-//var sheetKey = '0AorXt_5bia2PdHFZWE8zUUJBTlhsZG9tQmFWdjF1ZkE';
-var sheetKey = '0AorXt_5bia2PdE5iMm83WVhpTUNBZ2JId252Q3BRN3c';
+var sheetKey = process.env['SS_TOKEN'];//'0AorXt_5bia2PdE5iMm83WVhpTUNBZ2JId252Q3BRN3c';
+
 var googleAuth = new GoogleClientLogin({
     email: 'gmadybot@gmail.com',
     password: 'gmadybotgm',
