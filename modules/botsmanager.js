@@ -26,9 +26,10 @@ var BotsManager = Class.extend(function () {
             console.log('bot manager', this.options);
             this.startListening();
             this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
-            setTimeout(this.onTimeTick,2*60*1000);
+            setTimeout(this.onTimeTick,1*60*1000);
         },
-        onTimeTick: function(options){
+        onTimeTick: function(){
+            console.log('on time tick');
             mongoData.getAllRoomPrefs().then(function(rooms){
                 _.each(rooms,function(room){
                     if (room.warData.inWar){

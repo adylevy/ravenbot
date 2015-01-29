@@ -121,6 +121,34 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    if (/^time$/.test(txt)) {
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                var diff = new Date(Date.now() - roomData.warData.warTime);
+                                this.postMessage(60-diff.getMinutes()+' minutes left.');
+                            }else{
+                                this.postMessage('not in war.');
+                                
+                            }
+                        }.bind(this));
+                    }
+                    
+                    var syncRgx = /^[Ss]ync\s(.d+)$/;
+                    if (syncRgx.test(txt)){
+                        var mtch=syncRgx.exec(txt);
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                var newTime=new Date(new Date().getTime() - Number(match[1])*60000);
+                                roomData.warData.warTime=newTime;
+                                roomData.save();
+                            }else{
+                                this.postMessage('not in war.');
+
+                            }
+                        }.bind(this));
+                        
+                    }
+
                     var newMatchRgx = /^matched\s*(new){0,1}\s*(.*)/;
                     if (newMatchRgx.test(txt)) {
 
@@ -604,16 +632,16 @@ var Bot = BotBase.extend(function () {
                     if (roomData.roomId != 11615018)
                         return;
                     var diff = new Date(Date.now() - roomData.warData.warTime);
-                    if (diff.getDate()>0 || diff.getMinutes() > 60 || diff.getHours()>0) {
+                    if (diff.getDate() > 0 || diff.getMinutes() > 60 || diff.getHours() > 0) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
-                        roomData.save(function(e){
+                        roomData.save(function (e) {
                             console.log(e);
-                            
+
                         });
                         this.postMessage("War ended. did we win this one ?");
                     } else if (diff.getMinutes() % 10 == 0) {
-                        this.postMessage(diff.getMinutes() + " Left.");
+                        this.postMessage(60-diff.getMinutes() + " minutes left.");
                     }
 
                 }
@@ -626,7 +654,6 @@ var Bot = BotBase.extend(function () {
 //util.inherits(BotsManager, events.EventEmitter);
 
 module.exports = function (options, idx) {
-
     var md = new Bot(options, idx);
     return md;
 };
