@@ -133,14 +133,19 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
                     
-                    var syncRgx = /^[Ss]ync\s(.d+)$/;
+                    var syncRgx = /^[Ss]ync\s(\d+)$/;
                     if (syncRgx.test(txt)){
                         var mtch=syncRgx.exec(txt);
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
-                                var newTime=new Date(new Date().getTime() - Number(match[1])*60000);
+                               try {
+                                   var newTime = new Date(new Date().getTime() - (60-Number(mtch[1])) * 60000);
+                               }
+                                catch(e){console.log(e);}
                                 roomData.warData.warTime=newTime;
-                                roomData.save();
+                                roomData.save(function(){
+                                    this.postMessage('war time synced. '+Number(mtch[1])+' left.');
+                                }.bind(this));
                             }else{
                                 this.postMessage('not in war.');
 
