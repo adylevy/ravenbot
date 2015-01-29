@@ -65,31 +65,63 @@ var AdminBot = BotBase.extend(function () {
                 },
                 mainSwitch: function (txt, msg) {
                     console.log('admin main switch');
-                    if (/^hello$/.test(txt)) {
+                    if (/^[Hh]ello$/.test(txt)) {
                         this.postMessage('Hey there Admin!');
                     }
-                    
-                    var regMatch= /^register\s(\d+)$/;
+
+                    var regMatch = /^[Rr]egister\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var regexmatch = regMatch.exec(txt);
-                        this.postMessage('Registering !',regexmatch[1]);
-                        this.emit('botRegister', this, regexmatch[1]);
+                       
+                        var obj = {
+                            roomId: regexmatch[1],
+                            guildName: regexmatch[2],
+                            guildId: regexmatch[3]
+                        };
+                        this.postMessage('Registering !');
+                       // console.log(obj);
+                        this.emit('botRegister', this, obj);
                     }
 
-                    var regMatch= /^unregister\s(\d+)$/;
+                    regMatch = /^[Uu]nregister\s(\d+)$/;
                     if (regMatch.test(txt)) {
                         var regexmatch = regMatch.exec(txt);
-                        this.postMessage('Unregistering !',regexmatch[1]);
+                        this.postMessage('Unregistering !', regexmatch[1]);
                         this.emit('botUnregister', this, regexmatch[1]);
                     }
-                    
+
+                    regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
+                    if (regMatch.test(txt)) {
+                        var matches = regMatch.exec(txt);
+                        mongoData.getSettings().then(function (settings) {
+                            var guild = _.findWhere(settings.guilds, {roomId: Number(matches[1])});
+                            if (guild) {
+                                guild.guildName = matches[2];
+                                guild.guildId = matches[3] || '';
+                            }
+                            settings.save();
+                        }.bind(this));
+                    }
+                    regMatch = /^list$/;
+                    if (regMatch.test(txt)) {
+                        mongoData.getSettings().then(function (settings) {
+                            var postback = [];
+                            _.each(settings.guilds, function (guild) {
+                                postback.push(guild.roomId + ': ' + guild.guildName + ' / ' + guild.guildId);
+                            });
+                            this.postMessage(postback.join('\n'));
+
+                        }.bind(this))
+
+                    }
+
                 },
-                botRegistered: function(groupId){
-                    this.postMessage('Bot Registered : '+groupId);
+                botRegistered: function (groupId) {
+                    this.postMessage('Bot Registered : ' + groupId);
                 },
-                botUnregistered: function(groupId){
-                    this.postMessage('Bot UnRegistered : '+groupId);
-                    
+                botUnregistered: function (groupId) {
+                    this.postMessage('Bot UnRegistered : ' + groupId);
+
                 }
             }
         }

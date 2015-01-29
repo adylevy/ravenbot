@@ -69,24 +69,28 @@ var BotsManager = Class.extend(function () {
             var deferred = Q.defer();
             console.log('register bots');
             mongoData.getSettings().then(function(settings){
-                var groupIds = settings.groups;
-                console.log('got settings',settings,groupIds);
+                var guilds = settings.guilds;
+               //console.log('got settings',settings,groupIds);
                 var adminGroup=self.options.adminGroup;
                 try {
-                    if (_.find(groupIds, function (el) {
-                            el + '' == adminGroup + '';
+                    if (_.find(guilds, function (guild) {
+                            guild.roomId + '' == adminGroup + '';
                         })==null) {
-                        groupIds.push(adminGroup);
+                        guilds.push({
+                            roomId:adminGroup,
+                            guildName:'Admin',
+                            guildId:''
+                        });
                     }
                 }catch(e){console.log(e);}
-                console.log('register',groupIds);
+                //console.log('register',groupIds);
                 var registerArr=[];
-                _.each(groupIds, function (groupId) {
-                    if (groupId !='') {
-                        if (_.findWhere(this.allBots, {group_id: groupId}) == undefined) {
-                            registerArr.push(this.registerBotAndCreateManager(groupId));
-                        }
-                    }
+                _.each(guilds, function (guild) {
+                   try {
+                       if (_.findWhere(this.allBots, {group_id: Number(guild.roomId)}) == undefined) {
+                           registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                       }
+                   }catch(e){}
                 }.bind(this));
                 Q.all(registerArr).then(function(){
                     deferred.resolve();
@@ -113,13 +117,13 @@ var BotsManager = Class.extend(function () {
                 if (response.meta.code > 200 && response.meta.code < 300) {
                     try {
                         var manager = this.options.adminGroup==groupIdx? new AdminBot(response.response.bot, groupIdx) : new Bot(response.response.bot, groupIdx);
-                        manager.on('botRegister',function(ctx,groupId){
-                            var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                        manager.on('botRegister',function(ctx,guild){
+                            var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
                             if (botObj==undefined) {
-                                this.registerBotAndCreateManager(groupId).then(function (newBot) {
-                                    ctx.botRegistered(groupId);
+                                this.registerBotAndCreateManager(guild.roomId).then(function (newBot) {
+                                    ctx.botRegistered(guild.roomId);
                                     newBot.postMessage('RavenBot is successfully registered in this room.');
-                                    this.addGroupToSettings(groupId);
+                                    this.addGroupToSettings(guild);
                                 }.bind(this));
                             }else{
                                 ctx.postMessage('Bot already registered');
@@ -217,7 +221,12 @@ var BotsManager = Class.extend(function () {
                     return;
                     
                 }else {
-                    botObj.manager.handleMessage(msg);
+                  try {
+                      botObj.manager.handleMessage(msg);
+                  }catch(e){
+                      console.warn('FATAL ERROR : ',e);
+                      
+                  }
                 }
             }
         },
@@ -225,13 +234,13 @@ var BotsManager = Class.extend(function () {
             var self = this;
 
             this.on('botMessage', this.handleMessage.bind(this));
-            mongoData.getSettings().then(function(settings) {
+
                 var self = this;
-                console.log(JSON.stringify({'name': self.options.name, 'groups': settings.groups}));
+                //console.log(JSON.stringify({'name': self.options.name, 'groups': settings.groups}));
                 var server = http.createServer(function (request, response) {
                     if (request.url == '/' && request.method == 'GET') {
                         response.writeHead(200, {"Content-Type": "application/json"});
-                        response.end(JSON.stringify({'name': self.options.name, 'groups': settings.groups}));
+                        response.end(JSON.stringify({'name': self.options.name}));
                     } else if (request.url == '/images/raven.jpeg') {
                         var img = fs.readFileSync('./images/raven.jpeg');
                         response.writeHead(200, {'Content-Type': 'image/jpeg'});
@@ -262,14 +271,19 @@ var BotsManager = Class.extend(function () {
 
                 server.listen(self.options.port);
                 console.log('server up');
-            }.bind(this));
+
         },
-        addGroupToSettings: function(groupId){
+        addGroupToSettings: function(guild){
             mongoData.getSettings().then(function(settings){
-                var groupIds = settings.groups;
-                if (!_.contains(groupIds,groupId)){
-                    groupIds.push(groupId);
-                    settings.groups=groupIds;
+                var guilds = settings.guilds;
+                if (_.findWhere(guilds,{roomId:Number(guild.roomId)})){
+                    guilds.push({
+                        roomId:guild.roomId,
+                        guildName:guild.guildName,
+                        guildId:guild.guildId
+                        
+                    });
+                    settings.guilds=guilds;
                     settings.save();
                 }
             })
@@ -277,13 +291,12 @@ var BotsManager = Class.extend(function () {
         },
         removeGroupFromSettings: function(groupId){
             mongoData.getSettings().then(function(settings){
-                var groupIds = settings.groups;
-                if (_.contains(groupIds,groupId)){
-                    groupIds = _.filter(groupIds,function(id){
-                        return id!=groupId;
-                        
+                var guilds = settings.guilds;
+                if (_.findWhere(guilds,{roomId:Number(groupId)})){
+                    guilds = _.filter(guilds,function(guild){
+                        return guild.roomId!=groupId;
                     })
-                    settings.groups=groupIds;
+                    settings.guilds=guilds;
                     settings.save();
                 }
             })

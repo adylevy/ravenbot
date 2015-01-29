@@ -22,7 +22,7 @@ var whenConnected=function(){
 };
 
 var mongoData = require('./modules/mongoData.js')(process.env['MONGOLAB_URI'],false);
-mongoData.on('someThing',whenConnected);
+mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
 
 

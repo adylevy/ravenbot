@@ -36,7 +36,11 @@ var Mongodata = Class.extend(function () {
         }, playersPrefs: [{id: Number, mini: String}]
     });
 
-    var AppSettings = mongoose.model('AppSettings', {groups: []});
+    var AppSettings = mongoose.model('AppSettings', {groups: [], guilds:[{
+        guildName:String,
+        roomId:Number,
+        guildId:String
+    }]});
 
     return {
         init: function (connectionString, autoConnect,callback) {
@@ -56,7 +60,7 @@ var Mongodata = Class.extend(function () {
                 if (typeof callback=='function'){
                     callback();
                 }
-                this.emit('someThing');
+                this.emit('mongoConnected');
 
             }.bind(this));
         },
@@ -123,6 +127,20 @@ var Mongodata = Class.extend(function () {
                 defered.resolve(item);
             });
             return defered.promise;
+        },
+        reBuildGuilds:function(){
+            this.getSettings().then(function(settings){
+                settings.guilds=[];
+                _.each(settings.groups,function(groupId){
+                    settings.guilds.push({
+                        roomId:groupId,
+                        guildId:'',
+                        guildName:''
+                    });
+                });
+                settings.save();
+            })
+            
         },
         reBuildGuildDB: function () {
             Guild.find({}, function (err, data) {

@@ -23,16 +23,22 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 
 var Bot = require('./modules/bot.js');
 //var AdminBot = require('./modules/adminBot.js');
-var b=new Bot({},11615015);
+var b=new Bot({},11090615);
 /*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
 })*/
 
-//b.mainSwitch('matched xw\'s royal knights');
-b.mainSwitch('myt',{
+/*b.mainSwitch('123 Ady 1m/2k/2k',{
+    name:'me'
+});*/
+
+b.mainSwitch('targets2',{
+    name:'me'});
+
+/*b.mainSwitch('myt',{
     user_id:1,
     name:'MB 409.8m/109.7k/3.0k'
-});
+});*/
 /*
 b.mainSwitch('mymini Gamba 80m/20k/2000',{
     name:'MB 409.8m/109.7k/3.0k',
