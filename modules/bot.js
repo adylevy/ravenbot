@@ -353,6 +353,8 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('myt - user targets during war.');
                     helpMsg.push('minit - mini\'s targets during war.');
                     helpMsg.push('mymini user 1m/2k/3k - set mini for user.');
+                    helpMsg.push('time - shows war timer.');
+                    helpMsg.push('sync number - syncs number of minutes left for war');
 
                     this.postMessage(helpMsg.join('\n'));
                 },
