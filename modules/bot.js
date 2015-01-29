@@ -642,7 +642,7 @@ var Bot = BotBase.extend(function () {
                     var diff = d - roomData.warData.warTime;
                    var  diffInSeconds = Math.round(diff/1000);
                     var diffInMinutes = Math.round(diffInSeconds/60);
-                    if (diffInMinutes > 60 ) {
+                    if (diffInMinutes >= 60 ) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
