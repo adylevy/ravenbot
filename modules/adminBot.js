@@ -98,8 +98,14 @@ var AdminBot = BotBase.extend(function () {
                             if (guild) {
                                 guild.guildName = matches[2];
                                 guild.guildId = matches[3] || '';
+                                settings.save(function(){
+                                    this.postMessage('all set.')
+
+                                }.bind(this));
+                            }else{
+                                this.postMessage('can\'t find room.');
                             }
-                            settings.save();
+                            
                         }.bind(this));
                     }
                     regMatch = /^list$/;
