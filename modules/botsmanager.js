@@ -276,7 +276,7 @@ var BotsManager = Class.extend(function () {
         addGroupToSettings: function(guild){
             mongoData.getSettings().then(function(settings){
                 var guilds = settings.guilds;
-                if (_.findWhere(guilds,{roomId:Number(guild.roomId)})){
+                if (!_.findWhere(guilds,{roomId:Number(guild.roomId)})){
                     guilds.push({
                         roomId:guild.roomId,
                         guildName:guild.guildName,
