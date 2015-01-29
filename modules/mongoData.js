@@ -22,7 +22,8 @@ var Mongodata = Class.extend(function () {
                 heroDef: Number,
                 date: Date,
                 insertedByGuild: String,
-                insertedByUser: String
+                insertedByUser: String,
+                isDeleted: {type:Boolean, Default:false}
             }
         ]
     });
@@ -126,6 +127,15 @@ var Mongodata = Class.extend(function () {
                 }
                 defered.resolve(item);
             });
+            return defered.promise;
+        },
+        getAllRoomPrefs: function(){
+            var that = this;
+            var defered = Q.defer();
+            RoomPrefs.find({}, function (err, rooms) {
+                defered.resolve(rooms);
+            });
+            
             return defered.promise;
         },
         reBuildGuilds:function(){

@@ -512,7 +512,7 @@ var Bot = BotBase.extend(function () {
                 sendGuildTargetsUnified: function (guildName) {
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
-                            var msg=[];
+                            var msg = [];
                             var uniqData = _.uniq(guildData, function (player) {
                                 return player.name + '_' + Math.floor(player.lvl / 10);
                             });
@@ -530,11 +530,13 @@ var Bot = BotBase.extend(function () {
                             _.each(candidates, function (candidate) {
                                 var crank = candidate.rank;
                                 var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Old' : 'Fresh') +  ']');
+                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Old' : 'Fresh') + ']');
                             });
 
                             this.postMessage(msg.join('\n'));
-                        }catch(e){console.log(e);}
+                        } catch (e) {
+                            console.log(e);
+                        }
                     }.bind(this));
 
                 },
@@ -596,6 +598,23 @@ var Bot = BotBase.extend(function () {
                             this.postMessage('updated Mini - ' + miniPlayer);
                         }.bind(this)
                     );
+
+                },
+                onTimeTick: function (roomData) {
+                    if (roomData.roomId != 11615018)
+                        return;
+                    var diff = new Date(Date.now() - roomData.warData.warTime);
+                    if (diff.getDate()>0 || diff.getMinutes() > 60 || diff.getHours()>0) {
+                        roomData.warData.inWar = false;
+                        roomData.warData.guildName = '';
+                        roomData.save(function(e){
+                            console.log(e);
+                            
+                        });
+                        this.postMessage("War ended. did we win this one ?");
+                    } else if (diff.getMinutes() % 10 == 0) {
+                        this.postMessage(diff.getMinutes() + " Left.");
+                    }
 
                 }
 
