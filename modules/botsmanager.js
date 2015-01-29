@@ -33,6 +33,7 @@ var BotsManager = Class.extend(function () {
 
                try{ _.each(rooms,function(room){
                     if (room.warData.inWar){
+                        console.log('onTick',room.roomId,this.allBots);
                         var botObj = _.findWhere(this.allBots, {group_id: room.roomId});
                         if (botObj){
                             botObj.manager.onTimeTick(room);
