@@ -29,9 +29,9 @@ var BotsManager = Class.extend(function () {
             setTimeout(function(){this.onTimeTick()}.bind(this),1*60*1000);
         },
         onTimeTick: function(){
-            console.log('on time tick');
             mongoData.getAllRoomPrefs().then(function(rooms){
-                _.each(rooms,function(room){
+                console.warn('time tick - rooms',rooms);
+               try{ _.each(rooms,function(room){
                     if (room.warData.inWar){
                         var botObj = _.findWhere(this.allBots, {group_id: room.roomId});
                         if (botObj){
@@ -39,7 +39,8 @@ var BotsManager = Class.extend(function () {
                         }
                     }
                     
-                }.bind(this))
+                }.bind(this));}
+                catch(e){console.warn('error',e);}
                 
             }.bind(this));
             
