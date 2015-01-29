@@ -634,11 +634,14 @@ var Bot = BotBase.extend(function () {
 
                 },
                 onTimeTick: function (roomData) {
-                    console.log('bot on time tick',roomData.roomId);
+                  //  console.log('bot on time tick',roomData.roomId);
                     if (roomData.roomId != 11615018)
                         return;
-                    var diff = new Date(Date.now() - roomData.warData.warTime);
-                    if (diff.getDate() > 0 || diff.getMinutes() > 60 || diff.getHours() > 0) {
+                    var d=new Date();
+                    var diff = d - roomData.warData.warTime;
+                   var  diffInSeconds = Math.round(diff/1000);
+                    var diffInMinutes = Math.round(diffInSeconds/60);
+                    if (diffInMinutes > 60 ) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
@@ -646,8 +649,8 @@ var Bot = BotBase.extend(function () {
 
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if (diff.getMinutes() % 10 == 0) {
-                        this.postMessage(60-diff.getMinutes() + " minutes left.");
+                    } else if (diffInMinutes % 10 == 0) {
+                        this.postMessage(60-diffInMinutes + " minutes left.");
                     }
 
                 }
