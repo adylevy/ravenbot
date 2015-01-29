@@ -205,7 +205,7 @@ var Bot = BotBase.extend(function () {
                     if (/^warstatus$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             console.log('war status', roomData);
-                            this.postMessage(roomData.warData.inWar ? 'in war with : ' + roomData.warData.guildName : 'not in war');
+                            this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
                         }.bind(this));
                     }
 
@@ -635,8 +635,7 @@ var Bot = BotBase.extend(function () {
                 },
                 onTimeTick: function (roomData) {
                   //  console.log('bot on time tick',roomData.roomId);
-                    if (roomData.roomId != 11615018)
-                        return;
+
                     var d=new Date();
                     var diff = d - roomData.warData.warTime;
                    var  diffInSeconds = Math.round(diff/1000);

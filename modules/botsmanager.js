@@ -26,7 +26,7 @@ var BotsManager = Class.extend(function () {
             console.log('bot manager', this.options);
             this.startListening();
             this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
-            setInterval(function(){this.onTimeTick()}.bind(this),1*60*1000);
+            this.timerInterval=setInterval(function(){this.onTimeTick()}.bind(this),1*60*1000);
         },
         onTimeTick: function(){
             mongoData.getAllRoomPrefs().then(function(rooms){
@@ -35,7 +35,7 @@ var BotsManager = Class.extend(function () {
                     if (room.warData.inWar){
                       //  console.log('onTick',room.roomId,this.allBots);
                         var botObj = _.findWhere(this.allBots, {group_id: room.roomId+''});
-                        if (botObj){
+                        if (botObj && botObj.manager && botObj.manager.onTimeTick){
                             botObj.manager.onTimeTick(room);
                         }
                     }
