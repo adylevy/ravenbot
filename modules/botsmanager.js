@@ -30,7 +30,7 @@ var BotsManager = Class.extend(function () {
         },
         onTimeTick: function(){
             mongoData.getAllRoomPrefs().then(function(rooms){
-                console.warn('time tick - rooms',rooms);
+
                try{ _.each(rooms,function(room){
                     if (room.warData.inWar){
                         var botObj = _.findWhere(this.allBots, {group_id: room.roomId});

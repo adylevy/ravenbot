@@ -144,7 +144,7 @@ var Bot = BotBase.extend(function () {
                                 catch(e){console.log(e);}
                                 roomData.warData.warTime=newTime;
                                 roomData.save(function(){
-                                    this.postMessage('war time synced. '+Number(mtch[1])+' left.');
+                                    this.postMessage('war time synced. '+Number(mtch[1])+' minutes left.');
                                 }.bind(this));
                             }else{
                                 this.postMessage('not in war.');
@@ -634,6 +634,7 @@ var Bot = BotBase.extend(function () {
 
                 },
                 onTimeTick: function (roomData) {
+                    console.log('bot on time tick',roomData.roomId);
                     if (roomData.roomId != 11615018)
                         return;
                     var diff = new Date(Date.now() - roomData.warData.warTime);
