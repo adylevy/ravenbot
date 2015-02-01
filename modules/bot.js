@@ -211,12 +211,14 @@ var Bot = BotBase.extend(function () {
 
                     if (/^joke$/.test(txt)) {
                         this.tellAJoke();
-
+                    }
+                    
+                    if (/cowbell/.test(txt)){
+                        this.tellGifJoke('cowbell snl');
                     }
 
                     if (/^minions$/.test(txt)) {
                         this.tellGifJoke();
-
                     }
 
                     var gifRgx = /^gif\s(.*)+$/;
@@ -650,7 +652,7 @@ var Bot = BotBase.extend(function () {
 
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if (diffInMinutes % 10 == 0) {
+                    } else if (diffInMinutes % 10 == 0 && diffInMinutes>0) {
                         this.postMessage(60-diffInMinutes + " minutes left.");
                     }
 
