@@ -209,24 +209,8 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    if (/^joke$/.test(txt)) {
-                        this.tellAJoke();
-                    }
+                    this.jokesHandler(txt);
                     
-                    if (/cowbell/.test(txt)){
-                        this.tellGifJoke('cowbell snl');
-                    }
-
-                    if (/^minions$/.test(txt)) {
-                        this.tellGifJoke();
-                    }
-
-                    var gifRgx = /^gif\s(.*)+$/;
-                    if (gifRgx.test(txt)) {
-                        var match = gifRgx.exec(txt);
-                        this.tellGifJoke(match[1]);
-                    }
-
                     if (/^myt$/.test(txt) || /^my\stargets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
@@ -318,6 +302,47 @@ var Bot = BotBase.extend(function () {
                     }
 
                 },
+                jokesHandler: function(txt){
+                    if (/^joke$/.test(txt)) {
+                        this.tellAJoke();
+                        return;
+                    }
+
+                    if (/facepalm/.test(txt)){
+                        this.tellGifJoke('marvel-wolverine-facepalm');
+                        return;
+                    }
+
+                    if (/potato/.test(txt)){
+                        this.tellGifJoke('yellow-minions-potato');
+                        return;
+                    }
+
+                    if (/gumby/.test(txt)){
+                        this.tellGifJoke('unf-gumby');
+                        return;
+                    }
+
+                    if (/cowbell/.test(txt)){
+                        this.tellGifJoke('cowbell snl');
+                        return;
+                    }
+
+                    if (/^minions$/.test(txt)) {
+                        this.tellGifJoke();
+                        return;
+                    }
+
+                    var gifRgx = /^gif\s(.*)+$/;
+                    if (gifRgx.test(txt)) {
+                        var match = gifRgx.exec(txt);
+                        this.tellGifJoke(match[1]);
+                        return;
+                    }
+
+
+                },
+                
                 tellAJoke: function () {
                     var self = this;
                     chuckJokes.getJoke().then(function (joke) {
