@@ -328,6 +328,11 @@ var Bot = BotBase.extend(function () {
                         return;
                     }
 
+                    if (/banana/.test(txt)){
+                        this.tellGifJoke('banana-despicable-me-2-minion');
+                        return;
+                    }
+
                     if (/^minions$/.test(txt)) {
                         this.tellGifJoke();
                         return;
