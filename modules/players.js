@@ -42,6 +42,11 @@ var Players = Class.extend(function () {
                             player.origin='SS';
                             if (isFresh){
                                 player.insertDate=new Date();
+                            }else{
+                                var d=new Date();
+                                d.setDate(d.getDate()-30);
+                                player.insertDate=d;
+                                
                             }
                             players.push(player);
                         }else{
