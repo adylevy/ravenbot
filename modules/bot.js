@@ -498,7 +498,7 @@ var Bot = BotBase.extend(function () {
                             _.each(candidates, function (candidate) {
                                 var crank = candidate.rank;
                                 var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Old' : 'Fresh') + '|' + rank + ']');
+                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh': 'Old') + '|' + rank + ']');
                             });
 
                             this.postMessage(msg.join('\n'));
