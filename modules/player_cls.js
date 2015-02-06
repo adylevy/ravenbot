@@ -25,7 +25,7 @@ var Player = Class.extend(function () {
             }
             //line=line.toLowerCase();
             this.line = line;
-            var playerRgx = /(\d+)\s+([\w\-@\.,\s\(\)]{1,35})\s+([\d\.,\s?mkbMKB]+)[\s?\/?,?(]+([\d\.,mkMK]+)[\s?\/?,?()]+([\d\.,mkMK]+)/;
+            var playerRgx = /^(\d+)\s+([\w\-@\.,\s\(\)]{1,35})\s+([\d\.,\s?mkbMKB]+)[\s?\/?,?(]+([\d\.,mkMK]+)[\s?\/?,?()]+([\d\.,mkMK]+)/;
             var nameLvlRgx = /([\w\-@\.,\s\(\)]{1,35})\s+(\d+)\s+([\d\.,\s?mkbMKB]+)[\s?\/?,?(]+([\d\.,mkMK]+)[\s?\/?,?()]+([\d\.,mkMK]+)/;
             var matches = playerRgx.exec(line);
             var secondTry = nameLvlRgx.exec(line);
