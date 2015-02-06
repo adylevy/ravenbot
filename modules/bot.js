@@ -329,7 +329,7 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/banana/.test(txt)){
-                        this.tellGifJoke('banana-despicable-me-2-minion');
+                        this.tellGifJoke('cw8Nr4u28tVKw');
                         return;
                     }
 
