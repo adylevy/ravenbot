@@ -11,7 +11,7 @@ var mongoData = require('./mongoData.js')(process.env['MONGOLAB_URI']);
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
-
+var utils = require('./utils.js');
 
 var Bot = BotBase.extend(function () {
 
@@ -395,8 +395,7 @@ var Bot = BotBase.extend(function () {
                     mongoData.getGuildData(guildName, function (item) {
 
                         var players = _.filter(item.players, function (el) {
-
-                            return !(el.name == player.name && el.lvl == player.lvl);
+                            return !(utils.capitaliseFirstLetter(el.name) == player.name && el.lvl == player.lvl);
                         });
                         var mode = players.length == item.players.length ? 'added' : 'updated';
                         if (mode == 'added') {
@@ -428,8 +427,9 @@ var Bot = BotBase.extend(function () {
                     mongoData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
+
                         var players = _.filter(guildPlayers, function (el) {
-                            return !(el.name == el.capitaliseFirstLetter(username) && el.lvl == lvl);
+                            return !(utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
                         });
                         if (guildPlayers.length == players.length) {
                             defered.resolve("Can\'t find " + lvl + ' ' + username + ' in RavenDB');
