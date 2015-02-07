@@ -255,7 +255,7 @@ var Bot = BotBase.extend(function () {
                     var miniRgx = /^[mM][yY][mM][iI][nN][iI]\s(.*)/;
                     if (miniRgx.test(caseinsensitive)) {
                         var match = miniRgx.exec(caseinsensitive);
-                        var miniP = new Player('9 ' + match[1]);
+                        var miniP = new Player('199 ' + match[1]);
                         if (miniP.isPlayer()) {
                             console.log('adding mini : ' + miniP.toString());
                             this.updateRoomPrefs(msg.user_id, miniP.toString().substr(2));
@@ -448,7 +448,7 @@ var Bot = BotBase.extend(function () {
 
                 findUserTargets: function (guildName, userName) {
                     var self = this;
-                    var user = new Player('99 ' + userName);
+                    var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
