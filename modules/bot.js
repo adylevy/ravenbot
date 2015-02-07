@@ -494,9 +494,9 @@ var Bot = BotBase.extend(function () {
                                 return player.lvl;
                             }).reverse();
 
-                            candidates = _.sortBy(candidates, function (player) {
+                           /* candidates = _.sortBy(candidates, function (player) {
                                 return player.isFresh();
-                            }).reverse();
+                            }).reverse();*/
                             // console.log(candidates);
                             candidates = candidates.slice(0, 5);
                             _.each(candidates, function (candidate) {
