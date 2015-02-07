@@ -429,7 +429,7 @@ var Bot = BotBase.extend(function () {
 
                         var guildPlayers = item.players;
                         var players = _.filter(guildPlayers, function (el) {
-                            return !(el.name == username && el.lvl == lvl);
+                            return !(el.name == el.capitaliseFirstLetter(username) && el.lvl == lvl);
                         });
                         if (guildPlayers.length == players.length) {
                             defered.resolve("Can\'t find " + lvl + ' ' + username + ' in RavenDB');
