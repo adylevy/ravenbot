@@ -334,19 +334,25 @@ var Bot = BotBase.extend(function () {
                     var lines=caseinsensitive.split('\n');
                     var user=this.getCtxPlayer(msg.user_id);
                     var maxLines=user.bulk ? 20 : 1;
+                    var usersToAdd=[];
                     for(var i=0;i<maxLines && i<lines.length;i++) {
                         console.log('trying to add line'+i);
                         var addUser = new Player(lines[i]);
                         // console.log(addUser);
                         if (addUser.isPlayer()) {
-                            // console.log('add user ?')
-                            this.getRoomPrefs().then(function (roomData) {
-                                //  console.log(roomData);
-                                if (roomData.warData.inWar) {
-                                    this.insertOwnData(roomData.warData.guildName, addUser, msg.name, self.roomId);
-                                }
-                            }.bind(this));
+                            usersToAdd.push(addUser);
                         }
+                    }
+                    if (usersToAdd.length>0){
+                        this.getRoomPrefs().then(function (roomData) {
+                            //  console.log(roomData);
+                            if (roomData.warData.inWar) {
+                                for(var j=0;j<usersToAdd.length;j++) {
+                                    this.insertOwnData(roomData.warData.guildName, usersToAdd[j], msg.name, self.roomId);
+                                }
+                            }
+                        }.bind(this));
+                        
                     }
 
                 },
