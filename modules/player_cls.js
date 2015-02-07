@@ -136,7 +136,7 @@ var Player = Class.extend(function () {
         },
 
         isPlayer: function () {
-            return this.player == true && this.lvl > 0 && this.name != '';
+            return this.player == true && this.lvl > 0 && this.name != '' && this.name.indexOf('\n')==-1;
         }
 
 
