@@ -347,9 +347,9 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
-                                for(var j=0;j<usersToAdd.length;j++) {
-                                    this.insertOwnData(roomData.warData.guildName, usersToAdd[j], msg.name, self.roomId);
-                                }
+
+                                    this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId);
+
                             }
                         }.bind(this));
                         
@@ -464,34 +464,37 @@ var Bot = BotBase.extend(function () {
 
                     this.postMessage(helpMsg.join('\n'));
                 },
-                insertOwnData: function (guildName, player, addingUserName, addingUserGuild) {
+                insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild) {
+                    var defered = Q.defer();
                     var self = this;
                     mongoData.getGuildData(guildName, function (item) {
+                        for(var i=0;i<playersToAdd.length;i++) {
+                            var player=playersToAdd[i];
+                            var players = _.filter(item.players, function (el) {
+                                return !(utils.capitaliseFirstLetter(el.name) == player.name && el.lvl == player.lvl);
+                            });
+                            var mode = players.length == item.players.length ? 'added' : 'updated';
+                            if (mode == 'added') {
+                                /*  var similarPlayer= _.find(item.players,function(el){
+                                 var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
+                                 var 
 
-                        var players = _.filter(item.players, function (el) {
-                            return !(utils.capitaliseFirstLetter(el.name) == player.name && el.lvl == player.lvl);
-                        });
-                        var mode = players.length == item.players.length ? 'added' : 'updated';
-                        if (mode == 'added') {
-                            /*  var similarPlayer= _.find(item.players,function(el){
-                             var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
-                             var 
+                                 })*/
+                                //TODO: similar users - create context
 
-                             })*/
-                            //TODO: similar users - create context
-
+                            }
+                            var gpo = player.getGuildPlayerObj();
+                            gpo.insertedByGuild = addingUserGuild;
+                            gpo.insertedByUser = addingUserName;
+                            players.push(gpo);
+                            item.players = players;
+                            item.save(function () {
+                                self.postMessage(mode + ' [' + player.toString() + ']');
+                                defered.resolve();
+                            });
                         }
-
-
-                        var gpo = player.getGuildPlayerObj();
-                        gpo.insertedByGuild = addingUserGuild;
-                        gpo.insertedByUser = addingUserName;
-                        players.push(gpo);
-                        item.players = players;
-                        item.save(function () {
-                            self.postMessage(mode + ' [' + player.toString() + ']');
-                        });
-                    }.bind(this))
+                    }.bind(this));
+                    return defered.promise;
                 },
                 removeUserFromOwnData: function (guildName, mtch) {
                     var defered = Q.defer();
