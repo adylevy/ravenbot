@@ -619,6 +619,7 @@ var Bot = BotBase.extend(function () {
 
                     if (guildData != null) {
                         msg.push('SS data:');
+                        guildData=guildData.replace(/\n\s*\n/g,'\n');
                         msg.push(guildData);
                     } else {
                         msg.push('No SS data.');
