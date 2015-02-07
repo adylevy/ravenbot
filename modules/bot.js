@@ -488,10 +488,10 @@ var Bot = BotBase.extend(function () {
                             gpo.insertedByUser = addingUserName;
                             players.push(gpo);
                             item.players = players;
-                            item.save(function () {
-                                self.postMessage(mode + ' [' + player.toString() + ']');
+                            item.save(function () {                               
                                 defered.resolve();
                             });
+                            self.postMessage(mode + ' [' + player.toString() + ']');
                         }
                     }.bind(this));
                     return defered.promise;
