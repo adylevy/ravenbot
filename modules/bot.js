@@ -29,7 +29,10 @@ var Bot = BotBase.extend(function () {
                 init: function (options, roomId) {
                     this.options = options;
                     this.roomId = roomId;
-
+                    this.ctx={
+                        players:[]
+                    };
+                    
                     console.log('new bot **', this.options, this.roomId);
                 },
                 getRoomPrefs: function () {
@@ -125,33 +128,35 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
                                 var diff = new Date(Date.now() - roomData.warData.warTime);
-                                this.postMessage(60-diff.getMinutes()+' minutes left.');
-                            }else{
-                                this.postMessage('not in war.');
-                                
-                            }
-                        }.bind(this));
-                    }
-                    
-                    var syncRgx = /^[Ss]ync\s(\d+)$/;
-                    if (syncRgx.test(txt)){
-                        var mtch=syncRgx.exec(txt);
-                        this.getRoomPrefs().then(function (roomData) {
-                            if (roomData.warData.inWar == true) {
-                               try {
-                                   var newTime = new Date(new Date().getTime() - (60-Number(mtch[1])) * 60000);
-                               }
-                                catch(e){console.log(e);}
-                                roomData.warData.warTime=newTime;
-                                roomData.save(function(){
-                                    this.postMessage('war time synced. '+Number(mtch[1])+' minutes left.');
-                                }.bind(this));
-                            }else{
+                                this.postMessage(60 - diff.getMinutes() + ' minutes left.');
+                            } else {
                                 this.postMessage('not in war.');
 
                             }
                         }.bind(this));
-                        
+                    }
+
+                    var syncRgx = /^[Ss]ync\s(\d+)$/;
+                    if (syncRgx.test(txt)) {
+                        var mtch = syncRgx.exec(txt);
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                try {
+                                    var newTime = new Date(new Date().getTime() - (60 - Number(mtch[1])) * 60000);
+                                }
+                                catch (e) {
+                                    console.log(e);
+                                }
+                                roomData.warData.warTime = newTime;
+                                roomData.save(function () {
+                                    this.postMessage('war time synced. ' + Number(mtch[1]) + ' minutes left.');
+                                }.bind(this));
+                            } else {
+                                this.postMessage('not in war.');
+
+                            }
+                        }.bind(this));
+
                     }
 
                     var newMatchRgx = /^matched\s*(new){0,1}\s*(.*)/;
@@ -210,12 +215,15 @@ var Bot = BotBase.extend(function () {
                     }
 
                     this.jokesHandler(txt);
-                    
+
                     if (/^myt$/.test(txt) || /^my\stargets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
                                 if (roomData.warData.inWar) {
-                                    this.findUserTargets(roomData.warData.guildName, msg.name);
+                                    this.getUser(msg.user_id).then(function (player) {
+                                        var risk = player == undefined ? 0 : Number(player.risk)
+                                        this.findUserTargets(roomData.warData.guildName, msg.name, risk);
+                                    }.bind(this));
                                 } else {
                                     this.postMessage('can\'t look for targets while not in war.');
                                 }
@@ -230,12 +238,11 @@ var Bot = BotBase.extend(function () {
                             try {
 
                                 if (roomData.warData.inWar) {
-                                    this.getUserMini(msg.user_id).then(function (p) {
-
+                                    this.getUser(msg.user_id).then(function (p) {
                                         if (p == null || p == undefined) {
                                             this.postMessage('please set mini data using mymini command.');
                                         } else {
-                                            this.findUserTargets(roomData.warData.guildName, p.mini);
+                                            this.findUserTargets(roomData.warData.guildName, p.mini, p.risk);
 
                                         }
 
@@ -263,9 +270,45 @@ var Bot = BotBase.extend(function () {
                         } else {
                             this.postMessage('can\'t get Mini stats, try something like mymini Name 1m/1k/1k');
                         }
-
+                    }
+                    var riskRgx = /^[mM]yrisk\s?(\d?\d?)/;
+                    if (riskRgx.test(caseinsensitive)) {
+                        var match = riskRgx.exec(caseinsensitive);
+                        var risk = match[1];
+                        if (risk != undefined && risk != '') {
+                            risk = Number(risk);
+                            if (risk > 10) {
+                                risk = 10;
+                            }
+                            this.updatePlayerRisk(msg.user_id, msg.name, risk);
+                        } else {
+                            this.getRoomPrefs().then(function (roomPref) {
+                                var player = _.find(roomPref.playersPrefs || [], function (p) {
+                                    return p.id == msg.user_id;
+                                });
+                                this.postMessage('Current risk for ' + msg.name + ' is ' + (player == undefined ? 0 : player.risk));
+                            }.bind(this));
+                        }
                     }
 
+                    var bulkRgx = /^[bB]ulk\s?\b(on|off)?/;
+                    if (bulkRgx.test(caseinsensitive)) {
+                        var match = bulkRgx.exec(caseinsensitive);
+                        var newMode = match[1];
+                        if (!(newMode=='' || newMode==undefined)){
+                            var newBulkMode= (newMode=='on') ? true : false;
+                            var player=this.getCtxPlayer(msg.user_id);
+                            player.bulk=newBulkMode;
+                            this.updateCtxPlayer(player);
+                            this.postMessage('Bulk mode is '+ (player.bulk ?'on':'off')+' for '+msg.name);
+                            
+                        }else{
+                            var player=this.getCtxPlayer(msg.user_id);
+                            this.postMessage('Bulk mode is '+ (player.bulk ?'on':'off')+' for '+msg.name);
+                            
+                        }
+                    }
+                    
                     if (/^help$/.test(txt)) {
                         this.showHelp();
                     }
@@ -288,47 +331,52 @@ var Bot = BotBase.extend(function () {
                     }
 
                     // handle insertion
-
-                    var addUser = new Player(caseinsensitive);
-                    // console.log(addUser);
-                    if (addUser.isPlayer()) {
-                        // console.log('add user ?')
-                        this.getRoomPrefs().then(function (roomData) {
-                            //  console.log(roomData);
-                            if (roomData.warData.inWar) {
-                                this.insertOwnData(roomData.warData.guildName, addUser, msg.name, self.roomId);
-                            }
-                        }.bind(this));
+                    var lines=caseinsensitive.split('\n');
+                    var user=this.getCtxPlayer(msg.user_id);
+                    var maxLines=user.bulk ? 20 : 1;
+                    for(var i=0;i<maxLines && i<lines.length;i++) {
+                        console.log('trying to add line'+i);
+                        var addUser = new Player(lines[i]);
+                        // console.log(addUser);
+                        if (addUser.isPlayer()) {
+                            // console.log('add user ?')
+                            this.getRoomPrefs().then(function (roomData) {
+                                //  console.log(roomData);
+                                if (roomData.warData.inWar) {
+                                    this.insertOwnData(roomData.warData.guildName, addUser, msg.name, self.roomId);
+                                }
+                            }.bind(this));
+                        }
                     }
 
                 },
-                jokesHandler: function(txt){
+                jokesHandler: function (txt) {
                     if (/^joke$/.test(txt)) {
                         this.tellAJoke();
                         return;
                     }
 
-                    if (/facepalm/.test(txt)){
+                    if (/facepalm/.test(txt)) {
                         this.tellGifJoke('marvel-wolverine-facepalm');
                         return;
                     }
 
-                    if (/potato/.test(txt)){
+                    if (/potato/.test(txt)) {
                         this.tellGifJoke('yellow-minions-potato');
                         return;
                     }
 
-                    if (/gumby/.test(txt)){
+                    if (/gumby/.test(txt)) {
                         this.tellGifJoke('unf-gumby');
                         return;
                     }
 
-                    if (/cowbell/.test(txt)){
+                    if (/cowbell/.test(txt)) {
                         this.tellGifJoke('cowbell snl');
                         return;
                     }
 
-                    if (/banana/.test(txt)){
+                    if (/banana/.test(txt)) {
                         this.tellGifJoke('cw8Nr4u28tVKw');
                         return;
                     }
@@ -347,7 +395,27 @@ var Bot = BotBase.extend(function () {
 
 
                 },
-                
+                getCtxPlayer: function(id){
+                  var player= _.find(this.ctx.players,function(p){
+                      return p.id==id;
+                  });
+                    if (player==undefined){
+                        player={
+                            id:id,
+                            bulk:false,
+                            lastMsg:''                            
+                        }
+                    }
+                    return player;
+                },
+                updateCtxPlayer: function(p){
+                    var players = _.filter(this.ctx.players, function (el) {
+                        return el.id != p.id;
+                    });
+                    players.push(p);
+                    this.ctx.players=players;
+                    
+                },
                 tellAJoke: function () {
                     var self = this;
                     chuckJokes.getJoke().then(function (joke) {
@@ -446,14 +514,14 @@ var Bot = BotBase.extend(function () {
 
                 },
 
-                findUserTargets: function (guildName, userName) {
+                findUserTargets: function (guildName, userName,risk) {
                     var self = this;
                     var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    console.log('find user targets ...', user.name);
+                    console.log('find user targets ...', user.name,risk);
 
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
@@ -477,7 +545,7 @@ var Bot = BotBase.extend(function () {
                                         candidates.push(player);
                                         // console.log(player.name,all)
                                     } else {
-                                        //   console.log(user,player,all,line1,line2,line3,all);
+                                        // console.log(player,all,line1,line2,line3);
                                     }
 
                                 }
@@ -491,18 +559,18 @@ var Bot = BotBase.extend(function () {
 
                             }
                             candidates = _.sortBy(candidates, function (player) {
-                                return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin=='R' ? 100 : 0);
+                                return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
                             }).reverse();
 
-                           /* candidates = _.sortBy(candidates, function (player) {
-                                return player.isFresh();
-                            }).reverse();*/
+                            /* candidates = _.sortBy(candidates, function (player) {
+                             return player.isFresh();
+                             }).reverse();*/
                             // console.log(candidates);
                             candidates = candidates.slice(0, 5);
                             _.each(candidates, function (candidate) {
                                 var crank = candidate.rank;
                                 var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh': 'Old') + '|' + rank + ']');
+                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
                             });
 
                             this.postMessage(msg.join('\n'));
@@ -619,7 +687,7 @@ var Bot = BotBase.extend(function () {
 
                     if (guildData != null) {
                         msg.push('SS data:');
-                        guildData=guildData.replace(/\n\s*\n/g,'\n');
+                        guildData = guildData.replace(/\n\s*\n/g, '\n');
                         msg.push(guildData);
                     } else {
                         msg.push('No SS data.');
@@ -638,7 +706,7 @@ var Bot = BotBase.extend(function () {
                     this.postMessage(msg.join('\n'));
 
                 },
-                getUserMini: function (userId) {
+                getUser: function (userId) {
                     var defered = Q.defer();
                     this.getRoomPrefs().then(function (roomPref) {
                         var players = roomPref.playersPrefs || [];
@@ -650,18 +718,44 @@ var Bot = BotBase.extend(function () {
                     return defered.promise;
 
                 },
+                updatePlayerRisk: function (userId, name, risk) {
+                    this.getRoomPrefs().then(function (roomPref) {
 
+                            var player = _.find(roomPref.playersPrefs || [], function (p) {
+                                return p.id == userId;
+                            });
+                            var players = _.filter(roomPref.playersPrefs || [], function (el) {
+                                return el.id != userId;
+                            });
+                            players.push({
+                                id: Number(userId),
+                                mini: player == undefined ? '' : (player.mini || ''),
+                                risk: risk
+                            });
+
+                            roomPref.playersPrefs = players;
+
+                            roomPref.save();
+                            this.postMessage('updated risk for ' + name + ' to ' + risk);
+                        }.bind(this)
+                    );
+
+                },
                 updateRoomPrefs: function (userId, miniPlayer) {
                     this.getRoomPrefs().then(function (roomPref) {
                             //{id:Number,mini:String}
                             //  console.log('got prefs', roomPref);
+                            var player = _.find(roomPref.playersPrefs || [], function (p) {
+                                return p.id == userId;
+                            });
                             var players = _.filter(roomPref.playersPrefs || [], function (el) {
                                 return el.id != userId;
                             });
 
                             players.push({
                                 id: Number(userId),
-                                mini: miniPlayer
+                                mini: miniPlayer,
+                                risk: player == undefined ? 0 : player.risk
                             });
 
                             roomPref.playersPrefs = players;
@@ -673,13 +767,13 @@ var Bot = BotBase.extend(function () {
 
                 },
                 onTimeTick: function (roomData) {
-                  //  console.log('bot on time tick',roomData.roomId);
+                    //  console.log('bot on time tick',roomData.roomId);
 
-                    var d=new Date();
+                    var d = new Date();
                     var diff = d - roomData.warData.warTime;
-                   var  diffInSeconds = Math.round(diff/1000);
-                    var diffInMinutes = Math.round(diffInSeconds/60);
-                    if (diffInMinutes >= 60 ) {
+                    var diffInSeconds = Math.round(diff / 1000);
+                    var diffInMinutes = Math.round(diffInSeconds / 60);
+                    if (diffInMinutes >= 60) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
@@ -687,8 +781,8 @@ var Bot = BotBase.extend(function () {
 
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if (diffInMinutes % 10 == 0 && diffInMinutes>0) {
-                        this.postMessage(60-diffInMinutes + " minutes left.");
+                    } else if (diffInMinutes % 10 == 0 && diffInMinutes > 0) {
+                        this.postMessage(60 - diffInMinutes + " minutes left.");
                     }
 
                 }

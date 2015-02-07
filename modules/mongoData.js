@@ -23,7 +23,7 @@ var Mongodata = Class.extend(function () {
                 date: Date,
                 insertedByGuild: String,
                 insertedByUser: String,
-                isDeleted: {type:Boolean, Default:false}
+                isDeleted: {type:Boolean, default:false}
             }
         ]
     });
@@ -34,7 +34,7 @@ var Mongodata = Class.extend(function () {
             guildName: String,
             warTime: Date
 
-        }, playersPrefs: [{id: Number, mini: String}]
+        }, playersPrefs: [{id: Number, mini: String, risk:{type:Number, default:0}}]
     });
 
     var AppSettings = mongoose.model('AppSettings', {groups: [], guilds:[{
@@ -102,6 +102,13 @@ var Mongodata = Class.extend(function () {
                 }
                 callback(item);
             });
+        },
+        getAllGuilds: function(){
+            var defered = Q.defer();
+            Guild.find({},function(err,guilds){
+                defered.resolve(guilds);
+            });
+            return defered.promise;
         },
         getSettings: function () {
             var that = this;

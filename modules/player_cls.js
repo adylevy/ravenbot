@@ -38,7 +38,7 @@ var Player = Class.extend(function () {
             if (matches != null && matches.length == 6) {
                 this.player = true;
                 this.lvl = Number(matches[1]);
-                this.name = utils.capitaliseFirstLetter(matches[2]);
+                this.name = utils.capitaliseFirstLetter(matches[2]).trim();
                 matches[3] = matches[3].toLocaleLowerCase();
                 matches[4] = matches[4].toLocaleLowerCase();
                 matches[5] = matches[5].toLocaleLowerCase();
@@ -63,7 +63,7 @@ var Player = Class.extend(function () {
 
             this.player = true;
             this.lvl = Number(_lvl);
-            this.name = utils.capitaliseFirstLetter(_name);
+            this.name = utils.capitaliseFirstLetter(_name).trim();
             this.def = this.normalize(_def || 0, 'm', this.lvl > 100 ? 10 : 0);
             this.eqDef = this.normalize(_eqDef || 0, 'k', this.lvl > 140 ? 100 : 0);
             this.heroDef = this.normalize(_heroDef || 0, 'k', 0);
