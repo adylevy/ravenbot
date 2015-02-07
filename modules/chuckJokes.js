@@ -34,7 +34,12 @@ var ChuckJokes = Class.extend(function(){
                         }
 
                         // pass the relevant data back to the callback
-                        deferred.resolve(parsed.value.joke);
+                       try {
+                           deferred.resolve(parsed.value.joke);
+                       }
+                        catch(e){
+                            deferred.reject(e);
+                        }
                     });
                 }).on('error', function (err) {
                     // handle errors with the request itself
