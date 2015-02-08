@@ -29,10 +29,10 @@ var Bot = BotBase.extend(function () {
                 init: function (options, roomId) {
                     this.options = options;
                     this.roomId = roomId;
-                    this.ctx={
-                        players:[]
+                    this.ctx = {
+                        players: []
                     };
-                    
+
                     console.log('new bot **', this.options, this.roomId);
                 },
                 getRoomPrefs: function () {
@@ -98,6 +98,10 @@ var Bot = BotBase.extend(function () {
 
                     }
 
+                    if (/^manual$/.test(txt)){
+                        this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
+                    }
+                    
                     if (/^targets2$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
@@ -295,20 +299,20 @@ var Bot = BotBase.extend(function () {
                     if (bulkRgx.test(caseinsensitive)) {
                         var match = bulkRgx.exec(caseinsensitive);
                         var newMode = match[1];
-                        if (!(newMode=='' || newMode==undefined)){
-                            var newBulkMode= (newMode=='on') ? true : false;
-                            var player=this.getCtxPlayer(msg.user_id);
-                            player.bulk=newBulkMode;
+                        if (!(newMode == '' || newMode == undefined)) {
+                            var newBulkMode = (newMode == 'on') ? true : false;
+                            var player = this.getCtxPlayer(msg.user_id);
+                            player.bulk = newBulkMode;
                             this.updateCtxPlayer(player);
-                            this.postMessage('Bulk mode is '+ (player.bulk ?'on':'off')+' for '+msg.name);
-                            
-                        }else{
-                            var player=this.getCtxPlayer(msg.user_id);
-                            this.postMessage('Bulk mode is '+ (player.bulk ?'on':'off')+' for '+msg.name);
-                            
+                            this.postMessage('Bulk mode is ' + (player.bulk ? 'on' : 'off') + ' for ' + msg.name);
+
+                        } else {
+                            var player = this.getCtxPlayer(msg.user_id);
+                            this.postMessage('Bulk mode is ' + (player.bulk ? 'on' : 'off') + ' for ' + msg.name);
+
                         }
                     }
-                    
+
                     if (/^help$/.test(txt)) {
                         this.showHelp();
                     }
@@ -331,28 +335,28 @@ var Bot = BotBase.extend(function () {
                     }
 
                     // handle insertion
-                    var lines=caseinsensitive.split('\n');
-                    var user=this.getCtxPlayer(msg.user_id);
-                    var maxLines=user.bulk ? 20 : 1;
-                    var usersToAdd=[];
-                    for(var i=0;i<maxLines && i<lines.length;i++) {
-                        console.log('trying to add line'+i);
+                    var lines = caseinsensitive.split('\n');
+                    var user = this.getCtxPlayer(msg.user_id);
+                    var maxLines = user.bulk ? 20 : 1;
+                    var usersToAdd = [];
+                    for (var i = 0; i < maxLines && i < lines.length; i++) {
+                        console.log('trying to add line' + i);
                         var addUser = new Player(lines[i]);
                         // console.log(addUser);
                         if (addUser.isPlayer()) {
                             usersToAdd.push(addUser);
                         }
                     }
-                    if (usersToAdd.length>0){
+                    if (usersToAdd.length > 0) {
                         this.getRoomPrefs().then(function (roomData) {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
 
-                                    this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId);
+                                this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId);
 
                             }
                         }.bind(this));
-                        
+
                     }
 
                 },
@@ -401,26 +405,26 @@ var Bot = BotBase.extend(function () {
 
 
                 },
-                getCtxPlayer: function(id){
-                  var player= _.find(this.ctx.players,function(p){
-                      return p.id==id;
-                  });
-                    if (player==undefined){
-                        player={
-                            id:id,
-                            bulk:false,
-                            lastMsg:''                            
+                getCtxPlayer: function (id) {
+                    var player = _.find(this.ctx.players, function (p) {
+                        return p.id == id;
+                    });
+                    if (player == undefined) {
+                        player = {
+                            id: id,
+                            bulk: false,
+                            lastMsg: ''
                         }
                     }
                     return player;
                 },
-                updateCtxPlayer: function(p){
+                updateCtxPlayer: function (p) {
                     var players = _.filter(this.ctx.players, function (el) {
                         return el.id != p.id;
                     });
                     players.push(p);
-                    this.ctx.players=players;
-                    
+                    this.ctx.players = players;
+
                 },
                 tellAJoke: function () {
                     var self = this;
@@ -462,7 +466,8 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('time - shows war timer.');
                     helpMsg.push('sync mm - syncs number of minutes left for war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
-                   // helpMsg.push('bulk on/off - enable/disable bulk mode');
+                    helpMsg.push('manual - gets Raven manual');
+                    // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
                 },
@@ -470,19 +475,26 @@ var Bot = BotBase.extend(function () {
                     var defered = Q.defer();
                     var self = this;
                     mongoData.getGuildData(guildName, function (item) {
-                        for(var i=0;i<playersToAdd.length;i++) {
-                            var player=playersToAdd[i];
+                        for (var i = 0; i < playersToAdd.length; i++) {
+                            var player = playersToAdd[i];
                             var players = _.filter(item.players, function (el) {
                                 return !(utils.capitaliseFirstLetter(el.name) == player.name && el.lvl == player.lvl);
                             });
                             var mode = players.length == item.players.length ? 'added' : 'updated';
                             if (mode == 'added') {
-                                /*  var similarPlayer= _.find(item.players,function(el){
-                                 var diff = Math.abs(Number(el.lvl)-Number(player.lvl))<3;
-                                 var 
-
-                                 })*/
-                                //TODO: similar users - create context
+                                var similarPlayers = _.filter(item.players, function (el) {
+                                    var diff = Math.abs(Number(el.lvl) - Number(player.lvl));
+                                    var nameMatch = el.name.toLowerCase() == player.name.toLowerCase();
+                                    return nameMatch && diff<=3;
+                                });
+                                if (similarPlayers.length>0){
+                                    var msg=[];
+                                    msg.push('Found similar players, please consider to remove:');
+                                    _.each(similarPlayers,function(p){
+                                        msg.push(p.lvl+' '+utils.capitaliseFirstLetter(p.name));                                        
+                                    })
+                                    self.postMessage(msg.join('\n'));
+                                }
 
                             }
                             var gpo = player.getGuildPlayerObj();
@@ -490,7 +502,7 @@ var Bot = BotBase.extend(function () {
                             gpo.insertedByUser = addingUserName;
                             players.push(gpo);
                             item.players = players;
-                            item.save(function () {                               
+                            item.save(function () {
                                 defered.resolve();
                             });
                             self.postMessage(mode + ' [' + player.toString() + ']');
@@ -525,32 +537,32 @@ var Bot = BotBase.extend(function () {
 
                 },
 
-                findUserTargets: function (guildName, userName,risk) {
+                findUserTargets: function (guildName, userName, risk) {
                     var self = this;
                     var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    console.log('find user targets ...', user.name,risk);
-                    
-                    var riskDef=[
-                        { 'all':1.2,'line1':.65,'line2':.8,'line3':.7},
-                        { 'all':1.1,'line1':.6,'line2':.75,'line3':.65},
-                        { 'all':1,'line1':.55,'line2':.7,'line3':.6},
-                        { 'all':0.9,'line1':.45,'line2':.65,'line3':.55},
-                        { 'all':0.7,'line1':.4,'line2':.6,'line3':.4},
-                        { 'all':0.5,'line1':.35,'line2':.5,'line3':.3},
-                        { 'all':0,'line1':.2,'line2':.4,'line3':.2}
+                    console.log('find user targets ...', user.name, risk);
+
+                    var riskDef = [
+                        {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .7},
+                        {'all': 1.1, 'line1': .6, 'line2': .75, 'line3': .65},
+                        {'all': 1, 'line1': .55, 'line2': .7, 'line3': .6},
+                        {'all': 0.9, 'line1': .45, 'line2': .65, 'line3': .55},
+                        {'all': 0.7, 'line1': .4, 'line2': .6, 'line3': .4},
+                        {'all': 0.5, 'line1': .35, 'line2': .5, 'line3': .3},
+                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
-                    
-                    var riskFactor=riskDef[0];
-                    if (riskDef[risk]!=undefined){
-                        riskFactor=riskDef[risk];
-                    }else{
-                        risk=0;
+
+                    var riskFactor = riskDef[0];
+                    if (riskDef[risk] != undefined) {
+                        riskFactor = riskDef[risk];
+                    } else {
+                        risk = 0;
                     }
-                    
+
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
                             //  console.log('got parsed intel',guildData);
@@ -573,7 +585,7 @@ var Bot = BotBase.extend(function () {
                                         candidates.push(player);
                                         // console.log(player.name,all)
                                     } else {
-                                      //  console.log(player,all,line1,line2,line3);
+                                        //  console.log(player,all,line1,line2,line3);
                                     }
 
                                 }
@@ -583,7 +595,7 @@ var Bot = BotBase.extend(function () {
                             if (candidates.length == 0) {
                                 msg.push('Could not find targets for: ' + user.name);
                             } else {
-                                msg.push('Suggested targets for ' + user.name +' (Risk:'+risk+')');
+                                msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
 
                             }
                             candidates = _.sortBy(candidates, function (player) {
@@ -713,7 +725,7 @@ var Bot = BotBase.extend(function () {
                     msg.push('Targets in ' + guildName + ' :');
                     var guildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
 
-                   
+
                     //  console.log(ownData);
                     if (ownData != null && ownData.players.length != 0) {
                         msg.push('Raven data:');
@@ -723,7 +735,7 @@ var Bot = BotBase.extend(function () {
                     } else {
                         msg.push('\nNo Raven data, Please add data.')
                     }
-                    if (guildData != null && guildData.length>5) {
+                    if (guildData != null && guildData.length > 5) {
                         msg.push('\nSS data:');
                         guildData = guildData.replace(/\n\s*\n/g, '\n');
                         msg.push(guildData);
