@@ -122,7 +122,15 @@ var Player = Class.extend(function () {
                     if (num.indexOf('.00') != -1) {
                         num = num.substr(0, num.length - 3);
                     }
-                    num += 'm';
+                    if (num>1000){
+                        num = (num/1000).toFixed(2);
+                        if (num.indexOf('.00') != -1) {
+                            num = num.substr(0, num.length - 3);
+                        }
+                        num+='b';
+                    }else {
+                        num += 'm';
+                    }
                 } else if (num >= 1000) {
                     num = (num / 1000).toFixed(2);
                     if (num.indexOf('.00') != -1) {

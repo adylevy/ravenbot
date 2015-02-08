@@ -460,7 +460,9 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('minit - mini\'s targets during war.');
                     helpMsg.push('mymini user 1m/2k/3k - set mini for user.');
                     helpMsg.push('time - shows war timer.');
-                    helpMsg.push('sync number - syncs number of minutes left for war');
+                    helpMsg.push('sync mm - syncs number of minutes left for war');
+                    helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
+                    helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
                 },
@@ -711,13 +713,7 @@ var Bot = BotBase.extend(function () {
                     msg.push('Targets in ' + guildName + ' :');
                     var guildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
 
-                    if (guildData != null) {
-                        msg.push('SS data:');
-                        guildData = guildData.replace(/\n\s*\n/g, '\n');
-                        msg.push(guildData);
-                    } else {
-                        msg.push('No SS data.');
-                    }
+                   
                     //  console.log(ownData);
                     if (ownData != null && ownData.players.length != 0) {
                         msg.push('\nRaven data:');
@@ -726,7 +722,13 @@ var Bot = BotBase.extend(function () {
                         msg.push(ownIntel);
                     } else {
                         msg.push('\nNo Raven data, Please add data.')
-
+                    }
+                    if (guildData != null && guildData.length>5) {
+                        msg.push('SS data:');
+                        guildData = guildData.replace(/\n\s*\n/g, '\n');
+                        msg.push(guildData);
+                    } else {
+                        msg.push('No SS data.');
                     }
 
                     this.postMessage(msg.join('\n'));
