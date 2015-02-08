@@ -140,7 +140,7 @@ var BotsManager = Class.extend(function () {
                             if (botObj==undefined) {
                                 this.registerBotAndCreateManager(guild.roomId).then(function (newBot) {
                                     ctx.botRegistered(guild.roomId);
-                                    newBot.postMessage('RavenBot is successfully registered in this room.');
+                                    newBot.postMessage('RavenBot is successfully registered in this room.\nRaven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                                     this.addGroupToSettings(guild);
                                 }.bind(this));
                             }else{
