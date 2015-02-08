@@ -716,7 +716,7 @@ var Bot = BotBase.extend(function () {
                    
                     //  console.log(ownData);
                     if (ownData != null && ownData.players.length != 0) {
-                        msg.push('\nRaven data:');
+                        msg.push('Raven data:');
                         var p = new Players();
                         var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
                         msg.push(ownIntel);
@@ -724,11 +724,11 @@ var Bot = BotBase.extend(function () {
                         msg.push('\nNo Raven data, Please add data.')
                     }
                     if (guildData != null && guildData.length>5) {
-                        msg.push('SS data:');
+                        msg.push('\nSS data:');
                         guildData = guildData.replace(/\n\s*\n/g, '\n');
                         msg.push(guildData);
                     } else {
-                        msg.push('No SS data.');
+                        msg.push('\nNo SS data.');
                     }
 
                     this.postMessage(msg.join('\n'));
