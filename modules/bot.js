@@ -462,7 +462,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('time - shows war timer.');
                     helpMsg.push('sync mm - syncs number of minutes left for war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
-                    helpMsg.push('bulk on/off - enable/disable bulk mode');
+                   // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
                 },
