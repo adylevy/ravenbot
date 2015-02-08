@@ -313,7 +313,7 @@ var Bot = BotBase.extend(function () {
                         this.showHelp();
                     }
 
-                    var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s(\d+)\s(.*)/;
+                    var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
                     if (removeRgx.test(caseinsensitive)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
@@ -531,7 +531,24 @@ var Bot = BotBase.extend(function () {
                         return;
                     }
                     console.log('find user targets ...', user.name,risk);
-
+                    
+                    var riskDef=[
+                        { 'all':1.2,'line1':.65,'line2':.8,'line3':.7},
+                        { 'all':1.1,'line1':.6,'line2':.75,'line3':.65},
+                        { 'all':1,'line1':.55,'line2':.7,'line3':.6},
+                        { 'all':0.9,'line1':.45,'line2':.65,'line3':.55},
+                        { 'all':0.7,'line1':.4,'line2':.6,'line3':.4},
+                        { 'all':0.5,'line1':.35,'line2':.5,'line3':.3},
+                        { 'all':0,'line1':.2,'line2':.4,'line3':.2}
+                    ];
+                    
+                    var riskFactor=riskDef[0];
+                    if (riskDef[risk]!=undefined){
+                        riskFactor=riskDef[risk];
+                    }else{
+                        risk=0;
+                    }
+                    
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
                             //  console.log('got parsed intel',guildData);
@@ -549,12 +566,12 @@ var Bot = BotBase.extend(function () {
 
                                     var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
                                     // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
-                                    if (all > 1.2 && line1 > .65 && line2 > .9 && line3 > .7) {
+                                    if (all >= riskFactor.all && line1 >= riskFactor.line1 && line2 >= riskFactor.line2 && line3 >= riskFactor.line3) {
                                         player.rank = all;
                                         candidates.push(player);
                                         // console.log(player.name,all)
                                     } else {
-                                        // console.log(player,all,line1,line2,line3);
+                                      //  console.log(player,all,line1,line2,line3);
                                     }
 
                                 }
@@ -564,7 +581,7 @@ var Bot = BotBase.extend(function () {
                             if (candidates.length == 0) {
                                 msg.push('Could not find targets for: ' + user.name);
                             } else {
-                                msg.push('Suggested targets for ' + user.name);
+                                msg.push('Suggested targets for ' + user.name +' (Risk:'+risk+')');
 
                             }
                             candidates = _.sortBy(candidates, function (player) {
