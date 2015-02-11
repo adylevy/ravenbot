@@ -23,7 +23,8 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 
 var Bot = require('./modules/bot.js');
 //var AdminBot = require('./modules/adminBot.js');
-var b=new Bot({},11090615);
+var b=new Bot({},11615018);
+
 /*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
 })*/
@@ -32,23 +33,40 @@ var b=new Bot({},11090615);
     name:'me'
 });*/
 
-b.mainSwitch('targets2',{
-    name:'me'});
-
-/*b.mainSwitch('myt',{
-    user_id:1,
-    name:'MB 409.8m/109.7k/3.0k'
+/*b.mainSwitch('matched hero quest',{
+    name:'me'});*/
+//b.mainSwitch('targets2');
+/*b.mainSwitch('bulk off',{
+    user_id:2,
+    name:'Blue Dragon 127.85m/46.69k/2.16k'
 });*/
+/*b.mainSwitch('123 Ady 1m/2k/2k',{
+    name:'Blue Dragon 127.85m/46.69k/2.16k',
+    user_id:2
+});
+b.mainSwitch('bulk',{
+    user_id:2,
+    name:'Blue Dragon 127.85m/46.69k/2.16k'
+});
+b.mainSwitch('remove Sur Slim 3x',{
+    user_id:2,
+    name:'Blue Dragon 127.85m/46.69k/2.16k'
+})*/
 /*
 b.mainSwitch('mymini Gamba 80m/20k/2000',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:5
 });
-
-b.mainSwitch('minit',{
+*/
+b.mainSwitch('myrisk 3',{
     name:'MB 409.8m/109.7k/3.0k',
-    user_id:5
-});*/
+    user_id:1
+});
+
+b.mainSwitch('65 CharLiemanson  1.8m/1.7k/1.0k',{
+    name:'MB 120.8m/57.7k/3.0k',
+    user_id:1
+});
 
 //b.mainSwitch('123 ady 123m/1k/12k');
 //b.warData.guildName='iraid';

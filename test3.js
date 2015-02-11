@@ -20,7 +20,7 @@ var whenConnected=function(){
     console.log('mongo is connected');
    mongoData.getRoomPrefs(11615018).then(function(data){
       
-       var b=new Bot({},11090615);
+       var b=new Bot({},11615018);
        b.onTimeTick(data);
    })
 
