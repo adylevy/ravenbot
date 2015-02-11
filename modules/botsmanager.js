@@ -19,7 +19,7 @@ var BotsManager = Class.extend(function () {
     return {
         init: function (options) {
             this.options = options;
-
+console.log(options)
             this.allBots=[];
             var e = new events.EventEmitter();
             _.extend(this, e);
@@ -88,7 +88,7 @@ var BotsManager = Class.extend(function () {
             console.log('register bots');
             mongoData.getSettings().then(function(settings){
                 var guilds = settings.guilds;
-               //console.log('got settings',settings,groupIds);
+               console.log('got settings',settings,guilds);
                 var adminGroup=self.options.adminGroup;
                 try {
                     if (_.find(guilds, function (guild) {

@@ -340,7 +340,7 @@ var Bot = BotBase.extend(function () {
                     var maxLines = user.bulk ? 20 : 1;
                     var usersToAdd = [];
                     for (var i = 0; i < maxLines && i < lines.length; i++) {
-                        console.log('trying to add line' + i);
+                      //  console.log('trying to add line' + i);
                         var addUser = new Player(lines[i]);
                         // console.log(addUser);
                         if (addUser.isPlayer()) {
