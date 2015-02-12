@@ -17,10 +17,11 @@
     "node-env-file":"",
     "mongoose": "",
     "googleclientlogin":"",
-    "q":""
+    "q":"",
+    "node-cache":""
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   },
   "repository": {
     "type": "git",

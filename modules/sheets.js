@@ -6,6 +6,9 @@ var Q = require('q');
 var _ = require('underscore');
 var sheetKey = process.env['SS_TOKEN'];//'0AorXt_5bia2PdE5iMm83WVhpTUNBZ2JId252Q3BRN3c';
 
+var NodeCache = require( "node-cache" );
+var myCache = new NodeCache( { stdTTL: 100, checkperiod: 120 } );
+
 var googleAuth = new GoogleClientLogin({
     email: 'gmadybot@gmail.com',
     password: 'gmadybotgm',
@@ -13,7 +16,7 @@ var googleAuth = new GoogleClientLogin({
     accountType: GoogleClientLogin.accountTypes.google
 });
 
-function loginToGoogle(callback) {
+function loginToGoogle() {
     var deferred = Q.defer();
     googleAuth.on(GoogleClientLogin.events.login, function(){
         deferred.resolve();
@@ -23,46 +26,55 @@ function loginToGoogle(callback) {
 
 }
 
-function loadDataFromSS(firstLetter, callback) {
+function getSpreadsheet(){
     var deferred = Q.defer();
-    loginToGoogle().then(function () {
-        console.log('login to google success');
+    var cacheItem = myCache.get('spreadsheet');
+    if (cacheItem.spreadsheet){
+        console.log('item from cache');
+        deferred.resolve(cacheItem.spreadsheet);
+    }else {
         GoogleSpreadsheets({
             key: sheetKey,
             auth: googleAuth.getAuthId()
         }, function (err, spreadsheet) {
-            var guildsData = [];
-            var ctr = 0;
-            console.log('got SS');
+            myCache.set('spreadsheet', spreadsheet);
+            deferred.resolve(spreadsheet);
+        });
+    }
+    return deferred.promise;
+}
 
-            _.each(spreadsheet.worksheets, function (worksheet, idx) {
-                var title = worksheet.title.toLowerCase();
-                if (title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() ) {
-                    ctr++;
-                    return;
+//todo put in cache
+function loadDataFromSS(firstLetter) {
+    var deferred = Q.defer();
+    loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
+        console.log('login to google success');
+        var guildsData = [];
+        var ctr = 0;
+        //todo - refactor to 2 loops, 1 get needed sheets and 2nd get their rows (can be done with Q.all)
+        _.each(spreadsheet.worksheets, function (worksheet, idx) {
+            var title = worksheet.title.toLowerCase();
+            if (title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() ) {
+                ctr++;
+                return;
+            }
+
+            getRows(worksheet).then(function (rows) {
+                _.each(rows, function (row) {
+                    var gd = parseRow(row);
+                    if (gd != null) {
+                        guildsData.push(gd);
+                    }
+                });
+                ctr++;
+                if (ctr == spreadsheet.worksheets.length) {
+
+                    deferred.resolve(guildsData);
                 }
-                console.log('looking at',title);
-              //  getSheetColumns(worksheet).then(function (headCells) {
-                    getRows(worksheet).then(function (rows) {
-                       // console.log(rows);
-                        _.each(rows, function (row) {
-                            var gd = parseRow(row);
-                            if (gd != null) {
-                                guildsData.push(gd);
-                            }
-                        });
-                        ctr++;
-                        console.log('done with'+ctr);
-                        if (ctr == spreadsheet.worksheets.length) {
-                           console.log('resolving');
-                            deferred.resolve(guildsData);
-                        }
-
-                    });
-
-              //  });
 
             });
+
+            //  });
 
         });
     });
@@ -143,7 +155,7 @@ function parseRow(row, headCells) {
 
 }
 
-
+//put in cache for 5 minutes.
 function getData(guildName, callback) {
     var deferred = Q.defer();
     guildName = guildName.toLowerCase();

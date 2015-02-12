@@ -4,6 +4,8 @@ var querystring = require("querystring");
 const _ = require('underscore');
 var FEED_URL = "https://spreadsheets.google.com/feeds/";
 
+var cacheObj=[];
+
 var forceArray = function (val) {
     if (Array.isArray(val)) {
         return val;
@@ -31,7 +33,7 @@ var getFeed = function (params, auth, query, cb) {
     if (query) {
         url += "?" + querystring.stringify(query);
     }
-    console.log('getting: ' + url);
+   // console.log('getting: ' + url);
     request.get({
         url: url,
         headers: headers,
