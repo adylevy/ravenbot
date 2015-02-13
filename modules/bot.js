@@ -67,16 +67,20 @@ var Bot = BotBase.extend(function () {
                         }
                         catch (e) {
                             console.log('-------->', e, ' <<---');
-
                         }
                     }
-
                 },
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
                     var caseinsensitive = txt;
                     txt = txt.toLowerCase();
+                    var ctxPlayer = this.getCtxPlayer(msg.user_id);
+                    
+                    if (this.handleCtxPlayer(caseinsensitive,msg)){
+                        return;                        
+                    }
+                    
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
                     }
@@ -87,15 +91,12 @@ var Bot = BotBase.extend(function () {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
                                     var ownData = data.ownData;
-
                                     self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, true);
-
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
                             }
                         }.bind(this));
-
                     }
 
                     if (/^manual$/.test(txt)){
@@ -108,7 +109,6 @@ var Bot = BotBase.extend(function () {
                                 this.sendGuildTargetsUnified(roomData.warData.guildName);
                             }
                         }.bind(this));
-
                     }
 
                     if (/^targets$/.test(txt)) {
@@ -117,11 +117,8 @@ var Bot = BotBase.extend(function () {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
                                     var ownData = data.ownData;
-
                                     self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, false);
-
                                 });
-
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
                             }
@@ -135,7 +132,6 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage(60 - diff.getMinutes() + ' minutes left.');
                             } else {
                                 this.postMessage('not in war.');
-
                             }
                         }.bind(this));
                     }
@@ -157,10 +153,8 @@ var Bot = BotBase.extend(function () {
                                 }.bind(this));
                             } else {
                                 this.postMessage('not in war.');
-
                             }
                         }.bind(this));
-
                     }
 
                     var newMatchRgx = /^matched\s*(new){0,1}\s*(.*)/;
@@ -174,8 +168,6 @@ var Bot = BotBase.extend(function () {
                                 var g = mongoData.createNewGuild(guildName);
                                 g.save();
                                 self.enterWarMode(guildName, null, null, false);
-
-
                             } else {
                                 self.getGuildData(guildName).then(function (data) {
                                     var guild = data.foundGuild;
@@ -247,21 +239,16 @@ var Bot = BotBase.extend(function () {
                                             this.postMessage('please set mini data using mymini command.');
                                         } else {
                                             this.findUserTargets(roomData.warData.guildName, p.mini, p.risk);
-
                                         }
-
                                     }.bind(this))
-
                                 } else {
                                     this.postMessage('can\'t look for targets while not in war.');
                                 }
                             } catch (e) {
                                 console.log('------->', e);
-
                             }
                         }.bind(this));
-                    }
-                    ;
+                    };
 
                     var miniRgx = /^[mM][yY][mM][iI][nN][iI]\s(.*)/;
                     if (miniRgx.test(caseinsensitive)) {
@@ -301,14 +288,12 @@ var Bot = BotBase.extend(function () {
                         var newMode = match[1];
                         if (!(newMode == '' || newMode == undefined)) {
                             var newBulkMode = (newMode == 'on') ? true : false;
-                            var player = this.getCtxPlayer(msg.user_id);
-                            player.bulk = newBulkMode;
-                            this.updateCtxPlayer(player);
-                            this.postMessage('Bulk mode is ' + (player.bulk ? 'on' : 'off') + ' for ' + msg.name);
+                            ctxPlayer.bulk = newBulkMode;
+                            this.updateCtxPlayer(ctxPlayer);
+                            this.postMessage('Bulk mode is ' + (ctxPlayer.bulk ? 'on' : 'off') + ' for ' + msg.name);
 
-                        } else {
-                            var player = this.getCtxPlayer(msg.user_id);
-                            this.postMessage('Bulk mode is ' + (player.bulk ? 'on' : 'off') + ' for ' + msg.name);
+                        } else {                          
+                            this.postMessage('Bulk mode is ' + (ctxPlayer.bulk ? 'on' : 'off') + ' for ' + msg.name);
 
                         }
                     }
@@ -336,8 +321,8 @@ var Bot = BotBase.extend(function () {
 
                     // handle insertion
                     var lines = caseinsensitive.split('\n');
-                    var user = this.getCtxPlayer(msg.user_id);
-                    var maxLines = user.bulk ? 20 : 1;
+                   
+                    var maxLines = ctxPlayer.bulk ? 20 : 1;
                     var usersToAdd = [];
                     for (var i = 0; i < maxLines && i < lines.length; i++) {
                       //  console.log('trying to add line' + i);
@@ -413,7 +398,8 @@ var Bot = BotBase.extend(function () {
                         player = {
                             id: id,
                             bulk: false,
-                            lastMsg: ''
+                            lastMsg: '',
+                            ctxOptions:[]
                         }
                     }
                     return player;
@@ -426,6 +412,22 @@ var Bot = BotBase.extend(function () {
                     this.ctx.players = players;
 
                 },
+
+                handleCtxPlayer:function(txt,msg){
+                    var ctxPlayer=this.getCtxPlayer(msg.user_id);
+                    var hasMatch=false;
+                    var lowerCase=txt.toLowerCase();
+                    _.each(ctxPlayer.options,function(option){
+                        if (option.key.test(lowerCase)){
+                            this.mainSwitch(option.cmd,msg);
+                            hasMatch=true;
+                        }
+                    });
+                    ctxPlayer.options=[];
+                    this.updateCtxPlayer(ctxPlayer);
+                    return hasMatch;
+                },
+                
                 tellAJoke: function () {
                     var self = this;
                     chuckJokes.getJoke().then(function (joke) {
@@ -471,9 +473,11 @@ var Bot = BotBase.extend(function () {
 
                     this.postMessage(helpMsg.join('\n'));
                 },
-                insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild) {
+                insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild,addingUserId) {
                     var defered = Q.defer();
                     var self = this;
+                    var ctxPlayer = this.getCtxPlayer(addingUserId);
+                    ctxPlayer.options=[];
                     mongoData.getGuildData(guildName, function (item) {
                         for (var i = 0; i < playersToAdd.length; i++) {
                             var player = playersToAdd[i];
@@ -489,13 +493,16 @@ var Bot = BotBase.extend(function () {
                                 });
                                 if (similarPlayers.length>0){
                                     var msg=[];
-                                    msg.push('Found similar players, please consider to remove:');
+                                    msg.push('Found similar players, reply yes to remove:');
                                     _.each(similarPlayers,function(p){
-                                        msg.push(p.lvl+' '+utils.capitaliseFirstLetter(p.name));                                        
-                                    })
+                                        msg.push(p.lvl+' '+utils.capitaliseFirstLetter(p.name));
+                                        ctxPlayer.options.push({
+                                            'key':/^[Yy]es$/,
+                                            'cmd':'remove '+ p.lvl+' '+utils.capitaliseFirstLetter(p.name)
+                                        });
+                                    });
                                     self.postMessage(msg.join('\n'));
                                 }
-
                             }
                             var gpo = player.getGuildPlayerObj();
                             gpo.insertedByGuild = addingUserGuild;
@@ -508,6 +515,7 @@ var Bot = BotBase.extend(function () {
                             self.postMessage(mode + ' [' + player.toString() + ']');
                         }
                     }.bind(this));
+                    this.updateCtxPlayer(ctxPlayer);
                     return defered.promise;
                 },
                 removeUserFromOwnData: function (guildName, mtch) {

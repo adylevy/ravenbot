@@ -162,7 +162,7 @@ function parseRow(row, headCells) {
 
 }
 
-//put in cache for 5 minutes.
+
 function getData(guildName, callback) {
     var deferred = Q.defer();
     guildName = guildName.toLowerCase();
