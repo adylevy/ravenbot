@@ -514,8 +514,9 @@ var Bot = BotBase.extend(function () {
                             });
                             self.postMessage(mode + ' [' + player.toString() + ']');
                         }
+                        this.updateCtxPlayer(ctxPlayer);
                     }.bind(this));
-                    this.updateCtxPlayer(ctxPlayer);
+                   
                     return defered.promise;
                 },
                 removeUserFromOwnData: function (guildName, mtch) {
