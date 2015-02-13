@@ -888,7 +888,7 @@ var Bot = BotBase.extend(function () {
                             console.log(e);
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes==5) {
+                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes==55) {
                         if (timerSettings!='off') {
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
