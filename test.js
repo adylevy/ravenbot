@@ -23,7 +23,7 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 
 var Bot = require('./modules/bot.js');
 //var AdminBot = require('./modules/adminBot.js');
-var b=new Bot({},11615018);
+var b=new Bot({},12334465);
 
 /*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
@@ -58,15 +58,31 @@ b.mainSwitch('mymini Gamba 80m/20k/2000',{
     user_id:5
 });
 */
-b.mainSwitch('myrisk 3',{
+b.mainSwitch('matched the real killers',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:1
 });
+setTimeout(function(){
+    b.mainSwitch('128 ady 1 1 1',{
+        name:'MB 409.8m/109.7k/3.0k',
+        user_id:1
+    });
+    
+},5000)
 
+setTimeout(function(){
+    b.mainSwitch('yes',{
+        name:'MB 409.8m/109.7k/3.0k',
+        user_id:1
+    });
+
+},8000)
+
+/*
 b.mainSwitch('65 CharLiemanson  1.8m/1.7k/1.0k',{
     name:'MB 120.8m/57.7k/3.0k',
     user_id:1
-});
+});*/
 
 //b.mainSwitch('123 ady 123m/1k/12k');
 //b.warData.guildName='iraid';
