@@ -34,7 +34,8 @@ var Mongodata = Class.extend(function () {
             guildName: String,
             warTime: Date
 
-        }, playersPrefs: [{id: Number, mini: String, risk:{type:Number, default:0}}]
+        }, playersPrefs: [{id: Number, mini: String, risk:{type:Number, default:0}}],
+        settings:[]
     });
 
     var AppSettings = mongoose.model('AppSettings', {groups: [], guilds:[{
@@ -83,9 +84,10 @@ var Mongodata = Class.extend(function () {
                 warData: {
                     inWar: false,
                     guildName: '',
-                    warTime: null,
-                    playersPrefs: []
-                }
+                    warTime: null
+                },
+                playersPrefs: [],
+                settings:[]
 
             });
             return r;

@@ -190,7 +190,7 @@ var Bot = BotBase.extend(function () {
                         }
                     }
 
-                    if (/^war\sended$/.test(txt) || /^warended$/.test(txt)) {
+                    if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 roomData.warData.inWar = false;
@@ -229,6 +229,22 @@ var Bot = BotBase.extend(function () {
                             }
                         }.bind(this));
                     }
+                    
+                    var settingsRgx=/^[Ss]et\s(\w+)\s(\w+)$/;
+                    if (settingsRgx.test(txt)){
+                        var mtches=settingsRgx.exec(txt);
+                        var key=mtches[1];
+                        var val=mtches[2];
+                        if (key==undefined || val==undefined){
+                            return;                            
+                        }
+                        this.getRoomPrefs().then(function (roomData) {
+                            this.setRoomSetting(roomData,key,val);
+                        }.bind(this))
+
+                    }
+                        
+                        
                     if (/^minit$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
@@ -596,7 +612,6 @@ var Bot = BotBase.extend(function () {
                                     } else {
                                         //  console.log(player,all,line1,line2,line3);
                                     }
-
                                 }
                             });
 
@@ -814,13 +829,33 @@ var Bot = BotBase.extend(function () {
                             this.postMessage('updated Mini - ' + miniPlayer);
                         }.bind(this)
                     );
-
+                },
+                getRoomSetting: function(roomPref,settingName){
+                    var settings=roomPref.settings || [];
+                    var setting= _.find(settings,function(s){
+                        return s.key==settingName;                        
+                    });
+                    
+                    return setting==undefined ? null : setting.val;
+                    
+                },
+                setRoomSetting: function(roomPref, settingName, settingVal){
+                    var settings=roomPref.settings || [];
+                    settings= _.uniq(settings, function (s) {
+                        return s.key!=settingName;
+                    });
+                    settings.push({
+                        'key':settingName,
+                        'val':settingVal
+                    });
+                    roomPref.settings=settings;
+                    roomPref.save();
                 },
                 onTimeTick: function (roomData) {
-                    //  console.log('bot on time tick',roomData.roomId);
-
+                   
                     var d = new Date();
                     var diff = d - roomData.warData.warTime;
+                    var timerSettings=this.getRoomSetting(roomData,'timer');
                     var diffInSeconds = Math.round(diff / 1000);
                     var diffInMinutes = Math.round(diffInSeconds / 60);
                     if (diffInMinutes >= 60) {
@@ -828,15 +863,14 @@ var Bot = BotBase.extend(function () {
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
                             console.log(e);
-
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if (diffInMinutes % 10 == 0 && diffInMinutes > 0) {
-                        this.postMessage(60 - diffInMinutes + " minutes left.");
+                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes==5) {
+                        if (timerSettings!='off') {
+                            this.postMessage(60 - diffInMinutes + " minutes left.");
+                        }
                     }
-
                 }
-
             }
         }()
     )
