@@ -425,7 +425,7 @@ var Bot = BotBase.extend(function () {
                             this.mainSwitch(option.cmd,msg);
                             hasMatch=true;
                         }
-                    });
+                    }.bind(this));
                     ctxPlayer.options=[];
                     this.updateCtxPlayer(ctxPlayer);
                     return hasMatch;
