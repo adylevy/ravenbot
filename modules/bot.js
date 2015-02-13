@@ -231,19 +231,42 @@ var Bot = BotBase.extend(function () {
                     }
                     
                     var settingsRgx=/^[Ss]et\s(\w+)\s(\w+)$/;
+                    var validSettings=['timer'];
                     if (settingsRgx.test(txt)){
                         var mtches=settingsRgx.exec(txt);
+                       
                         var key=mtches[1];
                         var val=mtches[2];
                         if (key==undefined || val==undefined){
                             return;                            
                         }
+                        if (validSettings.indexOf(key)==-1){
+                            this.postMessage('invalid setting key');
+                            return;
+                        }
                         this.getRoomPrefs().then(function (roomData) {
                             this.setRoomSetting(roomData,key,val);
-                        }.bind(this))
-
+                            this.postMessage('Room setting '+key+' was set to '+val);
+                        }.bind(this));
                     }
-                        
+
+                    var getSettingsRgx=/^[Gg]et\s(\w+)$/;
+                    if (getSettingsRgx.test(txt)){
+                        var mtches=getSettingsRgx.exec(txt);
+                       
+                        var key=mtches[1];
+                        if (key==undefined){
+                            return;
+                        }
+                        if (validSettings.indexOf(key)==-1){
+                            this.postMessage('invalid setting key');
+                            return;
+                        }
+                        this.getRoomPrefs().then(function (roomData) {
+                            var val=this.getRoomSetting(roomData,key);
+                            this.postMessage('Room setting for '+key+' is '+(val==undefined ? 'default value' : val));
+                        }.bind(this));
+                    }
                         
                     if (/^minit$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
