@@ -497,7 +497,7 @@ var Bot = BotBase.extend(function () {
                                     _.each(similarPlayers,function(p){
                                         msg.push(p.lvl+' '+utils.capitaliseFirstLetter(p.name));
                                         ctxPlayer.options.push({
-                                            'key':/^[Yy]es$/,
+                                            'key':new RegExp('^[Yy]es$'),
                                             'cmd':'remove '+ p.lvl+' '+utils.capitaliseFirstLetter(p.name)
                                         });
                                     });
@@ -626,6 +626,7 @@ var Bot = BotBase.extend(function () {
                         }
                         catch (ee) {
                             console.log('------->', ee);
+                            console.trace();
 
                         }
                     }.bind(this));
