@@ -418,6 +418,9 @@ var Bot = BotBase.extend(function () {
                     var hasMatch=false;
                     var lowerCase=txt.toLowerCase();
                     _.each(ctxPlayer.options,function(option){
+                        console.log(options);
+                        console.log(option.key);
+                        console.log(options['key']);
                         if (option['key'].test(lowerCase)){
                             this.mainSwitch(option.cmd,msg);
                             hasMatch=true;
