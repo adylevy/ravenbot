@@ -337,7 +337,7 @@ var Bot = BotBase.extend(function () {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
 
-                                this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId);
+                                this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId,msg.user_id);
 
                             }
                         }.bind(this));
@@ -399,7 +399,7 @@ var Bot = BotBase.extend(function () {
                             id: id,
                             bulk: false,
                             lastMsg: '',
-                            ctxOptions:[]
+                            options:[]
                         }
                     }
                     return player;
