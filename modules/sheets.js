@@ -1,13 +1,13 @@
-var HTTPS = require('https');
+
 var Levenshtein = require('levenshtein');
 var GoogleSpreadsheets = require('./spreadsheets');
 var GoogleClientLogin = require("googleclientlogin").GoogleClientLogin;
 var Q = require('q');
 var _ = require('underscore');
-var sheetKey = process.env['SS_TOKEN'];//'0AorXt_5bia2PdE5iMm83WVhpTUNBZ2JId252Q3BRN3c';
+var sheetKey = process.env['SS_TOKEN'];
 
 var NodeCache = require( "node-cache" );
-var myCache = new NodeCache( { stdTTL: 100, checkperiod: 120 } );
+var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time
 
 var googleAuth = new GoogleClientLogin({
     email: 'gmadybot@gmail.com',
@@ -30,21 +30,22 @@ function getSpreadsheet(){
     var deferred = Q.defer();
     var cacheItem = myCache.get('spreadsheet');
     if (cacheItem.spreadsheet){
-        console.log('item from cache');
+        //console.log('item from cache');
         deferred.resolve(cacheItem.spreadsheet);
     }else {
         GoogleSpreadsheets({
             key: sheetKey,
             auth: googleAuth.getAuthId()
         }, function (err, spreadsheet) {
-            myCache.set('spreadsheet', spreadsheet);
+            myCache.set('spreadsheet', spreadsheet,600);//10 minutes cache
             deferred.resolve(spreadsheet);
         });
     }
     return deferred.promise;
 }
 
-//todo put in cache
+// getRows cached for 2 minutes
+// get spreadsheet - cached for 10 minutes
 function loadDataFromSS(firstLetter) {
     var deferred = Q.defer();
     loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
@@ -58,7 +59,6 @@ function loadDataFromSS(firstLetter) {
                 ctr++;
                 return;
             }
-
             getRows(worksheet).then(function (rows) {
                 _.each(rows, function (row) {
                     var gd = parseRow(row);
@@ -73,31 +73,38 @@ function loadDataFromSS(firstLetter) {
                 }
 
             });
-
-            //  });
-
         });
     });
 
     return deferred.promise;
 }
 
-function getRows(worksheet, callback) {
+// cached for 2 minutes
+function getRows(worksheet) {
     var deferred = Q.defer();
-    worksheet.rows({
-        key: sheetKey,
-        worksheet: worksheet.id
+    var itemKey='worksheet'+worksheet.id;
+    var cacheItem = myCache.get(itemKey);
+    if (cacheItem[itemKey]){
+        //console.log('item from cache');
+        deferred.resolve(cacheItem[itemKey]);
+    }else {
+        worksheet.rows({
+            key: sheetKey,
+            worksheet: worksheet.id
 
-    }, function (err, rows) {
-        // Cells will contain a 2 dimensional array with all cell data in the
-        // range requested.
-        if (err){
-            deferred.reject(err);
-        }else{
-            deferred.resolve(_.isUndefined(rows) ? [] : rows);
-        }
+        }, function (err, rows) {
+            // Cells will contain a 2 dimensional array with all cell data in the
+            // range requested.
+            if (err) {
+                deferred.reject(err);
+            } else {
+                var res=_.isUndefined(rows) ? [] : rows;
+                myCache.set(itemKey,res,120);//10 minutes cache
+                deferred.resolve(res);
+            }
 
-    });
+        });
+    }
     return deferred.promise;
 }
 
