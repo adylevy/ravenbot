@@ -864,7 +864,7 @@ var Bot = BotBase.extend(function () {
                 },
                 setRoomSetting: function(roomPref, settingName, settingVal){
                     var settings=roomPref.settings || [];
-                    settings= _.uniq(settings, function (s) {
+                    settings= _.filter(settings, function (s) {
                         return s.key!=settingName;
                     });
                     settings.push({
