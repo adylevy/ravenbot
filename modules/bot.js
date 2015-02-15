@@ -63,7 +63,7 @@ var Bot = BotBase.extend(function () {
                      }*/
                     if (!msg.system) {
                         try {
-                            console.log(msg);
+                         //   console.log(msg);
                             this.mainSwitch(msg.text.trim(), msg);
                         }
                         catch (e) {
@@ -83,7 +83,7 @@ var Bot = BotBase.extend(function () {
                     }
                     
                     if (/^hello$/.test(txt)) {
-                        this.postMessage('Hey there!');
+                        this.postMessage('Hey there! 00');
                     }
 
                     if (/^all\stargets$/.test(txt)) {

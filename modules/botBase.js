@@ -86,6 +86,20 @@ var BotBase = Class.extend(function () {
                             url: img
                         }]
                     }
+                    package.attachments=[{
+                        "type": "emoji",
+                        "placeholder": "0",
+                        "charmap": [
+                            [
+                                1,
+                                42
+                            ],
+                            [
+                                2,
+                                34
+                            ]
+                        ]
+                    }]
                     request({
                         url: url,
                         method: 'POST',
