@@ -88,18 +88,18 @@ var BotBase = Class.extend(function () {
                             url: img
                         });
                     }
-                    if (msg!=null && msg!=undefined && msg.indexOf('^')!=-1) {
+                  /*  if (msg!=null && msg!=undefined && msg.indexOf('^')!=-1) {
                         package.attachments.push({
                             "type": "emoji",
                             "placeholder": "^",
                             "charmap": [
                                 [
                                     5,
-                                    1
+                                    0
                                 ]
                             ]
                         });
-                    }
+                    }*/
                     request({
                         url: url,
                         method: 'POST',
