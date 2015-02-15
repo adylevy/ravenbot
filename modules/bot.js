@@ -66,6 +66,7 @@ var Bot = BotBase.extend(function () {
 
                             msg.text=msg.text.replace(/\?/g,'');
                             msg.name=msg.name.replace(/\?/g,'');
+                            console.log(msg);
                             this.mainSwitch(msg.text.trim(), msg);
                         }
                         catch (e) {
