@@ -63,6 +63,7 @@ var Bot = BotBase.extend(function () {
                      }*/
                     if (!msg.system) {
                         try {
+                            console.log(msg);
                             this.mainSwitch(msg.text.trim(), msg);
                         }
                         catch (e) {
