@@ -80,26 +80,26 @@ var BotBase = Class.extend(function () {
                     var package = {};
                     package.text = msg;
                     package.bot_id = this.options.bot_id;
+                    package.attachments=[];
+                    
                     if (img) {
-                        package.attachments = [{
+                        package.attachments.push({
                             type: 'image',
                             url: img
-                        }]
+                        });
                     }
-                    package.attachments=[{
-                        "type": "emoji",
-                        "placeholder": "0",
-                        "charmap": [
-                            [
-                                1,
-                                42
-                            ],
-                            [
-                                2,
-                                34
+                    if (msg!=null && msg!=undefined && msg.indexOf('^')!=-1) {
+                        package.attachments.push({
+                            "type": "emoji",
+                            "placeholder": "^",
+                            "charmap": [
+                                [
+                                    5,
+                                    1
+                                ]
                             ]
-                        ]
-                    }]
+                        });
+                    }
                     request({
                         url: url,
                         method: 'POST',
