@@ -63,11 +63,7 @@ var Bot = BotBase.extend(function () {
                      }*/
                     if (!msg.system) {
                         try {
-                           if (typeof(msg.attachments)=='array'){
-                               _.each(msg.attachments,function(a){
-                                   console.log(a, a.charmap);
-                               })                               
-                           }
+
                             msg.text=msg.text.replace(/\?/g,'');
                             msg.name=msg.name.replace(/\?/g,'');
                             this.mainSwitch(msg.text.trim(), msg);
