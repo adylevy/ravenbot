@@ -726,7 +726,7 @@ var Bot = BotBase.extend(function () {
                             roomData.warData.warTime = Date.now();
                             roomData.save();
                             var msg = new Array();
-                            msg.push('^^^ WAR MODE ON ^^^');
+                            msg.push('^^ WAR MODE ON ^^');
                             this.sendGuildTargets(msg, guildName, ssData, ownData, false);
                         }
                         catch (e) {
