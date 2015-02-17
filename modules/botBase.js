@@ -99,7 +99,7 @@ var BotBase = Class.extend(function () {
                         package.attachments.push({
                             "type": "emoji",
                             "placeholder": "^",
-                            "charmap": [chars]
+                            "charmap": chars
                         });
                     }
                     request({
