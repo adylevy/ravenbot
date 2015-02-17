@@ -91,7 +91,7 @@ var BotBase = Class.extend(function () {
 
                     if (msg != null && msg != undefined && msg.indexOf('^') != -1) {
                         var chars = [];
-                        var numOfChars = (msg.match(/^/g) || []).length;
+                        var numOfChars = (msg.match(/\^/g) || []).length;
                         for (var i = 0; i < numOfChars; i++) {
                             chars.push([3, 37]);
 
