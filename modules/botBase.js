@@ -80,24 +80,26 @@ var BotBase = Class.extend(function () {
                     var package = {};
                     package.text = msg;
                     package.bot_id = this.options.bot_id;
-                    package.attachments=[];
-                    
+                    package.attachments = [];
+
                     if (img) {
                         package.attachments.push({
                             type: 'image',
                             url: img
                         });
                     }
-                   if (msg!=null && msg!=undefined && msg.indexOf('^')!=-1) {
+
+                    if (msg != null && msg != undefined && msg.indexOf('^') != -1) {
+                        var chars = [];
+                        var numOfChars = (msg.match(/^/g) || []).length;
+                        for (var i = 0; i < numOfChars; i++) {
+                            chars.push([3, 37]);
+
+                        }
                         package.attachments.push({
                             "type": "emoji",
                             "placeholder": "^",
-                            "charmap": [
-                                [
-                                    3,
-                                    37
-                                ]
-                            ]
+                            "charmap": [chars]
                         });
                     }
                     request({
@@ -149,4 +151,4 @@ var BotBase = Class.extend(function () {
 
 //util.inherits(BotsManager, events.EventEmitter);
 
-module.exports.BotBase=BotBase;
+module.exports.BotBase = BotBase;
