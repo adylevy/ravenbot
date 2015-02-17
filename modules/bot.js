@@ -82,7 +82,7 @@ var Bot = BotBase.extend(function () {
                     }
                     
                     if (/^hello$/.test(txt)) {
-                        this.postMessage('Hey there! ^');
+                        this.postMessage('Hey there!');
                     }
 
                     if (/^all\stargets$/.test(txt)) {
@@ -497,10 +497,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
-                    helpMsg.push('warended - ends war mode.');
-                    helpMsg.push('joke - random joke.');
-                    helpMsg.push('minions - random minion gif.');
-                    helpMsg.push('gif theme - random theme gif.');
+                    helpMsg.push('warended - ends war mode.');                   
                     helpMsg.push('myt - user targets during war.');
                     helpMsg.push('minit - mini\'s targets during war.');
                     helpMsg.push('mymini user 1m/2k/3k - set mini for user.');
@@ -508,6 +505,9 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('sync mm - syncs number of minutes left for war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
                     helpMsg.push('manual - gets Raven manual');
+                    helpMsg.push('joke - random joke.');
+                    helpMsg.push('minions - random minion gif.');
+                    helpMsg.push('gif theme - random theme gif.');
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
@@ -726,7 +726,7 @@ var Bot = BotBase.extend(function () {
                             roomData.warData.warTime = Date.now();
                             roomData.save();
                             var msg = new Array();
-                            msg.push('War mode on!');
+                            msg.push('^^^ WAR MODE ON ^^^');
                             this.sendGuildTargets(msg, guildName, ssData, ownData, false);
                         }
                         catch (e) {
