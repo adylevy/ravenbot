@@ -94,8 +94,8 @@ var BotBase = Class.extend(function () {
                             "placeholder": "^",
                             "charmap": [
                                 [
-                                    5,
-                                    0
+                                    2,
+                                    38
                                 ]
                             ]
                         });
