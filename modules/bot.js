@@ -397,9 +397,10 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
-
                                 this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId, msg.user_id);
-
+                            }else{
+                                this.postMessage('Not in war at the moment, cant add users.')
+                                
                             }
                         }.bind(this));
 
