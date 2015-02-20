@@ -7,7 +7,8 @@ const _ = require('underscore');
 var giphy = require('./giphy.js')('dc6zaTOxFJmzC');
 var chuckJokes = require('./chuckJokes.js');
 var sheetsData = require('./sheets.js');
-var mongoData = require('./mongoData.js')(process.env['MONGOLAB_URI']);
+var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
+var roomPrefs = require('./data/roomPrefs.js');
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
@@ -36,12 +37,7 @@ var Bot = BotBase.extend(function () {
                     console.log('new bot **', this.options, this.roomId);
                 },
                 getRoomPrefs: function () {
-                    var defered = Q.defer();
-                    mongoData.getRoomPrefs(this.roomId).then(function (data) {
-                        defered.resolve(data);
-                    });
-                    return defered.promise;
-
+                    return roomPrefs.getRoomPrefs(this.roomId);
                 },
                 handleMessage: function (msg) {
                     /*{
@@ -73,14 +69,14 @@ var Bot = BotBase.extend(function () {
 
                 mainSwitch: function (txt, msg) {
                     var self = this;
-                    var caseinsensitive = txt;
-                    txt = txt.toLowerCase();
+                    var caseSensitiveTxt = txt.trim();
+                    txt = txt.toLowerCase().trim();
                     var ctxPlayer = this.getCtxPlayer(msg.user_id);
-                    
-                    if (this.handleCtxPlayer(caseinsensitive,msg)){
-                        return;                        
+
+                    if (this.handleCtxPlayer(caseSensitiveTxt, msg)) {
+                        return;
                     }
-                    
+
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
                     }
@@ -99,10 +95,10 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    if (/^manual$/.test(txt)){
+                    if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                     }
-                    
+
                     if (/^targets2$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
@@ -216,94 +212,122 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
                                 if (roomData.warData.inWar) {
-                                    this.getUser(msg.user_id).then(function (player) {
-                                        var risk = player == undefined ? 0 : Number(player.risk)
-                                        this.findUserTargets(roomData.warData.guildName, msg.name, risk);
-                                    }.bind(this));
+                                    var player = roomPrefs.getRoomPlayerFromRoomPref(roomData, msg.user_id);
+                                    var risk = player == undefined ? 0 : Number(player.risk);
+                                    this.findUserTargets(roomData.warData.guildName, msg.name, risk);
+
                                 } else {
                                     this.postMessage('can\'t look for targets while not in war.');
                                 }
                             } catch (e) {
                                 console.log('------->', e);
-
+                                console.trace();
                             }
                         }.bind(this));
                     }
-                    
-                    var settingsRgx=/^[Ss]et\s(\w+)\s(\w+)$/;
-                    var validSettings=['timer'];
-                    if (settingsRgx.test(txt)){
-                        var mtches=settingsRgx.exec(txt);
-                       
-                        var key=mtches[1];
-                        var val=mtches[2];
-                        if (key==undefined || val==undefined){
-                            return;                            
+
+                    var settingsRgx = /^[Ss]et\s(\w+)\s(\w+)$/;
+                    var validSettings = ['timer'];
+                    if (settingsRgx.test(txt)) {
+                        var mtches = settingsRgx.exec(txt);
+
+                        var key = mtches[1];
+                        var val = mtches[2];
+                        if (key == undefined || val == undefined) {
+                            return;
                         }
-                        if (validSettings.indexOf(key)==-1){
+                        if (validSettings.indexOf(key) == -1) {
                             this.postMessage('invalid setting key');
                             return;
                         }
                         this.getRoomPrefs().then(function (roomData) {
-                            this.setRoomSetting(roomData,key,val);
-                            this.postMessage('Room setting '+key+' was set to '+val);
+                            roomPrefs.setRoomSetting(roomData, key, val);
+                            this.postMessage('Room setting ' + key + ' was set to ' + val);
                         }.bind(this));
                     }
 
-                    var getSettingsRgx=/^[Gg]et\s(\w+)$/;
-                    if (getSettingsRgx.test(txt)){
-                        var mtches=getSettingsRgx.exec(txt);
-                       
-                        var key=mtches[1];
-                        if (key==undefined){
+                    var getSettingsRgx = /^[Gg]et\s(\w+)$/;
+                    if (getSettingsRgx.test(txt)) {
+                        var mtches = getSettingsRgx.exec(txt);
+
+                        var key = mtches[1];
+                        if (key == undefined) {
                             return;
                         }
-                        if (validSettings.indexOf(key)==-1){
+                        if (validSettings.indexOf(key) == -1) {
                             this.postMessage('invalid setting key');
                             return;
                         }
                         this.getRoomPrefs().then(function (roomData) {
-                            var val=this.getRoomSetting(roomData,key);
-                            this.postMessage('Room setting for '+key+' is '+(val==undefined ? 'default value' : val));
+                            var val = roomPrefs.getRoomSettingFromRoomPref(roomData, key);
+                            this.postMessage('Room setting for ' + key + ' is ' + (val == undefined ? 'default value' : val));
                         }.bind(this));
                     }
-                        
-                    if (/^minit$/.test(txt)) {
+
+                    var minitRgx = /^minit(\d)?$/;
+                    if (minitRgx.test(txt)) {
+                        var mtch = minitRgx.exec(txt);
+                        var idx = mtch[1] == undefined ? 1 : Number(mtch[1]);
                         this.getRoomPrefs().then(function (roomData) {
                             try {
 
                                 if (roomData.warData.inWar) {
-                                    this.getUser(msg.user_id).then(function (p) {
-                                        if (p == null || p == undefined) {
-                                            this.postMessage('please set mini data using mymini command.');
-                                        } else {
-                                            this.findUserTargets(roomData.warData.guildName, p.mini, p.risk);
-                                        }
-                                    }.bind(this))
+                                    var p = roomPrefs.getRoomPlayerFromRoomPref(msg.user_id, roomData);
+                                    var minis = p == undefined ? [] : p.minis;
+                                    var mini = _.find(minis, function (mini) {
+                                        return mini.idx == idx;
+                                    });
+                                    if (p == null || p == undefined || mini == undefined) {
+                                        this.postMessage('please set mini data using mymini command.');
+                                    } else {
+                                        this.findUserTargets(roomData.warData.guildName, mini.player, p.risk);
+                                    }
+
                                 } else {
                                     this.postMessage('can\'t look for targets while not in war.');
                                 }
                             } catch (e) {
                                 console.log('------->', e);
+                                console.trace();
                             }
                         }.bind(this));
-                    };
+                    }
+                    ;
 
-                    var miniRgx = /^[mM][yY][mM][iI][nN][iI]\s(.*)/;
-                    if (miniRgx.test(caseinsensitive)) {
-                        var match = miniRgx.exec(caseinsensitive);
-                        var miniP = new Player('199 ' + match[1]);
+                    var miniRgx = /^[mM]ymini(\d)?\s(.*)/;
+                    if (miniRgx.test(caseSensitiveTxt)) {
+                        var match = miniRgx.exec(caseSensitiveTxt);
+                        var idx = match[1] == undefined ? 1 : Number(match[1]);
+                        var miniP = new Player('199 ' + match[2]);
                         if (miniP.isPlayer()) {
-                            console.log('adding mini : ' + miniP.toString());
-                            this.updateRoomPrefs(msg.user_id, miniP.toString().substr(2));
-
+                            console.log('adding mini : ' + miniP.toString().substr(4));
+                            roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4));
+                            this.postMessage('Mini #'+idx+' was updated');
                         } else {
                             this.postMessage('can\'t get Mini stats, try something like mymini Name 1m/1k/1k');
                         }
                     }
+                    if (/^[mM]ymini$/.test(txt)) {
+                        roomPrefs.getRoomPlayer(this.roomId, msg.user_id).then(function (player) {
+
+                            var msg = [];
+                            if (player == undefined) {
+                                this.postMessage('you don\'t have any toons set.')
+                                return;
+                            } else {
+                                _.each(player.minis || [], function (mini) {
+                                    var p = new Player('199 ' + mini.player);
+                                    if (p.isPlayer()) {
+                                        msg.push('Mini #' + mini.idx + ': ' + p.toString().substr(4));
+                                    }
+                                });
+                                this.postMessage(msg.join('\n'));
+                            }
+                        }.bind(this));
+                    }
                     var riskRgx = /^[mM]yrisk\s?(\d?\d?)/;
-                    if (riskRgx.test(caseinsensitive)) {
-                        var match = riskRgx.exec(caseinsensitive);
+                    if (riskRgx.test(caseSensitiveTxt)) {
+                        var match = riskRgx.exec(caseSensitiveTxt);
                         var risk = match[1];
                         if (risk != undefined && risk != '') {
                             risk = Number(risk);
@@ -322,8 +346,8 @@ var Bot = BotBase.extend(function () {
                     }
 
                     var bulkRgx = /^[bB]ulk\s?\b(on|off)?/;
-                    if (bulkRgx.test(caseinsensitive)) {
-                        var match = bulkRgx.exec(caseinsensitive);
+                    if (bulkRgx.test(caseSensitiveTxt)) {
+                        var match = bulkRgx.exec(caseSensitiveTxt);
                         var newMode = match[1];
                         if (!(newMode == '' || newMode == undefined)) {
                             var newBulkMode = (newMode == 'on') ? true : false;
@@ -331,7 +355,7 @@ var Bot = BotBase.extend(function () {
                             this.updateCtxPlayer(ctxPlayer);
                             this.postMessage('Bulk mode is ' + (ctxPlayer.bulk ? 'on' : 'off') + ' for ' + msg.name);
 
-                        } else {                          
+                        } else {
                             this.postMessage('Bulk mode is ' + (ctxPlayer.bulk ? 'on' : 'off') + ' for ' + msg.name);
 
                         }
@@ -342,11 +366,11 @@ var Bot = BotBase.extend(function () {
                     }
 
                     var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
-                    if (removeRgx.test(caseinsensitive)) {
+                    if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseinsensitive)).then(function (msg) {
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
                                     }
@@ -359,14 +383,12 @@ var Bot = BotBase.extend(function () {
                     }
 
                     // handle insertion
-                    var lines = caseinsensitive.split('\n');
-                   
+                    var lines = caseSensitiveTxt.split('\n');
+
                     var maxLines = ctxPlayer.bulk ? 20 : 1;
                     var usersToAdd = [];
                     for (var i = 0; i < maxLines && i < lines.length; i++) {
-                      //  console.log('trying to add line' + i);
                         var addUser = new Player(lines[i]);
-                        // console.log(addUser);
                         if (addUser.isPlayer()) {
                             usersToAdd.push(addUser);
                         }
@@ -376,7 +398,7 @@ var Bot = BotBase.extend(function () {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
 
-                                this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId,msg.user_id);
+                                this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId, msg.user_id);
 
                             }
                         }.bind(this));
@@ -438,7 +460,7 @@ var Bot = BotBase.extend(function () {
                             id: id,
                             bulk: false,
                             lastMsg: '',
-                            options:[]
+                            options: []
                         }
                     }
                     return player;
@@ -452,21 +474,21 @@ var Bot = BotBase.extend(function () {
 
                 },
 
-                handleCtxPlayer:function(txt,msg){
-                    var ctxPlayer=this.getCtxPlayer(msg.user_id);
-                    var hasMatch=false;
-                    var lowerCase=txt.toLowerCase();
-                    _.each(ctxPlayer.options,function(option){
-                        if (option['key'].test(lowerCase)){
-                            this.mainSwitch(option.cmd,msg);
-                            hasMatch=true;
+                handleCtxPlayer: function (txt, msg) {
+                    var ctxPlayer = this.getCtxPlayer(msg.user_id);
+                    var hasMatch = false;
+                    var lowerCase = txt.toLowerCase();
+                    _.each(ctxPlayer.options, function (option) {
+                        if (option['key'].test(lowerCase)) {
+                            this.mainSwitch(option.cmd, msg);
+                            hasMatch = true;
                         }
                     }.bind(this));
-                    ctxPlayer.options=[];
+                    ctxPlayer.options = [];
                     this.updateCtxPlayer(ctxPlayer);
                     return hasMatch;
                 },
-                
+
                 tellAJoke: function () {
                     var self = this;
                     chuckJokes.getJoke().then(function (joke) {
@@ -497,7 +519,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
-                    helpMsg.push('warended - ends war mode.');                   
+                    helpMsg.push('warended - ends war mode.');
                     helpMsg.push('myt - user targets during war.');
                     helpMsg.push('minit - mini\'s targets during war.');
                     helpMsg.push('mymini user 1m/2k/3k - set mini for user.');
@@ -512,11 +534,11 @@ var Bot = BotBase.extend(function () {
 
                     this.postMessage(helpMsg.join('\n'));
                 },
-                insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild,addingUserId) {
+                insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild, addingUserId) {
                     var defered = Q.defer();
                     var self = this;
                     var ctxPlayer = this.getCtxPlayer(addingUserId);
-                    ctxPlayer.options=[];
+                    ctxPlayer.options = [];
                     mongoData.getGuildData(guildName, function (item) {
                         for (var i = 0; i < playersToAdd.length; i++) {
                             var player = playersToAdd[i];
@@ -528,16 +550,16 @@ var Bot = BotBase.extend(function () {
                                 var similarPlayers = _.filter(item.players, function (el) {
                                     var diff = Math.abs(Number(el.lvl) - Number(player.lvl));
                                     var nameMatch = el.name.toLowerCase() == player.name.toLowerCase();
-                                    return nameMatch && diff<=3;
+                                    return nameMatch && diff <= 3;
                                 });
-                                if (similarPlayers.length>0){
-                                    var msg=[];
+                                if (similarPlayers.length > 0) {
+                                    var msg = [];
                                     msg.push('Found similar players, reply yes to remove:');
-                                    _.each(similarPlayers,function(p){
-                                        msg.push(p.lvl+' '+utils.capitaliseFirstLetter(p.name));
+                                    _.each(similarPlayers, function (p) {
+                                        msg.push(p.lvl + ' ' + utils.capitaliseFirstLetter(p.name));
                                         ctxPlayer.options.push({
-                                            'key':new RegExp('^[Yy]es$'),
-                                            'cmd':'remove '+ p.lvl+' '+utils.capitaliseFirstLetter(p.name)
+                                            'key': new RegExp('^[Yy]es$'),
+                                            'cmd': 'remove ' + p.lvl + ' ' + utils.capitaliseFirstLetter(p.name)
                                         });
                                     });
                                     self.postMessage(msg.join('\n'));
@@ -555,7 +577,7 @@ var Bot = BotBase.extend(function () {
                         }
                         this.updateCtxPlayer(ctxPlayer);
                     }.bind(this));
-                   
+
                     return defered.promise;
                 },
                 removeUserFromOwnData: function (guildName, mtch) {
@@ -574,9 +596,7 @@ var Bot = BotBase.extend(function () {
                             defered.resolve("Can\'t find " + lvl + ' ' + username + ' in RavenDB');
                             return;
                         }
-
                         item.players = players;
-
                         item.save(function () {
                             defered.resolve('removed ' + lvl + ' ' + username + ' from RavenDB');
                         });
@@ -586,13 +606,13 @@ var Bot = BotBase.extend(function () {
                 },
 
                 findUserTargets: function (guildName, userName, risk) {
-                    var self = this;
+
                     var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    console.log('find user targets ...', user.name, risk);
+                    console.log('find user targets ...', user.name, risk, user.toString());
 
                     var riskDef = [
                         {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .7},
@@ -649,10 +669,6 @@ var Bot = BotBase.extend(function () {
                                 return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
                             }).reverse();
 
-                            /* candidates = _.sortBy(candidates, function (player) {
-                             return player.isFresh();
-                             }).reverse();*/
-                            // console.log(candidates);
                             candidates = candidates.slice(0, 5);
                             _.each(candidates, function (candidate) {
                                 var crank = candidate.rank;
@@ -672,24 +688,13 @@ var Bot = BotBase.extend(function () {
                 },
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
-                    var self = this;
                     sheetsData.getGuildData(guildName, function (guildData) {
-                        //  console.log('got #1');
                         var players;
                         var playerCls = new Players();
-                        // console.log('2-31=23-',guildData.lastIntel);
-
                         players = guildData == null ? [] : playerCls.getPlayers(guildData.lastIntel, guildData.lastIntelCell >= 3);
-
-                        // console.log('2-31=23-',players);
                         mongoData.getGuildData(guildName, function (ourData) {
-                            //      console.log('got #2');
-                            var ourPlayers = [];
-                            //  if (ourData.lastKnownIntel != '') {
                             ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
-                            // }
                             players = players.concat(ourPlayers);
-                            //  console.log('resolving getParsedIntel',players);
                             defered.resolve(players);
                         });
                     }.bind(this));
@@ -731,7 +736,7 @@ var Bot = BotBase.extend(function () {
                         }
                         catch (e) {
                             console.log('-------->', e);
-
+                            console.trace();
                         }
                     }.bind(this));
 
@@ -794,91 +799,12 @@ var Bot = BotBase.extend(function () {
                     this.postMessage(msg.join('\n'));
 
                 },
-                getUser: function (userId) {
-                    var defered = Q.defer();
-                    this.getRoomPrefs().then(function (roomPref) {
-                        var players = roomPref.playersPrefs || [];
-                        var player = _.find(players, function (p) {
-                            return p.id == userId;
-                        });
-                        defered.resolve(player);
-                    });
-                    return defered.promise;
 
-                },
-                updatePlayerRisk: function (userId, name, risk) {
-                    this.getRoomPrefs().then(function (roomPref) {
-
-                            var player = _.find(roomPref.playersPrefs || [], function (p) {
-                                return p.id == userId;
-                            });
-                            var players = _.filter(roomPref.playersPrefs || [], function (el) {
-                                return el.id != userId;
-                            });
-                            players.push({
-                                id: Number(userId),
-                                mini: player == undefined ? '' : (player.mini || ''),
-                                risk: risk
-                            });
-
-                            roomPref.playersPrefs = players;
-
-                            roomPref.save();
-                            this.postMessage('updated risk for ' + name + ' to ' + risk);
-                        }.bind(this)
-                    );
-
-                },
-                updateRoomPrefs: function (userId, miniPlayer) {
-                    this.getRoomPrefs().then(function (roomPref) {
-                            //{id:Number,mini:String}
-                            //  console.log('got prefs', roomPref);
-                            var player = _.find(roomPref.playersPrefs || [], function (p) {
-                                return p.id == userId;
-                            });
-                            var players = _.filter(roomPref.playersPrefs || [], function (el) {
-                                return el.id != userId;
-                            });
-
-                            players.push({
-                                id: Number(userId),
-                                mini: miniPlayer,
-                                risk: player == undefined ? 0 : player.risk
-                            });
-
-                            roomPref.playersPrefs = players;
-
-                            roomPref.save();
-                            this.postMessage('updated Mini - ' + miniPlayer);
-                        }.bind(this)
-                    );
-                },
-                getRoomSetting: function(roomPref,settingName){
-                    var settings=roomPref.settings || [];
-                    var setting= _.find(settings,function(s){
-                        return s.key==settingName;                        
-                    });
-                    
-                    return setting==undefined ? null : setting.val;
-                    
-                },
-                setRoomSetting: function(roomPref, settingName, settingVal){
-                    var settings=roomPref.settings || [];
-                    settings= _.filter(settings, function (s) {
-                        return s.key!=settingName;
-                    });
-                    settings.push({
-                        'key':settingName,
-                        'val':settingVal
-                    });
-                    roomPref.settings=settings;
-                    roomPref.save();
-                },
                 onTimeTick: function (roomData) {
-                   
+
                     var d = new Date();
                     var diff = d - roomData.warData.warTime;
-                    var timerSettings=this.getRoomSetting(roomData,'timer');
+                    var timerSettings = roomPrefs.getRoomSetting(roomData, 'timer');
                     var diffInSeconds = Math.round(diff / 1000);
                     var diffInMinutes = Math.round(diffInSeconds / 60);
                     if (diffInMinutes >= 60) {
@@ -888,14 +814,15 @@ var Bot = BotBase.extend(function () {
                             console.log(e);
                         });
                         this.postMessage("War ended. did we win this one ?");
-                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes==55) {
-                        if (timerSettings!='off') {
+                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
+                        if (timerSettings != 'off') {
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
                     }
                 }
             }
-        }()
+        }
+        ()
     )
     ;
 

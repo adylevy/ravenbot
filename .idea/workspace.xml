@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="9">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/player_cls.js" afterPath="$PROJECT_DIR$/modules/player_cls.js" />
+    <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="a">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/karma.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/data/roomPrefs.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/stats.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AdminTests.js" afterPath="$PROJECT_DIR$/AdminTests.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/adminBot.js" afterPath="$PROJECT_DIR$/modules/adminBot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bot.js" afterPath="$PROJECT_DIR$/modules/bot.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/botsmanager.js" afterPath="$PROJECT_DIR$/modules/botsmanager.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.js" afterPath="$PROJECT_DIR$/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test3.js" afterPath="$PROJECT_DIR$/test3.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="D:\Dropbox\Dropbox\Apps\Heroku\adybot\modules\mongoData.js" afterPath="$PROJECT_DIR$/modules/data/mongoData.js" />
     </list>
     <ignored path="adybot.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -16,7 +28,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
-    <option name="PATCH_PATH" value="" />
+    <option name="PATCH_PATH" value="D:\Dropbox\Dropbox\Apps\Heroku\adybot" />
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
@@ -30,38 +42,18 @@
       <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.413794" vertical-offset="63" max-vertical-offset="1173">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            <state vertical-scroll-proportion="-8.827586" vertical-offset="849" max-vertical-offset="2040">
+              <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test3.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test3.js">
+      <file leaf-file-name="stats.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/stats.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-              <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test2.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test2.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="799">
-              <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-              <caret line="2" column="47" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="47" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="588" max-vertical-offset="1207">
+              <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -70,48 +62,8 @@
       <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.148148" vertical-offset="0" max-vertical-offset="5185">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sheets.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/sheets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.206897" vertical-offset="0" max-vertical-offset="3417">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="spreadsheets.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.965517" vertical-offset="3111" max-vertical-offset="4811">
-              <caret line="229" column="36" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="36" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="module.js" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.IntelliJIdea14/system/extLibs/nodejs-v0.10.34-src/core-modules-sources/lib/module.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="6943" max-vertical-offset="8925">
-              <caret line="438" column="24" selection-start-line="438" selection-start-column="24" selection-end-line="438" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player_cls.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5151515" vertical-offset="255" max-vertical-offset="2380">
-              <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+            <state vertical-scroll-proportion="-92.62069" vertical-offset="408" max-vertical-offset="5712">
+              <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -120,8 +72,70 @@
       <file leaf-file-name="bot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2030" max-vertical-offset="9639">
-              <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
+            <state vertical-scroll-proportion="-5.862069" vertical-offset="0" max-vertical-offset="14280">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="botBase.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/botBase.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="2703">
+              <caret line="93" column="54" selection-start-line="93" selection-start-column="54" selection-end-line="93" selection-end-column="54" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sheets.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2886" max-vertical-offset="3757">
+              <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.1981352" vertical-offset="357" max-vertical-offset="816">
+              <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spreadsheets.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="4573">
+              <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+              <folding>
+                <element signature="e#3875#4295#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mongoData.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-56.86207" vertical-offset="0" max-vertical-offset="2669">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="roomPrefs.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.3448277" vertical-offset="0" max-vertical-offset="3196">
+              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -131,6 +145,17 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -139,26 +164,30 @@
         <option value="$PROJECT_DIR$/mongoData.js" />
         <option value="$PROJECT_DIR$/sheets.js" />
         <option value="$PROJECT_DIR$/bot.js" />
-        <option value="$PROJECT_DIR$/modules/chuckJokes.js" />
         <option value="$PROJECT_DIR$/modules/Player.js" />
         <option value="$PROJECT_DIR$/tests.js" />
         <option value="$PROJECT_DIR$/test2.js" />
-        <option value="$PROJECT_DIR$/modules/players.js" />
-        <option value="$PROJECT_DIR$/modules/botBase.js" />
-        <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/modules/Class.js" />
-        <option value="$PROJECT_DIR$/test3.js" />
-        <option value="$PROJECT_DIR$/modules/mongoData.js" />
-        <option value="$PROJECT_DIR$/modules/adminBot.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/modules/botsmanager.js" />
         <option value="$PROJECT_DIR$/node_modules/google-spreadsheets/lib/spreadsheets.js" />
-        <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/modules/spreadsheets.js" />
-        <option value="$PROJECT_DIR$/modules/bot.js" />
-        <option value="$PROJECT_DIR$/test.js" />
-        <option value="$PROJECT_DIR$/modules/sheets.js" />
+        <option value="$PROJECT_DIR$/index.js" />
+        <option value="$PROJECT_DIR$/modules/adminBot.js" />
+        <option value="$PROJECT_DIR$/modules/players.js" />
+        <option value="$PROJECT_DIR$/modules/chuckJokes.js" />
+        <option value="$PROJECT_DIR$/test3.js" />
+        <option value="$PROJECT_DIR$/stats.js" />
+        <option value="$PROJECT_DIR$/modules/utils.js" />
         <option value="$PROJECT_DIR$/modules/player_cls.js" />
+        <option value="$PROJECT_DIR$/modules/spreadsheets.js" />
+        <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/modules/sheets.js" />
+        <option value="$PROJECT_DIR$/modules/botBase.js" />
+        <option value="$PROJECT_DIR$/modules/mongoData.js" />
+        <option value="$PROJECT_DIR$/modules/data/mongoData.js" />
+        <option value="$PROJECT_DIR$/test.js" />
+        <option value="$PROJECT_DIR$/modules/bot.js" />
+        <option value="$PROJECT_DIR$/modules/botsmanager.js" />
+        <option value="$PROJECT_DIR$/modules/data/roomPrefs.js" />
       </list>
     </option>
   </component>
@@ -227,6 +256,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -260,9 +290,26 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adybot" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -289,7 +336,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="704" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
-    <property name="options.lastSelected" value="settings.nodejs" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
@@ -304,6 +351,7 @@
       <recent name="D:\Dropbox\Dropbox\Apps\Heroku\adybot\modules" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Dropbox\Dropbox\Apps\Heroku\adybot\modules\data" />
       <recent name="C:\Users\Ady\Dropbox\Apps\Heroku\adybot\modules" />
     </key>
   </component>
@@ -329,6 +377,20 @@
       <ConfigurationWrapper RunnerId="debuggableProgram" />
       <method />
     </configuration>
+    <configuration default="false" name="test3.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="test3.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="Basic" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="Basic" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <method />
+    </configuration>
+    <configuration default="false" name="stats.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="C:/Program Files (x86)/nodejs/node" path-to-js-file="stats.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="Basic" />
+      <RunnerSettings RunnerId="debuggableProgram" />
+      <ConfigurationWrapper RunnerId="Basic" />
+      <ConfigurationWrapper RunnerId="debuggableProgram" />
+      <method />
+    </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
@@ -348,6 +410,10 @@
     <configuration default="true" type="executeSpecs" factoryName="Gauge Execution">
       <setting name="environment" value="" />
       <setting name="specsToExecute" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -584,17 +650,21 @@
       <ConfigurationWrapper RunnerId="Basic" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Node.js.test2.js" />
       <item index="1" class="java.lang.String" itemvalue="Node.js.botsmanager.js" />
       <item index="2" class="java.lang.String" itemvalue="Node.js.test.js" />
       <item index="3" class="java.lang.String" itemvalue="Node.js.index.js" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.test3.js" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.stats.js" />
     </list>
     <recent_temporary>
-      <list size="3">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Node.js.test.js" />
         <item index="1" class="java.lang.String" itemvalue="Node.js.index.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.botsmanager.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.stats.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.test3.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.botsmanager.js" />
       </list>
     </recent_temporary>
   </component>
@@ -619,58 +689,352 @@
       <workItem from="1421176330837" duration="13725000" />
       <workItem from="1421394395429" duration="1035000" />
       <workItem from="1421409435934" duration="31643000" />
-      <workItem from="1422221274356" duration="19025000" />
+      <workItem from="1422221274356" duration="30016000" />
+      <workItem from="1422555601935" duration="15906000" />
+      <workItem from="1422829231957" duration="1585000" />
+      <workItem from="1423156330412" duration="51135000" />
+      <workItem from="1423676982758" duration="3149000" />
+      <workItem from="1423718981265" duration="2671000" />
+      <workItem from="1423771701476" duration="1000000" />
+      <workItem from="1423814883172" duration="11737000" />
+      <workItem from="1424032281555" duration="3941000" />
+      <workItem from="1424112457062" duration="2817000" />
+      <workItem from="1424283129429" duration="603000" />
+      <workItem from="1424416854333" duration="9395000" />
     </task>
-    <task id="LOCAL-00001" summary="9">
-      <created>1419067052610</created>
-      <option name="number" value="00001" />
+    <task id="LOCAL-00043" summary="fresh intel first on myt.">
+      <created>1423311435904</created>
+      <option name="number" value="00043" />
       <option name="project" value="LOCAL" />
-      <updated>1419067052610</updated>
+      <updated>1423311435904</updated>
     </task>
-    <task id="LOCAL-00002" summary="9">
-      <created>1419067148106</created>
-      <option name="number" value="00002" />
+    <task id="LOCAL-00044" summary="raven data take precedence over SS data for myt">
+      <created>1423311521432</created>
+      <option name="number" value="00044" />
       <option name="project" value="LOCAL" />
-      <updated>1419067148106</updated>
+      <updated>1423311521432</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00045" summary="avoid \n in player name">
+      <created>1423312436703</created>
+      <option name="number" value="00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1423312436703</updated>
+    </task>
+    <task id="LOCAL-00046" summary="mini and user lvl -&gt; 199">
+      <created>1423314607628</created>
+      <option name="number" value="00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1423314607628</updated>
+    </task>
+    <task id="LOCAL-00047" summary="try catch">
+      <created>1423315088106</created>
+      <option name="number" value="00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1423315088106</updated>
+    </task>
+    <task id="LOCAL-00048" summary="reduce line breaks coming from SS">
+      <created>1423315464789</created>
+      <option name="number" value="00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1423315464789</updated>
+    </task>
+    <task id="LOCAL-00049" summary="added risk support (not connected yet)&#10;added bulk mode">
+      <created>1423344479991</created>
+      <option name="number" value="00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1423344479991</updated>
+    </task>
+    <task id="LOCAL-00050" summary="bulk">
+      <created>1423345299097</created>
+      <option name="number" value="00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1423345299099</updated>
+    </task>
+    <task id="LOCAL-00051" summary="bulk">
+      <created>1423346002525</created>
+      <option name="number" value="00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1423346002526</updated>
+    </task>
+    <task id="LOCAL-00052" summary="bulk">
+      <created>1423346327307</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1423346327307</updated>
+    </task>
+    <task id="LOCAL-00053" summary="risk">
+      <created>1423425350579</created>
+      <option name="number" value="00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1423425350579</updated>
+    </task>
+    <task id="LOCAL-00054" summary="billions&#10;raven data first">
+      <created>1423426637646</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1423426637646</updated>
+    </task>
+    <task id="LOCAL-00055" summary="minor">
+      <created>1423426850456</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1423426850456</updated>
+    </task>
+    <task id="LOCAL-00056" summary="removed bulk">
+      <created>1423427377267</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1423427377267</updated>
+    </task>
+    <task id="LOCAL-00057" summary="similar (start)">
+      <created>1423429336747</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1423429336747</updated>
+    </task>
+    <task id="LOCAL-00058" summary="manual for beginners">
+      <created>1423429562210</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1423429562210</updated>
+    </task>
+    <task id="LOCAL-00059" summary="dev branch">
+      <created>1423677212539</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1423677212541</updated>
+    </task>
+    <task id="LOCAL-00060" summary="mongo connection">
+      <created>1423680018049</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1423680018049</updated>
+    </task>
+    <task id="LOCAL-00061" summary="manual">
+      <created>1423680908923</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1423680908923</updated>
+    </task>
+    <task id="LOCAL-00062" summary="url">
+      <created>1423681424843</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1423681424843</updated>
+    </task>
+    <task id="LOCAL-00063" summary="cache">
+      <created>1423816593883</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1423816593884</updated>
+    </task>
+    <task id="LOCAL-00064" summary="remove context">
+      <created>1423831718845</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1423831718845</updated>
+    </task>
+    <task id="LOCAL-00065" summary="remove">
+      <created>1423862001077</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1423862001078</updated>
+    </task>
+    <task id="LOCAL-00066" summary="manual">
+      <created>1423862321547</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1423862321547</updated>
+    </task>
+    <task id="LOCAL-00067" summary="1">
+      <created>1423862702362</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1423862702362</updated>
+    </task>
+    <task id="LOCAL-00068" summary="ma">
+      <created>1423862953937</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1423862953937</updated>
+    </task>
+    <task id="LOCAL-00069" summary="manual">
+      <created>1423863302642</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1423863302643</updated>
+    </task>
+    <task id="LOCAL-00070" summary="manual">
+      <created>1423863439871</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1423863439871</updated>
+    </task>
+    <task id="LOCAL-00071" summary="manual">
+      <created>1423863619950</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1423863619950</updated>
+    </task>
+    <task id="LOCAL-00072" summary="*">
+      <created>1423864665413</created>
+      <option name="number" value="00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1423864665413</updated>
+    </task>
+    <task id="LOCAL-00073" summary="settings">
+      <created>1423866839573</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1423866839573</updated>
+    </task>
+    <task id="LOCAL-00074" summary="adding settings per room">
+      <created>1423867157074</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1423867157074</updated>
+    </task>
+    <task id="LOCAL-00075" summary="manual">
+      <created>1423867689103</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1423867689104</updated>
+    </task>
+    <task id="LOCAL-00076" summary="set timer bug.">
+      <created>1423868167527</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1423868167527</updated>
+    </task>
+    <task id="LOCAL-00077" summary="test">
+      <created>1424032375113</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1424032375117</updated>
+    </task>
+    <task id="LOCAL-00078" summary="emoji">
+      <created>1424033246194</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1424033246194</updated>
+    </task>
+    <task id="LOCAL-00079" summary="emoji">
+      <created>1424033700314</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1424033700314</updated>
+    </task>
+    <task id="LOCAL-00080" summary="pilgrim ?">
+      <created>1424034142218</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1424034142218</updated>
+    </task>
+    <task id="LOCAL-00081" summary="*">
+      <created>1424034348231</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1424034348231</updated>
+    </task>
+    <task id="LOCAL-00082" summary="emoji">
+      <created>1424034762480</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1424034762480</updated>
+    </task>
+    <task id="LOCAL-00083" summary="x">
+      <created>1424035082230</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1424035082231</updated>
+    </task>
+    <task id="LOCAL-00084" summary="a">
+      <created>1424035255941</created>
+      <option name="number" value="00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1424035255941</updated>
+    </task>
+    <task id="LOCAL-00085" summary="war mode thingy">
+      <created>1424209599597</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1424209599600</updated>
+    </task>
+    <task id="LOCAL-00086" summary="war thingy">
+      <created>1424209834586</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1424209834586</updated>
+    </task>
+    <task id="LOCAL-00087" summary="war mode signs and help modifications">
+      <created>1424210090162</created>
+      <option name="number" value="00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1424210090162</updated>
+    </task>
+    <task id="LOCAL-00088" summary="war mode">
+      <created>1424210374947</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1424210374947</updated>
+    </task>
+    <task id="LOCAL-00089" summary="war">
+      <created>1424210630157</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1424210630158</updated>
+    </task>
+    <task id="LOCAL-00090" summary="war">
+      <created>1424210891074</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1424210891074</updated>
+    </task>
+    <task id="LOCAL-00091" summary="thats it with war mode">
+      <created>1424211090719</created>
+      <option name="number" value="00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1424211090719</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164603000" />
+    <option name="totallyTimeSpent" value="279533000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.46333334" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978904" sideWeight="0.71197915" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.71162045" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37869197" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28" sideWeight="0.32409382" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.056962024" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18229167" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.37869197" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18656716" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48222223" sideWeight="0.6759062" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -689,18 +1053,53 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="9" />
-    <option name="LAST_COMMIT_MESSAGE" value="9" />
+    <MESSAGE value="dev branch" />
+    <MESSAGE value="mongo connection" />
+    <MESSAGE value="url" />
+    <MESSAGE value="cache" />
+    <MESSAGE value="remove context" />
+    <MESSAGE value="remove" />
+    <MESSAGE value="1" />
+    <MESSAGE value="ma" />
+    <MESSAGE value="settings" />
+    <MESSAGE value="adding settings per room" />
+    <MESSAGE value="manual" />
+    <MESSAGE value="set timer bug." />
+    <MESSAGE value="test" />
+    <MESSAGE value="untest" />
+    <MESSAGE value="pilgrim ?" />
+    <MESSAGE value="*" />
+    <MESSAGE value="emoji" />
+    <MESSAGE value="x" />
+    <MESSAGE value="a" />
+    <MESSAGE value="war mode thingy" />
+    <MESSAGE value="war thingy" />
+    <MESSAGE value="war mode signs and help modifications" />
+    <MESSAGE value="war mode" />
+    <MESSAGE value="war" />
+    <MESSAGE value="thats it with war mode" />
+    <option name="LAST_COMMIT_MESSAGE" value="thats it with war mode" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/modules/adminBot.js</url>
+          <line>82</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="132" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
         <watch expression="headCells[1]" />
         <watch expression="worksheet.id" />
         <watch expression="data" />
+        <watch expression="players" />
+        <watch expression="line" />
+        <watch expression="this.insertDate.getTime()" language="JavaScript" />
+        <watch expression="d.getTime()" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>
@@ -709,10 +1108,18 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/Class.js">
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="616" max-vertical-offset="1241">
-          <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3978">
+          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
+          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
         </state>
       </provider>
     </entry>
@@ -720,11 +1127,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -751,7 +1157,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
           <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -759,50 +1164,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="680">
-          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3112" max-vertical-offset="3978">
-          <caret line="226" column="0" selection-start-line="226" selection-start-column="0" selection-end-line="226" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
-          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -829,7 +1194,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
           <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -837,11 +1201,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1768">
           <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
+    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="884">
           <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
@@ -868,7 +1231,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="204">
           <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -876,7 +1238,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1411">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -894,14 +1255,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.027960526" vertical-offset="0" max-vertical-offset="608">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/chuckJokes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1037">
-          <caret line="11" column="37" selection-start-line="11" selection-start-column="37" selection-end-line="11" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -934,77 +1287,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/players.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1938">
-          <caret line="89" column="36" selection-start-line="89" selection-start-column="36" selection-end-line="89" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/botBase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1034484" vertical-offset="792" max-vertical-offset="2431">
-          <caret line="57" column="27" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/Class.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.655172" vertical-offset="612" max-vertical-offset="1241">
-          <caret line="64" column="46" selection-start-line="64" selection-start-column="46" selection-end-line="64" selection-end-column="46" />
-          <folding>
-            <element signature="e#34#122#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="578">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/mongoData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.1034484" vertical-offset="1625" max-vertical-offset="2907">
-          <caret line="106" column="50" selection-start-line="106" selection-start-column="44" selection-end-line="106" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.137931" vertical-offset="1071" max-vertical-offset="1887">
-          <caret line="82" column="48" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8461537" vertical-offset="145" max-vertical-offset="680">
-          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/request/request.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1996" max-vertical-offset="21080">
           <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1012,30 +1298,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="6943" max-vertical-offset="8925">
           <caret line="438" column="24" selection-start-line="438" selection-start-column="24" selection-end-line="438" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
+    <entry file="file://$PROJECT_DIR$/node_modules/karma/node_modules/socket.io/node_modules/socket.io-client/components/learnboost-engine.io-client/lib/util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-26.965517" vertical-offset="3111" max-vertical-offset="4811">
-          <caret line="229" column="36" selection-start-line="229" selection-start-column="35" selection-end-line="229" selection-end-column="36" />
-          <folding />
+        <state vertical-scroll-proportion="-4.4492188" vertical-offset="3128" max-vertical-offset="4607">
+          <caret line="50" column="8" selection-start-line="50" selection-start-column="8" selection-end-line="50" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+    <entry file="file://$PROJECT_DIR$/AdminTests.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.148148" vertical-offset="0" max-vertical-offset="5185">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="32" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="70" max-vertical-offset="646">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bot.js">
+    <entry file="file://$PROJECT_DIR$/modules/Class.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2030" max-vertical-offset="9639">
-          <caret line="130" column="36" selection-start-line="130" selection-start-column="36" selection-end-line="130" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1292">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/q/q.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33203125" vertical-offset="9401" max-vertical-offset="33031">
+          <caret line="563" column="0" selection-start-line="563" selection-start-column="0" selection-end-line="564" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/underscore/underscore.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33203125" vertical-offset="1105" max-vertical-offset="21743">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/players.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="18.51724" vertical-offset="1642" max-vertical-offset="2125">
+          <caret line="65" column="42" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/chuckJokes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="1122">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="151" max-vertical-offset="663">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1044,41 +1362,144 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="799">
           <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="898" max-vertical-offset="15946">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1822" max-vertical-offset="2788">
+          <caret line="132" column="21" selection-start-line="132" selection-start-column="21" selection-end-line="132" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1941" max-vertical-offset="2533">
+          <caret line="124" column="27" selection-start-line="124" selection-start-column="19" selection-end-line="124" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test3.js">
+    <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
-          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="578">
+          <caret line="19" column="8" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1207" max-vertical-offset="4573">
+          <caret line="17" column="21" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
+          <folding>
+            <element signature="e#3875#4295#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2886" max-vertical-offset="3757">
+          <caret line="164" column="0" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/botBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1002" max-vertical-offset="2703">
+          <caret line="93" column="54" selection-start-line="93" selection-start-column="54" selection-end-line="93" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="709" max-vertical-offset="1207">
+          <caret line="55" column="12" selection-start-line="55" selection-start-column="12" selection-end-line="55" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-56.86207" vertical-offset="0" max-vertical-offset="2669">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.413794" vertical-offset="63" max-vertical-offset="1173">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        <state vertical-scroll-proportion="-8.827586" vertical-offset="849" max-vertical-offset="2040">
+          <caret line="65" column="26" selection-start-line="65" selection-start-column="26" selection-end-line="65" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+    <entry file="file://$PROJECT_DIR$/modules/bot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.206897" vertical-offset="0" max-vertical-offset="3417">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.862069" vertical-offset="0" max-vertical-offset="14280">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="47" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
+    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5151515" vertical-offset="255" max-vertical-offset="2380">
-          <caret line="32" column="34" selection-start-line="32" selection-start-column="34" selection-end-line="32" selection-end-column="34" />
+        <state vertical-scroll-proportion="-92.62069" vertical-offset="408" max-vertical-offset="5712">
+          <caret line="182" column="36" selection-start-line="182" selection-start-column="36" selection-end-line="182" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3448277" vertical-offset="0" max-vertical-offset="3196">
+          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.1981352" vertical-offset="357" max-vertical-offset="816">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="regexState">
+    <option name="map">
+      <map>
+        <entry key="flags" value="0" />
+        <entry key="mode" value="0" />
+        <entry key="regex" value="[Yy]es" />
+        <entry key="text" value="yes" />
+      </map>
+    </option>
   </component>
 </project>

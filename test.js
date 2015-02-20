@@ -58,11 +58,21 @@ b.mainSwitch('mymini Gamba 80m/20k/2000',{
     user_id:5
 });
 */
-b.mainSwitch('matched the real killers',{
+b.mainSwitch('mymini2 ady 4 3 3',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:1
 });
-setTimeout(function(){
+
+b.mainSwitch('set timer on',{
+    name:'MB 409.8m/109.7k/3.0k',
+    user_id:1
+});
+b.mainSwitch('time',{
+    name:'MB 409.8m/109.7k/3.0k',
+    user_id:1
+});
+
+/*setTimeout(function(){
     b.mainSwitch('128 ady 1 1 1',{
         name:'MB 409.8m/109.7k/3.0k',
         user_id:1
@@ -76,7 +86,7 @@ setTimeout(function(){
         user_id:1
     });
 
-},8000)
+},8000)*/
 
 /*
 b.mainSwitch('65 CharLiemanson  1.8m/1.7k/1.0k',{

@@ -27,6 +27,6 @@ var whenConnected=function(){
     b.mainSwitch('register 23 ady 2039');
 };
 
-var mongoData = require('./modules/mongoData.js')(process.env['MONGOLAB_URI'],false);
+var mongoData = require('./modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
 mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
