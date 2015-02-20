@@ -12,7 +12,8 @@ const _ = require('underscore');
 var Bot = require('./bot.js');
 var AdminBot = require('./adminBot.js');
 var fs = require('fs');
-var mongoData = require('./mongoData.js')(process.env['MONGOLAB_URI']);
+var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
+var roomPrefs = require('./data/roomPrefs.js');
 
 var BotsManager = Class.extend(function () {
 
@@ -29,7 +30,7 @@ console.log(options)
             this.timerInterval=setInterval(function(){this.onTimeTick()}.bind(this),1*60*1000);
         },
         onTimeTick: function(){
-            mongoData.getAllRoomPrefs().then(function(rooms){
+            roomPrefs.getAllRoomPrefs().then(function(rooms){
 
                try{ _.each(rooms,function(room){
                     if (room.warData.inWar){
@@ -39,7 +40,6 @@ console.log(options)
                             botObj.manager.onTimeTick(room);
                         }
                     }
-                    
                 }.bind(this));}
                 catch(e){console.warn('error',e);}
                 

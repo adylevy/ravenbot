@@ -1,16 +1,12 @@
 var mongoose = require('mongoose');
-var Class = require('./Class.js').Class;
+var Class = require('./../Class.js').Class;
 var Q = require('q');
-var Player = require('./player_cls.js');
-var Players = require('./players.js');
+var Players = require('./../players.js');
 var _ = require('underscore');
-const events = require('events');
+
 
 var Mongodata = Class.extend(function () {
 
-    var _privateFunc = function () {
-        console.log('private func');
-    }
 
     var Guild = mongoose.model('Guilds', {
         name: String, lastKnownIntel: String, players: [
@@ -26,16 +22,6 @@ var Mongodata = Class.extend(function () {
                 isDeleted: {type:Boolean, default:false}
             }
         ]
-    });
-
-    var RoomPrefs = mongoose.model('RoomPrefs', {
-        roomId: Number, guildId: String, warData: {
-            inWar: Boolean,
-            guildName: String,
-            warTime: Date
-
-        }, playersPrefs: [{id: Number, mini: String, risk:{type:Number, default:0}}],
-        settings:[]
     });
 
     var AppSettings = mongoose.model('AppSettings', {groups: [], guilds:[{
@@ -78,21 +64,6 @@ var Mongodata = Class.extend(function () {
             });
             return g;
         },
-        createRoomPrefs: function (roomId) {
-            var r = new RoomPrefs({
-                roomId: roomId,
-                warData: {
-                    inWar: false,
-                    guildName: '',
-                    warTime: null
-                },
-                playersPrefs: [],
-                settings:[]
-
-            });
-            return r;
-
-        },
         getGuildData: function (guildName, callback) {
             var that = this;
             Guild.find({name: guildName}, function (err, guilds) {
@@ -124,29 +95,7 @@ var Mongodata = Class.extend(function () {
             });
             return defered.promise;
         },
-        getRoomPrefs: function (roomId) {
-            var that = this;
-            var defered = Q.defer();
-            RoomPrefs.find({roomId: roomId}, function (err, rooms) {
-                var item;
-                if (rooms.length == 0) {
-                    item = that.createRoomPrefs(roomId);
-                } else {
-                    item = rooms[0];
-                }
-                defered.resolve(item);
-            });
-            return defered.promise;
-        },
-        getAllRoomPrefs: function(){
-            var that = this;
-            var defered = Q.defer();
-            RoomPrefs.find({}, function (err, rooms) {
-                defered.resolve(rooms);
-            });
-            
-            return defered.promise;
-        },
+
         reBuildGuilds:function(){
             this.getSettings().then(function(settings){
                 settings.guilds=[];
