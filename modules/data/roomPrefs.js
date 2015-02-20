@@ -77,10 +77,10 @@ module.exports = function () {
                     }
                     item._save = item.save;
                     item._cacheKey=cacheKey;
-                    item.save = function () {
+                    item.save = function (cb) {
                         console.log('SAVING !!!', this);
                         myCache.set(this._cacheKey,this,600);
-                        this._save();
+                        this._save(cb);
                     };
 
                     myCache.set(cacheKey,item,600);
