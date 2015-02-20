@@ -804,7 +804,7 @@ var Bot = BotBase.extend(function () {
 
                     var d = new Date();
                     var diff = d - roomData.warData.warTime;
-                    var timerSettings = roomPrefs.getRoomSetting(roomData, 'timer');
+                    var timerSettings = roomPrefs.getRoomSettingFromRoomPref(roomData, 'timer');
                     var diffInSeconds = Math.round(diff / 1000);
                     var diffInMinutes = Math.round(diffInSeconds / 60);
                     if (diffInMinutes >= 60) {
