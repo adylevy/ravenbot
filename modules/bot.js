@@ -311,7 +311,7 @@ var Bot = BotBase.extend(function () {
                         roomPrefs.getRoomPlayer(this.roomId, msg.user_id).then(function (player) {
 
                             var msg = [];
-                            if (player == undefined) {
+                            if (player == undefined || player.minis.length==0) {
                                 this.postMessage('you don\'t have any toons set.')
                                 return;
                             } else {
