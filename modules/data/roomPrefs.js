@@ -65,7 +65,7 @@ module.exports = function () {
             var cacheItem = myCache.get(cacheKey);
             if (cacheItem[cacheKey]){
                 console.log('room pref from cache');
-                deferred.resolve(cacheItem[cacheKey]);
+                defered.resolve(cacheItem[cacheKey]);
             }else {
 
                 RoomPrefs.find({roomId: roomId}, function (err, rooms) {
