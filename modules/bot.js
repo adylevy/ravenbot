@@ -272,7 +272,7 @@ var Bot = BotBase.extend(function () {
                             try {
 
                                 if (roomData.warData.inWar) {
-                                    var p = roomPrefs.getRoomPlayerFromRoomPref(msg.user_id, roomData);
+                                    var p = roomPrefs.getRoomPlayerFromRoomPref(roomData,msg.user_id);
                                     var minis = p == undefined ? [] : p.minis;
                                     var mini = _.find(minis, function (mini) {
                                         return mini.idx == idx;
