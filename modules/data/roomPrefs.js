@@ -7,6 +7,11 @@ var Q = require('q');
 var _ = require('underscore');
 require('./mongoData.js')(process.env['MONGOLAB_URI']);
 
+var NodeCache = require( "node-cache" );
+var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time
+
+
+
 module.exports = function () {
 
     var RoomPrefs = mongoose.model('RoomPrefs', {
@@ -56,15 +61,32 @@ module.exports = function () {
     return {
         getRoomPrefs: function (roomId) {
             var defered = Q.defer();
-            RoomPrefs.find({roomId: roomId}, function (err, rooms) {
-                var item;
-                if (rooms.length == 0) {
-                    item = createRoomPrefs(roomId);
-                } else {
-                    item = rooms[0];
-                }
-                defered.resolve(item);
-            });
+            var cacheKey='room_'+roomId;
+            var cacheItem = myCache.get(cacheKey);
+            if (cacheItem[cacheKey]){
+                console.log('room pref from cache');
+                deferred.resolve(cacheItem[cacheKey]);
+            }else {
+
+                RoomPrefs.find({roomId: roomId}, function (err, rooms) {
+                    var item;
+                    if (rooms.length == 0) {
+                        item = createRoomPrefs(roomId);
+                    } else {
+                        item = rooms[0];
+                    }
+                    item._save = item.save;
+                    item._cacheKey=cacheKey;
+                    item.save = function () {
+                        console.log('SAVING !!!', this);
+                        myCache.set(this._cacheKey,this,600);
+                        this._save();
+                    };
+
+                    myCache.set(cacheKey,item,600);
+                    defered.resolve(item);
+                });
+            }
             return defered.promise;
         },
         getAllRoomPrefs: function () {
