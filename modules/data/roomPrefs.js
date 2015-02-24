@@ -129,6 +129,7 @@ module.exports = function () {
             }
             return player;
         }, updatePlayerRisk: function (roomId, userId, name, risk) {
+            var defered= Q.defer();
             this.getRoomPrefs(roomId).then(function (roomPref) {
 
                     var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
@@ -140,29 +141,13 @@ module.exports = function () {
 
                     roomPref.playersPrefs = players;
                     roomPref.save();
-                    this.postMessage('updated risk for ' + name + ' to ' + risk);
+                    defered.resolve('updated risk for ' + name + ' to ' + risk);
                 }.bind(this)
             );
-        }, updatePlayerRisk: function (roomId,userId, name, risk) {
-            this.getRoomPrefs(roomId).then(function (roomPref) {
-
-                    var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
-                    var players = _.filter(roomPref.playersPrefs || [], function (el) {
-                        return el.id != userId;
-                    });
-                    player.risk = risk;
-                    players.push(player);
-
-                    roomPref.playersPrefs = players;
-                    roomPref.save();
-                    this.postMessage('updated risk for ' + name + ' to ' + risk);
-                }.bind(this)
-            );
-
-        }
-        ,
+            return defered.promise;
+        },
         addUpdateMini: function (roomId,userId, idx, miniPlayer) {
-
+            var defered = Q.defer();
             this.getRoomPrefs(roomId).then(function (roomPref) {
                 var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
                 var players = _.filter(roomPref.playersPrefs || [], function (el) {
@@ -176,9 +161,10 @@ module.exports = function () {
                 roomPref.playersPrefs = players;
 
                 roomPref.save();
-                this.postMessage('updated Mini #' + idx + ' : ' + miniPlayer);
+                defered.resolve('updated Mini #' + idx + ' : ' + miniPlayer);
             }.bind(this))
             ;
+            return defered.promise;
         }
         ,
         getRoomSettingFromRoomPref: function (roomPref, settingName) {

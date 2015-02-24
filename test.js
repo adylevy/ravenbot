@@ -58,12 +58,12 @@ b.mainSwitch('mymini Gamba 80m/20k/2000',{
     user_id:5
 });
 */
-b.mainSwitch('mymini2 ady 4 3 3',{
+b.mainSwitch('myrisk 3',{
     name:'MB 409.8m/109.7k/3.0k',
-    user_id:1
+    user_id:18289121
 });
-
-b.mainSwitch('set timer on',{
+/*
+b.mainSwitch('get timer',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:1
 });
@@ -71,7 +71,7 @@ b.mainSwitch('time',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:1
 });
-
+*/
 /*setTimeout(function(){
     b.mainSwitch('128 ady 1 1 1',{
         name:'MB 409.8m/109.7k/3.0k',

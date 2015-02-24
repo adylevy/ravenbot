@@ -301,8 +301,10 @@ var Bot = BotBase.extend(function () {
                         var miniP = new Player('199 ' + match[2]);
                         if (miniP.isPlayer()) {
                             console.log('adding mini : ' + miniP.toString().substr(4));
-                            roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4));
-                            this.postMessage('Mini #'+idx+' was updated');
+                            roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4)).then(function(msg){
+                                this.postMessage(msg);
+                            }.bind(this));
+
                         } else {
                             this.postMessage('can\'t get Mini stats, try something like mymini Name 1m/1k/1k');
                         }
@@ -334,7 +336,10 @@ var Bot = BotBase.extend(function () {
                             if (risk > 10) {
                                 risk = 10;
                             }
-                            this.updatePlayerRisk(msg.user_id, msg.name, risk);
+                            roomPrefs.updatePlayerRisk(self.roomId,msg.user_id, msg.name, risk).then(function(retMsg){
+                                this.postMessage(retMsg);
+                                
+                            }.bind(this));
                         } else {
                             this.getRoomPrefs().then(function (roomPref) {
                                 var player = _.find(roomPref.playersPrefs || [], function (p) {
@@ -623,6 +628,16 @@ var Bot = BotBase.extend(function () {
                         {'all': 0.7, 'line1': .4, 'line2': .6, 'line3': .4},
                         {'all': 0.5, 'line1': .35, 'line2': .5, 'line3': .3},
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
+                    ];
+                    //classic war risks
+                     riskDef = [
+                        {'all': 1.2, 'line1': .85, 'line2':.3, 'line3':.2},
+                        {'all': 1.1, 'line1': .8, 'line2':.3, 'line3': .2},
+                        {'all': 1, 'line1': .75, 'line2':.3, 'line3': .2},
+                        {'all': 0.9, 'line1': .7, 'line2': .3, 'line3': .2},
+                        {'all': 0.7, 'line1': .65, 'line2': .3, 'line3': .2},
+                        {'all': 0.5, 'line1': .6, 'line2': .3, 'line3': .2},
+                        {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
                     ];
 
                     var riskFactor = riskDef[0];
