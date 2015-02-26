@@ -201,7 +201,7 @@ var Bot = BotBase.extend(function () {
 
                     if (/^warstatus$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
-                            console.log('war status', roomData);
+                        //    console.log('war status', roomData);
                             this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
                         }.bind(this));
                     }
@@ -300,7 +300,7 @@ var Bot = BotBase.extend(function () {
                         var idx = match[1] == undefined ? 1 : Number(match[1]);
                         var miniP = new Player('199 ' + match[2]);
                         if (miniP.isPlayer()) {
-                            console.log('adding mini : ' + miniP.toString().substr(4));
+                          //  console.log('adding mini : ' + miniP.toString().substr(4));
                             roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4)).then(function(msg){
                                 this.postMessage(msg);
                             }.bind(this));
@@ -374,7 +374,7 @@ var Bot = BotBase.extend(function () {
                     if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
-                                console.log('removing user');
+                               // console.log('removing user');
                                 this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
@@ -505,7 +505,7 @@ var Bot = BotBase.extend(function () {
                 tellGifJoke: function (theme) {
                     var self = this;
                     theme = typeof(theme) == 'string' ? theme : 'minions';
-                    console.log('gif ', theme);
+                  //  console.log('gif ', theme);
                     giphy.random(encodeURI(theme), function (err, response) {
                         if (err == null) {
                             self.postMessage('', response.data.image_url);
@@ -590,7 +590,7 @@ var Bot = BotBase.extend(function () {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
-                    console.log('remove', lvl, username);
+                 //   console.log('remove', lvl, username);
                     mongoData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
@@ -618,7 +618,7 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    console.log('find user targets ...', user.name, risk, user.toString());
+                    //console.log('find user targets ...', user.name, risk, user.toString());
 
                     var riskDef = [
                         {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .7},
@@ -651,8 +651,16 @@ var Bot = BotBase.extend(function () {
                         try {
                             //  console.log('got parsed intel',guildData);
                             var candidates = [];
-
-                            var uniqData = _.uniq(guildData, function (player) {
+                            var uniqData = _.filter(guildData,function(player){
+                                if (player.origin=='R'){return true;}
+                                var playerKey=player.name + '_' + Math.floor(player.lvl / 10);
+                                var ravenPlayerExists = _.find(guildData,function(p){
+                                    var pKey=p.name + '_' + Math.floor(p.lvl / 10);
+                                    return pKey==playerKey && p.origin!='R';
+                                });
+                                return ravenPlayerExists==undefined;
+                            });
+                            uniqData = _.uniq(uniqData, function (player) {
                                 return player.name + '_' + Math.floor(player.lvl / 10);
                             });
 
@@ -693,6 +701,7 @@ var Bot = BotBase.extend(function () {
                             });
 
                             this.postMessage(msg.join('\n'));
+                          //  console.log(msg);
                         }
                         catch (ee) {
                             console.log('------->', ee);
@@ -719,7 +728,7 @@ var Bot = BotBase.extend(function () {
                 getGuildData: function (guildName) {
                     var defered = Q.defer();
                     var self = this;
-                    console.log('looking for data : ', guildName);
+                    //console.log('looking for data : ', guildName);
                     sheetsData.getGuildData(guildName).then(function (data) {
                         //   console.log('got data from SS',data);
                         /*{
@@ -740,7 +749,7 @@ var Bot = BotBase.extend(function () {
                 enterWarMode: function (guildName, ssData, ownData) {
                     //   console.log('enter war mode', arguments);
                     this.getRoomPrefs().then(function (roomData) {
-                        console.log('enter war mode with room data', roomData);
+                      //  console.log('enter war mode with room data', roomData);
                         try {
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;

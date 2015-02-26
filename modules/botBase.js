@@ -54,9 +54,9 @@ var BotBase = Class.extend(function () {
 
                 },
                 postMessage: function (_message, img) {
-                    console.log('base post message');
+                  //  console.log('base post message');
                     var msgs = this.getMessagesArray(_message.replace(/\n/g, '\n'));
-                    console.log(msgs);
+                  //  console.log(msgs);
                     this.postMessageArr(msgs, img);
                 },
                 postMessageArr: function (msgArr, img) {
