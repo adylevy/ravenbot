@@ -99,6 +99,9 @@ var Players = Class.extend(function () {
                 intel=intel.concat(newIntel);
             }
             if (oldIntel.length!=0){
+                if (newIntel.length!=0) {
+                    intel.push('');
+                }
                 intel.push('Old intel:');
                 intel=intel.concat(oldIntel);
             }

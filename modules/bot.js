@@ -201,7 +201,7 @@ var Bot = BotBase.extend(function () {
 
                     if (/^warstatus$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
-                            console.log('war status', roomData);
+                            //    console.log('war status', roomData);
                             this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
                         }.bind(this));
                     }
@@ -272,7 +272,7 @@ var Bot = BotBase.extend(function () {
                             try {
 
                                 if (roomData.warData.inWar) {
-                                    var p = roomPrefs.getRoomPlayerFromRoomPref(roomData,msg.user_id);
+                                    var p = roomPrefs.getRoomPlayerFromRoomPref(roomData, msg.user_id);
                                     var minis = p == undefined ? [] : p.minis;
                                     var mini = _.find(minis, function (mini) {
                                         return mini.idx == idx;
@@ -300,8 +300,8 @@ var Bot = BotBase.extend(function () {
                         var idx = match[1] == undefined ? 1 : Number(match[1]);
                         var miniP = new Player('199 ' + match[2]);
                         if (miniP.isPlayer()) {
-                            console.log('adding mini : ' + miniP.toString().substr(4));
-                            roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4)).then(function(msg){
+                            //  console.log('adding mini : ' + miniP.toString().substr(4));
+                            roomPrefs.addUpdateMini(this.roomId, msg.user_id, idx, miniP.toString().substr(4)).then(function (msg) {
                                 this.postMessage(msg);
                             }.bind(this));
 
@@ -313,7 +313,7 @@ var Bot = BotBase.extend(function () {
                         roomPrefs.getRoomPlayer(this.roomId, msg.user_id).then(function (player) {
 
                             var msg = [];
-                            if (player == undefined || player.minis.length==0) {
+                            if (player == undefined || player.minis.length == 0) {
                                 this.postMessage('you don\'t have any toons set.')
                                 return;
                             } else {
@@ -336,9 +336,9 @@ var Bot = BotBase.extend(function () {
                             if (risk > 10) {
                                 risk = 10;
                             }
-                            roomPrefs.updatePlayerRisk(self.roomId,msg.user_id, msg.name, risk).then(function(retMsg){
+                            roomPrefs.updatePlayerRisk(self.roomId, msg.user_id, msg.name, risk).then(function (retMsg) {
                                 this.postMessage(retMsg);
-                                
+
                             }.bind(this));
                         } else {
                             this.getRoomPrefs().then(function (roomPref) {
@@ -374,7 +374,7 @@ var Bot = BotBase.extend(function () {
                     if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
-                                console.log('removing user');
+                                // console.log('removing user');
                                 this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
@@ -403,9 +403,9 @@ var Bot = BotBase.extend(function () {
                             //  console.log(roomData);
                             if (roomData.warData.inWar) {
                                 this.insertOwnData(roomData.warData.guildName, usersToAdd, msg.name, self.roomId, msg.user_id);
-                            }else{
+                            } else {
                                 this.postMessage('Not in war at the moment, cant add users.')
-                                
+
                             }
                         }.bind(this));
 
@@ -505,7 +505,7 @@ var Bot = BotBase.extend(function () {
                 tellGifJoke: function (theme) {
                     var self = this;
                     theme = typeof(theme) == 'string' ? theme : 'minions';
-                    console.log('gif ', theme);
+                    //  console.log('gif ', theme);
                     giphy.random(encodeURI(theme), function (err, response) {
                         if (err == null) {
                             self.postMessage('', response.data.image_url);
@@ -590,7 +590,7 @@ var Bot = BotBase.extend(function () {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
-                    console.log('remove', lvl, username);
+                    //   console.log('remove', lvl, username);
                     mongoData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
@@ -618,7 +618,7 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    console.log('find user targets ...', user.name, risk, user.toString());
+                    //console.log('find user targets ...', user.name, risk, user.toString());
 
                     var riskDef = [
                         {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .7},
@@ -630,10 +630,10 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
                     //classic war risks
-                     riskDef = [
-                        {'all': 1.2, 'line1': .8, 'line2':.5, 'line3':.5},
-                        {'all': 1.1, 'line1': .75, 'line2':.5, 'line3': .5},
-                        {'all': 1, 'line1': .7, 'line2':.5, 'line3': .5},
+                    riskDef = [
+                        {'all': 1.2, 'line1': .8, 'line2': .5, 'line3': .5},
+                        {'all': 1.1, 'line1': .75, 'line2': .5, 'line3': .5},
+                        {'all': 1, 'line1': .7, 'line2': .5, 'line3': .5},
                         {'all': 0.9, 'line1': .65, 'line2': .5, 'line3': .5},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
@@ -648,58 +648,92 @@ var Bot = BotBase.extend(function () {
                     }
 
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
-                        try {
-                            //  console.log('got parsed intel',guildData);
-                            var candidates = [];
+                            try {
+                                //  console.log('got parsed intel',guildData);
+                                var candidates = [];
 
-                            var uniqData = _.uniq(guildData, function (player) {
-                                return player.name + '_' + Math.floor(player.lvl / 10);
-                            });
-
-                            _.each(uniqData, function (player) {
-                                if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
-                                    var line1 = user.def / player.def;
-                                    var line2 = user.eqDef / player.eqDef;
-                                    var line3 = user.heroDef / player.heroDef;
-
-                                    var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
-                                    // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
-                                    if (all >= riskFactor.all && line1 >= riskFactor.line1 && line2 >= riskFactor.line2 && line3 >= riskFactor.line3) {
-                                        player.rank = all;
-                                        candidates.push(player);
-                                        // console.log(player.name,all)
-                                    } else {
-                                        //  console.log(player,all,line1,line2,line3);
+                                var dups = {};
+                                var noDups = [];
+                                _.each(guildData, function (player) {
+                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10) ;
+                                        var equiv = _.find(guildData, function (p) {
+                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin!=player.origin;
+                                        });
+                                        if (equiv != undefined) {
+                                            dups[playerKey]=dups[playerKey]||[];
+                                            dups[playerKey].push(player);
+                                        }else{
+                                            noDups.push(player);
+                                        }
                                     }
-                                }
-                            });
+                                );
+                                _.each(dups,function(dup){
+                                   var p1=dup[0];
+                                    var p2=dup[1];
+                                    if (p1.lvl>p2.lvl || (p1.isFresh()&& !p2.isFresh()) || (p1.lvl==p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin=='R' && p2.origin=='SS')){
+                                        noDups.push(p1);
+                                    }else{
+                                        noDups.push(p2);
+                                    }
+                                })
+                            //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
 
-                            var msg = [];
-                            if (candidates.length == 0) {
-                                msg.push('Could not find targets for: ' + user.name);
-                            } else {
-                                msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
+                                //get all dups
+                                //remove dups
+                                //iterate on dups and add best one to collection45qw
+
+                                uniqData = _.uniq(noDups, function (player) {
+                                    return player.name + '_' + Math.floor(player.lvl / 10);
+                                });
+
+                                _.each(uniqData, function (player) {
+                                    if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
+                                        var line1 = user.def / player.def;
+                                        var line2 = user.eqDef / player.eqDef;
+                                        var line3 = user.heroDef / player.heroDef;
+
+                                        var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
+                                        // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
+                                        if (all >= riskFactor.all && line1 >= riskFactor.line1 && line2 >= riskFactor.line2 && line3 >= riskFactor.line3) {
+                                            player.rank = all;
+                                            candidates.push(player);
+                                            // console.log(player.name,all)
+                                        } else {
+                                            //  console.log(player,all,line1,line2,line3);
+                                        }
+                                    }
+                                });
+
+                                var msg = [];
+                                if (candidates.length == 0) {
+                                    msg.push('Could not find targets for: ' + user.name);
+                                } else {
+                                    msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
+
+                                }
+                                candidates = _.sortBy(candidates, function (player) {
+                                    return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
+                                }).reverse();
+                               // console.log(candidates);
+                                candidates = candidates.slice(0, 5);
+                                _.each(candidates, function (candidate) {
+                                    var crank = candidate.rank;
+                                    var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
+                                    msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
+                                });
+
+                                this.postMessage(msg.join('\n'));
+                             //   console.log(msg);
+                            }
+                            catch
+                                (ee) {
+                                console.log('------->', ee);
+                                console.trace();
 
                             }
-                            candidates = _.sortBy(candidates, function (player) {
-                                return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
-                            }).reverse();
-
-                            candidates = candidates.slice(0, 5);
-                            _.each(candidates, function (candidate) {
-                                var crank = candidate.rank;
-                                var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
-                            });
-
-                            this.postMessage(msg.join('\n'));
-                        }
-                        catch (ee) {
-                            console.log('------->', ee);
-                            console.trace();
-
-                        }
-                    }.bind(this));
+                        }.bind(this)
+                    )
+                    ;
 
                 },
                 getParsedIntelForGuild: function (guildName) {
@@ -715,11 +749,12 @@ var Bot = BotBase.extend(function () {
                         });
                     }.bind(this));
                     return defered.promise;
-                },
+                }
+                ,
                 getGuildData: function (guildName) {
                     var defered = Q.defer();
                     var self = this;
-                    console.log('looking for data : ', guildName);
+                    //console.log('looking for data : ', guildName);
                     sheetsData.getGuildData(guildName).then(function (data) {
                         //   console.log('got data from SS',data);
                         /*{
@@ -735,12 +770,13 @@ var Bot = BotBase.extend(function () {
                     });
                     return defered.promise;
 
-                },
+                }
+                ,
 
                 enterWarMode: function (guildName, ssData, ownData) {
                     //   console.log('enter war mode', arguments);
                     this.getRoomPrefs().then(function (roomData) {
-                        console.log('enter war mode with room data', roomData);
+                        //  console.log('enter war mode with room data', roomData);
                         try {
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;
@@ -756,7 +792,8 @@ var Bot = BotBase.extend(function () {
                         }
                     }.bind(this));
 
-                },
+                }
+                ,
                 sendGuildTargetsUnified: function (guildName) {
                     this.getParsedIntelForGuild(guildName).then(function (guildData) {
                         try {
@@ -787,7 +824,8 @@ var Bot = BotBase.extend(function () {
                         }
                     }.bind(this));
 
-                },
+                }
+                ,
                 sendGuildTargets: function (msg, guildName, ssData, ownData, all) {
                     //   console.log('send guild targets',arguments);
                     msg = msg || [];
@@ -814,7 +852,8 @@ var Bot = BotBase.extend(function () {
 
                     this.postMessage(msg.join('\n'));
 
-                },
+                }
+                ,
 
                 onTimeTick: function (roomData) {
 

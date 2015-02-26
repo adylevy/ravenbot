@@ -49,7 +49,7 @@ function getSpreadsheet(){
 function loadDataFromSS(firstLetter) {
     var deferred = Q.defer();
     loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
-        console.log('login to google success');
+        //console.log('login to google success');
         var guildsData = [];
         var ctr = 0;
         //todo - refactor to 2 loops, 1 get needed sheets and 2nd get their rows (can be done with Q.all)
@@ -113,7 +113,7 @@ function getSheetColumns(worksheet) {
     var cellRange = ('A1:' + String.fromCharCode(64 + Number(worksheet.colCount)) + '1');
     var minRow=1;
     var maxRow=1;
-    console.log(cellRange);
+    //console.log(cellRange);
     worksheet.cells({
         key: sheetKey,
         worksheet: worksheet.id,
@@ -126,8 +126,8 @@ function getSheetColumns(worksheet) {
         if (err){
             deferred.reject(err);
         }else{
-            console.log(cells.cells);
-            console.log('---');
+            //console.log(cells.cells);
+            //console.log('---');
             deferred.resolve(cells.cells);
         }
     });
@@ -166,7 +166,7 @@ function parseRow(row, headCells) {
 function getData(guildName, callback) {
     var deferred = Q.defer();
     guildName = guildName.toLowerCase();
-    console.log('sheets get data:',guildName);
+    //console.log('sheets get data:',guildName);
     //var len=_sheetInfo.worksheets.length;
     //console.log('running over '+len+' sheets');
     // postMessage('looking for ' +guildName);
