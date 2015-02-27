@@ -114,7 +114,6 @@ var Players = Class.extend(function () {
 }());
 
 module.exports = function (options) {
-    console.log('pre const')
     var md = new Players(options);
     return md;
 };
