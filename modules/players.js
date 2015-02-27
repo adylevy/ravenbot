@@ -65,7 +65,8 @@ var Players = Class.extend(function () {
                 var newP=new Player();
                 newP.create(p0.lvl,p0.name,p0.def,p0.eqDef,p0.heroDef);
 
-                newP.insertBy=p0.insertedByGuild;
+                newP.insertedByGuild=p0.insertedByGuild;
+                newP.insertedByUser=p0.insertedByUser;
                 newP.insertDate=p0.date;
                 newP.origin='R';
                 players.push(newP);

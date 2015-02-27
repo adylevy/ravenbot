@@ -142,7 +142,7 @@ var AdminBot = BotBase.extend(function () {
                             var playersCls = new Players();
                             var players = playersCls.getPlayerObjFromDBPlayers(guild.players || []);
                             _.each(players,function(player){
-                                retMsg.push(player.toString()+' '+player.insertedByGuild+ ' '+player.insertedByUser + player.date);
+                                retMsg.push(player.toString()+' '+player.insertedByGuild+ ' '+player.insertedByUser + ' '+player.insertDate);
                             });
                             this.postMessage(retMsg.join('\n'));
                         }.bind(this));
