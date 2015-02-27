@@ -62,7 +62,11 @@ module.exports = function () {
                     item._save = item.save;
                     item._cacheKey = cacheKey;
                     item.save = function (cb) {
-                        myCache.set(this._cacheKey, this, 600);
+                        if (this.isDeleted){
+                            myCache.del(this._cacheKey);
+                        }else {
+                            myCache.set(this._cacheKey, this, 600);
+                        }
                         this._save(cb);
                     };
                     myCache.set(cacheKey, item, 600);
