@@ -141,8 +141,10 @@ var AdminBot = BotBase.extend(function () {
                             var retMsg=[];
                             var playersCls = new Players();
                             var players = playersCls.getPlayerObjFromDBPlayers(guild.players || []);
+                            retMsg.push(guildName+':')
                             _.each(players,function(player){
-                                retMsg.push(player.toString()+' '+player.insertedByGuild+ ' '+player.insertedByUser + ' '+player.insertDate);
+                                 var inserted=new Player('199 '+player.insertedByUser);
+                                retMsg.push(player.toString()+' '+player.insertedByGuild+ ' '+ inserted.name + ' '+player.insertDate.getDate());
                             });
                             this.postMessage(retMsg.join('\n'));
                         }.bind(this));
