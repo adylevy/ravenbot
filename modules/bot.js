@@ -162,9 +162,7 @@ var Bot = BotBase.extend(function () {
                         if (regexmatch != null) {
                             var guildName = regexmatch[2];
                             if (regexmatch[1] == 'new') {
-                                var g = mongoData.createNewGuild(guildName);
-                                g.save();
-                                self.enterWarMode(guildName, null, null, false);
+                               self.enterWarMode(guildName, null, null, false);
                             } else {
                                 self.getGuildData(guildName).then(function (data) {
                                     var guild = data.foundGuild;
