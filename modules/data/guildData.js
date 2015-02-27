@@ -52,7 +52,7 @@ module.exports = function () {
             if (cacheItem[cacheKey]) {
                 callback(cacheItem[cacheKey]);
             } else {
-                Guild.find({name: guildName, isDeleted: false}, function (err, guilds) {
+                Guild.find({$or: [{name: guildName, isDeleted: { $exists: false }},{name: guildName,isDeleted: false}]}, function (err, guilds) {
                     var item;
                     if (guilds.length == 0) {
                         item = createNewGuild(guildName);

@@ -768,7 +768,7 @@ var Bot = BotBase.extend(function () {
                             defered.resolve(data);
                         }.bind(this));
 
-                    });
+                    }.bind(this));
                     return defered.promise;
 
                 }
