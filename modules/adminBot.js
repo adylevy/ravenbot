@@ -133,7 +133,7 @@ var AdminBot = BotBase.extend(function () {
                     if (showRgx.test(txt)) {
                         var mtches = showRgx.exec(txt);
                         var guildname=mtches[1];
-                        guildData.getGuildData(guildname).then(function(guild){
+                        guildData.getGuildData(guildname,function(guild){
                             if (guild.isNew){
                                 this.postMessage("Can't find guild in DB");
                                 return;
