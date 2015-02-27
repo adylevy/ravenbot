@@ -79,7 +79,7 @@ module.exports = function () {
         },
         removeGuild: function (guildName, deletingUser) {
             var defered = Q.defer();
-            this.getGuildData(guildname, function (guild) {
+            this.getGuildData(guildName, function (guild) {
                 if (guild.isNew) {
                     defered.resolve('Guild not found in DB');
                     return;

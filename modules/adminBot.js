@@ -125,7 +125,7 @@ var AdminBot = BotBase.extend(function () {
                         var mtches = removeRgx.exec(txt);
                         var guildname = mtches[1];
                         guildData.removeGuild(guildname, msg.name).then(function (msg) {
-                            this.postmessage(msg);
+                            this.postMessage(msg);
                         }.bind(this))
                     }
 

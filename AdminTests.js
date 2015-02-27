@@ -22,7 +22,10 @@ var whenConnected=function(){
     var b=new AdminBot({},11090615);
    //b.mainSwitch('set 9508170 TRK 466-154-270');
   //  b.mainSwitch('list');
-    b.mainSwitch('show the real killers');
+  //  b.mainSwitch('show the real killers');
+    b.mainSwitch('remove ady',{
+        name:'me', user_id:1
+    });
   //  b.mainSwitch('register 23 ady');
   //  b.mainSwitch('register 23 ady 2039');
 };
