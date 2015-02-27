@@ -123,8 +123,8 @@ var AdminBot = BotBase.extend(function () {
                     var removeRgx = /^[rR]emove\s(.*)/;
                     if (removeRgx.test(txt)) {
                         var mtches = removeRgx.exec(txt);
-                        var guildname=mtches[1];
-                        guildData.removeGuild(guildname,msg.name).then(function(msg){
+                        var guildname = mtches[1];
+                        guildData.removeGuild(guildname, msg.name).then(function (msg) {
                             this.postmessage(msg);
                         }.bind(this))
                     }
@@ -132,24 +132,34 @@ var AdminBot = BotBase.extend(function () {
                     var showRgx = /^[sS]how\s(.*)/;
                     if (showRgx.test(txt)) {
                         var mtches = showRgx.exec(txt);
-                        var guildname=mtches[1];
-                        guildData.getGuildData(guildname,function(guild){
-                            if (guild.isNew){
+                        var guildname = mtches[1];
+                        guildData.getGuildData(guildname, function (guild) {
+                            if (guild.isNew) {
                                 this.postMessage("Can't find guild in DB");
                                 return;
                             }
-                            var retMsg=[];
-                            var playersCls = new Players();
-                            var players = playersCls.getPlayerObjFromDBPlayers(guild.players || []);
-                            retMsg.push(guild.name+':')
-                            _.each(players,function(player){
-                                 var inserted=new Player('199 '+player.insertedByUser);
-                                retMsg.push(player.toString()+' '+player.insertedByGuild+ ' '+ inserted.name + ' '+player.insertDate.getDate());
-                            });
-                            this.postMessage(retMsg.join('\n'));
+
+                            mongoData.getSettings().then(function (settings) {
+
+                                var guilds={};
+                                _.each(settings.guilds, function (guild) {
+                                    guilds[guild.roomId]= guild.guildName + ' / ' + guild.guildId;
+                                });
+                                var retMsg = [];
+                                var playersCls = new Players();
+                                var players = playersCls.getPlayerObjFromDBPlayers(guild.players || []);
+                                retMsg.push(guild.name + ':')
+                                _.each(players, function (player) {
+                                    var inserted = new Player('199 ' + player.insertedByUser);
+                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' + inserted.name + '] [' +(guilds[player.insertedByGuild] || player.insertedByGuild) +']');
+                                });
+                                this.postMessage(retMsg.join('\n'));
+                            }.bind(this));
+
+
                         }.bind(this));
                     }
-                    
+
                 },
 
                 showHelp: function () {
@@ -159,7 +169,7 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('register roomId Abbr GuildName - register room');
                     helpMsg.push('set roomId Abbr GuildName - update room info');
                     helpMsg.push('unregister roomId - unreg room');
-                  //  helpMsg.push('stats - Raven statistics');
+                    //  helpMsg.push('stats - Raven statistics');
                     helpMsg.push('list - show all rooms registered');
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
