@@ -40,6 +40,7 @@ module.exports = function () {
                 action: String,
                 date: Date.now()
             });
+            a.save();
             
         }
     };
