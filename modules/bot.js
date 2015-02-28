@@ -207,7 +207,7 @@ var Bot = BotBase.extend(function () {
 
                     this.jokesHandler(txt);
 
-                    if (/^myt$/.test(txt) || /^my\stargets$/.test(txt)) {
+                    if (/^myt$/.test(txt) || /^my\stargets$/.test(txt) || /^nut/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
                                 if (roomData.warData.inWar) {
