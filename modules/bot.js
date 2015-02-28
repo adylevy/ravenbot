@@ -632,9 +632,9 @@ var Bot = BotBase.extend(function () {
                     ];
                     //classic war risks
                     riskDef = [
-                        {'all': 1.3, 'line1': .95, 'line2':.3, 'line3':.2},
-                        {'all': 1.2, 'line1': .85, 'line2':.3, 'line3': .2},
-                        {'all': 1.1, 'line1': .8, 'line2':.3, 'line3': .2},
+                        {'all': 1.2, 'line1': 1.05, 'line2':.3, 'line3':.2},
+                        {'all': 1.2, 'line1': .95, 'line2':.3, 'line3': .2},
+                        {'all': 1.1, 'line1': .85, 'line2':.3, 'line3': .2},
                         {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
