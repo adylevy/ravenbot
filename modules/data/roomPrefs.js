@@ -10,8 +10,6 @@ require('./mongoData.js')(process.env['MONGOLAB_URI']);
 var NodeCache = require( "node-cache" );
 var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time
 
-
-
 module.exports = function () {
 
     var RoomPrefs = mongoose.model('RoomPrefs', {

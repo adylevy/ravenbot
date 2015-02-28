@@ -9,6 +9,7 @@ var chuckJokes = require('./chuckJokes.js');
 var sheetsData = require('./sheets.js');
 var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
+var guildData = require('./data/guildData.js');
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
@@ -161,9 +162,7 @@ var Bot = BotBase.extend(function () {
                         if (regexmatch != null) {
                             var guildName = regexmatch[2];
                             if (regexmatch[1] == 'new') {
-                                var g = mongoData.createNewGuild(guildName);
-                                g.save();
-                                self.enterWarMode(guildName, null, null, false);
+                               self.enterWarMode(guildName, null, null, false);
                             } else {
                                 self.getGuildData(guildName).then(function (data) {
                                     var guild = data.foundGuild;
@@ -545,7 +544,7 @@ var Bot = BotBase.extend(function () {
                     var self = this;
                     var ctxPlayer = this.getCtxPlayer(addingUserId);
                     ctxPlayer.options = [];
-                    mongoData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, function (item) {
                         for (var i = 0; i < playersToAdd.length; i++) {
                             var player = playersToAdd[i];
                             var players = _.filter(item.players, function (el) {
@@ -591,10 +590,12 @@ var Bot = BotBase.extend(function () {
                     var lvl = mtch[1];
                     var username = mtch[2];
                     //   console.log('remove', lvl, username);
-                    mongoData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
-
+                        var playerToRemove = _.find(guildPlayers, function (el) {
+                            return (utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
+                        });
                         var players = _.filter(guildPlayers, function (el) {
                             return !(utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
                         });
@@ -631,10 +632,10 @@ var Bot = BotBase.extend(function () {
                     ];
                     //classic war risks
                     riskDef = [
-                        {'all': 1.2, 'line1': .8, 'line2': .5, 'line3': .5},
-                        {'all': 1.1, 'line1': .75, 'line2': .5, 'line3': .5},
-                        {'all': 1, 'line1': .7, 'line2': .5, 'line3': .5},
-                        {'all': 0.9, 'line1': .65, 'line2': .5, 'line3': .5},
+                        {'all': 1.2, 'line1': .8, 'line2':.3, 'line3':.2},
+                        {'all': 1.1, 'line1': .75, 'line2':.3, 'line3': .2},
+                        {'all': 1, 'line1': .7, 'line2':.3, 'line3': .2},
+                        {'all': 0.9, 'line1': .65, 'line2': .3, 'line3': .2},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
                         {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
@@ -742,7 +743,7 @@ var Bot = BotBase.extend(function () {
                         var players;
                         var playerCls = new Players();
                         players = guildData == null ? [] : playerCls.getPlayers(guildData.lastIntel, guildData.lastIntelCell >= 3);
-                        mongoData.getGuildData(guildName, function (ourData) {
+                        guildData.getGuildData(guildName, function (ourData) {
                             ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                             players = players.concat(ourPlayers);
                             defered.resolve(players);
@@ -761,13 +762,13 @@ var Bot = BotBase.extend(function () {
                          foundGuild:foundGuild,
                          bestMatch:bestMatch
                          }*/
-                        mongoData.getGuildData(guildName, function (item) {
+                        guildData.getGuildData(guildName, function (item) {
                             //     console.log('got own data ', item);
                             data.ownData = item;
                             defered.resolve(data);
                         }.bind(this));
 
-                    });
+                    }.bind(this));
                     return defered.promise;
 
                 }
