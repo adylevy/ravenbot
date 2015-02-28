@@ -160,7 +160,8 @@ var AdminBot = BotBase.extend(function () {
                                 retMsg.push(guild.name + ':')
                                 _.each(players, function (player) {
                                     var inserted = new Player('199 ' + player.insertedByUser);
-                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' + inserted.name + '] [' +(guilds[player.insertedByGuild] || player.insertedByGuild) +']');
+                                    var insertedBy = inserted.isPlayer()?inserted.name:player.insertedByUser;
+                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' +insertedBy + '] [' +(guilds[player.insertedByGuild] || player.insertedByGuild) +']');
                                 });
                                 this.postMessage(retMsg.join('\n'));
                             }.bind(this));

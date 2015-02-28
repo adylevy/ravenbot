@@ -73,7 +73,7 @@ console.log(options)
                 });
             }
             catch (e) {
-                console.log(e);
+                console.log('------->',e);
             }
             Q.all(unregArray).then(function(){
                 this.allBots = [];
@@ -171,7 +171,7 @@ console.log(options)
                         this.allBots.push(botResponse);
                         deferred.resolve(manager);
                     } catch (e) {
-                        console.log('e:', e);
+                        console.log('------->', e);
                         deferred.reject(e);
                     }
                 }

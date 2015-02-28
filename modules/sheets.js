@@ -18,12 +18,15 @@ var googleAuth = new GoogleClientLogin({
 
 function loginToGoogle() {
     var deferred = Q.defer();
-    googleAuth.on(GoogleClientLogin.events.login, function(){
+    if (googleAuth.getAuthId()!=undefined){
         deferred.resolve();
-    });
-    googleAuth.login();
+    }else {
+        googleAuth.on(GoogleClientLogin.events.login, function () {
+            deferred.resolve();
+        });
+        googleAuth.login();
+    }
     return deferred.promise;
-
 }
 
 function getSpreadsheet(){
