@@ -52,7 +52,7 @@ var Players = Class.extend(function () {
                         }else{
                         }
                     } catch (e) {
-                        console.log(line);
+                        console.log('------->',e,line);
 
                     }
 

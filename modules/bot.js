@@ -143,7 +143,7 @@ var Bot = BotBase.extend(function () {
                                     var newTime = new Date(new Date().getTime() - (60 - Number(mtch[1])) * 60000);
                                 }
                                 catch (e) {
-                                    console.log(e);
+                                    console.log('--------->',e);
                                 }
                                 roomData.warData.warTime = newTime;
                                 roomData.save(function () {
@@ -836,7 +836,7 @@ var Bot = BotBase.extend(function () {
 
                             this.postMessage(msg.join('\n'));
                         } catch (e) {
-                            console.log(e);
+                            console.log('------->',e);
                         }
                     }.bind(this));
 
@@ -882,7 +882,7 @@ var Bot = BotBase.extend(function () {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
-                            console.log(e);
+
                         });
                         this.postMessage("War ended. did we win this one ?");
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
