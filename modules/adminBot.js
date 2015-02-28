@@ -132,7 +132,7 @@ var AdminBot = BotBase.extend(function () {
                         }.bind(this));
                         audit.add({
                             guildName: guildname,
-                            roomId: self.roomId,
+                            roomId: msg.group_id,
                             performerId: msg.user_id,
                             performerName: msg.name,
                             action: 'Remove entire guild'

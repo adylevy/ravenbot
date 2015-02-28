@@ -34,10 +34,10 @@ module.exports = function () {
         add: function(auditItem){
             var a = new Audit({
                 guildName: auditItem.guildName,
-                roomId: Number,
-                performerId: Number,
-                performerName: String,
-                action: String,
+                roomId: auditItem.roomId,
+                performerId: auditItem.performerId,
+                performerName: auditItem.performerName,
+                action: auditItem.action,
                 date: Date.now()
             });
             a.save();
