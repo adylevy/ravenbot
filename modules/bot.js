@@ -14,6 +14,7 @@ var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
+var audit = require('./data/audit.js');
 
 var Bot = BotBase.extend(function () {
 
@@ -374,7 +375,7 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 // console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt),msg).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
                                     }
@@ -585,10 +586,11 @@ var Bot = BotBase.extend(function () {
 
                     return defered.promise;
                 },
-                removeUserFromOwnData: function (guildName, mtch) {
+                removeUserFromOwnData: function (guildName, mtch,msg) {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
+                    var self=this;
                     //   console.log('remove', lvl, username);
                     guildData.getGuildData(guildName, function (item) {
 
@@ -604,6 +606,13 @@ var Bot = BotBase.extend(function () {
                             return;
                         }
                         item.players = players;
+                        audit.add({
+                            guildName: guildName,
+                            roomId: self.roomId,
+                            performerId: msg.user_id,
+                            performerName: msg.name,
+                            action: 'Remove user - '+playerToRemove.toString()
+                        });
                         item.save(function () {
                             defered.resolve('removed ' + lvl + ' ' + username + ' from RavenDB');
                         });
