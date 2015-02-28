@@ -648,16 +648,16 @@ var Bot = BotBase.extend(function () {
                         risk = 0;
                     }
 
-                    this.getParsedIntelForGuild(guildName).then(function (guildData) {
+                    this.getParsedIntelForGuild(guildName).then(function (combinedGuildData) {
                             try {
                                 //  console.log('got parsed intel',guildData);
                                 var candidates = [];
 
                                 var dups = {};
                                 var noDups = [];
-                                _.each(guildData, function (player) {
+                                _.each(combinedGuildData, function (player) {
                                         var playerKey = player.name + '_' + Math.floor(player.lvl / 10) ;
-                                        var equiv = _.find(guildData, function (p) {
+                                        var equiv = _.find(combinedGuildData, function (p) {
                                             return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin!=player.origin;
                                         });
                                         if (equiv != undefined) {
@@ -739,12 +739,12 @@ var Bot = BotBase.extend(function () {
                 },
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
-                    sheetsData.getGuildData(guildName, function (guildData) {
+                    sheetsData.getGuildData(guildName, function (ssGuildData) {
                         var players;
                         var playerCls = new Players();
-                        players = guildData == null ? [] : playerCls.getPlayers(guildData.lastIntel, guildData.lastIntelCell >= 3);
+                        players = ssGuildData == null ? [] : playerCls.getPlayers(ssGuildData.lastIntel, ssGuildData.lastIntelCell >= 3);
                         guildData.getGuildData(guildName, function (ourData) {
-                            ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
+                            var ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                             players = players.concat(ourPlayers);
                             defered.resolve(players);
                         });
@@ -796,10 +796,10 @@ var Bot = BotBase.extend(function () {
                 }
                 ,
                 sendGuildTargetsUnified: function (guildName) {
-                    this.getParsedIntelForGuild(guildName).then(function (guildData) {
+                    this.getParsedIntelForGuild(guildName).then(function (ssGuildData) {
                         try {
                             var msg = [];
-                            var uniqData = _.uniq(guildData, function (player) {
+                            var uniqData = _.uniq(ssGuildData, function (player) {
                                 return player.name + '_' + Math.floor(player.lvl / 10);
                             });
                             var candidates = [];
@@ -831,7 +831,7 @@ var Bot = BotBase.extend(function () {
                     //   console.log('send guild targets',arguments);
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
-                    var guildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
+                    var ssGuildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
 
 
                     //  console.log(ownData);
@@ -843,10 +843,10 @@ var Bot = BotBase.extend(function () {
                     } else {
                         msg.push('\nNo Raven data, Please add data.')
                     }
-                    if (guildData != null && guildData.length > 5) {
+                    if (ssGuildData != null && ssGuildData.length > 5) {
                         msg.push('\nSS data:');
-                        guildData = guildData.replace(/\n\s*\n/g, '\n');
-                        msg.push(guildData);
+                        ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
+                        msg.push(ssGuildData);
                     } else {
                         msg.push('\nNo SS data.');
                     }
