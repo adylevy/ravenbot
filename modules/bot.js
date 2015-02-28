@@ -593,7 +593,9 @@ var Bot = BotBase.extend(function () {
                     guildData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
-
+                        var playerToRemove = _.find(guildPlayers, function (el) {
+                            return (utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
+                        });
                         var players = _.filter(guildPlayers, function (el) {
                             return !(utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
                         });
@@ -630,10 +632,10 @@ var Bot = BotBase.extend(function () {
                     ];
                     //classic war risks
                     riskDef = [
-                        {'all': 1.2, 'line1': .8, 'line2': .5, 'line3': .5},
-                        {'all': 1.1, 'line1': .75, 'line2': .5, 'line3': .5},
-                        {'all': 1, 'line1': .7, 'line2': .5, 'line3': .5},
-                        {'all': 0.9, 'line1': .65, 'line2': .5, 'line3': .5},
+                        {'all': 1.2, 'line1': .8, 'line2':.3, 'line3':.2},
+                        {'all': 1.1, 'line1': .75, 'line2':.3, 'line3': .2},
+                        {'all': 1, 'line1': .7, 'line2':.3, 'line3': .2},
+                        {'all': 0.9, 'line1': .65, 'line2': .3, 'line3': .2},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
                         {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}

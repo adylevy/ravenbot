@@ -138,7 +138,6 @@ var AdminBot = BotBase.extend(function () {
                                 this.postMessage("Can't find guild in DB");
                                 return;
                             }
-
                             mongoData.getSettings().then(function (settings) {
 
                                 var guilds={};
