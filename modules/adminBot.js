@@ -10,6 +10,8 @@ var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
 var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var guildData = require('./data/guildData.js');
+var audit = require('./data/audit.js');
+
 
 var AdminBot = BotBase.extend(function () {
 
@@ -60,6 +62,7 @@ var AdminBot = BotBase.extend(function () {
                 },
                 mainSwitch: function (txt, msg) {
                     console.log('admin main switch');
+                    var self=this;
                     if (/^[Hh]ello$/.test(txt)) {
                         this.postMessage('Hey there Admin!');
                     }
@@ -126,7 +129,14 @@ var AdminBot = BotBase.extend(function () {
                         var guildname = mtches[1];
                         guildData.removeGuild(guildname, msg.name).then(function (msg) {
                             this.postMessage(msg);
-                        }.bind(this))
+                        }.bind(this));
+                        audit.add({
+                            guildName: guildname,
+                            roomId: msg.group_id,
+                            performerId: msg.user_id,
+                            performerName: msg.name,
+                            action: 'Remove entire guild'
+                        });
                     }
 
                     var showRgx = /^[sS]how\s(.*)/;

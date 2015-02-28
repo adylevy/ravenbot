@@ -14,6 +14,7 @@ var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
+var audit = require('./data/audit.js');
 
 var Bot = BotBase.extend(function () {
 
@@ -162,7 +163,7 @@ var Bot = BotBase.extend(function () {
                         if (regexmatch != null) {
                             var guildName = regexmatch[2];
                             if (regexmatch[1] == 'new') {
-                               self.enterWarMode(guildName, null, null, false);
+                                self.enterWarMode(guildName, null, null, false);
                             } else {
                                 self.getGuildData(guildName).then(function (data) {
                                     var guild = data.foundGuild;
@@ -374,7 +375,7 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 // console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt), msg).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
                                     }
@@ -585,10 +586,11 @@ var Bot = BotBase.extend(function () {
 
                     return defered.promise;
                 },
-                removeUserFromOwnData: function (guildName, mtch) {
+                removeUserFromOwnData: function (guildName, mtch, msg) {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
+                    var self = this;
                     //   console.log('remove', lvl, username);
                     guildData.getGuildData(guildName, function (item) {
 
@@ -604,6 +606,19 @@ var Bot = BotBase.extend(function () {
                             return;
                         }
                         item.players = players;
+                        var playerCls = new Players();
+                        var pToRemove = playerCls.getPlayerObjFromDBPlayers(playerToRemove ? [playerToRemove] : []);
+                        var removedOne = username;
+                        if (pToRemove.length > 0) {
+                            removedOne = pToRemove[0].toString();
+                        }
+                        audit.add({
+                            guildName: guildName,
+                            roomId: msg.group_id,
+                            performerId: msg.user_id,
+                            performerName: msg.name,
+                            action: 'Remove user - ' + removedOne
+                        });
                         item.save(function () {
                             defered.resolve('removed ' + lvl + ' ' + username + ' from RavenDB');
                         });
@@ -632,9 +647,9 @@ var Bot = BotBase.extend(function () {
                     ];
                     //classic war risks
                     riskDef = [
-                        {'all': 1.2, 'line1': 1.05, 'line2':.3, 'line3':.2},
-                        {'all': 1.2, 'line1': .95, 'line2':.3, 'line3': .2},
-                        {'all': 1.1, 'line1': .85, 'line2':.3, 'line3': .2},
+                        {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
+                        {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
+                        {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
                         {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
@@ -656,28 +671,28 @@ var Bot = BotBase.extend(function () {
                                 var dups = {};
                                 var noDups = [];
                                 _.each(combinedGuildData, function (player) {
-                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10) ;
+                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10);
                                         var equiv = _.find(combinedGuildData, function (p) {
-                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin!=player.origin;
+                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin != player.origin;
                                         });
                                         if (equiv != undefined) {
-                                            dups[playerKey]=dups[playerKey]||[];
+                                            dups[playerKey] = dups[playerKey] || [];
                                             dups[playerKey].push(player);
-                                        }else{
+                                        } else {
                                             noDups.push(player);
                                         }
                                     }
                                 );
-                                _.each(dups,function(dup){
-                                   var p1=dup[0];
-                                    var p2=dup[1];
-                                    if (p1.lvl>p2.lvl || (p1.isFresh()&& !p2.isFresh()) || (p1.lvl==p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin=='R' && p2.origin=='SS')){
+                                _.each(dups, function (dup) {
+                                    var p1 = dup[0];
+                                    var p2 = dup[1];
+                                    if (p1.lvl > p2.lvl || (p1.isFresh() && !p2.isFresh()) || (p1.lvl == p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin == 'R' && p2.origin == 'SS')) {
                                         noDups.push(p1);
-                                    }else{
+                                    } else {
                                         noDups.push(p2);
                                     }
                                 })
-                            //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
+                                //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
 
                                 //get all dups
                                 //remove dups
@@ -715,7 +730,7 @@ var Bot = BotBase.extend(function () {
                                 candidates = _.sortBy(candidates, function (player) {
                                     return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
                                 }).reverse();
-                               // console.log(candidates);
+                                // console.log(candidates);
                                 candidates = candidates.slice(0, 5);
                                 _.each(candidates, function (candidate) {
                                     var crank = candidate.rank;
@@ -724,7 +739,7 @@ var Bot = BotBase.extend(function () {
                                 });
 
                                 this.postMessage(msg.join('\n'));
-                             //   console.log(msg);
+                                //   console.log(msg);
                             }
                             catch
                                 (ee) {
