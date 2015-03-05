@@ -23,7 +23,7 @@ var whenConnected=function(){
    //b.mainSwitch('set 9508170 TRK 466-154-270');
   //  b.mainSwitch('list');
   //  b.mainSwitch('show the real killers');
-    b.mainSwitch('show gerber brothers',{
+    b.mainSwitch('broadcast 12334465 yo',{
         name:'me', user_id:1
     });
   //  b.mainSwitch('register 23 ady');

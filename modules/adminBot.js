@@ -192,7 +192,7 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('list - show all rooms registered');
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
-
+                    helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
                     this.postMessage(helpMsg.join('\n'));
                 },
 
