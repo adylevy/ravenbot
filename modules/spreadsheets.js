@@ -54,7 +54,12 @@ var getFeed = function (params, auth, query, cb) {
             return cb(new Error("HTTP error " + response.statusCode + ": " + http.STATUS_CODES[response.statusCode]));
         }
 
-        cb(null, body.feed);
+      try {
+          cb(null, body.feed);
+      }catch(e){
+          cb(new Error("unknown error"));
+          
+      }
     });
 };
 
