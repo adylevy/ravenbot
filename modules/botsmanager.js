@@ -167,7 +167,7 @@ console.log(options)
 
                         }.bind(this));
                         manager.on('broadcast',function(ctx,broadcastObj){
-                            this.broadCast(ctx,broadcastObj.group,broadcastObj.msg);
+                            this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
                             
                         }.bind(this));
                         var botResponse = response.response.bot;
