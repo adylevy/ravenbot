@@ -192,11 +192,11 @@ console.log(options)
                     if (bot.group_id!=this.options.adminGroup) {
                         bot.manager.postMessage(msg);
                     }
-                });
+                }.bind(this));
                 ctx.postMessage('Msg sent.');
             }
             else{
-                var botObj = _.findWhere(this.allBots, {group_id: Number(group)});
+                var botObj = _.findWhere(this.allBots, {group_id: group});
                 if (botObj==undefined) {
                  ctx.postMessage('Group not found.');
                 }
