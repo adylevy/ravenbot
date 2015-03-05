@@ -166,6 +166,10 @@ console.log(options)
                             }
 
                         }.bind(this));
+                        manager.on('broadcast',function(ctx,broadcastObj){
+                            this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
+                            
+                        }.bind(this));
                         var botResponse = response.response.bot;
                         botResponse.manager = manager;
                         this.allBots.push(botResponse);
@@ -181,6 +185,27 @@ console.log(options)
                 
             });
             return deferred.promise;
+        },
+        broadCast: function(ctx,group,msg){
+            if (group=='all'){
+                _.each(this.allBots,function(bot){
+                    if (bot.group_id!=this.options.adminGroup) {
+                        bot.manager.postMessage(msg);
+                    }
+                }.bind(this));
+                ctx.postMessage('Msg sent.');
+            }
+            else{
+                var botObj = _.findWhere(this.allBots, {group_id: group});
+                if (botObj==undefined) {
+                 ctx.postMessage('Group not found.');
+                }
+                else{
+                    botObj.manager.postMessage(msg);   
+                    ctx.postMessage('Msg sent.');
+                }
+            }
+            
         },
         registerBot: function (groupId) {
             var deferred = Q.defer();

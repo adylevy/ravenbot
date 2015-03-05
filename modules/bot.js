@@ -646,7 +646,7 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
                     //classic war risks
-                    riskDef = [
+               /*     riskDef = [
                         {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
                         {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
                         {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
@@ -654,7 +654,7 @@ var Bot = BotBase.extend(function () {
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
                         {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
-                    ];
+                    ];*/
 
                     var riskFactor = riskDef[0];
                     if (riskDef[risk] != undefined) {

@@ -139,6 +139,15 @@ var AdminBot = BotBase.extend(function () {
                         });
                     }
 
+                    var broadcastRgx = /^[bB]roadcast\s(all|[\d]+)\s(.*)/;
+                    if (broadcastRgx.test(txt)) {
+                        var mtches = broadcastRgx.exec(txt);
+                        var guild = mtches[1];
+                        var msg = mtches[2];
+                        this.emit('broadcast', this, {msg:msg,guild:guild});
+                    }
+                    
+                    
                     var showRgx = /^[sS]how\s(.*)/;
                     if (showRgx.test(txt)) {
                         var mtches = showRgx.exec(txt);
@@ -183,7 +192,7 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('list - show all rooms registered');
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
-
+                    helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
                     this.postMessage(helpMsg.join('\n'));
                 },
 
