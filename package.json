@@ -18,7 +18,9 @@
     "mongoose": "",
     "googleclientlogin": "",
     "q": "",
-    "node-cache": ""
+    "node-cache": "",
+    "sax": "",
+    "xmlbuilder":""
 
   },
   "engines": {

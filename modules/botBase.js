@@ -70,7 +70,7 @@ var BotBase = Class.extend(function () {
                 },
                 sendMsg: function (msg, img) {
                     var deferred = Q.defer();
-                    if (this.options == null) {
+                    if (this.options == null || this.options.bot_id==undefined) {
                         console.log(msg, img);
                         deferred.resolve();
                         return deferred.promise;
