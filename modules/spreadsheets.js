@@ -26,8 +26,8 @@ var getFeed = function (params, auth, query, cb) {
     params.push(visibility, projection);
 
     query = query || {};
-    query.alt = "json";
-
+    // query.alt = "json";
+    headers.Accept='text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
     var url = FEED_URL + params.join("/");
     if (query) {
         url += "?" + querystring.stringify(query);
@@ -53,13 +53,11 @@ var getFeed = function (params, auth, query, cb) {
         if (response.statusCode >= 400) {
             return cb(new Error("HTTP error " + response.statusCode + ": " + http.STATUS_CODES[response.statusCode]));
         }
-
-      try {
-          cb(null, body.feed);
-      }catch(e){
-          cb(new Error("unknown error"));
-          
-      }
+        parseString(body, function (err, result) {
+            //  console.dir(result);
+            cb(null, result.feed);
+        });
+        //
     });
 };
 
@@ -211,15 +209,14 @@ Spreadsheets.cells = function (opts, cb) {
     });
 };
 
-
 var Spreadsheet = function (key, auth, data) {
     this.key = key;
     this.auth = auth;
-    this.title = data.title.$t;
-    this.updated = data.updated.$t;
+    this.title = data.title[0]._;
+    this.updated = data.updated[0];
     this.author = {
-        name: data.author[0].name.$t,
-        email: data.author[0].email.$t
+        name: data.author[0].name[0],
+        email: data.author[0].email[0]
     };
 
     this.worksheets = [];
@@ -242,12 +239,12 @@ var Spreadsheet = function (key, auth, data) {
 
 var Worksheet = function (spreadsheet, data) {
     // This should be okay, unless Google decided to change their URL scheme...
-    var id = data.id.$t;
+    var id = data.id[0];
     this.id = id.substring(id.lastIndexOf("/") + 1);
     this.spreadsheet = spreadsheet;
-    this.rowCount = data.gs$rowCount.$t;
-    this.colCount = data.gs$colCount.$t;
-    this.title = data.title.$t;
+    this.rowCount = data['gs:rowCount'][0];
+    this.colCount = data['gs:colCount'][0];
+    this.title = data.title[0]._;
 };
 
 Worksheet.prototype.rows = function (opts, cb) {
@@ -278,44 +275,16 @@ Worksheet.prototype.cells = function (opts, cb) {
     }, cb);
 };
 
-var Row = function (data,idx) {
-   this.cells=[];
-  this.idx=idx;
-   for(var key in data){
-       if (key.substring(0, 4) == 'gsx$') {
-          // console.log(key, data[key].$t);
-           this.cells.push(data[key].$t);
-       };
-   }
-    this.title=data.title.$t;
-    this.ssID=data.id.$t;
-
-   /* Object.keys(data).forEach(function (key) {
-        var val;
-        val = data[key];
-        if (key.substring(0, 4) == "gsx:") {
-            if (typeof val == 'object' && Object.keys(val).length === 0) {
-                val = null;
-            }
-            if (key == "gsx:") {
-                this[key.substring(0, 3)] = val;
-            } else {
-                this[key.substring(4)] = val;
-            }
-        } else if (key.substring(0, 4) == "gsx$") {
-            if (key == "gsx$") {
-                this[key.substring(0, 3)] = val;
-            } else {
-                this[key.substring(4)] = val.$t || val;
-            }
-        } else {
-            if (key == "id") {
-                this[key] = val;
-            } else if (val.$t) {
-                this[key] = val.$t;
-            }
-        }
-    }, this);*/
+var Row = function (data) {
+    this.cells=[];
+    for(var key in data){
+        if (key.substring(0, 4) == 'gsx:') {
+            // console.log(key, data[key].$t);
+            this.cells.push(data[key][0]);
+        };
+    }
+    this.title=data.title[0]._;
+    this.ssID=data.id[0]._;
 
 };
 
@@ -341,4 +310,3 @@ var Cells = function (data) {
         };
     }, this);
 };
-
