@@ -5,6 +5,7 @@ const _ = require('underscore');
 var FEED_URL = "https://spreadsheets.google.com/feeds/";
 var parseString = require('./xml2js/xml2js').parseString;
 
+
 var forceArray = function (val) {
     if (Array.isArray(val)) {
         return val;
@@ -20,7 +21,7 @@ var getFeed = function (params, auth, query, cb) {
 
     if (auth) {
         headers.Authorization = "GoogleLogin auth=" + auth;
-      visibility = "private";
+        visibility = "private";
         projection = "full";
     }
     params.push(visibility, projection);
@@ -165,11 +166,11 @@ Spreadsheets.cells = function (opts, cb) {
 var Spreadsheet = function (key, auth, data) {
     this.key = key;
     this.auth = auth;
-    this.title = data.title[0]._;
-    this.updated = data.updated[0];
+    this.title = data.title.$t;
+    this.updated = data.updated.$t;
     this.author = {
-        name: data.author[0].name[0],
-        email: data.author[0].email[0]
+        name: data.author[0].name.$t,
+        email: data.author[0].email.$t
     };
 
     this.worksheets = [];
@@ -182,12 +183,12 @@ var Spreadsheet = function (key, auth, data) {
 
 var Worksheet = function (spreadsheet, data) {
     // This should be okay, unless Google decided to change their URL scheme...
-    var id = data.id[0];
+    var id = data.id.$t;
     this.id = id.substring(id.lastIndexOf("/") + 1);
     this.spreadsheet = spreadsheet;
-    this.rowCount = data['gs:rowCount'][0];
-    this.colCount = data['gs:colCount'][0];
-    this.title = data.title[0]._;
+    this.rowCount = data.gs$rowCount.$t;
+    this.colCount = data.gs$colCount.$t;
+    this.title = data.title.$t;
 };
 
 Worksheet.prototype.rows = function (opts, cb) {
@@ -221,12 +222,12 @@ Worksheet.prototype.cells = function (opts, cb) {
 var Row = function (data) {
    this.cells=[];
    for(var key in data){
-       if (key.substring(0, 4) == 'gsx:') {
+       if (key.substring(0, 4) == 'gsx$') {
           // console.log(key, data[key].$t);
-           this.cells.push(data[key][0]);
+           this.cells.push(data[key].$t);
        };
    }
-    this.title=data.title[0]._;
+    this.title=data.title.$t;
       
    /* Object.keys(data).forEach(function (key) {
         var val;

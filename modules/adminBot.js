@@ -3,17 +3,14 @@
  */
 
 var Q = require('q');
-var Class = require('./Class.js').Class;
-const events = require('events');
-const request = require('request');
 const _ = require('underscore');
-var giphy = require('./giphy.js')('dc6zaTOxFJmzC');
-var chuckJokes = require('./chuckJokes.js');
-var sheetsData = require('./sheets.js');
-var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
+
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
+var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
+var guildData = require('./data/guildData.js');
+var audit = require('./data/audit.js');
 
 
 var AdminBot = BotBase.extend(function () {
@@ -65,6 +62,7 @@ var AdminBot = BotBase.extend(function () {
                 },
                 mainSwitch: function (txt, msg) {
                     console.log('admin main switch');
+                    var self=this;
                     if (/^[Hh]ello$/.test(txt)) {
                         this.postMessage('Hey there Admin!');
                     }
@@ -72,14 +70,14 @@ var AdminBot = BotBase.extend(function () {
                     var regMatch = /^[Rr]egister\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var regexmatch = regMatch.exec(txt);
-                       
+
                         var obj = {
                             roomId: regexmatch[1],
                             guildName: regexmatch[2],
                             guildId: regexmatch[3]
                         };
                         this.postMessage('Registering !');
-                       // console.log(obj);
+                        // console.log(obj);
                         this.emit('botRegister', this, obj);
                     }
 
@@ -98,14 +96,14 @@ var AdminBot = BotBase.extend(function () {
                             if (guild) {
                                 guild.guildName = matches[2];
                                 guild.guildId = matches[3] || '';
-                                settings.save(function(){
+                                settings.save(function () {
                                     this.postMessage('all set.')
 
                                 }.bind(this));
-                            }else{
+                            } else {
                                 this.postMessage('can\'t find room.');
                             }
-                            
+
                         }.bind(this));
                     }
                     regMatch = /^list$/;
@@ -121,7 +119,84 @@ var AdminBot = BotBase.extend(function () {
 
                     }
 
+                    if (/^help$/.test(txt)) {
+                        this.showHelp();
+                    }
+
+                    var removeRgx = /^[rR]emove\s(.*)/;
+                    if (removeRgx.test(txt)) {
+                        var mtches = removeRgx.exec(txt);
+                        var guildname = mtches[1];
+                        guildData.removeGuild(guildname, msg.name).then(function (msg) {
+                            this.postMessage(msg);
+                        }.bind(this));
+                        audit.add({
+                            guildName: guildname,
+                            roomId: msg.group_id,
+                            performerId: msg.user_id,
+                            performerName: msg.name,
+                            action: 'Remove entire guild'
+                        });
+                    }
+
+                    var broadcastRgx = /^[bB]roadcast\s(all|[\d]+)\s(.*)/;
+                    if (broadcastRgx.test(txt)) {
+                        var mtches = broadcastRgx.exec(txt);
+                        var guild = mtches[1];
+                        var msg = mtches[2];
+                        this.emit('broadcast', this, {msg:msg,guild:guild});
+                    }
+                    
+                    
+                    var showRgx = /^[sS]how\s(.*)/;
+                    if (showRgx.test(txt)) {
+                        var mtches = showRgx.exec(txt);
+                        var guildname = mtches[1];
+                        guildData.getGuildData(guildname, function (guild) {
+                            if (guild.isNew) {
+                                this.postMessage("Can't find guild in DB");
+                                return;
+                            }
+                            mongoData.getSettings().then(function (settings) {
+
+                                var guilds={};
+                                _.each(settings.guilds, function (guild) {
+                                    guilds[guild.roomId]= guild.guildName + ' / ' + guild.guildId;
+                                });
+                                var retMsg = [];
+                                var playersCls = new Players();
+                                var players = playersCls.getPlayerObjFromDBPlayers(guild.players || []);
+                                retMsg.push(guild.name + ':')
+                                _.each(players, function (player) {
+                                    var inserted = new Player('199 ' + player.insertedByUser);
+                                    var insertedBy = inserted.isPlayer()?inserted.name:player.insertedByUser;
+                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' +insertedBy + '] [' +(guilds[player.insertedByGuild] || player.insertedByGuild) +']');
+                                });
+                                this.postMessage(retMsg.join('\n'));
+                            }.bind(this));
+
+
+                        }.bind(this));
+                    }
+
                 },
+
+                showHelp: function () {
+                    var helpMsg = [];
+                    helpMsg.push('admin command list:');
+                    helpMsg.push('hello - greet the bot.');
+                    helpMsg.push('register roomId Abbr GuildName - register room');
+                    helpMsg.push('set roomId Abbr GuildName - update room info');
+                    helpMsg.push('unregister roomId - unreg room');
+                    //  helpMsg.push('stats - Raven statistics');
+                    helpMsg.push('list - show all rooms registered');
+                    helpMsg.push('show guildName - fetches info on Guild');
+                    helpMsg.push('remove guildName - removes a guild from ravenDB');
+                    helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
+                    this.postMessage(helpMsg.join('\n'));
+                },
+
+
                 botRegistered: function (groupId) {
                     this.postMessage('Bot Registered : ' + groupId);
                 },

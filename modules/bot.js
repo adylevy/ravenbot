@@ -9,10 +9,12 @@ var chuckJokes = require('./chuckJokes.js');
 var sheetsData = require('./sheets.js');
 var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
+var guildData = require('./data/guildData.js');
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
+var audit = require('./data/audit.js');
 
 var Bot = BotBase.extend(function () {
 
@@ -141,7 +143,7 @@ var Bot = BotBase.extend(function () {
                                     var newTime = new Date(new Date().getTime() - (60 - Number(mtch[1])) * 60000);
                                 }
                                 catch (e) {
-                                    console.log(e);
+                                    console.log('--------->',e);
                                 }
                                 roomData.warData.warTime = newTime;
                                 roomData.save(function () {
@@ -153,7 +155,7 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    var newMatchRgx = /^matched\s*(new){0,1}\s*(.*)/;
+                    var newMatchRgx = /^matched(new){0,1}\s*(.*)/;
                     if (newMatchRgx.test(txt)) {
 
                         var regexmatch = newMatchRgx.exec(txt);
@@ -161,8 +163,6 @@ var Bot = BotBase.extend(function () {
                         if (regexmatch != null) {
                             var guildName = regexmatch[2];
                             if (regexmatch[1] == 'new') {
-                                var g = mongoData.createNewGuild(guildName);
-                                g.save();
                                 self.enterWarMode(guildName, null, null, false);
                             } else {
                                 self.getGuildData(guildName).then(function (data) {
@@ -174,7 +174,7 @@ var Bot = BotBase.extend(function () {
                                         if (bestMatch.guild.guildName) {
                                             var msg = [];
                                             msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                            msg.push('or you can use [matched new GuildName]');
+                                            msg.push('or you can use [matchednew GuildName]');
                                             self.postMessage(msg.join('\n'));
                                         }
                                     }
@@ -208,7 +208,7 @@ var Bot = BotBase.extend(function () {
 
                     this.jokesHandler(txt);
 
-                    if (/^myt$/.test(txt) || /^my\stargets$/.test(txt)) {
+                    if (/^myt$/.test(txt) || /^my\stargets$/.test(txt) || /^nut$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             try {
                                 if (roomData.warData.inWar) {
@@ -375,7 +375,7 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 // console.log('removing user');
-                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt)).then(function (msg) {
+                                this.removeUserFromOwnData(roomData.warData.guildName, removeRgx.exec(caseSensitiveTxt), msg).then(function (msg) {
                                     if (msg != '') {
                                         self.postMessage(msg);
                                     }
@@ -545,7 +545,7 @@ var Bot = BotBase.extend(function () {
                     var self = this;
                     var ctxPlayer = this.getCtxPlayer(addingUserId);
                     ctxPlayer.options = [];
-                    mongoData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, function (item) {
                         for (var i = 0; i < playersToAdd.length; i++) {
                             var player = playersToAdd[i];
                             var players = _.filter(item.players, function (el) {
@@ -586,15 +586,18 @@ var Bot = BotBase.extend(function () {
 
                     return defered.promise;
                 },
-                removeUserFromOwnData: function (guildName, mtch) {
+                removeUserFromOwnData: function (guildName, mtch, msg) {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
+                    var self = this;
                     //   console.log('remove', lvl, username);
-                    mongoData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, function (item) {
 
                         var guildPlayers = item.players;
-
+                        var playerToRemove = _.find(guildPlayers, function (el) {
+                            return (utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
+                        });
                         var players = _.filter(guildPlayers, function (el) {
                             return !(utils.capitaliseFirstLetter(el.name) == utils.capitaliseFirstLetter(username) && el.lvl == lvl);
                         });
@@ -603,6 +606,19 @@ var Bot = BotBase.extend(function () {
                             return;
                         }
                         item.players = players;
+                        var playerCls = new Players();
+                        var pToRemove = playerCls.getPlayerObjFromDBPlayers(playerToRemove ? [playerToRemove] : []);
+                        var removedOne = username;
+                        if (pToRemove.length > 0) {
+                            removedOne = pToRemove[0].toString();
+                        }
+                        audit.add({
+                            guildName: guildName,
+                            roomId: msg.group_id,
+                            performerId: msg.user_id,
+                            performerName: msg.name,
+                            action: 'Remove user - ' + removedOne
+                        });
                         item.save(function () {
                             defered.resolve('removed ' + lvl + ' ' + username + ' from RavenDB');
                         });
@@ -630,15 +646,15 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
                     //classic war risks
-                    riskDef = [
-                        {'all': 1.2, 'line1': .8, 'line2': .5, 'line3': .5},
-                        {'all': 1.1, 'line1': .75, 'line2': .5, 'line3': .5},
-                        {'all': 1, 'line1': .7, 'line2': .5, 'line3': .5},
-                        {'all': 0.9, 'line1': .65, 'line2': .5, 'line3': .5},
+               /*     riskDef = [
+                        {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
+                        {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
+                        {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
+                        {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
                         {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
                         {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
                         {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
-                    ];
+                    ];*/
 
                     var riskFactor = riskDef[0];
                     if (riskDef[risk] != undefined) {
@@ -647,36 +663,36 @@ var Bot = BotBase.extend(function () {
                         risk = 0;
                     }
 
-                    this.getParsedIntelForGuild(guildName).then(function (guildData) {
+                    this.getParsedIntelForGuild(guildName).then(function (combinedGuildData) {
                             try {
                                 //  console.log('got parsed intel',guildData);
                                 var candidates = [];
 
                                 var dups = {};
                                 var noDups = [];
-                                _.each(guildData, function (player) {
-                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10) ;
-                                        var equiv = _.find(guildData, function (p) {
-                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin!=player.origin;
+                                _.each(combinedGuildData, function (player) {
+                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10);
+                                        var equiv = _.find(combinedGuildData, function (p) {
+                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin != player.origin;
                                         });
                                         if (equiv != undefined) {
-                                            dups[playerKey]=dups[playerKey]||[];
+                                            dups[playerKey] = dups[playerKey] || [];
                                             dups[playerKey].push(player);
-                                        }else{
+                                        } else {
                                             noDups.push(player);
                                         }
                                     }
                                 );
-                                _.each(dups,function(dup){
-                                   var p1=dup[0];
-                                    var p2=dup[1];
-                                    if (p1.lvl>p2.lvl || (p1.isFresh()&& !p2.isFresh()) || (p1.lvl==p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin=='R' && p2.origin=='SS')){
+                                _.each(dups, function (dup) {
+                                    var p1 = dup[0];
+                                    var p2 = dup[1];
+                                    if (p1.lvl > p2.lvl || (p1.isFresh() && !p2.isFresh()) || (p1.lvl == p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin == 'R' && p2.origin == 'SS')) {
                                         noDups.push(p1);
-                                    }else{
+                                    } else {
                                         noDups.push(p2);
                                     }
                                 })
-                            //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
+                                //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
 
                                 //get all dups
                                 //remove dups
@@ -714,7 +730,7 @@ var Bot = BotBase.extend(function () {
                                 candidates = _.sortBy(candidates, function (player) {
                                     return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
                                 }).reverse();
-                               // console.log(candidates);
+                                // console.log(candidates);
                                 candidates = candidates.slice(0, 5);
                                 _.each(candidates, function (candidate) {
                                     var crank = candidate.rank;
@@ -723,7 +739,7 @@ var Bot = BotBase.extend(function () {
                                 });
 
                                 this.postMessage(msg.join('\n'));
-                             //   console.log(msg);
+                                //   console.log(msg);
                             }
                             catch
                                 (ee) {
@@ -738,12 +754,12 @@ var Bot = BotBase.extend(function () {
                 },
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
-                    sheetsData.getGuildData(guildName, function (guildData) {
+                    sheetsData.getGuildData(guildName, function (ssGuildData) {
                         var players;
                         var playerCls = new Players();
-                        players = guildData == null ? [] : playerCls.getPlayers(guildData.lastIntel, guildData.lastIntelCell >= 3);
-                        mongoData.getGuildData(guildName, function (ourData) {
-                            ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
+                        players = ssGuildData == null ? [] : playerCls.getPlayers(ssGuildData.lastIntel, ssGuildData.lastIntelCell >= 3);
+                        guildData.getGuildData(guildName, function (ourData) {
+                            var ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                             players = players.concat(ourPlayers);
                             defered.resolve(players);
                         });
@@ -761,13 +777,13 @@ var Bot = BotBase.extend(function () {
                          foundGuild:foundGuild,
                          bestMatch:bestMatch
                          }*/
-                        mongoData.getGuildData(guildName, function (item) {
+                        guildData.getGuildData(guildName, function (item) {
                             //     console.log('got own data ', item);
                             data.ownData = item;
                             defered.resolve(data);
                         }.bind(this));
 
-                    });
+                    }.bind(this));
                     return defered.promise;
 
                 }
@@ -795,10 +811,10 @@ var Bot = BotBase.extend(function () {
                 }
                 ,
                 sendGuildTargetsUnified: function (guildName) {
-                    this.getParsedIntelForGuild(guildName).then(function (guildData) {
+                    this.getParsedIntelForGuild(guildName).then(function (ssGuildData) {
                         try {
                             var msg = [];
-                            var uniqData = _.uniq(guildData, function (player) {
+                            var uniqData = _.uniq(ssGuildData, function (player) {
                                 return player.name + '_' + Math.floor(player.lvl / 10);
                             });
                             var candidates = [];
@@ -820,7 +836,7 @@ var Bot = BotBase.extend(function () {
 
                             this.postMessage(msg.join('\n'));
                         } catch (e) {
-                            console.log(e);
+                            console.log('------->',e);
                         }
                     }.bind(this));
 
@@ -830,7 +846,7 @@ var Bot = BotBase.extend(function () {
                     //   console.log('send guild targets',arguments);
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
-                    var guildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
+                    var ssGuildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
 
 
                     //  console.log(ownData);
@@ -842,10 +858,10 @@ var Bot = BotBase.extend(function () {
                     } else {
                         msg.push('\nNo Raven data, Please add data.')
                     }
-                    if (guildData != null && guildData.length > 5) {
+                    if (ssGuildData != null && ssGuildData.length > 5) {
                         msg.push('\nSS data:');
-                        guildData = guildData.replace(/\n\s*\n/g, '\n');
-                        msg.push(guildData);
+                        ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
+                        msg.push(ssGuildData);
                     } else {
                         msg.push('\nNo SS data.');
                     }
@@ -866,7 +882,7 @@ var Bot = BotBase.extend(function () {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
                         roomData.save(function (e) {
-                            console.log(e);
+
                         });
                         this.postMessage("War ended. did we win this one ?");
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
