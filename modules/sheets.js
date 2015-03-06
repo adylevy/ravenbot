@@ -138,9 +138,11 @@ function getSheetColumns(worksheet) {
 }
 
 
-function parseRow(row, headCells) {
+function parseRow(row) {
 
     var guildData = {};
+    guildData.rowIdx=row.idx;
+    guildData.ssRowId=row.ssID;
     guildData.guildName = row.title.trim().toLowerCase().replace(/(\r\n|\n|\r)/gm, "");
     guildData.allIntel = '';
     if (guildData.guildName == '' || guildData.guildName == undefined) {
@@ -213,6 +215,16 @@ function getData(guildName, callback) {
     return deferred.promise;
 }
 
+function setData(foundGuild,newData){
+    var rgx=/.*\/(.*)\/private/.exec(foundGuild.ssRowId);
+    
+    var sheetIdentifier=rgx[1];
+    loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
+        spreadsheet.updateCell(sheetIdentifier,foundGuild.rowIdx+2,4,newData);
+        
+    }.bind(this))
+    
+}
 
 exports.getGuildData = getData;
-
+exports.setGuildData = setData;

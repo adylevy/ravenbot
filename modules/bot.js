@@ -847,7 +847,7 @@ var Bot = BotBase.extend(function () {
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
                     var ssGuildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
-
+                    console.log(ssData.ssRowId,ssData.rowIdx+2,ssData.lastIntelCell+1);
 
                     //  console.log(ownData);
                     if (ownData != null && ownData.players.length != 0) {
@@ -881,15 +881,20 @@ var Bot = BotBase.extend(function () {
                     if (diffInMinutes >= 60) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
-                        roomData.save(function (e) {
-
-                        });
+                        roomData.save(function (e) {});
                         this.postMessage("War ended. did we win this one ?");
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
                         if (timerSettings != 'off') {
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
                     }
+                },
+                saveRavenDataToSS: function(guildName){
+                    this.getGuildData(guildName).then(function(data){
+                        console.log(data);
+                        sheetsData.setGuildData(data.foundGuild,data.foundGuild.lastIntel+'ADY');
+                    })
+                    
                 }
             }
         }

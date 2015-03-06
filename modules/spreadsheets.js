@@ -63,6 +63,53 @@ var getFeed = function (params, auth, query, cb) {
     });
 };
 
+var saveCell = function (params,r,c,newData, auth, cb) {
+    var headers = {};
+    var visibility = "public";
+    var projection = "values";
+
+    if (auth) {
+        headers['Authorization'] = "GoogleLogin auth=" + auth;
+        visibility = "private";
+        projection = "full";
+    }
+
+    
+    params.push(visibility, projection);
+    params.push('R' + r + 'C' + c);
+    var url = FEED_URL + params.join("/");
+
+    var query = query || {};
+    query.alt = "json";
+
+
+    request.get({
+        url: url+ "?" + querystring.stringify(query),
+        headers: headers,
+        json: true
+    }, function (err, response, body) {
+        var _url=body.entry.link[1].href;
+        var data_xml =
+            '<entry><id>'+url+'</id>'+
+            '<link rel="edit" type="application/atom+xml" href="'+_url+'"/>'+
+            '<gs:cell row="'+r+'" col="'+c+'" inputValue="'+555+'"/></entry>'
+
+        data_xml = data_xml.replace('<entry>', "<entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'>");
+        console.log(_url);
+        headers['content-type'] = 'application/atom+xml';
+        console.log(headers);
+        request({
+            url: _url,
+            method: 'PUT',
+            headers: headers,
+            body:data_xml
+        }, function (err, response, body) {
+            console.warn(err,response.statusCode,body);
+        });
+    });
+    
+};
+
 var Spreadsheets = module.exports = function (opts, cb) {
     if (!opts) {
         throw new Error("Invalid arguments.");
@@ -117,9 +164,9 @@ Spreadsheets.rows = function (opts, cb) {
 
         if (typeof data.entry != "undefined" && data.entry !== null) {
             var entries = forceArray(data.entry);
-
+            var ctr=0;
             entries.forEach(function (entry) {
-                rows.push(new Row(entry));
+                rows.push(new Row(entry,ctr++));
             });
         }
 
@@ -164,6 +211,7 @@ Spreadsheets.cells = function (opts, cb) {
     });
 };
 
+
 var Spreadsheet = function (key, auth, data) {
     this.key = key;
     this.auth = auth;
@@ -180,6 +228,16 @@ var Spreadsheet = function (key, auth, data) {
     worksheets.forEach(function (worksheetData) {
         this.worksheets.push(new Worksheet(this, worksheetData));
     }, this);
+
+    this.updateCell=function(idx,r,c,newData){
+        var params=[];
+        params.push('cells');
+        params.push(this.key);
+        params.push(idx);
+        saveCell(params,r,c,newData,this.auth,function(res){
+            console.log(res);
+        })
+    };
 };
 
 var Worksheet = function (spreadsheet, data) {
@@ -220,8 +278,9 @@ Worksheet.prototype.cells = function (opts, cb) {
     }, cb);
 };
 
-var Row = function (data) {
+var Row = function (data,idx) {
    this.cells=[];
+  this.idx=idx;
    for(var key in data){
        if (key.substring(0, 4) == 'gsx$') {
           // console.log(key, data[key].$t);
@@ -229,7 +288,8 @@ var Row = function (data) {
        };
    }
     this.title=data.title.$t;
-      
+    this.ssID=data.id.$t;
+
    /* Object.keys(data).forEach(function (key) {
         var val;
         val = data[key];
@@ -281,3 +341,4 @@ var Cells = function (data) {
         };
     }, this);
 };
+

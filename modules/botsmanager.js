@@ -26,7 +26,8 @@ console.log(options)
             _.extend(this, e);
             console.log('bot manager', this.options);
             this.startListening();
-            this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
+            /*.then(this.killAllBots.bind(this))*/
+            this.getAllBots().then(this.registerMissingBots.bind(this));
             this.timerInterval=setInterval(function(){this.onTimeTick()}.bind(this),1*60*1000);
         },
         onTimeTick: function(){
