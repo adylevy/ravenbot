@@ -92,13 +92,27 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Hey there!');
                     }
 
-                    if (/^sstargets$/.test(txt)) {
+                    if (/^ss\s?targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
                                     var ownData = data.ownData;
                                     self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.SSNew);
+                                });
+                            } else {
+                                this.postMessage('not in war! use matched command to issue a match');
+                            }
+                        }.bind(this));
+                    }
+
+                    if (/^all\s?targets$/.test(txt)) {
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                self.getGuildData(roomData.warData.guildName).then(function (data) {
+                                    var guild = data.foundGuild;
+                                    var ownData = data.ownData;
+                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew);
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -731,7 +745,7 @@ var Bot = BotBase.extend(function () {
                                             candidates.push(player);
                                             // console.log(player.name,all)
                                         } else {
-                                            //  console.log(player,all,line1,line2,line3);
+                                             console.log(player,all,line1,line2,line3);
                                         }
                                     }
                                 });
