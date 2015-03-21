@@ -21,21 +21,37 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 //var mongoData = require('./modules/mongoData.js')(process.env['MONGOLAB_URI']);
 //mongoData.reBuildGuildDB();
 
+
 var Bot = require('./modules/bot.js');
+var whenConnected=function(){
+    console.log('mongo is connected');
+    mongoData.getRoomPrefs(11615018).then(function(data){
+
+        var b=new Bot({},11615018);
+        b.mainSwitch('Remove Sir john',{
+            name:'me'
+        });
+    })
+
+};
+
+var mongoData = require('./modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
+mongoData.on('mongoConnected',whenConnected);
+mongoData.connect();
+
 //var AdminBot = require('./modules/adminBot.js');
-var b=new Bot({},12334465);
+
 
 /*b.on('botRegister',function(e,t){
     console.log('----->',e,t);
 })*/
 
-/*b.mainSwitch('123 Ady 1m/2k/2k',{
-    name:'me'
-});*/
 
-/*b.mainSwitch('matched hero quest',{
+//b.saveRavenDataToSS('Dragon riders of Pern');
+/*
+b.mainSwitch('matched the real killers',{
     name:'me'});*/
-//b.mainSwitch('targets2');
+/*b.mainSwitch('targets2');
 /*b.mainSwitch('bulk off',{
     user_id:2,
     name:'Blue Dragon 127.85m/46.69k/2.16k'
@@ -58,10 +74,11 @@ b.mainSwitch('mymini Gamba 80m/20k/2000',{
     user_id:5
 });
 */
+/*
 b.mainSwitch('myrisk 3',{
     name:'MB 409.8m/109.7k/3.0k',
     user_id:18289121
-});
+});*/
 /*
 b.mainSwitch('get timer',{
     name:'MB 409.8m/109.7k/3.0k',

@@ -16,8 +16,17 @@ var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
 var audit = require('./data/audit.js');
 
+
 var Bot = BotBase.extend(function () {
 
+            var OriginSourceType = {
+
+                'RavenOld': 1,
+                'RavenNew': 2,
+                'SSOld': 4,
+                'SSNew': 8,
+                'Smart': 16
+            }
 
             return {
                 /* options :
@@ -88,8 +97,8 @@ var Bot = BotBase.extend(function () {
                             if (roomData.warData.inWar == true) {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
-                                    var ownData = null;//data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData);
+                                    var ownData = data.ownData;
+                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.SSNew);
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -112,10 +121,10 @@ var Bot = BotBase.extend(function () {
                     if (/^targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
-                                self.getGuildData(roomData.warData.guildName,true).then(function (data) {
+                                self.getGuildData(roomData.warData.guildName, true).then(function (data) {
                                     var guild = data.foundGuild;
                                     var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData);
+                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -143,7 +152,7 @@ var Bot = BotBase.extend(function () {
                                     var newTime = new Date(new Date().getTime() - (60 - Number(mtch[1])) * 60000);
                                 }
                                 catch (e) {
-                                    console.log('--------->',e);
+                                    console.log('--------->', e);
                                 }
                                 roomData.warData.warTime = newTime;
                                 roomData.save(function () {
@@ -521,7 +530,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('command list:');
                     helpMsg.push('hello - greet the bot.');
                     helpMsg.push('targets - current targets.');
-                   // helpMsg.push('all targets - new+old intel.');
+                    // helpMsg.push('all targets - new+old intel.');
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
@@ -646,15 +655,15 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
                     //classic war risks
-               /*     riskDef = [
-                        {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
-                        {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
-                        {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
-                        {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
-                        {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
-                        {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
-                        {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
-                    ];*/
+                    /*     riskDef = [
+                     {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
+                     {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
+                     {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
+                     {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
+                     {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
+                     {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
+                     {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
+                     ];*/
 
                     var riskFactor = riskDef[0];
                     if (riskDef[risk] != undefined) {
@@ -699,10 +708,10 @@ var Bot = BotBase.extend(function () {
                                 //iterate on dups and add best one to collection45qw
 
                                 var historical = new Date();
-                                historical.setDate(historical.getDate()-21);
+                                historical.setDate(historical.getDate() - 21);
 
                                 noDups = _.filter(noDups, function (player) {
-                                    return player.origin != 'R' || (player.insertDate.getTime()> historical.getTime());
+                                    return player.origin != 'R' || (player.insertDate.getTime() > historical.getTime());
                                 });
 
                                 uniqData = _.uniq(noDups, function (player) {
@@ -775,9 +784,9 @@ var Bot = BotBase.extend(function () {
                     return defered.promise;
                 }
                 ,
-                getGuildData: function (guildName,getOldIntel) {
+                getGuildData: function (guildName, getOldIntel) {
                     var defered = Q.defer();
-                    getOldIntel = (typeof(getOldIntel)=='undefined'?true:getOldIntel);
+                    getOldIntel = (typeof(getOldIntel) == 'undefined' ? true : getOldIntel);
                     var self = this;
                     //console.log('looking for data : ', guildName);
                     sheetsData.getGuildData(guildName).then(function (data) {
@@ -786,7 +795,7 @@ var Bot = BotBase.extend(function () {
                          foundGuild:foundGuild,
                          bestMatch:bestMatch
                          }*/
-                      //  console.log(data);
+                        //  console.log(data);
                         guildData.getGuildData(guildName, function (item) {
                             //     console.log('got own data ', item);
                             data.ownData = item;
@@ -810,7 +819,7 @@ var Bot = BotBase.extend(function () {
                             roomData.save();
                             var msg = new Array();
                             msg.push('^^ WAR MODE ON ^^');
-                            this.sendGuildTargets(msg, guildName, ssData, ownData);
+                            this.sendGuildTargets(msg, guildName, ssData, ownData, OriginSourceType.Smart);
                         }
                         catch (e) {
                             console.log('-------->', e);
@@ -846,36 +855,45 @@ var Bot = BotBase.extend(function () {
 
                             this.postMessage(msg.join('\n'));
                         } catch (e) {
-                            console.log('------->',e);
+                            console.log('------->', e);
                         }
                     }.bind(this));
 
                 }
                 ,
-                sendGuildTargets: function (msg, guildName, ssData, ownData) {
+                sendGuildTargets: function (msg, guildName, ssData, ownData, originType) {
                     //   console.log('send guild targets',arguments);
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
                     var ssGuildData = ssData != null ? ssData.lastIntel : '';
-                   // console.log(ssData.ssRowId,ssData.rowIdx+2,ssData.lastIntelCell+1);
-
-                    //  console.log(ownData);
-                    if (ownData != null && ownData.players.length != 0) {
-                        msg.push('Raven data:');
-                        var p = new Players();
-                        var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
-                        msg.push(ownIntel);
-                    } else {
-                        msg.push('\nNo Raven data, Please add data.')
+                    var hasRavenData=false;
+                    if ((originType & OriginSourceType.RavenNew) ||
+                        (originType & OriginSourceType.RavenOld) ||
+                        (originType == OriginSourceType.Smart)) {
+                        if (ownData != null && ownData.players.length != 0) {
+                            msg.push('Raven data:');
+                            var p = new Players();
+                            var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
+                            msg.push(ownIntel);
+                            hasRavenData=true;
+                        }
+                        else {
+                            msg.push('\nNo Raven data, Please add data.')
+                        }
                     }
-                    if (ssGuildData != null && ssGuildData.length > 5) {
-                        msg.push('\nSS data:');
-                        ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
-                        msg.push(ssGuildData);
-                    } else {
-                        msg.push('\nNo SS data.');
+                    if ((originType & OriginSourceType.SSNew) ||
+                        (originType & OriginSourceType.SSOld) ||
+                        (originType == OriginSourceType.Smart)) {
+                        if ((originType != OriginSourceType.Smart || (hasRavenData==false)) && ssGuildData != null && ssGuildData.length > 5) {
+                            msg.push('\nSS data:');
+                            ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
+                            msg.push(ssGuildData);
+                        } else {
+                            if (originType != OriginSourceType.Smart) {
+                                msg.push('\nNo SS data.');
+                            }
+                        }
                     }
-
                     this.postMessage(msg.join('\n'));
 
                 }
@@ -891,7 +909,8 @@ var Bot = BotBase.extend(function () {
                     if (diffInMinutes >= 60) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
-                        roomData.save(function (e) {});
+                        roomData.save(function (e) {
+                        });
                         this.postMessage("War ended. did we win this one ?");
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
                         if (timerSettings != 'off') {
@@ -899,22 +918,22 @@ var Bot = BotBase.extend(function () {
                         }
                     }
                 },
-                saveRavenDataToSS: function(guildName){
-                    this.getGuildData(guildName).then(function(data){
+                saveRavenDataToSS: function (guildName) {
+                    this.getGuildData(guildName).then(function (data) {
                         if (data.ownData != null && data.ownData.players.length != 0) {
-                            var msg=[];
+                            var msg = [];
                             msg.push('');
                             msg.push('----------->>>>');
                             msg.push('Raven data:');
                             var p = new Players();
-                            var ownIntel = p.getPlayersIntelFromOwnData(data.ownData.players,'&#10;',false);
+                            var ownIntel = p.getPlayersIntelFromOwnData(data.ownData.players, '&#10;', false);
                             msg.push(ownIntel);
                             msg.push('----------->>>>');
-                            sheetsData.setGuildData(data.foundGuild,msg.join('&#10;'));
+                            sheetsData.setGuildData(data.foundGuild, msg.join('&#10;'));
                         }
-                       
+
                     })
-                    
+
                 }
             }
         }
