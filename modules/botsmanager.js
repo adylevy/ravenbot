@@ -89,7 +89,7 @@ console.log(options)
             console.log('register bots');
             mongoData.getSettings().then(function(settings){
                 var guilds = settings.guilds;
-               console.log('got settings',settings,guilds);
+              // console.log('got settings',settings,guilds);
                 var adminGroup=self.options.adminGroup;
                 try {
                     if (_.find(guilds, function (guild) {
