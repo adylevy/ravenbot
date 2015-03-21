@@ -170,6 +170,13 @@ console.log(options)
             }.bind(this));
 
             botObj.manager=manager;
+            var allbots = _.filter( this.allBots, function (el) {
+                //group_id: Number(guild.roomId)
+                return el.group_id != botObj.group_id;
+            });
+            allbots.push(botObj);
+            this.allBots=allbots;
+
             return manager;
         },
         registerBotAndCreateManager: function(groupId){
@@ -182,7 +189,7 @@ console.log(options)
                         var botObj=response.response.bot;
                         var manager=this.createManager(groupIdx,botObj);
                         botObj.manager = manager;
-                        this.allBots.push(botObj);
+
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
