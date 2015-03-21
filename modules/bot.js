@@ -544,7 +544,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('command list:');
                     helpMsg.push('hello - greet the bot.');
                     helpMsg.push('targets - current targets.');
-                    // helpMsg.push('all targets - new+old intel.');
+                    helpMsg.push('all targets - raven + SS intel.');
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
@@ -833,7 +833,12 @@ var Bot = BotBase.extend(function () {
                             roomData.save();
                             var msg = new Array();
                             msg.push('^^ WAR MODE ON ^^');
-                            this.sendGuildTargets(msg, guildName, ssData, ownData, OriginSourceType.Smart);
+                            var matchedMode = roomPrefs.getRoomSettingFromRoomPref(roomData, 'matched');
+                            var originSource = OriginSourceType.Smart;
+                            if (matchedMode=='old'){
+                                originSource=OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew;
+                            }
+                            this.sendGuildTargets(msg, guildName, ssData, ownData, originSource);
                         }
                         catch (e) {
                             console.log('-------->', e);
