@@ -885,7 +885,10 @@ var Bot = BotBase.extend(function () {
                         (originType & OriginSourceType.SSOld) ||
                         (originType == OriginSourceType.Smart)) {
                         if ((originType != OriginSourceType.Smart || (hasRavenData==false)) && ssGuildData != null && ssGuildData.length > 5) {
-                            msg.push('\nSS data:');
+                            if (hasRavenData){
+                                msg.push('\n');
+                            }
+                            msg.push('SS data:');
                             ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
                             msg.push(ssGuildData);
                         } else {
