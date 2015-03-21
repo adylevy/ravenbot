@@ -181,7 +181,7 @@ console.log(options)
                 if (response.meta.code > 200 && response.meta.code < 300) {
                     try {
                         var botObj=response.response.bot;
-                        var manager=createManager(groupIdx,botObj);
+                        var manager=this.createManager(groupIdx,botObj);
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
