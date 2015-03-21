@@ -106,8 +106,11 @@ console.log(options)
                 var registerArr=[];
                 _.each(guilds, function (guild) {
                    try {
-                       if (_.findWhere(this.allBots, {group_id: Number(guild.roomId)}) == undefined) {
+                       var botObj=_.findWhere(this.allBots, {group_id: Number(guild.roomId)});
+                       if (botObj == undefined) {
                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                       }else{
+                           registerArr.push(this.createManager(guild.roomId,botObj));
                        }
                    }catch(e){}
                 }.bind(this));
@@ -128,6 +131,48 @@ console.log(options)
                 }.bind(this));
             return deferred.promise;
         },
+        createManager : function(groupIdx,botObj){
+            var manager = this.options.adminGroup==groupIdx? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
+            manager.on('botRegister',function(ctx,guild){
+                var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
+                if (botObj==undefined) {
+                    this.registerBotAndCreateManager(guild.roomId).then(function (newBot) {
+                        ctx.botRegistered(guild.roomId);
+                        newBot.postMessage('RavenBot is successfully registered in this room.\nRaven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
+                        this.addGroupToSettings(guild);
+                    }.bind(this));
+                }else{
+                    ctx.postMessage('Bot already registered');
+                }
+
+            }.bind(this));
+            manager.on('botUnregister',function(ctx,groupId){
+                var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                if (botObj!=undefined) {
+                    botObj.manager.postMessage('Bye.');
+                    this.allBots = _.filter(this.allBots, function (bot) {
+                        return bot.group_id != groupId;
+                    });
+                    this.removeGroupFromSettings(groupId);
+                    this.unregisterBot(botObj.bot_id).then(function () {
+                        ctx.botUnregistered(groupId);
+
+                    }.bind(this));
+                }else{
+                    ctx.postMessage('Bot is not registered');
+
+                }
+
+            }.bind(this));
+            manager.on('broadcast',function(ctx,broadcastObj){
+                this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
+
+            }.bind(this));
+            var botResponse = response.response.bot;
+            botResponse.manager = manager;
+            this.allBots.push(botResponse);
+            return manager;
+        },
         registerBotAndCreateManager: function(groupId){
             var deferred = Q.defer();
             this.registerBot(groupId).then(function (data) {
@@ -135,45 +180,8 @@ console.log(options)
                 var groupIdx=data.groupId;
                 if (response.meta.code > 200 && response.meta.code < 300) {
                     try {
-                        var manager = this.options.adminGroup==groupIdx? new AdminBot(response.response.bot, groupIdx) : new Bot(response.response.bot, groupIdx);
-                        manager.on('botRegister',function(ctx,guild){
-                            var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
-                            if (botObj==undefined) {
-                                this.registerBotAndCreateManager(guild.roomId).then(function (newBot) {
-                                    ctx.botRegistered(guild.roomId);
-                                    newBot.postMessage('RavenBot is successfully registered in this room.\nRaven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
-                                    this.addGroupToSettings(guild);
-                                }.bind(this));
-                            }else{
-                                ctx.postMessage('Bot already registered');
-                            }
-
-                        }.bind(this));
-                        manager.on('botUnregister',function(ctx,groupId){
-                            var botObj = _.findWhere(this.allBots, {group_id: groupId});
-                            if (botObj!=undefined) {
-                                botObj.manager.postMessage('Bye.');
-                                this.allBots = _.filter(this.allBots, function (bot) {
-                                    return bot.group_id != groupId;
-                                });
-                                this.removeGroupFromSettings(groupId);
-                                this.unregisterBot(botObj.bot_id).then(function () {
-                                    ctx.botUnregistered(groupId);
-
-                                }.bind(this));
-                            }else{
-                                ctx.postMessage('Bot is not registered');
-                                
-                            }
-
-                        }.bind(this));
-                        manager.on('broadcast',function(ctx,broadcastObj){
-                            this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
-                            
-                        }.bind(this));
-                        var botResponse = response.response.bot;
-                        botResponse.manager = manager;
-                        this.allBots.push(botResponse);
+                        var botObj=response.response.bot;
+                        var manager=createManager(groupIdx,botObj);
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
