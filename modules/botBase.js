@@ -62,7 +62,7 @@ var BotBase = Class.extend(function () {
                 postMessageArr: function (msgArr, img) {
 
                     var msg = msgArr.shift();
-                    this.sendMsg(msg, img).then(Q.delay(50).then(function () {
+                    this.sendMsg(msg, img).then(Q.delay(200).then(function () {
                         if (msgArr.length > 0) {
                             this.postMessageArr(msgArr);
                         }
