@@ -3,6 +3,7 @@ var http = require("http");
 var querystring = require("querystring");
 const _ = require('underscore');
 var FEED_URL = "https://spreadsheets.google.com/feeds/";
+var parseString = require('./xml2js/xml2js').parseString;
 
 
 var forceArray = function (val) {
@@ -35,8 +36,7 @@ var getFeed = function (params, auth, query, cb) {
    // console.log('getting: ' + url);
     request.get({
         url: url,
-        headers: headers,
-        json: true
+        headers: headers
     }, function (err, response, body) {
         if (err) {
             cb(err);
@@ -61,7 +61,15 @@ var getFeed = function (params, auth, query, cb) {
     });
 };
 
-var saveCell = function (params,r,c,newData, auth, cb) {
+var xmlSafeValue = function(val){
+    if ( val == null ) return '';
+    return String(val)/*.replace(/&/g, '&amp;')*/
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+var saveCell = function (params,r,c,oldData,newData, auth, cb) {
     var headers = {};
     var visibility = "public";
     var projection = "values";
@@ -72,37 +80,48 @@ var saveCell = function (params,r,c,newData, auth, cb) {
         projection = "full";
     }
 
-    
     params.push(visibility, projection);
     params.push('R' + r + 'C' + c);
     var url = FEED_URL + params.join("/");
 
-    var query = query || {};
-    query.alt = "json";
-
+    headers.Accept='text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
 
     request.get({
-        url: url+ "?" + querystring.stringify(query),
-        headers: headers,
-        json: true
+        url: url,
+        headers: headers
     }, function (err, response, body) {
-        var _url=body.entry.link[1].href;
-        var data_xml =
-            '<entry><id>'+url+'</id>'+
-            '<link rel="edit" type="application/atom+xml" href="'+_url+'"/>'+
-            '<gs:cell row="'+r+'" col="'+c+'" inputValue="'+555+'"/></entry>'
 
-        data_xml = data_xml.replace('<entry>', "<entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'>");
-        console.log(_url);
-        headers['content-type'] = 'application/atom+xml';
-        console.log(headers);
-        request({
-            url: _url,
-            method: 'PUT',
-            headers: headers,
-            body:data_xml
-        }, function (err, response, body) {
-            console.warn(err,response.statusCode,body);
+        parseString(body, function (err, result) {
+            var cellContent=result.entry.content[0]._;
+            var ssData = cellContent.split('----------->>>>');
+            var data=[];
+            _.each(ssData,function(line){
+                if (line.indexOf('Raven data:')==-1){
+                    data.push(line);
+                }
+            });
+            var content=data.join('\n');
+            content=content.replace(/[\n]+/g,'\n');
+            content=content.replace(/\n/g,'&#10;');
+            content=content+newData;
+            var _url = result.entry.link[1].$.href;
+            var data_xml =
+                '<entry><id>' + url + '</id>' +
+                '<link rel="edit" type="application/atom+xml" href="' + _url + '"/>' +
+                '<gs:cell row="' + r + '" col="' + c + '" inputValue="'+xmlSafeValue(content)+'"/></entry>';
+            console.log(data_xml);
+            data_xml = data_xml.replace('<entry>', "<entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'>");
+            console.log(_url);
+            headers['content-type'] = 'application/atom+xml';
+            console.log(headers);
+            request({
+                url: _url,
+                method: 'PUT',
+                headers: headers,
+                body: data_xml
+            }, function (err, response, body) {
+                console.warn(err, response.statusCode, body);
+            });
         });
     });
     
@@ -226,12 +245,12 @@ var Spreadsheet = function (key, auth, data) {
         this.worksheets.push(new Worksheet(this, worksheetData));
     }, this);
 
-    this.updateCell=function(idx,r,c,newData){
+    this.updateCell=function(idx,r,c,oldData,newData){
         var params=[];
         params.push('cells');
         params.push(this.key);
         params.push(idx);
-        saveCell(params,r,c,newData,this.auth,function(res){
+        saveCell(params,r,c,oldData,newData,this.auth,function(res){
             console.log(res);
         })
     };
@@ -275,8 +294,9 @@ Worksheet.prototype.cells = function (opts, cb) {
     }, cb);
 };
 
-var Row = function (data) {
+var Row = function (data,idx,ssID) {
     this.cells=[];
+    this.idx=idx;
     for(var key in data){
         if (key.substring(0, 4) == 'gsx:') {
             // console.log(key, data[key].$t);
@@ -284,7 +304,7 @@ var Row = function (data) {
         };
     }
     this.title=data.title[0]._;
-    this.ssID=data.id[0]._;
+    this.ssID=data.link[0].$.href;
 
 };
 

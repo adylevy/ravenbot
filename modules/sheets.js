@@ -220,7 +220,8 @@ function setData(foundGuild,newData){
     
     var sheetIdentifier=rgx[1];
     loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
-        spreadsheet.updateCell(sheetIdentifier,foundGuild.rowIdx+2,4,newData);
+        var oldData=foundGuild.lastIntel;
+        spreadsheet.updateCell(sheetIdentifier,foundGuild.rowIdx+2,5,oldData,newData);
         
     }.bind(this))
     
