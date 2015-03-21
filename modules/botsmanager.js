@@ -106,7 +106,7 @@ console.log(options)
                 var registerArr=[];
                 _.each(guilds, function (guild) {
                    try {
-                       var botObj=_.findWhere(this.allBots, {group_id: Number(guild.roomId)});
+                       var botObj=_.findWhere(this.allBots, {group_id: guild.roomId+''});
                        if (botObj == undefined) {
                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
                        }else{
