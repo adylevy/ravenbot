@@ -521,7 +521,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('command list:');
                     helpMsg.push('hello - greet the bot.');
                     helpMsg.push('targets - current targets.');
-                    helpMsg.push('all targets - new+old intel.');
+                   // helpMsg.push('all targets - new+old intel.');
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
