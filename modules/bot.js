@@ -83,13 +83,13 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Hey there!');
                     }
 
-                    if (/^all\stargets$/.test(txt)) {
+                    if (/^sstargets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
                                 self.getGuildData(roomData.warData.guildName).then(function (data) {
                                     var guild = data.foundGuild;
-                                    var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, true);
+                                    var ownData = null;//data.ownData;
+                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData);
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -112,10 +112,10 @@ var Bot = BotBase.extend(function () {
                     if (/^targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
-                                self.getGuildData(roomData.warData.guildName).then(function (data) {
+                                self.getGuildData(roomData.warData.guildName,true).then(function (data) {
                                     var guild = data.foundGuild;
                                     var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, false);
+                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData);
                                 });
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -767,8 +767,9 @@ var Bot = BotBase.extend(function () {
                     return defered.promise;
                 }
                 ,
-                getGuildData: function (guildName) {
+                getGuildData: function (guildName,getOldIntel) {
                     var defered = Q.defer();
+                    getOldIntel = (typeof(getOldIntel)=='undefined'?true:getOldIntel);
                     var self = this;
                     //console.log('looking for data : ', guildName);
                     sheetsData.getGuildData(guildName).then(function (data) {
@@ -777,6 +778,7 @@ var Bot = BotBase.extend(function () {
                          foundGuild:foundGuild,
                          bestMatch:bestMatch
                          }*/
+                      //  console.log(data);
                         guildData.getGuildData(guildName, function (item) {
                             //     console.log('got own data ', item);
                             data.ownData = item;
@@ -800,7 +802,7 @@ var Bot = BotBase.extend(function () {
                             roomData.save();
                             var msg = new Array();
                             msg.push('^^ WAR MODE ON ^^');
-                            this.sendGuildTargets(msg, guildName, ssData, ownData, false);
+                            this.sendGuildTargets(msg, guildName, ssData, ownData);
                         }
                         catch (e) {
                             console.log('-------->', e);
@@ -842,12 +844,12 @@ var Bot = BotBase.extend(function () {
 
                 }
                 ,
-                sendGuildTargets: function (msg, guildName, ssData, ownData, all) {
+                sendGuildTargets: function (msg, guildName, ssData, ownData) {
                     //   console.log('send guild targets',arguments);
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
-                    var ssGuildData = ssData != null ? (all ? ssData.allIntel : ssData.lastIntel) : '';
-
+                    var ssGuildData = ssData != null ? ssData.lastIntel : '';
+                   // console.log(ssData.ssRowId,ssData.rowIdx+2,ssData.lastIntelCell+1);
 
                     //  console.log(ownData);
                     if (ownData != null && ownData.players.length != 0) {
@@ -881,15 +883,30 @@ var Bot = BotBase.extend(function () {
                     if (diffInMinutes >= 60) {
                         roomData.warData.inWar = false;
                         roomData.warData.guildName = '';
-                        roomData.save(function (e) {
-
-                        });
+                        roomData.save(function (e) {});
                         this.postMessage("War ended. did we win this one ?");
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
                         if (timerSettings != 'off') {
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
                     }
+                },
+                saveRavenDataToSS: function(guildName){
+                    this.getGuildData(guildName).then(function(data){
+                        if (data.ownData != null && data.ownData.players.length != 0) {
+                            var msg=[];
+                            msg.push('');
+                            msg.push('----------->>>>');
+                            msg.push('Raven data:');
+                            var p = new Players();
+                            var ownIntel = p.getPlayersIntelFromOwnData(data.ownData.players,'&#10;',false);
+                            msg.push(ownIntel);
+                            msg.push('----------->>>>');
+                            sheetsData.setGuildData(data.foundGuild,msg.join('&#10;'));
+                        }
+                       
+                    })
+                    
                 }
             }
         }

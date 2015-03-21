@@ -73,14 +73,18 @@ var Players = Class.extend(function () {
             })
             return players;
         },
-        getPlayersIntelFromOwnData: function(players){
-
+        getPlayersIntelFromOwnData: function(players,lineBreak,showOldIntel){
+            lineBreak = lineBreak || '\n';
+            showOldIntel = (typeof showOldIntel=='undefined') ? true : showOldIntel;
             var intel=[];
             var p=this.getPlayerObjFromDBPlayers(players);
             var oldIntel=[];
             var newIntel=[];
             var d = new Date();
             d.setDate(d.getDate()-6);
+
+            var historical = new Date();
+            historical.setDate(historical.getDate()-18);
 
             p = _.sortBy(p, function (player) {
                 return player.lvl;
@@ -89,6 +93,7 @@ var Players = Class.extend(function () {
             _.each(p,function(player){
                // console.log(d,player.insertDate,player.insertDate.getTime(),d.getTime())
                 if (player.insertDate.getTime()<=d.getTime()){
+                    if (player.insertDate.getTime()>=historical.getTime())
                     oldIntel.push(player.toString());
                 }else{
                     newIntel.push(player.toString())
@@ -99,7 +104,7 @@ var Players = Class.extend(function () {
                 intel.push('Fresh intel:');
                 intel=intel.concat(newIntel);
             }
-            if (oldIntel.length!=0){
+            if (oldIntel.length!=0 && showOldIntel){
                 if (newIntel.length!=0) {
                     intel.push('');
                 }
@@ -107,7 +112,7 @@ var Players = Class.extend(function () {
                 intel=intel.concat(oldIntel);
             }
             
-            return intel.join('\n');
+            return intel.join(lineBreak);
         }
 
     }

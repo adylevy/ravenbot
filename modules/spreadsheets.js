@@ -5,6 +5,7 @@ const _ = require('underscore');
 var FEED_URL = "https://spreadsheets.google.com/feeds/";
 var parseString = require('./xml2js/xml2js').parseString;
 
+
 var forceArray = function (val) {
     if (Array.isArray(val)) {
         return val;
@@ -32,11 +33,10 @@ var getFeed = function (params, auth, query, cb) {
     if (query) {
         url += "?" + querystring.stringify(query);
     }
-    // console.log('getting: ' + url);
+   // console.log('getting: ' + url);
     request.get({
         url: url,
-        headers: headers,
-        json: true
+        headers: headers
     }, function (err, response, body) {
         if (err) {
             cb(err);
@@ -59,6 +59,72 @@ var getFeed = function (params, auth, query, cb) {
         });
         //
     });
+};
+
+var xmlSafeValue = function(val){
+    if ( val == null ) return '';
+    return String(val)/*.replace(/&/g, '&amp;')*/
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+var saveCell = function (params,r,c,oldData,newData, auth, cb) {
+    var headers = {};
+    var visibility = "public";
+    var projection = "values";
+
+    if (auth) {
+        headers['Authorization'] = "GoogleLogin auth=" + auth;
+        visibility = "private";
+        projection = "full";
+    }
+
+    params.push(visibility, projection);
+    params.push('R' + r + 'C' + c);
+    var url = FEED_URL + params.join("/");
+
+    headers.Accept='text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8';
+
+    request.get({
+        url: url,
+        headers: headers
+    }, function (err, response, body) {
+
+        parseString(body, function (err, result) {
+            var cellContent=result.entry.content[0]._;
+            var ssData = cellContent.split('----------->>>>');
+            var data=[];
+            _.each(ssData,function(line){
+                if (line.indexOf('Raven data:')==-1){
+                    data.push(line);
+                }
+            });
+            var content=data.join('\n');
+            content=content.replace(/[\n]+/g,'\n');
+            content=content.replace(/\n/g,'&#10;');
+            content=content+newData;
+            var _url = result.entry.link[1].$.href;
+            var data_xml =
+                '<entry><id>' + url + '</id>' +
+                '<link rel="edit" type="application/atom+xml" href="' + _url + '"/>' +
+                '<gs:cell row="' + r + '" col="' + c + '" inputValue="'+xmlSafeValue(content)+'"/></entry>';
+            console.log(data_xml);
+            data_xml = data_xml.replace('<entry>', "<entry xmlns='http://www.w3.org/2005/Atom' xmlns:gs='http://schemas.google.com/spreadsheets/2006'>");
+            console.log(_url);
+            headers['content-type'] = 'application/atom+xml';
+            console.log(headers);
+            request({
+                url: _url,
+                method: 'PUT',
+                headers: headers,
+                body: data_xml
+            }, function (err, response, body) {
+                console.warn(err, response.statusCode, body);
+            });
+        });
+    });
+    
 };
 
 var Spreadsheets = module.exports = function (opts, cb) {
@@ -115,9 +181,9 @@ Spreadsheets.rows = function (opts, cb) {
 
         if (typeof data.entry != "undefined" && data.entry !== null) {
             var entries = forceArray(data.entry);
-
+            var ctr=0;
             entries.forEach(function (entry) {
-                rows.push(new Row(entry));
+                rows.push(new Row(entry,ctr++));
             });
         }
 
@@ -178,6 +244,16 @@ var Spreadsheet = function (key, auth, data) {
     worksheets.forEach(function (worksheetData) {
         this.worksheets.push(new Worksheet(this, worksheetData));
     }, this);
+
+    this.updateCell=function(idx,r,c,oldData,newData){
+        var params=[];
+        params.push('cells');
+        params.push(this.key);
+        params.push(idx);
+        saveCell(params,r,c,oldData,newData,this.auth,function(res){
+            console.log(res);
+        })
+    };
 };
 
 var Worksheet = function (spreadsheet, data) {
@@ -218,8 +294,9 @@ Worksheet.prototype.cells = function (opts, cb) {
     }, cb);
 };
 
-var Row = function (data) {
+var Row = function (data,idx,ssID) {
     this.cells=[];
+    this.idx=idx;
     for(var key in data){
         if (key.substring(0, 4) == 'gsx:') {
             // console.log(key, data[key].$t);
@@ -227,33 +304,7 @@ var Row = function (data) {
         };
     }
     this.title=data.title[0]._;
-
-    /* Object.keys(data).forEach(function (key) {
-     var val;
-     val = data[key];
-     if (key.substring(0, 4) == "gsx:") {
-     if (typeof val == 'object' && Object.keys(val).length === 0) {
-     val = null;
-     }
-     if (key == "gsx:") {
-     this[key.substring(0, 3)] = val;
-     } else {
-     this[key.substring(4)] = val;
-     }
-     } else if (key.substring(0, 4) == "gsx$") {
-     if (key == "gsx$") {
-     this[key.substring(0, 3)] = val;
-     } else {
-     this[key.substring(4)] = val.$t || val;
-     }
-     } else {
-     if (key == "id") {
-     this[key] = val;
-     } else if (val.$t) {
-     this[key] = val.$t;
-     }
-     }
-     }, this);*/
+    this.ssID=data.link[0].$.href;
 
 };
 
