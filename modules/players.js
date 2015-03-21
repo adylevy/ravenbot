@@ -84,7 +84,7 @@ var Players = Class.extend(function () {
             d.setDate(d.getDate()-6);
 
             var historical = new Date();
-            historical.setDate(historical.getDate()-18);
+            historical.setDate(historical.getDate()-21);
 
             p = _.sortBy(p, function (player) {
                 return player.lvl;
