@@ -880,7 +880,7 @@ var Bot = BotBase.extend(function () {
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
                     var ssGuildData = ssData != null ? ssData.lastIntel : '';
-                    var hasRavenData=false;
+                    var ravenPlayersCtr=0;
                     if ((originType & OriginSourceType.RavenNew) ||
                         (originType & OriginSourceType.RavenOld) ||
                         (originType == OriginSourceType.Smart)) {
@@ -889,7 +889,7 @@ var Bot = BotBase.extend(function () {
                             var p = new Players();
                             var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
                             msg.push(ownIntel);
-                            hasRavenData=true;
+                            ravenPlayersCtr=(ownIntel.match(/\n/g)||[]).length;
                         }
                         else {
                             msg.push('\nNo Raven data, Please add data.')
@@ -898,8 +898,8 @@ var Bot = BotBase.extend(function () {
                     if ((originType & OriginSourceType.SSNew) ||
                         (originType & OriginSourceType.SSOld) ||
                         (originType == OriginSourceType.Smart)) {
-                        if ((originType != OriginSourceType.Smart || (hasRavenData==false)) && ssGuildData != null && ssGuildData.length > 5) {
-                            if (hasRavenData){
+                        if ((originType != OriginSourceType.Smart || (ravenPlayersCtr<8)) && ssGuildData != null && ssGuildData.length > 5) {
+                            if (ravenPlayersCtr>0){
                                 msg.push('');
                             }
                             msg.push('SS data:');
