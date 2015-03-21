@@ -698,6 +698,13 @@ var Bot = BotBase.extend(function () {
                                 //remove dups
                                 //iterate on dups and add best one to collection45qw
 
+                                var historical = new Date();
+                                historical.setDate(historical.getDate()-21);
+
+                                noDups = _.filter(noDups, function (player) {
+                                    return player.origin != 'R' || (player.insertDate.getTime()> historical.getTime());
+                                });
+
                                 uniqData = _.uniq(noDups, function (player) {
                                     return player.name + '_' + Math.floor(player.lvl / 10);
                                 });
@@ -723,6 +730,7 @@ var Bot = BotBase.extend(function () {
                                 var msg = [];
                                 if (candidates.length == 0) {
                                     msg.push('Could not find targets for: ' + user.name);
+                                    msg.push('Try hitting castle, wall or scouting.');
                                 } else {
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
 
