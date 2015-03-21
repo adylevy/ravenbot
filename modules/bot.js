@@ -521,7 +521,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('command list:');
                     helpMsg.push('hello - greet the bot.');
                     helpMsg.push('targets - current targets.');
-                    helpMsg.push('all targets - new+old intel.');
+                   // helpMsg.push('all targets - new+old intel.');
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
@@ -698,6 +698,13 @@ var Bot = BotBase.extend(function () {
                                 //remove dups
                                 //iterate on dups and add best one to collection45qw
 
+                                var historical = new Date();
+                                historical.setDate(historical.getDate()-21);
+
+                                noDups = _.filter(noDups, function (player) {
+                                    return player.origin != 'R' || (player.insertDate.getTime()> historical.getTime());
+                                });
+
                                 uniqData = _.uniq(noDups, function (player) {
                                     return player.name + '_' + Math.floor(player.lvl / 10);
                                 });
@@ -723,6 +730,7 @@ var Bot = BotBase.extend(function () {
                                 var msg = [];
                                 if (candidates.length == 0) {
                                     msg.push('Could not find targets for: ' + user.name);
+                                    msg.push('Try hitting castle, wall or scouting.');
                                 } else {
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
 
