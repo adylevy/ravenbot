@@ -250,7 +250,7 @@ var Bot = BotBase.extend(function () {
                     }
 
                     var settingsRgx = /^[Ss]et\s(\w+)\s(\w+)$/;
-                    var validSettings = ['timer'];
+                    var validSettings = ['timer','matched'];
                     if (settingsRgx.test(txt)) {
                         var mtches = settingsRgx.exec(txt);
 
