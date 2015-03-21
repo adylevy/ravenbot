@@ -168,7 +168,7 @@ console.log(options)
                 this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
 
             }.bind(this));
-            var botResponse = response.response.bot;
+            var botResponse = botObj;
             botResponse.manager = manager;
             this.allBots.push(botResponse);
             return manager;
