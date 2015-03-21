@@ -168,9 +168,8 @@ console.log(options)
                 this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
 
             }.bind(this));
-            var botResponse = botObj;
-            botResponse.manager = manager;
-            this.allBots.push(botResponse);
+
+            botObj.manager=manager;
             return manager;
         },
         registerBotAndCreateManager: function(groupId){
@@ -182,6 +181,8 @@ console.log(options)
                     try {
                         var botObj=response.response.bot;
                         var manager=this.createManager(groupIdx,botObj);
+                        botObj.manager = manager;
+                        this.allBots.push(botObj);
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
