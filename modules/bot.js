@@ -250,7 +250,7 @@ var Bot = BotBase.extend(function () {
                     }
 
                     var settingsRgx = /^[Ss]et\s(\w+)\s(\w+)$/;
-                    var validSettings = ['timer','matched'];
+                    var validSettings = ['timer', 'matched'];
                     if (settingsRgx.test(txt)) {
                         var mtches = settingsRgx.exec(txt);
 
@@ -651,6 +651,96 @@ var Bot = BotBase.extend(function () {
 
                 },
 
+                getCandidatesForUser: function (user, risk, combinedGuildData) {
+                    var msg = [];
+
+                    var riskDef = [
+                        {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .5},
+                        {'all': 1.1, 'line1': .6, 'line2': .75, 'line3': .45},
+                        {'all': 1, 'line1': .55, 'line2': .7, 'line3': .45},
+                        {'all': 0.9, 'line1': .45, 'line2': .65, 'line3': .4},
+                        {'all': 0.7, 'line1': .4, 'line2': .6, 'line3': .35},
+                        {'all': 0.5, 'line1': .35, 'line2': .5, 'line3': .3},
+                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
+                    ];
+
+                    var riskFactor;
+                    while (riskDef[risk] == undefined) {
+                        risk -= 1;
+                    }
+                    riskFactor = riskDef[risk];
+                    var candidates = [],
+                        dups = {},
+                        noDups = [],
+                        uniqData = [];
+
+                    _.each(combinedGuildData, function (player) {
+                            var playerKey = player.name + '_' + Math.floor(player.lvl / 10);
+                            var equiv = _.find(combinedGuildData, function (p) {
+                                return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin != player.origin;
+                            });
+                            if (equiv != undefined) {
+                                dups[playerKey] = dups[playerKey] || [];
+                                dups[playerKey].push(player);
+                            } else {
+                                noDups.push(player);
+                            }
+                        }
+                    );
+                    _.each(dups, function (dup) {
+                        var p1 = dup[0];
+                        var p2 = dup[1];
+                        if (p1.lvl > p2.lvl || (p1.isFresh() && !p2.isFresh()) || (p1.lvl == p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin == 'R' && p2.origin == 'SS')) {
+                            noDups.push(p1);
+                        } else {
+                            noDups.push(p2);
+                        }
+                    })
+
+                    var historical = new Date();
+                    historical.setDate(historical.getDate() - 21);
+
+                    noDups = _.filter(noDups, function (player) {
+                        return player.origin != 'R' || (player.insertDate.getTime() > historical.getTime());
+                    });
+
+                    uniqData = _.uniq(noDups, function (player) {
+                        return player.name + '_' + Math.floor(player.lvl / 10);
+                    });
+
+                    _.each(uniqData, function (player) {
+                        if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
+                            var line1 = user.def / player.def;
+                            var line2 = user.eqDef / player.eqDef;
+                            var line3 = user.heroDef / player.heroDef;
+
+                            var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
+
+                            if (all >= riskFactor.all && line1 >= riskFactor.line1 && line2 >= riskFactor.line2 && line3 >= riskFactor.line3) {
+                                player.rank = all;
+                                candidates.push(player);
+                            } else {
+                                // console.log(player,all,line1,line2,line3);
+                            }
+                        }
+                    });
+
+                    var msg = [];
+
+                    candidates = _.sortBy(candidates, function (player) {
+                        return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
+                    }).reverse();
+
+                    candidates = candidates.slice(0, 5);
+                    _.each(candidates, function (candidate) {
+                        var crank = candidate.rank;
+                        var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
+                        msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
+                    });
+
+                    return msg;
+                },
+
                 findUserTargets: function (guildName, userName, risk) {
 
                     var user = new Player('199 ' + userName);
@@ -658,120 +748,32 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('In order to user the myt command you must change your name in the room to reflect your stats using the following template: Name Atk/Eq Atk/Hero Atk');
                         return;
                     }
-                    //console.log('find user targets ...', user.name, risk, user.toString());
-
-                    var riskDef = [
-                        {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .7},
-                        {'all': 1.1, 'line1': .6, 'line2': .75, 'line3': .65},
-                        {'all': 1, 'line1': .55, 'line2': .7, 'line3': .6},
-                        {'all': 0.9, 'line1': .45, 'line2': .65, 'line3': .55},
-                        {'all': 0.7, 'line1': .4, 'line2': .6, 'line3': .4},
-                        {'all': 0.5, 'line1': .35, 'line2': .5, 'line3': .3},
-                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
-                    ];
-                    //classic war risks
-                    /*     riskDef = [
-                     {'all': 1.2, 'line1': 1.05, 'line2': .3, 'line3': .2},
-                     {'all': 1.2, 'line1': .95, 'line2': .3, 'line3': .2},
-                     {'all': 1.1, 'line1': .85, 'line2': .3, 'line3': .2},
-                     {'all': 1, 'line1': .7, 'line2': .3, 'line3': .2},
-                     {'all': 0.7, 'line1': .6, 'line2': .3, 'line3': .2},
-                     {'all': 0.5, 'line1': .55, 'line2': .3, 'line3': .2},
-                     {'all': 0, 'line1': .5, 'line2': .3, 'line3': .2}
-                     ];*/
-
-                    var riskFactor = riskDef[0];
-                    if (riskDef[risk] != undefined) {
-                        riskFactor = riskDef[risk];
-                    } else {
-                        risk = 0;
-                    }
 
                     this.getParsedIntelForGuild(guildName).then(function (combinedGuildData) {
                             try {
-                                //  console.log('got parsed intel',guildData);
-                                var candidates = [];
 
-                                var dups = {};
-                                var noDups = [];
-                                _.each(combinedGuildData, function (player) {
-                                        var playerKey = player.name + '_' + Math.floor(player.lvl / 10);
-                                        var equiv = _.find(combinedGuildData, function (p) {
-                                            return playerKey == p.name + '_' + Math.floor(p.lvl / 10) && p.origin != player.origin;
-                                        });
-                                        if (equiv != undefined) {
-                                            dups[playerKey] = dups[playerKey] || [];
-                                            dups[playerKey].push(player);
-                                        } else {
-                                            noDups.push(player);
-                                        }
-                                    }
-                                );
-                                _.each(dups, function (dup) {
-                                    var p1 = dup[0];
-                                    var p2 = dup[1];
-                                    if (p1.lvl > p2.lvl || (p1.isFresh() && !p2.isFresh()) || (p1.lvl == p2.lvl && p1.isFresh() && p2.isFresh() && p1.origin == 'R' && p2.origin == 'SS')) {
-                                        noDups.push(p1);
-                                    } else {
-                                        noDups.push(p2);
-                                    }
-                                })
-                                //    _.each(noDups,function(d){console.log(d.name, d.origin, d.isFresh())});;
-
-                                //get all dups
-                                //remove dups
-                                //iterate on dups and add best one to collection45qw
-
-                                var historical = new Date();
-                                historical.setDate(historical.getDate() - 21);
-
-                                noDups = _.filter(noDups, function (player) {
-                                    return player.origin != 'R' || (player.insertDate.getTime() > historical.getTime());
-                                });
-
-                                uniqData = _.uniq(noDups, function (player) {
-                                    return player.name + '_' + Math.floor(player.lvl / 10);
-                                });
-
-                                _.each(uniqData, function (player) {
-                                    if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
-                                        var line1 = user.def / player.def;
-                                        var line2 = user.eqDef / player.eqDef;
-                                        var line3 = user.heroDef / player.heroDef;
-
-                                        var all = (line1 * (7 / 14) + line2 * (5 / 14) + line3 * (2 / 14));
-                                        // self.postMessage('player: '+player.name+' '+line1+' '+line2+' '+line3+' '+all);
-                                        if (all >= riskFactor.all && line1 >= riskFactor.line1 && line2 >= riskFactor.line2 && line3 >= riskFactor.line3) {
-                                            player.rank = all;
-                                            candidates.push(player);
-                                            // console.log(player.name,all)
-                                        } else {
-                                             console.log(player,all,line1,line2,line3);
-                                        }
-                                    }
-                                });
-
+                                var mega = false;
+                                var candidates = this.getCandidatesForUser(user, risk, combinedGuildData);
+                                if (candidates == 0) {
+                                    mega = true;
+                                    candidates = this.getCandidatesForUser(user, risk + 4, combinedGuildData);
+                                }
                                 var msg = [];
                                 if (candidates.length == 0) {
                                     msg.push('Could not find targets for: ' + user.name);
                                     msg.push('Try hitting castle, wall or scouting.');
                                 } else {
+                                    if (mega) {
+                                        msg.push('******* USE MEGA FOR THESE *******')
+                                    }
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
-
+                                    msg.push(candidates.join('\n'));
+                                    if (mega) {
+                                        msg.push('******* USE MEGA FOR THESE *******')
+                                    }
                                 }
-                                candidates = _.sortBy(candidates, function (player) {
-                                    return player.lvl + (player.isFresh() ? 200 : 0) + (player.origin == 'R' ? 100 : 0);
-                                }).reverse();
-                                // console.log(candidates);
-                                candidates = candidates.slice(0, 5);
-                                _.each(candidates, function (candidate) {
-                                    var crank = candidate.rank;
-                                    var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                    msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
-                                });
 
                                 this.postMessage(msg.join('\n'));
-                                //   console.log(msg);
                             }
                             catch
                                 (ee) {
@@ -836,8 +838,8 @@ var Bot = BotBase.extend(function () {
                             msg.push('^^ WAR MODE ON ^^');
                             var matchedMode = roomPrefs.getRoomSettingFromRoomPref(roomData, 'matched');
                             var originSource = OriginSourceType.Smart;
-                            if (matchedMode=='old'){
-                                originSource=OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew;
+                            if (matchedMode == 'old') {
+                                originSource = OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew;
                             }
                             this.sendGuildTargets(msg, guildName, ssData, ownData, originSource);
                         }
@@ -886,7 +888,7 @@ var Bot = BotBase.extend(function () {
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
                     var ssGuildData = ssData != null ? ssData.lastIntel : '';
-                    var ravenPlayersCtr=0;
+                    var ravenPlayersCtr = 0;
                     if ((originType & OriginSourceType.RavenNew) ||
                         (originType & OriginSourceType.RavenOld) ||
                         (originType == OriginSourceType.Smart)) {
@@ -895,7 +897,7 @@ var Bot = BotBase.extend(function () {
                             var p = new Players();
                             var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
                             msg.push(ownIntel);
-                            ravenPlayersCtr=(ownIntel.match(/\n/g)||[]).length;
+                            ravenPlayersCtr = (ownIntel.match(/\n/g) || []).length;
                         }
                         else {
                             msg.push('\nNo Raven data, Please add data.')
@@ -904,8 +906,8 @@ var Bot = BotBase.extend(function () {
                     if ((originType & OriginSourceType.SSNew) ||
                         (originType & OriginSourceType.SSOld) ||
                         (originType == OriginSourceType.Smart)) {
-                        if ((originType != OriginSourceType.Smart || (ravenPlayersCtr<8)) && ssGuildData != null && ssGuildData.length > 5) {
-                            if (ravenPlayersCtr>0){
+                        if ((originType != OriginSourceType.Smart || (ravenPlayersCtr < 8)) && ssGuildData != null && ssGuildData.length > 5) {
+                            if (ravenPlayersCtr > 0) {
                                 msg.push('');
                             }
                             msg.push('SS data:');
