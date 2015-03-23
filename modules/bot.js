@@ -756,7 +756,7 @@ var Bot = BotBase.extend(function () {
                                 var candidates = this.getCandidatesForUser(user, risk, combinedGuildData);
                                 if (candidates == 0) {
                                     mega = true;
-                                    candidates = this.getCandidatesForUser(user, risk + 2, combinedGuildData);
+                                    candidates = this.getCandidatesForUser(user, risk + 3, combinedGuildData);
                                 }
                                 var msg = [];
                                 if (candidates.length == 0) {
@@ -767,7 +767,7 @@ var Bot = BotBase.extend(function () {
                                         msg.push('Targets not found, here are targets for MEGA HIT:')
                                     }
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
-                                    msg.concat(candidates);
+                                    msg.push(candidates.join('\n'));
                                 }
 
                                 this.postMessage(msg.join('\n'));
