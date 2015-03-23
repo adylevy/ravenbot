@@ -665,7 +665,7 @@ var Bot = BotBase.extend(function () {
                     ];
 
                     var riskFactor;
-                    if (riskDef[risk] == undefined) {
+                    while (riskDef[risk] == undefined) {
                         risk -= 1;
                     }
                     riskFactor = riskDef[risk];
@@ -756,7 +756,7 @@ var Bot = BotBase.extend(function () {
                                 var candidates = this.getCandidatesForUser(user, risk, combinedGuildData);
                                 if (candidates == 0) {
                                     mega = true;
-                                    candidates = this.getCandidatesForUser(user, risk + 3, combinedGuildData);
+                                    candidates = this.getCandidatesForUser(user, risk + 4, combinedGuildData);
                                 }
                                 var msg = [];
                                 if (candidates.length == 0) {
@@ -764,10 +764,13 @@ var Bot = BotBase.extend(function () {
                                     msg.push('Try hitting castle, wall or scouting.');
                                 } else {
                                     if (mega) {
-                                        msg.push('Targets not found, here are targets for MEGA HIT:')
+                                        msg.push('******* USE MEGA FOR THESE *******')
                                     }
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
                                     msg.push(candidates.join('\n'));
+                                    if (mega) {
+                                        msg.push('******* USE MEGA FOR THESE *******')
+                                    }
                                 }
 
                                 this.postMessage(msg.join('\n'));
