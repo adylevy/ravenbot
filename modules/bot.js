@@ -767,7 +767,7 @@ var Bot = BotBase.extend(function () {
                                         msg.push('Targets not found, here are targets for MEGA HIT:')
                                     }
                                     msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
-                                    msg.join(candidates);
+                                    msg.concat(candidates);
                                 }
 
                                 this.postMessage(msg.join('\n'));
