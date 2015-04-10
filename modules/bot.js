@@ -664,6 +664,16 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
 
+riskDef = [
+                        {'all': 1.2, 'line1': .35, 'line2': .6, 'line3': .8},
+                        {'all': 1.1, 'line1': .35, 'line2': .65, 'line3': .75},
+                        {'all': 1, 'line1': .3, 'line2': .6, 'line3': .7},
+                        {'all': 0.9, 'line1': .25, 'line2': .5, 'line3': .6},
+                        {'all': 0.7, 'line1': .25, 'line2': .5, 'line3': .5},
+                        {'all': 0.5, 'line1': .25, 'line2': .4, 'line3': .4},
+                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .3}
+                    ];
+
                     var riskFactor;
                     while (riskDef[risk] == undefined) {
                         risk -= 1;
