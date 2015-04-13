@@ -1,6 +1,7 @@
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
+var roomPrefs = require('./modules/data/roomPrefs.js');
 if (typeof process.env['TOKEN'] == 'undefined') {
     env(__dirname + '/.env');
 }
@@ -25,17 +26,17 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 var Bot = require('./modules/bot.js');
 var whenConnected=function(){
     console.log('mongo is connected');
-    mongoData.getRoomPrefs(11615018).then(function(data){
-
+    roomPrefs.getRoomPrefs(11615018).then(function(data){
+        console.log(data);
         var b=new Bot({},11615018);
-        b.mainSwitch('Remove Sir john',{
-            name:'me'
+        b.mainSwitch('myt',{
+            name:'Ady 7000m/700k/700',
+            user_id:'1'
         });
-    })
-
+    });
 };
 
-var mongoData = require('./modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
+var mongoData = require('./modules/data/mongoData.js');
 mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
 

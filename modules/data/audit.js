@@ -5,7 +5,7 @@
 var mongoose = require('mongoose');
 var Q = require('q');
 var _ = require('underscore');
-require('./mongoData.js')(process.env['MONGOLAB_URI']);
+require('./mongoData.js')
 
 
 module.exports = function () {

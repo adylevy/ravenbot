@@ -12,9 +12,9 @@ const _ = require('underscore');
 var Bot = require('./bot.js');
 var AdminBot = require('./adminBot.js');
 var fs = require('fs');
-var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
-var roomPrefs = require('./data/roomPrefs.js');
 
+var roomPrefs = require('./data/roomPrefs.js');
+var appSettings = require('./data/appsettings.js');
 var BotsManager = Class.extend(function () {
 
     return {
@@ -87,7 +87,7 @@ console.log(options)
             var self=this;
             var deferred = Q.defer();
             console.log('register bots');
-            mongoData.getSettings().then(function(settings){
+            appSettings.getSettings().then(function(settings){
                 var guilds = settings.guilds;
               // console.log('got settings',settings,guilds);
                 var adminGroup=self.options.adminGroup;
@@ -334,7 +334,7 @@ console.log(options)
 
         },
         addGroupToSettings: function(guild){
-            mongoData.getSettings().then(function(settings){
+            appSettings.getSettings().then(function(settings){
                 var guilds = settings.guilds;
                 if (!_.findWhere(guilds,{roomId:Number(guild.roomId)})){
                     guilds.push({
@@ -350,7 +350,7 @@ console.log(options)
             
         },
         removeGroupFromSettings: function(groupId){
-            mongoData.getSettings().then(function(settings){
+            appSettings.getSettings().then(function(settings){
                 var guilds = settings.guilds;
                 if (_.findWhere(guilds,{roomId:Number(groupId)})){
                     guilds = _.filter(guilds,function(guild){

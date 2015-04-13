@@ -8,10 +8,9 @@ const _ = require('underscore');
 var Player = require('./player_cls.js');
 var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
-var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var guildData = require('./data/guildData.js');
 var audit = require('./data/audit.js');
-
+var appSettings = require('./data/appsettings.js');
 
 var AdminBot = BotBase.extend(function () {
 
@@ -91,7 +90,7 @@ var AdminBot = BotBase.extend(function () {
                     regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var matches = regMatch.exec(txt);
-                        mongoData.getSettings().then(function (settings) {
+                        appSettings.getSettings().then(function (settings) {
                             var guild = _.findWhere(settings.guilds, {roomId: Number(matches[1])});
                             if (guild) {
                                 guild.guildName = matches[2];
@@ -108,7 +107,7 @@ var AdminBot = BotBase.extend(function () {
                     }
                     regMatch = /^list$/;
                     if (regMatch.test(txt)) {
-                        mongoData.getSettings().then(function (settings) {
+                        appSettings.getSettings().then(function (settings) {
                             var postback = [];
                             _.each(settings.guilds, function (guild) {
                                 postback.push(guild.roomId + ': ' + guild.guildName + ' / ' + guild.guildId);
@@ -157,7 +156,7 @@ var AdminBot = BotBase.extend(function () {
                                 this.postMessage("Can't find guild in DB");
                                 return;
                             }
-                            mongoData.getSettings().then(function (settings) {
+                            appSettings.getSettings().then(function (settings) {
 
                                 var guilds={};
                                 _.each(settings.guilds, function (guild) {

@@ -7,7 +7,7 @@ const _ = require('underscore');
 var giphy = require('./giphy.js')('dc6zaTOxFJmzC');
 var chuckJokes = require('./chuckJokes.js');
 var sheetsData = require('./sheets.js');
-var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
+//var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
 var guildData = require('./data/guildData.js');
 var Player = require('./player_cls.js');
@@ -823,6 +823,11 @@ var tttriskDef = [
                          bestMatch:bestMatch
                          }*/
                         //  console.log(data);
+
+                        if (data && data.foundGuild && data.foundGuild.guildName && data.foundGuild.guildName!=guildName){
+                            guildName=data.foundGuild.guildName;
+                        }
+
                         guildData.getGuildData(guildName, function (item) {
                             //     console.log('got own data ', item);
                             data.ownData = item;
@@ -840,6 +845,9 @@ var tttriskDef = [
                     this.getRoomPrefs().then(function (roomData) {
                         //  console.log('enter war mode with room data', roomData);
                         try {
+                            if (ssData && ssData.guildName!=guildName){
+                                guildName=ssData.guildName;
+                            }
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;
                             roomData.warData.warTime = Date.now();

@@ -32,31 +32,37 @@ var Players = Class.extend(function () {
          //   console.log('players constructor')
         },
         getPlayers: function (intel,isFresh) {
-            var splitData = intel.split('\n');
             var players = [];
-            _.each(splitData, function (line) {
+
+            try {
+                var splitData = intel.split('\n');
+                _.each(splitData, function (line) {
 
                     try {
                         var player = new Player(line);
-                        if (player.isPlayer()){ 
-                            player.origin='SS';
-                            if (isFresh){
-                                player.insertDate=new Date();
-                            }else{
-                                var d=new Date();
-                                d.setDate(d.getDate()-30);
-                                player.insertDate=d;
-                                
+                        if (player.isPlayer()) {
+                            player.origin = 'SS';
+                            if (isFresh) {
+                                player.insertDate = new Date();
+                            } else {
+                                var d = new Date();
+                                d.setDate(d.getDate() - 30);
+                                player.insertDate = d;
+
                             }
                             players.push(player);
-                        }else{
+                        } else {
                         }
                     } catch (e) {
-                        console.log('------->',e,line);
+                        console.log('------->', e, line);
 
                     }
 
-            });
+                });
+            }
+            catch(e){
+                console.log('---->',e);
+            }
             return players;
         },
         getPlayerObjFromDBPlayers: function(dbPlayers){
