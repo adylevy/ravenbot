@@ -28,6 +28,7 @@ module.exports = function () {
                 date: Date,
                 insertedByGuild: String,
                 insertedByUser: String,
+                insertedByUserId: Number,
                 isDeleted: {type: Boolean, default: false}
             }
         ]
