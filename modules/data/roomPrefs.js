@@ -5,7 +5,7 @@
 var mongoose = require('mongoose');
 var Q = require('q');
 var _ = require('underscore');
-require('./mongoData.js')(process.env['MONGOLAB_URI']);
+require('./mongoData.js');
 
 var NodeCache = require( "node-cache" );
 var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time

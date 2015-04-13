@@ -1,9 +1,9 @@
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
-if (typeof process.env['TOKEN'] == 'undefined') {
-    env(__dirname + '/.env');
-}
+var appSettings = require('./modules/data/appsettings.js');
+var guildData = require('./modules/data/guildData.js');
+
 
 // local configuration read from env.
 const TOKEN = process.env['TOKEN']; // your groupme api token
@@ -17,10 +17,10 @@ const CONFIG = {token: TOKEN, name: NAME, url: URL, adminGroup: ADMIN_GROUP, ava
 
 var whenConnected=function(){
     console.log('mongo is connected');
-    mongoData.getSettings().then(function(prefs){
-       // console.log(prefs.guilds);
+    appSettings.getSettings().then(function(prefs){
+        console.log(prefs.guilds);
         
-        mongoData.getAllGuilds().then(function(guilds){
+        guildData.getAllGuilds().then(function(guilds){
             var submittedGuild={};
             var submittedPlayer={};
             _.each(guilds,function(guild){
@@ -60,6 +60,6 @@ var whenConnected=function(){
   })
 };
 
-var mongoData = require('./modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
+var mongoData = require('./modules/data/mongoData.js');
 mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
