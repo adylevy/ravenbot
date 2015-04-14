@@ -303,7 +303,7 @@ var Bot = BotBase.extend(function () {
                                     if (p == null || p == undefined || mini == undefined) {
                                         this.postMessage('please set mini data using mymini command.');
                                     } else {
-                                        this.findUserTargets(roomData.warData.guildName, mini.player, p.risk);
+                                        this.findUserTargets(roomData.warData.guildName, mini.player, p.risk, true);
                                     }
 
                                 } else {
@@ -598,6 +598,7 @@ var Bot = BotBase.extend(function () {
                             var gpo = player.getGuildPlayerObj();
                             gpo.insertedByGuild = addingUserGuild;
                             gpo.insertedByUser = addingUserName;
+                            gpo.insertedByUserId = addingUserId;
                             players.push(gpo);
                             item.players = players;
                             item.save(function () {
@@ -655,7 +656,7 @@ var Bot = BotBase.extend(function () {
                     var msg = [];
 
                     var riskDef = [
-                        {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .5},
+                        {'all': 1.2, 'line1': .65, 'line2': .77, 'line3': .5},
                         {'all': 1.1, 'line1': .6, 'line2': .75, 'line3': .45},
                         {'all': 1, 'line1': .55, 'line2': .7, 'line3': .45},
                         {'all': 0.9, 'line1': .45, 'line2': .65, 'line3': .4},
@@ -751,7 +752,7 @@ var tttriskDef = [
                     return msg;
                 },
 
-                findUserTargets: function (guildName, userName, risk) {
+                findUserTargets: function (guildName, userName, risk, showStats) {
 
                     var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
@@ -770,13 +771,13 @@ var tttriskDef = [
                                 }
                                 var msg = [];
                                 if (candidates.length == 0) {
-                                    msg.push('Could not find targets for: ' + user.name);
+                                    msg.push('Could not find targets for: ' + (showStats ? user.toString().substr(4) : user.name));
                                     msg.push('Try hitting castle, wall or scouting.');
                                 } else {
                                     if (mega) {
                                         msg.push('******* USE MEGA FOR THESE *******')
                                     }
-                                    msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
+                                    msg.push('Suggested targets for ' + (showStats ? user.toString().substr(4) : user.name) + ' (Risk:' + risk + ')');
                                     msg.push(candidates.join('\n'));
                                     if (mega) {
                                         msg.push('******* USE MEGA FOR THESE *******')
