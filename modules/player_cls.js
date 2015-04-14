@@ -79,7 +79,8 @@ var Player = Class.extend(function () {
                 heroDef: this.heroDef,
                 date: Date.now(),
                 insertedByGuild: '',
-                insertedByUser: ''
+                insertedByUser: '',
+                insertedByUserId: 0
             }
 
         },

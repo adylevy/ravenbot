@@ -598,6 +598,7 @@ var Bot = BotBase.extend(function () {
                             var gpo = player.getGuildPlayerObj();
                             gpo.insertedByGuild = addingUserGuild;
                             gpo.insertedByUser = addingUserName;
+                            gpo.insertedByUserId = addingUserId;
                             players.push(gpo);
                             item.players = players;
                             item.save(function () {
@@ -655,7 +656,7 @@ var Bot = BotBase.extend(function () {
                     var msg = [];
 
                     var riskDef = [
-                        {'all': 1.2, 'line1': .65, 'line2': .8, 'line3': .5},
+                        {'all': 1.2, 'line1': .65, 'line2': .77, 'line3': .5},
                         {'all': 1.1, 'line1': .6, 'line2': .75, 'line3': .45},
                         {'all': 1, 'line1': .55, 'line2': .7, 'line3': .45},
                         {'all': 0.9, 'line1': .45, 'line2': .65, 'line3': .4},
