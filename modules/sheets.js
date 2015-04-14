@@ -58,7 +58,7 @@ function loadDataFromSS(firstLetter) {
         //todo - refactor to 2 loops, 1 get needed sheets and 2nd get their rows (can be done with Q.all)
         _.each(spreadsheet.worksheets, function (worksheet, idx) {
             var title = worksheet.title.toLowerCase();
-            if (title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() ) {
+            if (firstLetter!=null && title.length == 1 && title.charAt(0) != firstLetter.toLowerCase() ) {
                 ctr++;
                 return;
             }
@@ -229,3 +229,4 @@ function setData(foundGuild,newData){
 
 exports.getGuildData = getData;
 exports.setGuildData = setData;
+exports.getAllGuilds = loadDataFromSS;

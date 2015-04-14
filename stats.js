@@ -2,6 +2,7 @@ var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
 var appSettings = require('./modules/data/appsettings.js');
+var sheetsData = require('./modules/sheets.js');
 if (typeof process.env['TOKEN'] == 'undefined') {
     env(__dirname + '/.env');
 }
@@ -23,12 +24,46 @@ var listGuilds=function() {
         var g=[];
         guildData.getAllGuilds().then(function (guilds) {
             _.each(guilds,function(guild) {
-                g.push({name:guild.name,players:((guild.players ||[]).length)});
+                g.push({id:guild.id,name:guild.name,players:((guild.players ||[]).length)});
             });
             var sorted= _.sortBy(g,function(gg){
                 return gg.name;
             });
-            console.log(sorted);
+var exists= 0,notexists=0;
+            sheetsData.getAllGuilds(null).then(function(guilds){
+                _.each(sorted,function(guild){
+                    guild.existsInSS = _.find(guilds,function(p){
+                       var found=false;
+                        try {
+                            found = p.guildName.toLowerCase() == guild.name.toLowerCase();
+                        }
+                        catch(e){console.warn(p,guild,e);}
+                        return found;
+                    })!=undefined;
+
+                    if (guild.existsInSS) {
+                        exists++;
+                      //  console.log(guild);
+                    }else{
+                        notexists++;
+                       // console.warn(guild);
+                    }
+                });
+                console.log('total guilds in SS and in Raven : '+exists+' not in SS : '+notexists);
+                console.log('exists :')
+                _.each(sorted,function(guild){
+                    if (guild.existsInSS){
+                        console.log(guild.id+' '+guild.name+' - with '+guild.players+' players.');
+                    }
+                })
+                console.log('not exists :')
+                _.each(sorted,function(guild){
+                    if (!guild.existsInSS){
+                        console.log(guild.id+' '+guild.name+' - with '+guild.players+' players.');
+                    }
+                })
+            })
+
         }.bind(this));
 
     }.bind(this))
@@ -77,7 +112,7 @@ var whenConnected=function(){
                 var roomId = guild.roomId;
                 var stat= _.findWhere(stats,{roomId:roomId});
                 if (stat==undefined){
-                    console.warn('NO CONTRIBUTION: '+guild.guildId+' '+guild.guildName);
+                  //  console.warn('NO CONTRIBUTION: '+guild.guildId+' '+guild.guildName);
                 }
             })
             stats=_.sortBy(stats, function (s) { return s.ctr });
@@ -102,5 +137,5 @@ var whenConnected=function(){
 var mongoData = require('./modules/data/mongoData.js');
 var roomPrefs = require('./modules/data/roomPrefs.js');
 var guildData = require('./modules/data/guildData.js');
-mongoData.on('mongoConnected',whenConnected);
+mongoData.on('mongoConnected',listGuilds);
 mongoData.connect();

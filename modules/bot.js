@@ -303,7 +303,7 @@ var Bot = BotBase.extend(function () {
                                     if (p == null || p == undefined || mini == undefined) {
                                         this.postMessage('please set mini data using mymini command.');
                                     } else {
-                                        this.findUserTargets(roomData.warData.guildName, mini.player, p.risk);
+                                        this.findUserTargets(roomData.warData.guildName, mini.player, p.risk, true);
                                     }
 
                                 } else {
@@ -751,7 +751,7 @@ var tttriskDef = [
                     return msg;
                 },
 
-                findUserTargets: function (guildName, userName, risk) {
+                findUserTargets: function (guildName, userName, risk, showStats) {
 
                     var user = new Player('199 ' + userName);
                     if (!user.isPlayer()) {
@@ -770,13 +770,13 @@ var tttriskDef = [
                                 }
                                 var msg = [];
                                 if (candidates.length == 0) {
-                                    msg.push('Could not find targets for: ' + user.name);
+                                    msg.push('Could not find targets for: ' + (showStats ? user.toString().substr(4) : user.name));
                                     msg.push('Try hitting castle, wall or scouting.');
                                 } else {
                                     if (mega) {
                                         msg.push('******* USE MEGA FOR THESE *******')
                                     }
-                                    msg.push('Suggested targets for ' + user.name + ' (Risk:' + risk + ')');
+                                    msg.push('Suggested targets for ' + (showStats ? user.toString().substr(4) : user.name) + ' (Risk:' + risk + ')');
                                     msg.push(candidates.join('\n'));
                                     if (mega) {
                                         msg.push('******* USE MEGA FOR THESE *******')

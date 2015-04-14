@@ -31,7 +31,7 @@ var whenConnected=function(){
         var b=new Bot({},11615018);
         b.mainSwitch('myt',{
             name:'Ady 7000m/700k/700',
-            user_id:'1'
+            user_id:'5'
         });
     });
 };
