@@ -557,31 +557,31 @@ var Bot = BotBase.extend(function () {
 
                 showHelpwar: function () {
                     var helpMsg = [];
-                    helpMsg.push('command list:');
+                    helpMsg.push('War command list:');
                     helpMsg.push('matched [guildname] - starts war and war timer');
-                    helpMsg.push('we - ends current war and ends timer')
+                    helpMsg.push('we - ends current war and ends timer');
+                    helpMsg.push('targets - displays targets from Raven Database');
+                    helpMsg.push('ss targets - displays targets from Intel SpreadSheet');
+                    helpMsg.push('all targets - Raven + SS intel.');
+                    helpMsg.push('myt - user targets during war.');
+                    helpMsg.push('minit - mini\'s targets during war');
+                    helpMsg.push('123 username 1m/2k/3k - adds user.');
+                    helpMsg.push('remove 123 username - removes a user from Raven DB.');
+                    helpMsg.push('time - displays minutes left in current war');
+                    helpMsg.push('sync mm - syncs number of minutes left for current war');
+                    helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
+
 
                     this.postMessage(helpMsg.join('\n'));
                 },
 
                 showHelp: function () {
                     var helpMsg = [];
-                    helpMsg.push('command list:');
+                    helpMsg.push('General Use command list:');
                     helpMsg.push('hello - greet the bot.');
-                    helpMsg.push('targets - Raven targets.');
-                    helpMsg.push('all targets - Raven + SS intel.');
-                    helpMsg.push('ss targets - SS intel.');
-                    helpMsg.push('matched [guildName] - enter war mode.');
-                    helpMsg.push('123 user 1m/2k/3k - adds user.');
-                    helpMsg.push('remove 123 user name - removes a user from our own DB.');
-                    helpMsg.push('we - ends current war');
-                    helpMsg.push('myt - user targets during war.');
-                    helpMsg.push('minit - mini\'s targets during war');
+                    helpMsg.push('helpwar - displays War commands');
                     helpMsg.push('mymini# user 1m/2k/3k - sets mini# stats');
-                    helpMsg.push('mymini - displays current stats of minis')
-                    helpMsg.push('time - shows war timer');
-                    helpMsg.push('sync mm - syncs number of minutes left for war');
-                    helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
+                    helpMsg.push('mymini - displays current stats of minis');
                     helpMsg.push('manual - gets Raven manual');
                     helpMsg.push('joke - random joke');
                     helpMsg.push('minions - random minion gif');
