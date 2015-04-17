@@ -213,6 +213,37 @@ var Bot = BotBase.extend(function () {
                         }
                     }
 
+                    var showtargetsRgx = /^targets\sin\s*(.*)/;
+                    if (showtargetsRgx.test(txt)) {
+                        var mtchs = showtargetsRgx.exec(txt);
+                        if (mtchs != null) {
+                            var guildName = mtchs[1];
+                            self.getGuildData(guildName).then(function (data) {
+                                var guild = data.foundGuild;
+                                var bestMatch = data.bestMatch;
+                                var ownData = data.ownData;
+                                //  console.log('-------------->',guild);
+                                if (guild == null && (ownData == null || ownData.__v == undefined)) {
+                                    if (bestMatch.guild.guildName) {
+                                        var msg = [];
+                                        msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
+                                        self.postMessage(msg.join('\n'));
+                                    }
+                                }
+                                else {
+                                    var originSource = OriginSourceType.Smart;
+                                    if (guild && guild.guildName != guildName) {
+                                        guildName = guild.guildName;
+                                    }
+                                    this.sendGuildTargets([], guildName, guild, ownData, originSource);
+                                }
+
+                            }.bind(this));
+                        }
+                    }
+                    ;
+
+
                     if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
@@ -495,7 +526,8 @@ var Bot = BotBase.extend(function () {
                     }
 
 
-                },
+                }
+                ,
                 getCtxPlayer: function (id) {
                     var player = _.find(this.ctx.players, function (p) {
                         return p.id == id;
@@ -509,7 +541,8 @@ var Bot = BotBase.extend(function () {
                         }
                     }
                     return player;
-                },
+                }
+                ,
                 updateCtxPlayer: function (p) {
                     var players = _.filter(this.ctx.players, function (el) {
                         return el.id != p.id;
@@ -517,7 +550,8 @@ var Bot = BotBase.extend(function () {
                     players.push(p);
                     this.ctx.players = players;
 
-                },
+                }
+                ,
 
                 handleCtxPlayer: function (txt, msg) {
                     var ctxPlayer = this.getCtxPlayer(msg.user_id);
@@ -532,14 +566,16 @@ var Bot = BotBase.extend(function () {
                     ctxPlayer.options = [];
                     this.updateCtxPlayer(ctxPlayer);
                     return hasMatch;
-                },
+                }
+                ,
 
                 tellAJoke: function () {
                     var self = this;
                     chuckJokes.getJoke().then(function (joke) {
                         self.postMessage(joke);
                     }.bind(this))
-                },
+                }
+                ,
 
                 tellGifJoke: function (theme) {
                     var self = this;
@@ -553,7 +589,8 @@ var Bot = BotBase.extend(function () {
 
                         }
                     })
-                },
+                }
+                ,
 
                 showHelpwar: function () {
                     var helpMsg = [];
@@ -562,7 +599,8 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('we - ends current war and ends timer')
 
                     this.postMessage(helpMsg.join('\n'));
-                },
+                }
+                ,
 
                 showHelp: function () {
                     var helpMsg = [];
@@ -590,7 +628,8 @@ var Bot = BotBase.extend(function () {
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
-                },
+                }
+                ,
                 insertOwnData: function (guildName, playersToAdd, addingUserName, addingUserGuild, addingUserId) {
                     var defered = Q.defer();
                     var self = this;
@@ -637,7 +676,8 @@ var Bot = BotBase.extend(function () {
                     }.bind(this));
 
                     return defered.promise;
-                },
+                }
+                ,
                 removeUserFromOwnData: function (guildName, mtch, msg) {
                     var defered = Q.defer();
                     var lvl = mtch[1];
@@ -677,7 +717,8 @@ var Bot = BotBase.extend(function () {
                     }.bind(this));
                     return defered.promise;
 
-                },
+                }
+                ,
 
                 getCandidatesForUser: function (user, risk, combinedGuildData) {
                     var msg = [];
@@ -692,7 +733,7 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
 
-var tttriskDef = [
+                    var tttriskDef = [
                         {'all': 1.2, 'line1': .35, 'line2': .6, 'line3': .8},
                         {'all': 1.1, 'line1': .35, 'line2': .65, 'line3': .75},
                         {'all': 1, 'line1': .3, 'line2': .6, 'line3': .7},
@@ -777,7 +818,8 @@ var tttriskDef = [
                     });
 
                     return msg;
-                },
+                }
+                ,
 
                 findUserTargets: function (guildName, userName, risk, showStats) {
 
@@ -823,7 +865,8 @@ var tttriskDef = [
                     )
                     ;
 
-                },
+                }
+                ,
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
                     sheetsData.getGuildData(guildName, function (ssGuildData) {
@@ -852,8 +895,8 @@ var tttriskDef = [
                          }*/
                         //  console.log(data);
 
-                        if (data && data.foundGuild && data.foundGuild.guildName && data.foundGuild.guildName!=guildName){
-                            guildName=data.foundGuild.guildName;
+                        if (data && data.foundGuild && data.foundGuild.guildName && data.foundGuild.guildName != guildName) {
+                            guildName = data.foundGuild.guildName;
                         }
 
                         guildData.getGuildData(guildName, function (item) {
@@ -873,8 +916,8 @@ var tttriskDef = [
                     this.getRoomPrefs().then(function (roomData) {
                         //  console.log('enter war mode with room data', roomData);
                         try {
-                            if (ssData && ssData.guildName!=guildName){
-                                guildName=ssData.guildName;
+                            if (ssData && ssData.guildName != guildName) {
+                                guildName = ssData.guildName;
                             }
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;
@@ -988,7 +1031,8 @@ var tttriskDef = [
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
                     }
-                },
+                }
+                ,
                 saveRavenDataToSS: function (guildName) {
                     this.getGuildData(guildName).then(function (data) {
                         if (data.ownData != null && data.ownData.players.length != 0) {

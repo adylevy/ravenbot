@@ -145,7 +145,34 @@ var AdminBot = BotBase.extend(function () {
                         var msg = mtches[2];
                         this.emit('broadcast', this, {msg:msg,guild:guild});
                     }
-                    
+
+                    if (/^war\started$/.test(txt)){
+                        appSettings.getSettings().then(function(settings){
+                            settings.warStartDate = Date.now();
+                            settings.save();
+                            this.postMessage("WAR STARTED!");
+                        }.bind(this));
+                    }
+
+                    if (/^war\sended$/.test(txt)){
+                        appSettings.getSettings().then(function(settings){
+                            settings.warStartDate = null;
+                            settings.save();
+                            this.postMessage("WAR ENDED!");
+                        }.bind(this));
+                    }
+
+                    if (/^war\s*status/.test(txt)){
+                        appSettings.getSettings().then(function(settings){
+                            if (settings.warStartDate ==null){
+                                this.postMessage('no war now..');
+                            }else{
+
+                                this.postMessage("War started at "+settings.warStartDate);
+                            }
+
+                        }.bind(this));
+                    }
                     
                     var showRgx = /^[sS]how\s(.*)/;
                     if (showRgx.test(txt)) {
@@ -192,6 +219,9 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
                     helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
+                    helpMsg.push('war started - indicates global war is ON');
+                    helpMsg.push('war ended - indicates that war is not ON at the moment');
+                    helpMsg.push('war status')
                     this.postMessage(helpMsg.join('\n'));
                 },
 

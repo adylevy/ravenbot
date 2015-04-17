@@ -27,7 +27,10 @@ module.exports = function () {
             minis: [{player: String, idx: Number}],
             risk: {type: Number, default: 0}
         }],
-        settings: []
+        settings: [],
+        matches:[{
+
+        }]
     });
 
     var createRoomPrefs = function (roomId) {
