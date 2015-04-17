@@ -465,15 +465,15 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/rocketsnail/.test(txt)) {
-                        this.tellGifJoke('rocket-snail-SQgbkziuGrNxS');
+                        this.tellGifJoke('rocket-snail');
                         return;
                     }
                     if (/cowbell/.test(txt)) {
-                        this.tellGifJoke('snl-saturday-night-live-will-ferrell-gRPkRxtHGr0bK');
+                        this.tellGifJoke('snl-saturday-night-live-will-ferrell');
                         return;
                     }
-                    if (/hots' favorite/.test(txt)) {
-                        this.tellGifJoke('minions-unicorn-oT8v8oOSmw5Ak');
+                    if (/hots favorite/.test(txt)) {
+                        this.tellGifJoke('minions-unicorn');
                         return;
                     }
 
@@ -582,11 +582,11 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('helpwar - displays War commands');
                     helpMsg.push('mymini# user 1m/2k/3k - sets mini# stats');
                     helpMsg.push('mymini - displays current stats of minis');
-                    helpMsg.push('manual - gets Raven manual');
                     helpMsg.push('joke - random joke');
                     helpMsg.push('minions - random minion gif');
                     helpMsg.push('gif (insert phrase) - random theme gif');
                     helpMsg.push('support - provides link to support room');
+                    helpMsg.push('manual - gets Raven manual');
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
