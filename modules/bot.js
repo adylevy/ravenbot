@@ -586,7 +586,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('joke - random joke');
                     helpMsg.push('minions - random minion gif');
                     helpMsg.push('gif (insert phrase) - random theme gif');
-                    helpMsg.push('support - provides link to support room’)
+                    helpMsg.push('support - provides link to support room');
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
