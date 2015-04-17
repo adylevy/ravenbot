@@ -124,6 +124,10 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                     }
 
+                    if (/^support$/.test(txt)) {
+                        this.postMessage('Support Room:\nhttps://groupme.com/join_group/11752971/5jvG41');
+                    }
+
                     if (/^targets2$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
@@ -393,6 +397,10 @@ var Bot = BotBase.extend(function () {
                         this.showHelp();
                     }
 
+                    if (/^helpwar$/.test(txt)) {
+                        this.showHelpwar();
+                    }
+
                     var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
                     if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -456,8 +464,16 @@ var Bot = BotBase.extend(function () {
                         return;
                     }
 
+                    if (/rocketsnail/.test(txt)) {
+                        this.tellGifJoke('rocket-snail-SQgbkziuGrNxS');
+                        return;
+                    }
                     if (/cowbell/.test(txt)) {
-                        this.tellGifJoke('cowbell snl');
+                        this.tellGifJoke('snl-saturday-night-live-will-ferrell-gRPkRxtHGr0bK');
+                        return;
+                    }
+                    if (/hots' favorite/.test(txt)) {
+                        this.tellGifJoke('minions-unicorn-oT8v8oOSmw5Ak');
                         return;
                     }
 
@@ -539,6 +555,15 @@ var Bot = BotBase.extend(function () {
                     })
                 },
 
+                showHelpwar: function () {
+                    var helpMsg = [];
+                    helpMsg.push('command list:');
+                    helpMsg.push('matched [guildname] - starts war and war timer');
+                    helpMsg.push('we - ends current war and ends timer')
+
+                    this.postMessage(helpMsg.join('\n'));
+                },
+
                 showHelp: function () {
                     var helpMsg = [];
                     helpMsg.push('command list:');
@@ -549,17 +574,19 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('matched [guildName] - enter war mode.');
                     helpMsg.push('123 user 1m/2k/3k - adds user.');
                     helpMsg.push('remove 123 user name - removes a user from our own DB.');
-                    helpMsg.push('warended - ends war mode.');
+                    helpMsg.push('we - ends current war');
                     helpMsg.push('myt - user targets during war.');
-                    helpMsg.push('minit - mini\'s targets during war.');
-                    helpMsg.push('mymini user 1m/2k/3k - set mini for user.');
-                    helpMsg.push('time - shows war timer.');
+                    helpMsg.push('minit - mini\'s targets during war');
+                    helpMsg.push('mymini# user 1m/2k/3k - sets mini# stats');
+                    helpMsg.push('mymini - displays current stats of minis')
+                    helpMsg.push('time - shows war timer');
                     helpMsg.push('sync mm - syncs number of minutes left for war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
                     helpMsg.push('manual - gets Raven manual');
-                    helpMsg.push('joke - random joke.');
-                    helpMsg.push('minions - random minion gif.');
-                    helpMsg.push('gif theme - random theme gif.');
+                    helpMsg.push('joke - random joke');
+                    helpMsg.push('minions - random minion gif');
+                    helpMsg.push('gif (insert phrase) - random theme gif');
+                    helpMsg.push('support - provides link to support room’)
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
