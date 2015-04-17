@@ -465,15 +465,15 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/rocketsnail/.test(txt)) {
-                        this.tellGifJoke('rocket-snail');
+                        this.tellGifJoke('SQgbkziuGrNxS');
                         return;
                     }
                     if (/cowbell/.test(txt)) {
-                        this.tellGifJoke('snl-saturday-night-live-will-ferrell');
+                        this.tellGifJoke('whOs1JywNpe6c');
                         return;
                     }
                     if (/hots favorite/.test(txt)) {
-                        this.tellGifJoke('minions-unicorn');
+                        this.tellGifJoke('TuQUMaAji7pkY');
                         return;
                     }
 
