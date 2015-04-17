@@ -146,7 +146,7 @@ var AdminBot = BotBase.extend(function () {
                         this.emit('broadcast', this, {msg:msg,guild:guild});
                     }
 
-                    if (/^war\started$/.test(txt)){
+                    if (/^war\s*started$/.test(txt)){
                         appSettings.getSettings().then(function(settings){
                             settings.warStartDate = Date.now();
                             settings.save();
