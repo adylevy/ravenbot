@@ -42,7 +42,8 @@ var Bot = BotBase.extend(function () {
                     this.options = options;
                     this.roomId = roomId;
                     this.ctx = {
-                        players: []
+                        players: [],
+                        globalReq: []
                     };
 
                     console.log('new bot **', this.options, this.roomId);
@@ -85,6 +86,9 @@ var Bot = BotBase.extend(function () {
                     var ctxPlayer = this.getCtxPlayer(msg.user_id);
 
                     if (this.handleCtxPlayer(caseSensitiveTxt, msg)) {
+                        return;
+                    }
+                    if (this.handleGlobalCtxMsg(caseSensitiveTxt, msg)) {
                         return;
                     }
 
@@ -151,9 +155,9 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/^time$/.test(txt)) {
-                       // console.log('get prefs');
+                        // console.log('get prefs');
                         this.getRoomPrefs().then(function (roomData) {
-                          //  console.log('got prefs',roomData);
+                            //  console.log('got prefs',roomData);
                             if (roomData.warData.inWar == true) {
                                 var diff = new Date(Date.now() - roomData.warData.warTime);
                                 this.postMessage(60 - diff.getMinutes() + ' minutes left.');
@@ -186,41 +190,52 @@ var Bot = BotBase.extend(function () {
 
                     var newMatchRgx = /^matched(new){0,1}\s*(.*)/;
                     if (newMatchRgx.test(txt)) {
-
                         var regexmatch = newMatchRgx.exec(txt);
-                        // console.log('matched!',regexmatch);
-                        if (regexmatch != null) {
-                            var guildName = regexmatch[2];
-                            if (regexmatch[1] == 'new') {
-                                self.enterWarMode(guildName, null, null, false);
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                this.postMessage('already in war.\nuse "we" to end war before starting another match.');
+                                return;
                             } else {
-                                self.getGuildData(guildName).then(function (data) {
-                                    var guild = data.foundGuild;
-                                    var bestMatch = data.bestMatch;
-                                    var ownData = data.ownData;
-                                    //  console.log('-------------->',guild);
-                                    if (guild == null && (ownData == null || ownData.__v == undefined)) {
-                                        if (bestMatch.guild.guildName) {
-                                            var msg = [];
-                                            msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                            msg.push('or you can use [matchednew GuildName]');
-                                            self.postMessage(msg.join('\n'));
+                                var guildName = regexmatch[2];
+                                if (regexmatch[1] == 'new') {
+                                    self.enterWarMode(guildName, null, null, false);
+                                } else {
+                                    self.getGuildData(guildName).then(function (data) {
+                                        var guild = data.foundGuild;
+                                        var bestMatch = data.bestMatch;
+                                        var ownData = data.ownData;
+                                        //  console.log('-------------->',guild);
+                                        if (guild == null && (ownData == null || ownData.__v == undefined)) {
+                                            if (bestMatch.guild.guildName) {
+                                                var msg = [];
+                                                msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
+                                                msg.push('or you can use [matchednew GuildName]');
+                                                self.postMessage(msg.join('\n'));
+                                            }
                                         }
-                                    }
-                                    else {
-                                        self.enterWarMode(guildName, guild, ownData);
-                                    }
-                                });
+                                        else {
+                                            self.enterWarMode(guildName, guild, ownData);
+                                        }
+                                    });
+                                }
                             }
-                        }
+                        }.bind(this));
+
                     }
+                    var updateLastWarResults = /^lastwarresults\s?(.*)$/;
+                    if (updateLastWarResults.test(txt)) {
+                        var mtchs = updateLastWarResults.exec(txt);
+                        this.updateLastWarResults(mtchs[1]);
+                    }
+                    ;
+
 
                     var showtargetsRgx = /^targets\sin\s*(.*)/;
                     if (showtargetsRgx.test(txt)) {
                         var mtchs = showtargetsRgx.exec(txt);
                         if (mtchs != null) {
                             var guildName = mtchs[1];
-                          //  console.log('getting guild info')
+                            //  console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
                                 console.log('got guild data');
                                 var guild = data.foundGuild;
@@ -251,10 +266,7 @@ var Bot = BotBase.extend(function () {
                     if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar) {
-                                roomData.warData.inWar = false;
-                                roomData.warData.guildName = '';
-                                roomData.save();
-                                this.postMessage('did we win this one ?');
+                                this.endWar(roomData);
                             } else {
                                 this.postMessage('not in war.');
                             }
@@ -570,6 +582,35 @@ var Bot = BotBase.extend(function () {
                     ctxPlayer.options = [];
                     this.updateCtxPlayer(ctxPlayer);
                     return hasMatch;
+                }
+                ,
+                addGlobalContextCommands: function(commands){
+                    this.ctx.globalReq=this.ctx.globalReq.concat(commands);
+                },
+                handleGlobalCtxMsg: function (txt, msg) {
+                    var lowerCase = txt.toLowerCase();
+                    var hasMatch = false;
+                    _.each(this.ctx.globalReq, function (option) {
+                        if (option['key'].test(lowerCase)) {
+                            this.mainSwitch(option.cmd, msg);
+                            hasMatch = true;
+                        }
+                    }.bind(this));
+                    this.ctx.globalReq=[];
+                    return hasMatch;
+                },
+                updateLastWarResults: function (txt) {
+                    this.getRoomPrefs().then(function (roomData) {
+                        var matches = roomData.matches || [];
+                        var lastMatch=_.last(matches);
+                        var won = /yes/.test(txt) || /won/.test(txt) || /win/.test(txt) || /yep/.test(txt);
+                        if (lastMatch){
+                            lastMatch.warResult=won?'won':'lost';
+                            roomData.save();
+                            this.postMessage('Last war results were saved.');
+                        }
+
+                    }.bind(this));
                 }
                 ,
 
@@ -1026,16 +1067,35 @@ var Bot = BotBase.extend(function () {
                     var diffInSeconds = Math.round(diff / 1000);
                     var diffInMinutes = Math.round(diffInSeconds / 60);
                     if (diffInMinutes >= 60) {
-                        roomData.warData.inWar = false;
-                        roomData.warData.guildName = '';
-                        roomData.save(function (e) {
-                        });
-                        this.postMessage("War ended. did we win this one ?");
+                        this.endWar(roomData);
                     } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
                         if (timerSettings != 'off') {
                             this.postMessage(60 - diffInMinutes + " minutes left.");
                         }
                     }
+                }
+                ,
+                endWar: function (roomData) {
+                    var matchStat={
+                        guildName: roomData.warData.guildName,
+                        warTime: roomData.warData.warTime,
+                        warResult:'unknown'
+                    };
+                    var matches=roomData.matches || [];
+                    matches.push(matchStat);
+                    roomData.matches=matches;
+                    roomData.warData.inWar = false;
+                    roomData.warData.guildName = '';
+                    roomData.save();
+                    this.addGlobalContextCommands([{
+                        'key': new RegExp('^[Yy]es$'),
+                        'cmd': 'lastwarresults yes'
+                    },{
+                        'key': new RegExp('^[Nn]o$'),
+                        'cmd': 'lastwarresults no'
+                    }
+                    ]);
+                    this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
                 }
                 ,
                 saveRavenDataToSS: function (guildName) {
@@ -1052,8 +1112,7 @@ var Bot = BotBase.extend(function () {
                             sheetsData.setGuildData(data.foundGuild, msg.join('&#10;'));
                         }
 
-                    })
-
+                    });
                 }
             }
         }

@@ -26,10 +26,10 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 var Bot = require('./modules/bot.js');
 var whenConnected=function(){
     console.log('mongo is connected');
-    roomPrefs.getRoomPrefs(11615018).then(function(data){
-        console.log(data);
-        var b=new Bot({},11615018);
-        b.mainSwitch('myt',{
+    roomPrefs.getRoomPrefs(13006255).then(function(data){
+       // console.log(data);
+        var b=new Bot({},13006255);
+        b.mainSwitch('164 Me 1.77b/66.6k/3230',{
             name:'Ady 7000m/700k/700',
             user_id:'5'
         });
