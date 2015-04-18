@@ -71,7 +71,7 @@ module.exports = function () {
                 console.log('room pref from cache');
                 defered.resolve(cacheItem[cacheKey]);
             }else {
-
+                console.log('no cache',cacheItem)
                 RoomPrefs.find({roomId: roomId}, function (err, rooms) {
                     var item;
                     if (rooms.length == 0) {
