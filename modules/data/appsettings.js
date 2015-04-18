@@ -10,11 +10,13 @@ require('./mongoData.js');
 
 module.exports = function () {
 
-    var AppSettings = mongoose.model('AppSettings', {groups: [], guilds:[{
-        guildName:String,
-        roomId:Number,
-        guildId:String
-    }]});
+    var AppSettings = mongoose.model('AppSettings', {
+        groups: [], guilds: [{
+            guildName: String,
+            roomId: Number,
+            guildId: String
+        }], warStartDate: Date
+    });
 
     return {
 

@@ -27,7 +27,12 @@ module.exports = function () {
             minis: [{player: String, idx: Number}],
             risk: {type: Number, default: 0}
         }],
-        settings: []
+        settings: [],
+        matches:[{
+            guildName: String,
+            warTime: Date,
+            warResult:String
+        }]
     });
 
     var createRoomPrefs = function (roomId) {
@@ -39,7 +44,8 @@ module.exports = function () {
                 warTime: null
             },
             playersPrefs: [],
-            settings: []
+            settings: [],
+            matches: []
 
         });
         return r;
@@ -61,11 +67,11 @@ module.exports = function () {
             var defered = Q.defer();
             var cacheKey='room_'+roomId;
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem[cacheKey]){
-                //console.log('room pref from cache');
-                defered.resolve(cacheItem[cacheKey]);
+            if (cacheItem){
+              //  console.log('room pref from cache');
+                defered.resolve(cacheItem);
             }else {
-
+              //  console.log('no cache',cacheItem)
                 RoomPrefs.find({roomId: roomId}, function (err, rooms) {
                     var item;
                     if (rooms.length == 0) {

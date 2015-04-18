@@ -32,9 +32,9 @@ function loginToGoogle() {
 function getSpreadsheet(){
     var deferred = Q.defer();
     var cacheItem = myCache.get('spreadsheet');
-    if (cacheItem.spreadsheet){
+    if (cacheItem){
         //console.log('item from cache');
-        deferred.resolve(cacheItem.spreadsheet);
+        deferred.resolve(cacheItem);
     }else {
         GoogleSpreadsheets({
             key: sheetKey,
@@ -87,9 +87,9 @@ function getRows(worksheet) {
     var deferred = Q.defer();
     var itemKey='worksheet'+worksheet.id;
     var cacheItem = myCache.get(itemKey);
-    if (cacheItem[itemKey]){
+    if (cacheItem){
         //console.log('item from cache');
-        deferred.resolve(cacheItem[itemKey]);
+        deferred.resolve(cacheItem);
     }else {
         worksheet.rows({
             key: sheetKey,
