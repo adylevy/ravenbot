@@ -24,7 +24,14 @@ function loginToGoogle() {
         googleAuth.on(GoogleClientLogin.events.login, function () {
             deferred.resolve();
         });
-        googleAuth.login();
+        googleAuth.on(GoogleClientLogin.events.error, function (e) {
+            deferred.reject(new Error('Login failed'));
+        });
+       try {
+           googleAuth.login();
+       }catch(e){
+
+       }
     }
     return deferred.promise;
 }
