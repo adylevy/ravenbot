@@ -42,7 +42,8 @@ var Bot = BotBase.extend(function () {
                     this.options = options;
                     this.roomId = roomId;
                     this.ctx = {
-                        players: []
+                        players: [],
+                        globalReq: []
                     };
 
                     console.log('new bot **', this.options, this.roomId);
@@ -583,18 +584,30 @@ var Bot = BotBase.extend(function () {
                     return hasMatch;
                 }
                 ,
+                addGlobalContextCommands: function(commands){
+                    this.ctx.globalReq=this.ctx.globalReq.concat(commands);
+                },
                 handleGlobalCtxMsg: function (txt, msg) {
-                    //todo: implement
-                    return false;
+                    var lowerCase = txt.toLowerCase();
+                    var hasMatch = false;
+                    _.each(this.ctx.globalReq, function (option) {
+                        if (option['key'].test(lowerCase)) {
+                            this.mainSwitch(option.cmd, msg);
+                            hasMatch = true;
+                        }
+                    }.bind(this));
+                    this.ctx.globalReq=[];
+                    return hasMatch;
                 },
                 updateLastWarResults: function (txt) {
                     this.getRoomPrefs().then(function (roomData) {
                         var matches = roomData.matches || [];
                         var lastMatch=_.last(matches);
-                        var won = /yes/.test(txt);
+                        var won = /yes/.test(txt) || /won/.test(txt) || /win/.test(txt) || /yep/.test(txt);
                         if (lastMatch){
                             lastMatch.warResult=won?'won':'lost';
                             roomData.save();
+                            this.postMessage('Last war results were saved.');
                         }
 
                     }.bind(this));
@@ -1074,6 +1087,14 @@ var Bot = BotBase.extend(function () {
                     roomData.warData.inWar = false;
                     roomData.warData.guildName = '';
                     roomData.save();
+                    this.addGlobalContextCommands([{
+                        'key': new RegExp('^[Yy]es$'),
+                        'cmd': 'lastwarresults yes'
+                    },{
+                        'key': new RegExp('^[Nn]o$'),
+                        'cmd': 'lastwarresults no'
+                    }
+                    ]);
                     this.postMessage('War Ended.\ndid we win this one ?');
                 }
                 ,
