@@ -1095,7 +1095,7 @@ var Bot = BotBase.extend(function () {
                         'cmd': 'lastwarresults no'
                     }
                     ]);
-                    this.postMessage('War Ended.\ndid we win this one ?');
+                    this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
                 }
                 ,
                 saveRavenDataToSS: function (guildName) {
