@@ -67,9 +67,9 @@ module.exports = function () {
             var defered = Q.defer();
             var cacheKey='room_'+roomId;
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem && cacheItem[cacheKey]){
+            if (cacheItem){
                 console.log('room pref from cache');
-                defered.resolve(cacheItem[cacheKey]);
+                defered.resolve(cacheItem);
             }else {
                 console.log('no cache',cacheItem)
                 RoomPrefs.find({roomId: roomId}, function (err, rooms) {
