@@ -29,7 +29,7 @@ var whenConnected=function(){
     roomPrefs.getRoomPrefs(13006255).then(function(data){
        // console.log(data);
         var b=new Bot({},13006255);
-        b.mainSwitch('164 Me 1.77b/66.6k/3230',{
+        b.mainSwitch('matched the real killers',{
             name:'Ady 7000m/700k/700',
             user_id:'5'
         });

@@ -20,7 +20,8 @@
     "q": "",
     "node-cache": "",
     "sax": "",
-    "xmlbuilder":""
+    "xmlbuilder":"",
+    "moment":""
 
   },
   "engines": {
