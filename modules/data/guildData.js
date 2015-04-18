@@ -51,7 +51,7 @@ module.exports = function () {
             var cacheKey = 'guild_' + guildName.replace(/\s/g, '_');
             var cacheItem = myCache.get(cacheKey);
             if (cacheItem) {
-                callback(cacheItem[cacheKey]);
+                callback(cacheItem);
             } else {
                 Guild.find({$or: [{name: guildName, isDeleted: { $exists: false }},{name: guildName,isDeleted: false}]}, function (err, guilds) {
                     var item;
