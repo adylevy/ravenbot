@@ -186,33 +186,37 @@ var Bot = BotBase.extend(function () {
 
                     var newMatchRgx = /^matched(new){0,1}\s*(.*)/;
                     if (newMatchRgx.test(txt)) {
-
                         var regexmatch = newMatchRgx.exec(txt);
-                        // console.log('matched!',regexmatch);
-                        if (regexmatch != null) {
-                            var guildName = regexmatch[2];
-                            if (regexmatch[1] == 'new') {
-                                self.enterWarMode(guildName, null, null, false);
-                            } else {
-                                self.getGuildData(guildName).then(function (data) {
-                                    var guild = data.foundGuild;
-                                    var bestMatch = data.bestMatch;
-                                    var ownData = data.ownData;
-                                    //  console.log('-------------->',guild);
-                                    if (guild == null && (ownData == null || ownData.__v == undefined)) {
-                                        if (bestMatch.guild.guildName) {
-                                            var msg = [];
-                                            msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                            msg.push('or you can use [matchednew GuildName]');
-                                            self.postMessage(msg.join('\n'));
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (roomData.warData.inWar == true) {
+                                this.postMessage('already in war. use "we" to end war before starting another match.');
+                                return;
+                            }else{
+                                var guildName = regexmatch[2];
+                                if (regexmatch[1] == 'new') {
+                                    self.enterWarMode(guildName, null, null, false);
+                                } else {
+                                    self.getGuildData(guildName).then(function (data) {
+                                        var guild = data.foundGuild;
+                                        var bestMatch = data.bestMatch;
+                                        var ownData = data.ownData;
+                                        //  console.log('-------------->',guild);
+                                        if (guild == null && (ownData == null || ownData.__v == undefined)) {
+                                            if (bestMatch.guild.guildName) {
+                                                var msg = [];
+                                                msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
+                                                msg.push('or you can use [matchednew GuildName]');
+                                                self.postMessage(msg.join('\n'));
+                                            }
                                         }
-                                    }
-                                    else {
-                                        self.enterWarMode(guildName, guild, ownData);
-                                    }
-                                });
+                                        else {
+                                            self.enterWarMode(guildName, guild, ownData);
+                                        }
+                                    });
+                                }
                             }
-                        }
+                        }.bind(this));
+
                     }
 
                     var showtargetsRgx = /^targets\sin\s*(.*)/;
