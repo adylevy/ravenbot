@@ -151,7 +151,9 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/^time$/.test(txt)) {
+                        console.log('get prefs');
                         this.getRoomPrefs().then(function (roomData) {
+                            console.log('got prefs',roomData);
                             if (roomData.warData.inWar == true) {
                                 var diff = new Date(Date.now() - roomData.warData.warTime);
                                 this.postMessage(60 - diff.getMinutes() + ' minutes left.');
@@ -218,7 +220,9 @@ var Bot = BotBase.extend(function () {
                         var mtchs = showtargetsRgx.exec(txt);
                         if (mtchs != null) {
                             var guildName = mtchs[1];
+                            console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
+                                console.log('got guild data');
                                 var guild = data.foundGuild;
                                 var bestMatch = data.bestMatch;
                                 var ownData = data.ownData;
