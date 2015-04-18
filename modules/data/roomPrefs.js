@@ -44,7 +44,8 @@ module.exports = function () {
                 warTime: null
             },
             playersPrefs: [],
-            settings: []
+            settings: [],
+            matches: []
 
         });
         return r;
