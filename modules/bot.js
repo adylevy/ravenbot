@@ -15,7 +15,7 @@ var Players = require('./players.js');
 var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
 var audit = require('./data/audit.js');
-
+var moment = require('moment');
 
 var Bot = BotBase.extend(function () {
 
@@ -652,7 +652,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('time - displays minutes left in current war');
                     helpMsg.push('sync mm - syncs number of minutes left for current war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
-
+                    helpMsg.push('lastwarresults yes/no - update last war results for the records.');
 
                     this.postMessage(helpMsg.join('\n'));
                 }
@@ -965,12 +965,19 @@ var Bot = BotBase.extend(function () {
                             if (ssData && ssData.guildName != guildName) {
                                 guildName = ssData.guildName;
                             }
+
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;
                             roomData.warData.warTime = Date.now();
                             roomData.save();
-                            var msg = new Array();
+                            var msg = [];
                             msg.push('^^ WAR MODE ON ^^');
+
+                            var lastWarStats=this.getLastWarStats(roomData,guildName);
+                            if (lastWarStats!=''){
+                                msg.push(lastWarStats);
+                            }
+
                             var matchedMode = roomPrefs.getRoomSettingFromRoomPref(roomData, 'matched');
                             var originSource = OriginSourceType.Smart;
                             if (matchedMode == 'old') {
@@ -1098,6 +1105,21 @@ var Bot = BotBase.extend(function () {
                     this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
                 }
                 ,
+                getLastWarStats: function(roomData,guildName){
+                    var matches=roomData.matches || [];
+                    var guildFights= _.filter(matches,function(match){
+                        return match.guildName.toLowerCase()==guildName;
+                    });
+                    if (guildFights===undefined || guildFights.length==0){
+                        return '';
+                    }
+                    var stats=[];
+                    stats.push('you have fought '+guildFights.length+' times in the past,');
+                    var lastwar=_.last(guildFights);
+                    var wartime=moment(lastwar.warTime);
+                    stats.push('last war was '+wartime.fromNow()+' and war result is '+lastwar.warResult+'.');
+                    return stats.join('\n');
+                },
                 saveRavenDataToSS: function (guildName) {
                     this.getGuildData(guildName).then(function (data) {
                         if (data.ownData != null && data.ownData.players.length != 0) {

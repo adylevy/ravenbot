@@ -1,6 +1,7 @@
 var Player = require('./player_cls.js');
 var Class = require('./Class.js').Class;
 var _ = require('underscore');
+var moment=require('moment');
 
 var Players = Class.extend(function () {
     function parseIntel(intel) {
@@ -95,19 +96,25 @@ var Players = Class.extend(function () {
             p = _.sortBy(p, function (player) {
                 return player.lvl;
             }).reverse();
-            
+
+            var lastUpdated=historical;
+
             _.each(p,function(player){
                // console.log(d,player.insertDate,player.insertDate.getTime(),d.getTime())
                 if (player.insertDate.getTime()<=d.getTime()){
                     if (player.insertDate.getTime()>=historical.getTime())
                     oldIntel.push(player.toString());
                 }else{
+                    if (player.insertDate.getTime()>lastUpdated.getTime()){
+                        lastUpdated=player.insertDate;
+                    }
                     newIntel.push(player.toString())
                 }
             })
 
             if (newIntel.length!=0){
-                intel.push('Fresh intel:');
+                var lastUpdateTime = moment(lastUpdated);
+                intel.push('Fresh intel (last update - '+lastUpdateTime.fromNow()+') :');
                 intel=intel.concat(newIntel);
             }
             if (oldIntel.length!=0 && showOldIntel){
