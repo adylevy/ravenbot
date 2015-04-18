@@ -8,7 +8,7 @@ const request = require('request');
 
 
 var BotBase = Class.extend(function () {
-
+            var CHUNK_SIZE=900;
 
             return {
                 /* options :
@@ -120,10 +120,10 @@ var BotBase = Class.extend(function () {
                     var chunks = txt.split('\n');
                     while (chunks.length > 0) {
                         var packet = '';
-                        while (packet.length < 400 && chunks.length > 0) {
+                        while (packet.length < CHUNK_SIZE && chunks.length > 0) {
                             var firstChunk = chunks.shift();
-                            if (firstChunk.length > 400) {
-                                packet += firstChunk.substr(0, 400 - packet.length);
+                            if (firstChunk.length > CHUNK_SIZE) {
+                                packet += firstChunk.substr(0, CHUNK_SIZE - packet.length);
                                 firstChunk = firstChunk.substr(packet.length);
                                 chunks = [firstChunk].concat(chunks);
                                 packet += '\n';
