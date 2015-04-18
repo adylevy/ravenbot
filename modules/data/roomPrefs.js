@@ -29,7 +29,9 @@ module.exports = function () {
         }],
         settings: [],
         matches:[{
-
+            guildName: String,
+            warTime: Date,
+            warResult:String
         }]
     });
 
