@@ -652,7 +652,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('time - displays minutes left in current war');
                     helpMsg.push('sync mm - syncs number of minutes left for current war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
-
+                    helpMsg.push('lastwarresults yes/no - update last war results for the records.');
 
                     this.postMessage(helpMsg.join('\n'));
                 }
