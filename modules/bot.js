@@ -261,7 +261,7 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    if (/^warstatus$/.test(txt)) {
+                    if (/^war\s?status$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             //    console.log('war status', roomData);
                             this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
