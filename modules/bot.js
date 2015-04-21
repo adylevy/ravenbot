@@ -133,7 +133,7 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/^dirty martini$/.test(txt)) {
-                        this.postMessage('','http://greygoose.com/GreyGoose/media/images/recipes/feature/recipe-Original-DIRTY-MARTINI-feature.jpg');
+                        this.postMessage('http://greygoose.com/GreyGoose/media/images/recipes/feature/recipe-Original-DIRTY-MARTINI-feature.jpg');
                     }
 
                     if (/^targets2$/.test(txt)) {
