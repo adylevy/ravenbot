@@ -124,6 +124,10 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    if (/^dirty martini$/.test(txt)) {
+                        this.postMessage('','http://greygoose.com/GreyGoose/media/images/recipes/feature/recipe-Original-DIRTY-MARTINI-feature.jpg');
+                    }
+
                     if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                     }
