@@ -31,7 +31,11 @@ var whenConnected = function () {
     var app = connect().use(connect.bodyParser());
 
     // route for images
-    app.use('/images', serveStatic(__dirname + "/images/"));
+    app.use('/images/:filename', function(req,res){
+        console.log(req);
+        console.log(req.params);
+        serveStatic(__dirname + "/images/"+req.params.filename)
+    });
     //route for bot files
     app.use('/incoming', function (req, res) {
         try {
