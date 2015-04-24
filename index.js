@@ -34,7 +34,12 @@ var whenConnected = function () {
     app.use('/images', serveStatic(__dirname + "/images/"));
 //route for bot files
     app.use('/incoming', function (req, res) {
-        botManager.handleMessage(req);
+        try {
+            botManager.handleMessage(req.body);
+        }
+        catch (e) {
+            console.log('--->', e);
+        }
         res.end('thanks');
     });
     app.listen(CONFIG.port);
