@@ -21,7 +21,9 @@
     "node-cache": "",
     "sax": "",
     "xmlbuilder":"",
-    "moment":""
+    "moment":"",
+    "connect":"",
+    "serve-static":""
 
   },
   "engines": {
