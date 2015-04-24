@@ -37,7 +37,7 @@ var whenConnected = function () {
         botManager.handleMessage(req);
         res.end('thanks');
     });
-    app.listen(self.options.port);
+    app.listen(CONFIG.port);
 
     /* startListening: function () {
      var self = this;
