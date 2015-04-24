@@ -20,13 +20,14 @@ var moment = require('moment');
 var Bot = BotBase.extend(function () {
 
             var OriginSourceType = {
-
                 'RavenOld': 1,
                 'RavenNew': 2,
                 'SSOld': 4,
                 'SSNew': 8,
                 'Smart': 16
             }
+
+            var baseUrl = process.env['URL'];
 
             return {
                 /* options :
@@ -125,7 +126,7 @@ var Bot = BotBase.extend(function () {
                     }
 
                     if (/^dirty\smartini$/.test(txt)) {
-                        this.postMessage('','http://greygoose.com/GreyGoose/media/images/recipes/feature/recipe-Original-DIRTY-MARTINI-feature.jpg');
+                        this.postMessage('',baseUrl+'/images/dirtymartini.jpg');
                     }
 
                     if (/^manual$/.test(txt)) {
