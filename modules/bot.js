@@ -136,6 +136,10 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Support Room:\nhttps://groupme.com/join_group/11752971/5jvG41');
                     }
 
+                    if (/^dirty martini$/.test(txt)) {
+                        this.postMessage('http://greygoose.com/GreyGoose/media/images/recipes/feature/recipe-Original-DIRTY-MARTINI-feature.jpg');
+                    }
+
                     if (/^targets2$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
