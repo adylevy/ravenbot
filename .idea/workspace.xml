@@ -1,21 +1,345 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/modules/bot.js" line="920" />
+    <bookmark url="file://$PROJECT_DIR$" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="ss to xml">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/data/appsettings.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/npm-debug.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.env" afterPath="$PROJECT_DIR$/.env" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/adminBot.js" afterPath="$PROJECT_DIR$/modules/adminBot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/audit.js" afterPath="$PROJECT_DIR$/modules/data/audit.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bot.js" afterPath="$PROJECT_DIR$/modules/bot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/botsmanager.js" afterPath="$PROJECT_DIR$/modules/botsmanager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/guildData.js" afterPath="$PROJECT_DIR$/modules/data/guildData.js" />
+    <list default="true" id="ab268811-9859-4cea-b627-74dc5288c10f" name="Default" comment="move to node connect">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/dirtymartini.jpg.large" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/Procfile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/demo/easybot.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/demo/repeatbot.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/test/bot-connect.test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/test/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/fancy-groupme-bot/test/testUtils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/http/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schemadefault.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/.npmignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/hooks.alt.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/hooks.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/hooks/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/.gitmodules" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/CONTRIBUTING.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/admin.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/aggregation_cursor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_cr.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_gssapi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_plain.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_scram.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_sspi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/auth/mongodb_x509.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/aggregation.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/batch/common.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/batch/ordered.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/batch/unordered.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/commands.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/core.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/geo.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/query.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/collection/shared.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/command_cursor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/base_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/db_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/delete_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/get_more_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/insert_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/kill_cursor_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/query_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/commands/update_command.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/base.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/connection.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/connection_pool.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/connection_utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/mongos.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/read_preference.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/ha.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/options.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/repl_set.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/repl_set_state.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/strategies/ping_strategy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/repl_set/strategies/statistics_strategy.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/server.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/server_capabilities.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/connection/url_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/cursor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/cursorstream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/db.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/gridfs/chunk.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/gridfs/grid.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/gridfs/gridstore.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/gridfs/readstream.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/mongo_client.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/responses/mongo_reply.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/scope.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/lib/mongodb/utils.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/.travis.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/binding.gyp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/browser_build/bson.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/browser_build/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/build_browser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/builderror.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/Makefile" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/bson.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/bson.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/win32/ia32/bson.node" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/win32/x64/bson.node" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/ext/wscript" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/binary.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/binary_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/bson.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/bson_new.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/code.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/db_ref.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/double.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/float_parser.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/long.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/max_key.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/min_key.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/objectid.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/symbol.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/lib/bson/timestamp.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/.dntrc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/CHANGELOG.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/appveyor.yml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/include_dirs.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/nan.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/node_modules/nan/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/testcases.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/gleak.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/MIT.LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine-html.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/bson/tools/jasmine-1.1.0/jasmine_favicon.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/LICENSE" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/binding.gyp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/builderror.log" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/auth_processes/mongodb.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/base64.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/base64.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberos.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberos.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberos.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberos_context.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/kerberosgss.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/sspi.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/base64.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.c" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/kerberos_sspi.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/worker.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_buffer_descriptor.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_context.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/win32/wrappers/security_credentials.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/worker.cc" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/lib/worker.h" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/package.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/test/kerberos_tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/test/kerberos_win32_test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_descriptor_tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/test/win32/security_buffer_tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/kerberos/test/win32/security_credentials_tests.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/.name" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/codeStyleSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/jsLibraryMappings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/libraries/Node_js_Dependencies_for_mpromise.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/mpromise.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/other.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/scopes/scope_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/index.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/test/utils.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/Readme.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/.editorconfig" afterPath="$PROJECT_DIR$/node_modules/node-env-file/.editorconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.0" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.0" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.1" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.2" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.3" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.4" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.0" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.0" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.1" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.1" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.2" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.3" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.4" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/fixtures/.env.exports.4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env2" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/.env" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/.npmignore" afterPath="$PROJECT_DIR$/node_modules/mongoose/.npmignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.npmignore" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/.npmignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/.npmignore" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/.npmignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/director/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/mongoose/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/.travis.yml" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/History.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/History.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/History.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/History.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/History.md" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/History.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/LICENSE" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/LICENSE" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/Makefile" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/Makefile" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/Makefile" afterPath="$PROJECT_DIR$/node_modules/node-env-file/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/README.md" afterPath="$PROJECT_DIR$/node_modules/director/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/README.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/README.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/README.md" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/README.md" afterPath="$PROJECT_DIR$/node_modules/node-env-file/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/README.md" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/q/README.md" afterPath="$PROJECT_DIR$/node_modules/q/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/Readme.md" afterPath="$PROJECT_DIR$/node_modules/formidable/Readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/ReleaseNotes.md" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/ReleaseNotes.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/TODO" afterPath="$PROJECT_DIR$/node_modules/node-env-file/TODO" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/aggregate.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/aggregate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/array.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/array.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/array.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/assert.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/assert.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/assertion.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/assertion.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/core/assertions.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/core/assertions.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/examples/basic.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/examples/basic.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/binary.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/binary.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/boolean.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/boolean.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/bower.json" afterPath="$PROJECT_DIR$/node_modules/director/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/bower.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/bower.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/buffer.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/buffer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/buffer.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/buffer.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/bin/build" afterPath="$PROJECT_DIR$/node_modules/director/bin/build" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/cast.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/chai.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/chai.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/collection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/collection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/collection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/config.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/connection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/connection.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/connectionstate.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/connectionstate.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/contRun.sh" afterPath="$PROJECT_DIR$/node_modules/mongoose/contRun.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/date.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/date.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/build/director.js" afterPath="$PROJECT_DIR$/node_modules/director/build/director.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/build/director.min.js" afterPath="$PROJECT_DIR$/node_modules/director/build/director.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/divergentArray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/divergentArray.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/document.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/documentarray.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/documentarray.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/documentarray.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/embedded.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/embedded.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/expect.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/expect.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/flag.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/flag.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getPathValue.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/getPathValue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/helper.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/helper.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/test/server/http/http-test.js" afterPath="$PROJECT_DIR$/node_modules/director/test/server/http/http-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/incoming_form.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.js" afterPath="$PROJECT_DIR$/index.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/mongoData.js" afterPath="$PROJECT_DIR$/modules/data/mongoData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/players.js" afterPath="$PROJECT_DIR$/modules/players.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/roomPrefs.js" afterPath="$PROJECT_DIR$/modules/data/roomPrefs.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stats.js" afterPath="$PROJECT_DIR$/stats.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/lib/director/http/index.js" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/http/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/test/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/test/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/lib/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/index.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/lib/index.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/lib/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/index.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/test/index.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/test/index.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/messages.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/messages.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/missingSchema.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/missingSchema.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/mixed.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/mixed.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/model.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/test/server/core/mount-test.js" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/mount-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/mquery.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/mquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/lib/multipart_parser.js" afterPath="$PROJECT_DIR$/node_modules/formidable/lib/multipart_parser.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/node.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/lib/collection/node.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/number.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/number.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/objectid.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/drivers/node-mongodb-native/objectid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/objectid.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/objectid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/types/objectid.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/types/objectid.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/overwriteChainableMethod.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/overwriteChainableMethod.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/overwriteModel.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/overwriteModel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/package.json" afterPath="$PROJECT_DIR$/node_modules/director/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/formidable/package.json" afterPath="$PROJECT_DIR$/node_modules/formidable/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/core-util-is/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/inherits/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/isarray/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/node_modules/string_decoder/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpath/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpath/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mquery/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/ms/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/ms/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/muri/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/sliced/package.json" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/sliced/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/package.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/package.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/package.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/assertion-error/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/package.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/package.json" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/node_modules/deep-eql/node_modules/type-detect/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/q/package.json" afterPath="$PROJECT_DIR$/node_modules/q/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/test/server/core/path-test.js" afterPath="$PROJECT_DIR$/node_modules/director/test/server/core/path-test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.domain.test.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.domain.test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/promise.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/promise.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/lib/promise.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/lib/promise.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.test.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promise.test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promises.Aplus.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mpromise/test/promises.Aplus.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/q/q.js" afterPath="$PROJECT_DIR$/node_modules/q/q.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/query.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/q/queue.js" afterPath="$PROJECT_DIR$/node_modules/q/queue.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/readable.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/node_modules/mongodb/node_modules/readable-stream/readable.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/director/lib/director/router.js" afterPath="$PROJECT_DIR$/node_modules/director/lib/director/router.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schematype.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/should.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/interface/should.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/statemachine.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/statemachine.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/string.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/schema/string.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test.js" afterPath="$PROJECT_DIR$/test.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/transferFlags.js" afterPath="$PROJECT_DIR$/node_modules/node-env-file/node_modules/chai/lib/chai/utils/transferFlags.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/utils.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/utils.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validation.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/validator.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node_modules/mongoose/lib/error/version.js" afterPath="$PROJECT_DIR$/node_modules/mongoose/lib/error/version.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="bc7bfc2b-66d8-41d4-84d4-10626287bd58" name="idea items" comment="idea items" />
@@ -42,18 +366,8 @@
       <file leaf-file-name="test.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sheets.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/sheets.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.0847458">
-              <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+            <state vertical-scroll-proportion="-8.740741">
+              <caret line="18" column="32" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -63,57 +377,17 @@
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+              <caret line="4" column="3" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="appsettings.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/data/appsettings.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.8518519">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="stats.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/stats.js">
+      <file leaf-file-name="player_cls.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="59" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.888889">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="adminBot.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-37.77778">
-              <caret line="133" column="49" selection-start-line="133" selection-start-column="49" selection-end-line="133" selection-end-column="49" />
+              <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -122,8 +396,38 @@
       <file leaf-file-name="bot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.962963">
-              <caret line="800" column="40" selection-start-line="800" selection-start-column="40" selection-end-line="800" selection-end-column="40" />
+            <state vertical-scroll-proportion="-7.5185184">
+              <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.26785713">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="botsmanager.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.4074073">
+              <caret line="141" column="104" selection-start-line="141" selection-start-column="97" selection-end-line="141" selection-end-column="104" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.75">
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -133,7 +437,7 @@
         <entry file="file://$PROJECT_DIR$/modules/players.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+              <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -144,13 +448,14 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="Ady levy &lt;adylevy@gmail.com&gt;" />
         <option value="Ady Levy &lt;adylevy@gmail.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="feature_move_to_connect" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -180,27 +485,27 @@
         <option value="$PROJECT_DIR$/modules/chuckJokes.js" />
         <option value="$PROJECT_DIR$/test3.js" />
         <option value="$PROJECT_DIR$/modules/utils.js" />
-        <option value="$PROJECT_DIR$/modules/player_cls.js" />
         <option value="$PROJECT_DIR$/modules/mongoData.js" />
         <option value="$PROJECT_DIR$/AdminTests.js" />
-        <option value="$PROJECT_DIR$/modules/sheets.js" />
-        <option value="$PROJECT_DIR$/modules/botBase.js" />
         <option value="$PROJECT_DIR$/modules/xml2js/bom.js" />
-        <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/modules/spreadsheets.js" />
-        <option value="$PROJECT_DIR$/modules/data/guildData.js" />
         <option value="$PROJECT_DIR$/modules/data/audit.js" />
-        <option value="$PROJECT_DIR$/modules/data/roomPrefs.js" />
         <option value="$PROJECT_DIR$/modules/data/mongoData.js" />
-        <option value="$PROJECT_DIR$/modules/data/appsettings.js" />
+        <option value="$PROJECT_DIR$/modules/player_cls.js" />
         <option value="$PROJECT_DIR$/stats.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/modules/botsmanager.js" />
+        <option value="$PROJECT_DIR$/modules/data/appsettings.js" />
         <option value="$PROJECT_DIR$/modules/adminBot.js" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/modules/bot.js" />
+        <option value="$PROJECT_DIR$/modules/data/roomPrefs.js" />
+        <option value="$PROJECT_DIR$/modules/botBase.js" />
+        <option value="$PROJECT_DIR$/modules/data/guildData.js" />
+        <option value="$PROJECT_DIR$/modules/sheets.js" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/modules/players.js" />
+        <option value="$PROJECT_DIR$/modules/botsmanager.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/modules/bot.js" />
+        <option value="$PROJECT_DIR$/index.js" />
       </list>
     </option>
   </component>
@@ -221,7 +526,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="821" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -275,13 +580,13 @@
       <hideEmptyPackages />
       <abbreviatePackageNames />
       <autoscrollToSource />
-      <autoscrollFromSource />
+      <autoscrollFromSource ProjectPane="true" />
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -324,11 +629,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -344,21 +645,21 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="287" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="222" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="290" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="224" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="291" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="225" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="965" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="739" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="300" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="232" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="299" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="231" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="301" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="233" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
-    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="933" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="714" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
     <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
@@ -376,6 +677,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images" />
       <recent name="$PROJECT_DIR$/modules/data" />
       <recent name="D:\Dropbox\Dropbox\Apps\Heroku\adybot\modules\data" />
       <recent name="D:\Dropbox\Dropbox\Apps\Heroku\adybot" />
@@ -473,6 +775,17 @@
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
       <module name="" />
       <envs />
       <method />
@@ -706,205 +1019,14 @@
       <workItem from="1425575154796" duration="2727000" />
       <workItem from="1425585269634" duration="16746000" />
       <workItem from="1428949891286" duration="510000" />
-      <workItem from="1428950493490" duration="6244000" />
-    </task>
-    <task id="LOCAL-00078" summary="emoji">
-      <created>1424033246194</created>
-      <option name="number" value="00078" />
-      <option name="project" value="LOCAL" />
-      <updated>1424033246194</updated>
-    </task>
-    <task id="LOCAL-00079" summary="emoji">
-      <created>1424033700314</created>
-      <option name="number" value="00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1424033700314</updated>
-    </task>
-    <task id="LOCAL-00080" summary="pilgrim ?">
-      <created>1424034142218</created>
-      <option name="number" value="00080" />
-      <option name="project" value="LOCAL" />
-      <updated>1424034142218</updated>
-    </task>
-    <task id="LOCAL-00081" summary="*">
-      <created>1424034348231</created>
-      <option name="number" value="00081" />
-      <option name="project" value="LOCAL" />
-      <updated>1424034348231</updated>
-    </task>
-    <task id="LOCAL-00082" summary="emoji">
-      <created>1424034762480</created>
-      <option name="number" value="00082" />
-      <option name="project" value="LOCAL" />
-      <updated>1424034762480</updated>
-    </task>
-    <task id="LOCAL-00083" summary="x">
-      <created>1424035082230</created>
-      <option name="number" value="00083" />
-      <option name="project" value="LOCAL" />
-      <updated>1424035082231</updated>
-    </task>
-    <task id="LOCAL-00084" summary="a">
-      <created>1424035255941</created>
-      <option name="number" value="00084" />
-      <option name="project" value="LOCAL" />
-      <updated>1424035255941</updated>
-    </task>
-    <task id="LOCAL-00085" summary="war mode thingy">
-      <created>1424209599597</created>
-      <option name="number" value="00085" />
-      <option name="project" value="LOCAL" />
-      <updated>1424209599600</updated>
-    </task>
-    <task id="LOCAL-00086" summary="war thingy">
-      <created>1424209834586</created>
-      <option name="number" value="00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1424209834586</updated>
-    </task>
-    <task id="LOCAL-00087" summary="war mode signs and help modifications">
-      <created>1424210090162</created>
-      <option name="number" value="00087" />
-      <option name="project" value="LOCAL" />
-      <updated>1424210090162</updated>
-    </task>
-    <task id="LOCAL-00088" summary="war mode">
-      <created>1424210374947</created>
-      <option name="number" value="00088" />
-      <option name="project" value="LOCAL" />
-      <updated>1424210374947</updated>
-    </task>
-    <task id="LOCAL-00089" summary="war">
-      <created>1424210630157</created>
-      <option name="number" value="00089" />
-      <option name="project" value="LOCAL" />
-      <updated>1424210630158</updated>
-    </task>
-    <task id="LOCAL-00090" summary="war">
-      <created>1424210891074</created>
-      <option name="number" value="00090" />
-      <option name="project" value="LOCAL" />
-      <updated>1424210891074</updated>
-    </task>
-    <task id="LOCAL-00091" summary="thats it with war mode">
-      <created>1424211090719</created>
-      <option name="number" value="00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1424211090719</updated>
-    </task>
-    <task id="LOCAL-00092" summary="War updates">
-      <created>1424807054914</created>
-      <option name="number" value="00092" />
-      <option name="project" value="LOCAL" />
-      <updated>1424807054914</updated>
-    </task>
-    <task id="LOCAL-00093" summary="algo change">
-      <created>1424894897389</created>
-      <option name="number" value="00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1424894897389</updated>
-    </task>
-    <task id="LOCAL-00094" summary="removed console.log, &#10;fixed an issue with myt">
-      <created>1424930523039</created>
-      <option name="number" value="00094" />
-      <option name="project" value="LOCAL" />
-      <updated>1424930523041</updated>
-    </task>
-    <task id="LOCAL-00095" summary="fixed myt logic">
-      <created>1424981060027</created>
-      <option name="number" value="00095" />
-      <option name="project" value="LOCAL" />
-      <updated>1424981060027</updated>
-    </task>
-    <task id="LOCAL-00096" summary="moved guild data to seperate class.&#10;added cache to get guild data to reduce load on db&#10;admin changes: added help, show and remove commands&#10;">
-      <created>1425076650726</created>
-      <option name="number" value="00096" />
-      <option name="project" value="LOCAL" />
-      <updated>1425076650726</updated>
-    </task>
-    <task id="LOCAL-00097" summary="typo">
-      <created>1425077188873</created>
-      <option name="number" value="00097" />
-      <option name="project" value="LOCAL" />
-      <updated>1425077188873</updated>
-    </task>
-    <task id="LOCAL-00098" summary="typo">
-      <created>1425078887093</created>
-      <option name="number" value="00098" />
-      <option name="project" value="LOCAL" />
-      <updated>1425078887094</updated>
-    </task>
-    <task id="LOCAL-00099" summary="typo">
-      <created>1425079086913</created>
-      <option name="number" value="00099" />
-      <option name="project" value="LOCAL" />
-      <updated>1425079086913</updated>
-    </task>
-    <task id="LOCAL-00100" summary="typo">
-      <created>1425079271096</created>
-      <option name="number" value="00100" />
-      <option name="project" value="LOCAL" />
-      <updated>1425079271096</updated>
-    </task>
-    <task id="LOCAL-00101" summary="typo">
-      <created>1425079534142</created>
-      <option name="number" value="00101" />
-      <option name="project" value="LOCAL" />
-      <updated>1425079534142</updated>
-    </task>
-    <task id="LOCAL-00102" summary="typo">
-      <created>1425080340678</created>
-      <option name="number" value="00102" />
-      <option name="project" value="LOCAL" />
-      <updated>1425080340678</updated>
-    </task>
-    <task id="LOCAL-00103" summary="removed console.log">
-      <created>1425080580842</created>
-      <option name="number" value="00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1425080580842</updated>
-    </task>
-    <task id="LOCAL-00104" summary="remove guild working now">
-      <created>1425080901870</created>
-      <option name="number" value="00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1425080901870</updated>
-    </task>
-    <task id="LOCAL-00105" summary="fixed new guild">
-      <created>1425081290094</created>
-      <option name="number" value="00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1425081290094</updated>
-    </task>
-    <task id="LOCAL-00106" summary="delete issue with cache">
-      <created>1425081547553</created>
-      <option name="number" value="00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1425081547553</updated>
-    </task>
-    <task id="LOCAL-00107" summary="reverted myt algo to classic war">
-      <created>1425123581393</created>
-      <option name="number" value="00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1425123581393</updated>
-    </task>
-    <task id="LOCAL-00108" summary="bug fix">
-      <created>1425124528678</created>
-      <option name="number" value="00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1425124528678</updated>
-    </task>
-    <task id="LOCAL-00109" summary="added alias for myt">
-      <created>1425125207384</created>
-      <option name="number" value="00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1425125207384</updated>
-    </task>
-    <task id="LOCAL-00110" summary="added alias for myt">
-      <created>1425125254814</created>
-      <option name="number" value="00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1425125254814</updated>
+      <workItem from="1428950493490" duration="9563000" />
+      <workItem from="1429004653402" duration="291000" />
+      <workItem from="1429042811626" duration="3101000" />
+      <workItem from="1429090372464" duration="310000" />
+      <workItem from="1429092230269" duration="27000" />
+      <workItem from="1429294850654" duration="19527000" />
+      <workItem from="1429425435346" duration="40000" />
+      <workItem from="1429816159715" duration="5884000" />
     </task>
     <task id="LOCAL-00111" summary="algo">
       <created>1425126939233</created>
@@ -1002,44 +1124,242 @@
       <option name="project" value="LOCAL" />
       <updated>1425674829341</updated>
     </task>
-    <option name="localTasksCounter" value="127" />
+    <task id="LOCAL-00127" summary="mongo -&gt; singelton&#10;fixed bad guild matches if SS data found and is similar somewhat to the user's entered guild name&#10;fixed myt command that stopped working for some guilds&#10;">
+      <created>1428957757392</created>
+      <option name="number" value="00127" />
+      <option name="project" value="LOCAL" />
+      <updated>1428957757393</updated>
+    </task>
+    <task id="LOCAL-00128" summary="add insert by user id to user insertion logic.">
+      <created>1428961302543</created>
+      <option name="number" value="00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1428961302543</updated>
+    </task>
+    <task id="LOCAL-00129" summary="stats&#10;added mini full stats to minit command">
+      <created>1429045816328</created>
+      <option name="number" value="00129" />
+      <option name="project" value="LOCAL" />
+      <updated>1429045816329</updated>
+    </task>
+    <task id="LOCAL-00130" summary="fixed unclosed line">
+      <created>1429296032962</created>
+      <option name="number" value="00130" />
+      <option name="project" value="LOCAL" />
+      <updated>1429296032962</updated>
+    </task>
+    <task id="LOCAL-00131" summary="war started, war ended, war status for admin room&#10;targets in XX for guilds&#10;">
+      <created>1429299667393</created>
+      <option name="number" value="00131" />
+      <option name="project" value="LOCAL" />
+      <updated>1429299667394</updated>
+    </task>
+    <task id="LOCAL-00132" summary="typo">
+      <created>1429299981328</created>
+      <option name="number" value="00132" />
+      <option name="project" value="LOCAL" />
+      <updated>1429299981328</updated>
+    </task>
+    <task id="LOCAL-00133" summary="test">
+      <created>1429344977588</created>
+      <option name="number" value="00133" />
+      <option name="project" value="LOCAL" />
+      <updated>1429344977588</updated>
+    </task>
+    <task id="LOCAL-00134" summary="cache issue">
+      <created>1429345121808</created>
+      <option name="number" value="00134" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345121808</updated>
+    </task>
+    <task id="LOCAL-00135" summary="fixed an issue">
+      <created>1429345353012</created>
+      <option name="number" value="00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345353012</updated>
+    </task>
+    <task id="LOCAL-00136" summary="cache">
+      <created>1429345497618</created>
+      <option name="number" value="00136" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345497618</updated>
+    </task>
+    <task id="LOCAL-00137" summary="te">
+      <created>1429345709082</created>
+      <option name="number" value="00137" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345709082</updated>
+    </task>
+    <task id="LOCAL-00138" summary="cache update">
+      <created>1429345988417</created>
+      <option name="number" value="00138" />
+      <option name="project" value="LOCAL" />
+      <updated>1429345988417</updated>
+    </task>
+    <task id="LOCAL-00139" summary="cache issue fix">
+      <created>1429346180591</created>
+      <option name="number" value="00139" />
+      <option name="project" value="LOCAL" />
+      <updated>1429346180591</updated>
+    </task>
+    <task id="LOCAL-00140" summary="cache change">
+      <created>1429358121147</created>
+      <option name="number" value="00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1429358121147</updated>
+    </task>
+    <task id="LOCAL-00141" summary="war status">
+      <created>1429358369136</created>
+      <option name="number" value="00141" />
+      <option name="project" value="LOCAL" />
+      <updated>1429358369136</updated>
+    </task>
+    <task id="LOCAL-00142" summary="targets in -&gt; help">
+      <created>1429358647817</created>
+      <option name="number" value="00142" />
+      <option name="project" value="LOCAL" />
+      <updated>1429358647817</updated>
+    </task>
+    <task id="LOCAL-00143" summary="trying to extend chunk size">
+      <created>1429359267856</created>
+      <option name="number" value="00143" />
+      <option name="project" value="LOCAL" />
+      <updated>1429359267856</updated>
+    </task>
+    <task id="LOCAL-00144" summary="cache upgrade">
+      <created>1429361352771</created>
+      <option name="number" value="00144" />
+      <option name="project" value="LOCAL" />
+      <updated>1429361352771</updated>
+    </task>
+    <task id="LOCAL-00145" summary="disable entering match mode while in war">
+      <created>1429362703197</created>
+      <option name="number" value="00145" />
+      <option name="project" value="LOCAL" />
+      <updated>1429362703197</updated>
+    </task>
+    <task id="LOCAL-00146" summary="match history">
+      <created>1429370792144</created>
+      <option name="number" value="00146" />
+      <option name="project" value="LOCAL" />
+      <updated>1429370792144</updated>
+    </task>
+    <task id="LOCAL-00147" summary="google login error">
+      <created>1429371905124</created>
+      <option name="number" value="00147" />
+      <option name="project" value="LOCAL" />
+      <updated>1429371905124</updated>
+    </task>
+    <task id="LOCAL-00148" summary="update last war as global context question">
+      <created>1429373694797</created>
+      <option name="number" value="00148" />
+      <option name="project" value="LOCAL" />
+      <updated>1429373694797</updated>
+    </task>
+    <task id="LOCAL-00149" summary="war stats">
+      <created>1429373981717</created>
+      <option name="number" value="00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1429373981717</updated>
+    </task>
+    <task id="LOCAL-00150" summary="added help for last war results.">
+      <created>1429374185952</created>
+      <option name="number" value="00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1429374185952</updated>
+    </task>
+    <task id="LOCAL-00151" summary="get guild stat when entering a match.">
+      <created>1429378145929</created>
+      <option name="number" value="00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1429378145929</updated>
+    </task>
+    <task id="LOCAL-00152" summary="indicate how fresh the data is">
+      <created>1429378455825</created>
+      <option name="number" value="00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1429378455825</updated>
+    </task>
+    <task id="LOCAL-00153" summary="changed space to \s in martini regex">
+      <created>1429816330372</created>
+      <option name="number" value="00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1429816330373</updated>
+    </task>
+    <task id="LOCAL-00154" summary="move to node connect">
+      <created>1429876838337</created>
+      <option name="number" value="00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1429876838337</updated>
+    </task>
+    <task id="LOCAL-00155" summary="move to node connect">
+      <created>1429877152351</created>
+      <option name="number" value="00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1429877152351</updated>
+    </task>
+    <task id="LOCAL-00156" summary="move to node connect">
+      <created>1429877430615</created>
+      <option name="number" value="00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1429877430615</updated>
+    </task>
+    <task id="LOCAL-00157" summary="move to node connect">
+      <created>1429877836987</created>
+      <option name="number" value="00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1429877836987</updated>
+    </task>
+    <task id="LOCAL-00158" summary="dirty martini, self host">
+      <created>1429879547092</created>
+      <option name="number" value="00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1429879547092</updated>
+    </task>
+    <task id="LOCAL-00159" summary="serve image">
+      <created>1429880199615</created>
+      <option name="number" value="00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1429880199615</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="337020000" />
+    <option name="totallyTimeSpent" value="369519000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="821" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="834" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32891247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46143618" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26928106" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.46013072" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33111703" sideWeight="0.71162045" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33071896" sideWeight="0.71162045" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28" sideWeight="0.32409382" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47214854" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2496732" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18611111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.41356382" sideWeight="0.6759062" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32258064" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19027779" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37385622" sideWeight="0.6759062" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32258064" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Regex Tester" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32925472" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Mongo Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Heroku" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1056,45 +1376,40 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="war mode signs and help modifications" />
-    <MESSAGE value="war mode" />
-    <MESSAGE value="war" />
-    <MESSAGE value="thats it with war mode" />
-    <MESSAGE value="War updates" />
-    <MESSAGE value="algo change" />
-    <MESSAGE value="removed console.log, &#10;fixed an issue with myt" />
-    <MESSAGE value="fixed myt logic" />
-    <MESSAGE value="moved guild data to seperate class.&#10;added cache to get guild data to reduce load on db&#10;admin changes: added help, show and remove commands&#10;" />
     <MESSAGE value="typo" />
-    <MESSAGE value="removed console.log" />
-    <MESSAGE value="remove guild working now" />
-    <MESSAGE value="fixed new guild" />
-    <MESSAGE value="delete issue with cache" />
-    <MESSAGE value="reverted myt algo to classic war" />
-    <MESSAGE value="bug fix" />
-    <MESSAGE value="added alias for myt" />
-    <MESSAGE value="algo" />
-    <MESSAGE value="audit" />
-    <MESSAGE value="fixed some naming issue" />
-    <MESSAGE value="console logs &amp; login to google fix" />
-    <MESSAGE value="matched new issue" />
-    <MESSAGE value="broadcast" />
-    <MESSAGE value="save to SS" />
-    <MESSAGE value="ss to xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="ss to xml" />
+    <MESSAGE value="test" />
+    <MESSAGE value="cache issue" />
+    <MESSAGE value="fixed an issue" />
+    <MESSAGE value="cache" />
+    <MESSAGE value="te" />
+    <MESSAGE value="cache update" />
+    <MESSAGE value="cache issue fix" />
+    <MESSAGE value="cache change" />
+    <MESSAGE value="war status" />
+    <MESSAGE value="targets in -&gt; help" />
+    <MESSAGE value="trying to extend chunk size" />
+    <MESSAGE value="cache upgrade" />
+    <MESSAGE value="disable entering match mode while in war" />
+    <MESSAGE value="match history" />
+    <MESSAGE value="google login error" />
+    <MESSAGE value="update last war as global context question" />
+    <MESSAGE value="war stats" />
+    <MESSAGE value="added help for last war results." />
+    <MESSAGE value="get guild stat when entering a match." />
+    <MESSAGE value="indicate how fresh the data is" />
+    <MESSAGE value="changed space to \s in martini regex" />
+    <MESSAGE value="move to node connect" />
+    <MESSAGE value="dirty martini, self host" />
+    <MESSAGE value="serve image" />
+    <option name="LAST_COMMIT_MESSAGE" value="serve image" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/modules/adminBot.js</url>
-          <line>175</line>
+          <line>202</line>
           <option name="timeStamp" value="158" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/modules/bot.js</url>
-          <line>895</line>
-          <option name="timeStamp" value="181" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/modules/spreadsheets.js</url>
@@ -1103,11 +1418,11 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/modules/bot.js</url>
-          <line>764</line>
+          <line>885</line>
           <option name="timeStamp" value="211" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="216" />
+      <option name="time" value="218" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
@@ -1128,52 +1443,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="53" selection-end-line="10" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/bot.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="778" column="28" selection-start-line="778" selection-start-column="28" selection-end-line="778" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/botBase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="117" selection-start-line="6" selection-start-column="117" selection-end-line="6" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1247,13 +1516,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/giphy.js">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="4.147059">
           <caret line="141" column="1" selection-start-line="141" selection-start-column="1" selection-end-line="141" selection-end-column="1" />
         </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/formidable/lib/index.js">
@@ -1317,18 +1586,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.0996015">
-          <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AdminTests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1346,21 +1607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/googleclientlogin/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64056224">
-          <caret line="265" column="28" selection-start-line="265" selection-start-column="28" selection-end-line="265" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/botBase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/spreadsheets.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1369,19 +1615,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.25">
-          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test2.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="33" column="3" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1389,23 +1626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="26" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/guildData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="2" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1413,78 +1633,105 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5555553">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/audit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/appsettings.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.8518519">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="54" selection-start-line="23" selection-start-column="54" selection-end-line="23" selection-end-column="54" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/stats.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.888889">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="51" />
+          <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/adminBot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-37.77778">
-          <caret line="133" column="49" selection-start-line="133" selection-start-column="49" selection-end-line="133" selection-end-column="49" />
+        <state vertical-scroll-proportion="-9.0">
+          <caret line="155" column="0" selection-start-line="155" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/modules/data/mongoData.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6666665">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/audit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.444445">
+          <caret line="17" column="23" selection-start-line="17" selection-start-column="23" selection-end-line="17" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/appsettings.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <caret line="20" column="12" selection-start-line="20" selection-start-column="12" selection-end-line="20" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="12" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.js">
+    <entry file="file://$PROJECT_DIR$/modules/botBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.0370371">
+          <caret line="125" column="73" selection-start-line="125" selection-start-column="73" selection-end-line="125" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/guildData.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="35" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+          <caret line="53" column="34" selection-start-line="53" selection-start-column="34" selection-end-line="53" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/googleclientlogin/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="265" column="28" selection-start-line="265" selection-start-column="28" selection-end-line="265" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/googleclientlogin/tests/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="45" column="60" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="21" selection-start-line="33" selection-start-column="12" selection-end-line="33" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/player_cls.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="118" column="8" selection-start-line="118" selection-start-column="8" selection-end-line="118" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1492,23 +1739,71 @@
     <entry file="file://$PROJECT_DIR$/modules/players.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
+          <caret line="116" column="55" selection-start-line="116" selection-start-column="55" selection-end-line="116" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.740741">
+          <caret line="18" column="32" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/connect/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/connect/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/botsmanager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.4074073">
+          <caret line="141" column="104" selection-start-line="141" selection-start-column="97" selection-end-line="141" selection-end-column="104" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/bot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.962963">
-          <caret line="800" column="40" selection-start-line="800" selection-start-column="40" selection-end-line="800" selection-end-column="40" />
+        <state vertical-scroll-proportion="-7.5185184">
+          <caret line="129" column="21" selection-start-line="129" selection-start-column="21" selection-end-line="129" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/sheets.js">
+    <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.0847458">
-          <caret line="170" column="9" selection-start-line="170" selection-start-column="9" selection-end-line="170" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.26785713">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
         </state>
       </provider>
