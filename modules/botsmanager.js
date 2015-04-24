@@ -20,32 +20,36 @@ var BotsManager = Class.extend(function () {
     return {
         init: function (options) {
             this.options = options;
-console.log(options)
-            this.allBots=[];
+            console.log(options)
+            this.allBots = [];
             var e = new events.EventEmitter();
             _.extend(this, e);
             console.log('bot manager', this.options);
-            this.startListening();
-            /*.then(this.killAllBots.bind(this))*/
             this.getAllBots().then(this.registerMissingBots.bind(this));
-            this.timerInterval=setInterval(function(){this.onTimeTick()}.bind(this),1*60*1000);
+            this.timerInterval = setInterval(function () {
+                this.onTimeTick()
+            }.bind(this), 1 * 60 * 1000);
         },
-        onTimeTick: function(){
-            roomPrefs.getAllRoomPrefs().then(function(rooms){
+        onTimeTick: function () {
+            roomPrefs.getAllRoomPrefs().then(function (rooms) {
 
-               try{ _.each(rooms,function(room){
-                    if (room.warData.inWar){
-                      //  console.log('onTick',room.roomId,this.allBots);
-                        var botObj = _.findWhere(this.allBots, {group_id: room.roomId+''});
-                        if (botObj && botObj.manager && botObj.manager.onTimeTick){
-                            botObj.manager.onTimeTick(room);
+                try {
+                    _.each(rooms, function (room) {
+                        if (room.warData.inWar) {
+                            //  console.log('onTick',room.roomId,this.allBots);
+                            var botObj = _.findWhere(this.allBots, {group_id: room.roomId + ''});
+                            if (botObj && botObj.manager && botObj.manager.onTimeTick) {
+                                botObj.manager.onTimeTick(room);
+                            }
                         }
-                    }
-                }.bind(this));}
-                catch(e){console.warn('error',e);}
-                
+                    }.bind(this));
+                }
+                catch (e) {
+                    console.warn('error', e);
+                }
+
             }.bind(this));
-            
+
         },
         getAllBots: function () {
             var deferred = Q.defer();
@@ -67,54 +71,57 @@ console.log(options)
         killAllBots: function () {
             var deferred = Q.defer();
             var that = this;
-            var unregArray=[];
+            var unregArray = [];
             try {
                 _.each(this.allBots, function (bot) {
                     unregArray.push(that.unregisterBot(bot.bot_id));
                 });
             }
             catch (e) {
-                console.log('------->',e);
+                console.log('------->', e);
             }
-            Q.all(unregArray).then(function(){
+            Q.all(unregArray).then(function () {
                 this.allBots = [];
-                deferred.resolve( this.allBots);
+                deferred.resolve(this.allBots);
             }.bind(this))
 
             return deferred.promise;
         },
         registerMissingBots: function () {
-            var self=this;
+            var self = this;
             var deferred = Q.defer();
             console.log('register bots');
-            appSettings.getSettings().then(function(settings){
+            appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
-              // console.log('got settings',settings,guilds);
-                var adminGroup=self.options.adminGroup;
+                // console.log('got settings',settings,guilds);
+                var adminGroup = self.options.adminGroup;
                 try {
                     if (_.find(guilds, function (guild) {
                             guild.roomId + '' == adminGroup + '';
-                        })==null) {
+                        }) == null) {
                         guilds.push({
-                            roomId:adminGroup,
-                            guildName:'Admin',
-                            guildId:''
+                            roomId: adminGroup,
+                            guildName: 'Admin',
+                            guildId: ''
                         });
                     }
-                }catch(e){console.log(e);}
+                } catch (e) {
+                    console.log(e);
+                }
                 //console.log('register',groupIds);
-                var registerArr=[];
+                var registerArr = [];
                 _.each(guilds, function (guild) {
-                   try {
-                       var botObj=_.findWhere(this.allBots, {group_id: guild.roomId+''});
-                       if (botObj == undefined) {
-                           registerArr.push(this.registerBotAndCreateManager(guild.roomId));
-                       }else{
-                           registerArr.push(this.createManager(guild.roomId,botObj));
-                       }
-                   }catch(e){}
+                    try {
+                        var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
+                        if (botObj == undefined) {
+                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                        } else {
+                            registerArr.push(this.createManager(guild.roomId, botObj));
+                        }
+                    } catch (e) {
+                    }
                 }.bind(this));
-                Q.all(registerArr).then(function(){
+                Q.all(registerArr).then(function () {
                     deferred.resolve();
                 })
             }.bind(this))
@@ -131,24 +138,24 @@ console.log(options)
                 }.bind(this));
             return deferred.promise;
         },
-        createManager : function(groupIdx,botObj){
-            var manager = this.options.adminGroup==groupIdx? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
-            manager.on('botRegister',function(ctx,guild){
+        createManager: function (groupIdx, botObj) {
+            var manager = this.options.adminGroup == groupIdx ? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
+            manager.on('botRegister', function (ctx, guild) {
                 var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
-                if (botObj==undefined) {
+                if (botObj == undefined) {
                     this.registerBotAndCreateManager(guild.roomId).then(function (newBot) {
                         ctx.botRegistered(guild.roomId);
                         newBot.postMessage('RavenBot is successfully registered in this room.\nRaven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                         this.addGroupToSettings(guild);
                     }.bind(this));
-                }else{
+                } else {
                     ctx.postMessage('Bot already registered');
                 }
 
             }.bind(this));
-            manager.on('botUnregister',function(ctx,groupId){
+            manager.on('botUnregister', function (ctx, groupId) {
                 var botObj = _.findWhere(this.allBots, {group_id: groupId});
-                if (botObj!=undefined) {
+                if (botObj != undefined) {
                     botObj.manager.postMessage('Bye.');
                     this.allBots = _.filter(this.allBots, function (bot) {
                         return bot.group_id != groupId;
@@ -158,36 +165,36 @@ console.log(options)
                         ctx.botUnregistered(groupId);
 
                     }.bind(this));
-                }else{
+                } else {
                     ctx.postMessage('Bot is not registered');
 
                 }
 
             }.bind(this));
-            manager.on('broadcast',function(ctx,broadcastObj){
-                this.broadCast(ctx,broadcastObj.guild,broadcastObj.msg);
+            manager.on('broadcast', function (ctx, broadcastObj) {
+                this.broadCast(ctx, broadcastObj.guild, broadcastObj.msg);
 
             }.bind(this));
 
-            botObj.manager=manager;
-            var allbots = _.filter( this.allBots, function (el) {
+            botObj.manager = manager;
+            var allbots = _.filter(this.allBots, function (el) {
                 //group_id: Number(guild.roomId)
                 return el.group_id != botObj.group_id;
             });
             allbots.push(botObj);
-            this.allBots=allbots;
+            this.allBots = allbots;
 
             return manager;
         },
-        registerBotAndCreateManager: function(groupId){
+        registerBotAndCreateManager: function (groupId) {
             var deferred = Q.defer();
             this.registerBot(groupId).then(function (data) {
-                var response=data.response;
-                var groupIdx=data.groupId;
+                var response = data.response;
+                var groupIdx = data.groupId;
                 if (response.meta.code > 200 && response.meta.code < 300) {
                     try {
-                        var botObj=response.response.bot;
-                        var manager=this.createManager(groupIdx,botObj);
+                        var botObj = response.response.bot;
+                        var manager = this.createManager(groupIdx, botObj);
                         botObj.manager = manager;
 
                         deferred.resolve(manager);
@@ -197,32 +204,32 @@ console.log(options)
                     }
                 }
 
-            }.bind(this)).fail(function(e){
-                console.log('--------------->>>>',e);
-                
+            }.bind(this)).fail(function (e) {
+                console.log('--------------->>>>', e);
+
             });
             return deferred.promise;
         },
-        broadCast: function(ctx,group,msg){
-            if (group=='all'){
-                _.each(this.allBots,function(bot){
-                    if (bot.group_id!=this.options.adminGroup) {
+        broadCast: function (ctx, group, msg) {
+            if (group == 'all') {
+                _.each(this.allBots, function (bot) {
+                    if (bot.group_id != this.options.adminGroup) {
                         bot.manager.postMessage(msg);
                     }
                 }.bind(this));
                 ctx.postMessage('Msg sent.');
             }
-            else{
+            else {
                 var botObj = _.findWhere(this.allBots, {group_id: group});
-                if (botObj==undefined) {
-                 ctx.postMessage('Group not found.');
+                if (botObj == undefined) {
+                    ctx.postMessage('Group not found.');
                 }
-                else{
-                    botObj.manager.postMessage(msg);   
+                else {
+                    botObj.manager.postMessage(msg);
                     ctx.postMessage('Msg sent.');
                 }
             }
-            
+
         },
         registerBot: function (groupId) {
             var deferred = Q.defer();
@@ -239,15 +246,15 @@ console.log(options)
             request({url: url, method: 'POST', body: JSON.stringify({bot: bot})},
                 function (error, response, body) {
                     if (!error) {
-                      try {
-                          var parsedBody = JSON.parse(body);
-                          deferred.resolve({response: parsedBody, groupId: groupId});
-                      }
-                    catch(e){
-                        deferred.reject(e);
+                        try {
+                            var parsedBody = JSON.parse(body);
+                            deferred.resolve({response: parsedBody, groupId: groupId});
+                        }
+                        catch (e) {
+                            deferred.reject(e);
 
-                      }
-                       
+                        }
+
                     } else {
                         deferred.reject(error);
                     }
@@ -255,7 +262,7 @@ console.log(options)
             );
             return deferred.promise;
         },
-        handleMessage: function (self, msg) {
+        handleMessage: function (msg) {
             /*{
              "id": "1234567890",
              "source_guid": "GUID",
@@ -273,94 +280,52 @@ console.log(options)
              ],
              "attachments": []
              }*/
+            var self=this;
             var groupId = msg.group_id;
             if (msg.name != self.options.name) {
                 var botObj = _.findWhere(this.allBots, {group_id: groupId});
-                if (botObj==undefined){
-                    console.log('couldnt find a bot to handle:',msg)
+                if (botObj == undefined) {
+                    console.log('couldnt find a bot to handle:', msg)
                     return;
-                    
-                }else {
-                  try {
-                      botObj.manager.handleMessage(msg);
-                  }catch(e){
-                      console.warn('FATAL ERROR : ',e);
-                      
-                  }
+
+                } else {
+                    try {
+                        botObj.manager.handleMessage(msg);
+                    } catch (e) {
+                        console.warn('FATAL ERROR : ', e);
+
+                    }
                 }
             }
         },
-        startListening: function () {
-            var self = this;
-
-            this.on('botMessage', this.handleMessage.bind(this));
-
-                var self = this;
-                //console.log(JSON.stringify({'name': self.options.name, 'groups': settings.groups}));
-                var server = http.createServer(function (request, response) {
-                    if (request.url == '/' && request.method == 'GET') {
-                        response.writeHead(200, {"Content-Type": "application/json"});
-                        response.end(JSON.stringify({'name': self.options.name}));
-                    } else if (request.url == '/images/raven.jpeg') {
-                        var img = fs.readFileSync('./images/raven.jpeg');
-                        response.writeHead(200, {'Content-Type': 'image/jpeg'});
-                        response.end(img, 'binary');
-                    } else if (request.url == '/incoming' && request.method == 'POST') {
-                        var form = new formidable.IncomingForm();
-                        var messageFields = {};
-                        form.parse(request, function (err, fields, files) {
-                            if (err) console.error("bad incoming data " + err);
-                        });
-
-                        form.on('field', function (name, value) {
-                            messageFields[name] = value;
-                        });
-
-                        form.on('end', function () {
-                            response.writeHead(200, {"Content-Type": "text/plain"});
-                            response.end("THANKS");
-                            self.emit('botMessage', self, messageFields);
-                        });
-
-                    } else {
-                        response.writeHead(404, {"Content-Type": "text/plain"});
-                        response.end("NOT FOUND");
-                    }
-
-                }.bind(this));
-
-                server.listen(self.options.port);
-                console.log('server up');
-
-        },
-        addGroupToSettings: function(guild){
-            appSettings.getSettings().then(function(settings){
+        addGroupToSettings: function (guild) {
+            appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
-                if (!_.findWhere(guilds,{roomId:Number(guild.roomId)})){
+                if (!_.findWhere(guilds, {roomId: Number(guild.roomId)})) {
                     guilds.push({
-                        roomId:guild.roomId,
-                        guildName:guild.guildName,
-                        guildId:guild.guildId
-                        
+                        roomId: guild.roomId,
+                        guildName: guild.guildName,
+                        guildId: guild.guildId
+
                     });
-                    settings.guilds=guilds;
+                    settings.guilds = guilds;
                     settings.save();
                 }
             })
-            
+
         },
-        removeGroupFromSettings: function(groupId){
-            appSettings.getSettings().then(function(settings){
+        removeGroupFromSettings: function (groupId) {
+            appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
-                if (_.findWhere(guilds,{roomId:Number(groupId)})){
-                    guilds = _.filter(guilds,function(guild){
-                        return guild.roomId!=groupId;
+                if (_.findWhere(guilds, {roomId: Number(groupId)})) {
+                    guilds = _.filter(guilds, function (guild) {
+                        return guild.roomId != groupId;
                     })
-                    settings.guilds=guilds;
+                    settings.guilds = guilds;
                     settings.save();
                 }
             })
-            
+
         }
     }
 }());
@@ -368,6 +333,5 @@ console.log(options)
 
 module.exports = function (options) {
     var md = new BotsManager(options);
-
     return md;
 };
