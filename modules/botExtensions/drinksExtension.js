@@ -19,7 +19,7 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/alabamaslammer.jpg');
         }
 
-        if (/^bacardi\sand\scoke$/.test(txt)) {
+        if (/^rum\sand\scoke$/.test(txt)) {
             postMessage('', baseUrl + '/images/bacardicoke.jpg');
         }
 
