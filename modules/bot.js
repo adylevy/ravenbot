@@ -4,8 +4,8 @@
 
 var Q = require('q');
 const _ = require('underscore');
-var giphy = require('./giphy.js')('dc6zaTOxFJmzC');
-var chuckJokes = require('./chuckJokes.js');
+var jokesExtension= require('./botExtensions/jokesExtension.js');
+var drinksExtension= require('./botExtensions/drinksExtension.js');
 var sheetsData = require('./sheets.js');
 //var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
@@ -27,7 +27,7 @@ var Bot = BotBase.extend(function () {
                 'Smart': 16
             }
 
-            var baseUrl = process.env['URL'];
+
 
             return {
                 /* options :
@@ -97,6 +97,9 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Hey there!');
                     }
 
+                    new jokesExtension(txt,msg,this.postMessage.bind(this));
+                    new drinksExtension(txt,msg,this.postMessage.bind(this));
+
                     if (/^ss\s?targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
@@ -125,33 +128,6 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    if (/^dirty\smartini$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/dirtymartini.jpg');
-                    }
-
-                    if (/^Long\sIsland\sIced\sTea$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/LIIT.jpg');
-                    }
-
-                    if (/^Coca-Cola$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/cocacola.jpg');
-                    }
-
-                    if (/^Alabama\sSlammer$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/alabamaslammer.jpg');
-                    }
-
-                    if (/^Bacardi\sand\sCoke$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/bacardicoke.jpg');
-                    }
-
-                    if (/^screwdriver$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/screwdriver.jpg');
-                    }
-
-                    if (/^Bloody\sMary$/.test(txt)) {
-                        this.postMessage('',baseUrl+'/images/bloodymary.jpg');
-                    }
 
                     if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
@@ -308,8 +284,6 @@ var Bot = BotBase.extend(function () {
                             this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
                         }.bind(this));
                     }
-
-                    this.jokesHandler(txt);
 
                     if (/^myt$/.test(txt) || /^my\stargets$/.test(txt) || /^nut$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -477,10 +451,6 @@ var Bot = BotBase.extend(function () {
                         this.showHelpwar();
                     }
 
-                    if (/^bartender$/.test(txt)) {
-                        this.showbartender();
-                    }
-
                     var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
                     if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -521,59 +491,6 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
 
                     }
-
-                },
-                jokesHandler: function (txt) {
-                    if (/^joke$/.test(txt)) {
-                        this.tellAJoke();
-                        return;
-                    }
-
-                    if (/facepalm/.test(txt)) {
-                        this.tellGifJoke('marvel-wolverine-facepalm');
-                        return;
-                    }
-
-                    if (/potato/.test(txt)) {
-                        this.tellGifJoke('yellow-minions-potato');
-                        return;
-                    }
-
-                    if (/gumby/.test(txt)) {
-                        this.tellGifJoke('unf-gumby');
-                        return;
-                    }
-
-                    if (/rocketsnail/.test(txt)) {
-                        this.tellGifJoke('SQgbkziuGrNxS');
-                        return;
-                    }
-                    if (/cowbell/.test(txt)) {
-                        this.tellGifJoke('whOs1JywNpe6c');
-                        return;
-                    }
-                    if (/hots favorite/.test(txt)) {
-                        this.tellGifJoke('TuQUMaAji7pkY');
-                        return;
-                    }
-
-                    if (/banana/.test(txt)) {
-                        this.tellGifJoke('cw8Nr4u28tVKw');
-                        return;
-                    }
-
-                    if (/^minions$/.test(txt)) {
-                        this.tellGifJoke();
-                        return;
-                    }
-
-                    var gifRgx = /^gif\s(.*)+$/;
-                    if (gifRgx.test(txt)) {
-                        var match = gifRgx.exec(txt);
-                        this.tellGifJoke(match[1]);
-                        return;
-                    }
-
 
                 }
                 ,
@@ -644,46 +561,6 @@ var Bot = BotBase.extend(function () {
                         }
 
                     }.bind(this));
-                }
-                ,
-
-                tellAJoke: function () {
-                    var self = this;
-                    chuckJokes.getJoke().then(function (joke) {
-                        self.postMessage(joke);
-                    }.bind(this))
-                }
-                ,
-
-                tellGifJoke: function (theme) {
-                    var self = this;
-                    theme = typeof(theme) == 'string' ? theme : 'minions';
-                    //  console.log('gif ', theme);
-                    giphy.random(encodeURI(theme), function (err, response) {
-                        if (err == null) {
-                            self.postMessage('', response.data.image_url);
-                        } else {
-                            self.postMessage('could not find this theme.');
-
-                        }
-                    })
-                }
-
-                ,
-
-                showbartender: function () {
-                    var helpMsg = [];
-                    helpMsg.push('Pull up a chair.  What can I get you?');
-                    helpMsg.push(' ');
-                    helpMsg.push('Dirty Martini');
-                    helpMsg.push('Bloody Mary');
-                    helpMsg.push('Rum and Coke');
-                    helpMsg.push('Screwdriver');
-                    helpMsg.push('Alabama Slammer');
-                    helpMsg.push('Long Island Iced Tea');
-                    helpMsg.push('Coca-Cola');
-
-                    this.postMessage(helpMsg.join('\n'));
                 }
                 ,
 
