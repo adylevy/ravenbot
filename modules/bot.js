@@ -129,6 +129,30 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('',baseUrl+'/images/dirtymartini.jpg');
                     }
 
+                    if (/^Long\sIsland\sIced\sTea$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/LIIT.jpg');
+                    }
+
+                    if (/^Coca-Cola$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/cocacola.jpg');
+                    }
+
+                    if (/^Alabama\sSlammer$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/alabamaslammer.jpg');
+                    }
+
+                    if (/^Bacardi\sand\sCoke$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/bacardicoke.jpg');
+                    }
+
+                    if (/^screwdriver$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/screwdriver.jpg');
+                    }
+
+                    if (/^Bloody\sMary$/.test(txt)) {
+                        this.postMessage('',baseUrl+'/images/bloodymary.jpg');
+                    }
+
                     if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                     }
@@ -453,6 +477,10 @@ var Bot = BotBase.extend(function () {
                         this.showHelpwar();
                     }
 
+                    if (/^bartender$/.test(txt)) {
+                        this.showbartender();
+                    }
+
                     var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
                     if (removeRgx.test(caseSensitiveTxt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -639,6 +667,23 @@ var Bot = BotBase.extend(function () {
 
                         }
                     })
+                }
+
+                ,
+
+                showbartender: function () {
+                    var helpMsg = [];
+                    helpMsg.push('Pull up a chair.  What can I get you?');
+                    helpMsg.push(' ');
+                    helpMsg.push('Dirty Martini');
+                    helpMsg.push('Bloody Mary');
+                    helpMsg.push('Rum and Coke');
+                    helpMsg.push('Screwdriver');
+                    helpMsg.push('Alabama Slammer');
+                    helpMsg.push('Long Island Iced Tea');
+                    helpMsg.push('Coca-Cola');
+
+                    this.postMessage(helpMsg.join('\n'));
                 }
                 ,
 
