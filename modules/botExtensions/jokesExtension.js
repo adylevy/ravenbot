@@ -9,6 +9,8 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
+        //Easter Egg images
+
         if (/facepalm/.test(txt)) {
             tellGifJoke('marvel-wolverine-facepalm');
             return;
@@ -28,10 +30,22 @@ module.exports = function (txt, msg, postMessage) {
             tellGifJoke('SQgbkziuGrNxS');
             return;
         }
+
+        if (/^matched\steam\swild\ssnails$/.test(txt)) {
+            tellGifJoke('SQgbkziuGrNxS');
+            return;
+        }
+
         if (/cowbell/.test(txt)) {
             tellGifJoke('whOs1JywNpe6c');
             return;
         }
+
+        if (/^boom$/.test(txt)) {
+            tellGifJoke('yNf9JjErqMcve');
+            return;
+        }
+
         if (/hots\sfavorite/.test(txt)) {
             tellGifJoke('TuQUMaAji7pkY');
             return;
@@ -41,6 +55,32 @@ module.exports = function (txt, msg, postMessage) {
             tellGifJoke('cw8Nr4u28tVKw');
             return;
         }
+
+        //Raven Easter Egg responses
+
+        if (/^raven\sis\sa\spretty\sbird$/.test(txt)) {
+            postMessage('Did I hear Hots?  Here, have some candy.');
+            return;
+        }
+
+        //Norm Jokes
+
+        if (/^norm$/.test(txt)) {
+            postMessage('Evening Everybody');
+            return;
+        }
+
+        if (/^how\sabout\sa\sbeer\snorm$/.test(txt)) {
+            postMessage('OK, but stop me at one... Make that one thirty.');
+            return;
+        }
+
+        if (/^whats\sshakin\snorm$/.test(txt)) {
+            postMessage('All four cheeks and a couple of chins.');
+            return;
+        }
+
+        //Known Joke Images
 
         if (/^minions$/.test(txt)) {
             tellGifJoke();
