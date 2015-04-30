@@ -3,6 +3,8 @@ module.exports = function (txt, msg, postMessage) {
     function handleMessage(txt) {
         var baseUrl = process.env['URL'];
 
+        // Drinks that show up in the menu:
+
         if (/^dirty\smartini$/.test(txt)) {
             postMessage('', baseUrl + '/images/dirtymartini.jpg');
         }
@@ -39,14 +41,6 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/mojito.jpg');
         }
 
-        if (/^mint\sjulep$/.test(txt)) {
-            postMessage('', baseUrl + '/images/julep.jpg');
-        }
-
-        if (/^sex\son\sthe\sbeach$/.test(txt)) {
-            postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
-        }
-
         if (/^beer$/.test(txt)) {
             postMessage('', baseUrl + '/images/beer.jpg');
         }
@@ -55,9 +49,31 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/shirleytemple.jpg');
         }
 
+        // Drinks that are hidden from the menu:
+
+        if (/^adybeer$/.test(txt)) {
+            postMessage('', baseUrl + '/images/adybeer.jpg');
+        }
+
+        if (/^bluemoon$/.test(txt)) {
+            postMessage('', baseUrl + '/images/bluemoon.jpg');
+        }
+
+        if (/^mint\sjulep$/.test(txt)) {
+            postMessage('', baseUrl + '/images/julep.jpg');
+        }
+
+        if (/^sex\son\sthe\sbeach$/.test(txt)) {
+            postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
+        }
+
+        // Calls up the menu:
+
         if (/^bartender$/.test(txt)) {
             showbartender();
         }
+
+        // Menu:
 
     }
 
