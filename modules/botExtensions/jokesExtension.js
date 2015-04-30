@@ -9,6 +9,8 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
+        // Easter Egg images:
+
         if (/facepalm/.test(txt)) {
             tellGifJoke('marvel-wolverine-facepalm');
             return;
@@ -41,6 +43,22 @@ module.exports = function (txt, msg, postMessage) {
             tellGifJoke('cw8Nr4u28tVKw');
             return;
         }
+
+        //Easter Egg jokes:
+
+        if (/^Norm!$/.test(txt)) {
+            postMessage('Evening Everybody');
+        }
+
+        if (/^How\sabout\sa\sbeer\snorm$/.test(txt)) {
+            postMessage('OK, but stop me at one...  Make that one thirty.');
+        }
+
+        if (/^Whats\sshakin\snorm$/.test(txt)) {
+            postMessage('All four cheeks and a couple of chins, Coach.');
+        }
+
+        //Menu driven jokes:
 
         if (/^minions$/.test(txt)) {
             tellGifJoke();
