@@ -40,11 +40,19 @@ module.exports = function (txt, msg, postMessage) {
         }
 
         if (/^mint\sjulep$/.test(txt)) {
-            postmessage('', baseUrl + '/images/julep.jpg');
+            postMessage('', baseUrl + '/images/julep.jpg');
+        }
+
+        if (/^sex\son\sthe\sbeach$/.test(txt)) {
+            postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
         }
 
         if (/^beer$/.test(txt)) {
-            postmessage('', baseUrl + '/images/beer.jpg');
+            postMessage('', baseUrl + '/images/beer.jpg');
+        }
+
+        if (/^shirley\stemple$/.test(txt)) {
+            postMessage('', baseUrl + '/images/shirleytemple.jpg');
         }
 
         if (/^bartender$/.test(txt)) {
@@ -66,6 +74,7 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Gin and Tonic');
         helpMsg.push('Mojito');
         helpMsg.push('Beer');
+        helpMsg.push('Shirley Temple');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));
