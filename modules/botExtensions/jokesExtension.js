@@ -30,13 +30,23 @@ module.exports = function (txt, msg, postMessage) {
             tellGifJoke('SQgbkziuGrNxS');
             return;
         }
+
+        if (/^matched\steam\swild\ssnails$/.test(txt)) {
+            tellGifJoke('SQgbkziuGrNxS');
+        }
+
         if (/cowbell/.test(txt)) {
             tellGifJoke('whOs1JywNpe6c');
             return;
         }
+
         if (/hots\sfavorite/.test(txt)) {
             tellGifJoke('TuQUMaAji7pkY');
             return;
+        }
+
+        if (/^boom$/.test(txt)) {
+            tellGifJoke('yNf9JjErqMcve');
         }
 
         if (/banana/.test(txt)) {
@@ -46,19 +56,19 @@ module.exports = function (txt, msg, postMessage) {
 
         //Easter Egg jokes:
 
-        if (/^Norm!$/.test(txt)) {
+        if (/^norm$/.test(txt)) {
             postMessage('Evening Everybody');
         }
 
-        if (/^How\sabout\sa\sbeer\snorm$/.test(txt)) {
+        if (/^how\sabout\sa\sbeer\snorm$/.test(txt)) {
             postMessage('OK, but stop me at one...  Make that one thirty.');
         }
 
-        if (/^Whats\sshakin\snorm$/.test(txt)) {
+        if (/^whats\sshakin\snorm$/.test(txt)) {
             postMessage('All four cheeks and a couple of chins, Coach.');
         }
 
-        //Menu driven jokes:
+        //Menu driven jokes
 
         if (/^minions$/.test(txt)) {
             tellGifJoke();
