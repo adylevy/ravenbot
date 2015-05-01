@@ -3,6 +3,8 @@ module.exports = function (txt, msg, postMessage) {
     function handleMessage(txt) {
         var baseUrl = process.env['URL'];
 
+        // Drinks that show up in the menu:
+
         if (/^dirty\smartini$/.test(txt)) {
             postMessage('', baseUrl + '/images/dirtymartini.jpg');
         }
@@ -31,9 +33,47 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/bloodymary.jpg');
         }
 
+        if (/^gin\sand\stonic$/.test(txt)) {
+            postMessage('', baseUrl + '/images/gintonic.jpg');
+        }
+
+        if (/^mojito$/.test(txt)) {
+            postMessage('', baseUrl + '/images/mojito.jpg');
+        }
+
+        if (/^beer$/.test(txt)) {
+            postMessage('', baseUrl + '/images/beer.jpg');
+        }
+
+        if (/^shirley\stemple$/.test(txt)) {
+            postMessage('', baseUrl + '/images/shirleytemple.jpg');
+        }
+
+        // Drinks that are hidden from the menu:
+
+        if (/^adybeer$/.test(txt)) {
+            postMessage('', baseUrl + '/images/adybeer.jpg');
+        }
+
+        if (/^bluemoon$/.test(txt)) {
+            postMessage('', baseUrl + '/images/bluemoon.jpg');
+        }
+
+        if (/^mint\sjulep$/.test(txt)) {
+            postMessage('', baseUrl + '/images/julep.jpg');
+        }
+
+        if (/^sex\son\sthe\sbeach$/.test(txt)) {
+            postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
+        }
+
+        // Calls up the menu:
+
         if (/^bartender$/.test(txt)) {
             showbartender();
         }
+
+        // Menu:
 
     }
 
@@ -47,6 +87,10 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Screwdriver');
         helpMsg.push('Alabama Slammer');
         helpMsg.push('Long Island Iced Tea');
+        helpMsg.push('Gin and Tonic');
+        helpMsg.push('Mojito');
+        helpMsg.push('Beer');
+        helpMsg.push('Shirley Temple');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));

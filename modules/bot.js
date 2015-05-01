@@ -595,9 +595,10 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('joke - random joke');
                     helpMsg.push('minions - random minion gif');
                     helpMsg.push('gif (insert phrase) - random theme gif');
+                    helpMsg.push('bartender - opens drink menu');
                     helpMsg.push('support - provides link to support room');
                     helpMsg.push('manual - gets Raven manual');
-                    helpMsg.push('targets in XXX - show intel for guild XXX')
+                    helpMsg.push('targets in XXX - show intel for guild XXX');
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
