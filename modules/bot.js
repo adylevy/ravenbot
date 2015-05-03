@@ -854,7 +854,7 @@ var Bot = BotBase.extend(function () {
                     sheetsData.getGuildData(guildName, function (ssGuildData) {
                         var players;
                         var playerCls = new Players();
-                        players = ssGuildData == null ? [] : playerCls.getPlayers(ssGuildData.lastIntel, ssGuildData.lastIntelCell >= 3);
+                        players = [];//ssGuildData == null ? [] : playerCls.getPlayers(ssGuildData.lastIntel, ssGuildData.lastIntelCell >= 3);
                         guildData.getGuildData(guildName, function (ourData) {
                             var ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                             players = players.concat(ourPlayers);
