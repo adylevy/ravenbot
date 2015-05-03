@@ -47,7 +47,7 @@ var Bot = BotBase.extend(function () {
                         globalReq: []
                     };
 
-                    console.log('new bot **', this.options, this.roomId);
+                 //   console.log('new bot **', this.options, this.roomId);
                 },
                 getRoomPrefs: function () {
                     return roomPrefs.getRoomPrefs(this.roomId);
