@@ -4,8 +4,8 @@
 
 var Q = require('q');
 const _ = require('underscore');
-var jokesExtension= require('./botExtensions/jokesExtension.js');
-var drinksExtension= require('./botExtensions/drinksExtension.js');
+var jokesExtension = require('./botExtensions/jokesExtension.js');
+var drinksExtension = require('./botExtensions/drinksExtension.js');
 var sheetsData = require('./sheets.js');
 //var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
@@ -16,6 +16,8 @@ var BotBase = require('./botBase.js').BotBase;
 var utils = require('./utils.js');
 var audit = require('./data/audit.js');
 var moment = require('moment');
+var appSettings = require('./data/appsettings.js');
+
 
 var Bot = BotBase.extend(function () {
 
@@ -26,7 +28,6 @@ var Bot = BotBase.extend(function () {
                 'SSNew': 8,
                 'Smart': 16
             }
-
 
 
             return {
@@ -97,8 +98,8 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Hey there!');
                     }
 
-                    new jokesExtension(txt,msg,this.postMessage.bind(this));
-                    new drinksExtension(txt,msg,this.postMessage.bind(this));
+                    new jokesExtension(txt, msg, this.postMessage.bind(this));
+                    new drinksExtension(txt, msg, this.postMessage.bind(this));
 
                     if (/^ss\s?targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -231,6 +232,12 @@ var Bot = BotBase.extend(function () {
                     if (updateLastWarResults.test(txt)) {
                         var mtchs = updateLastWarResults.exec(txt);
                         this.updateLastWarResults(mtchs[1]);
+                    }
+                    ;
+
+                    var warStats = /^war\s?stats$/;
+                    if (warStats.test(txt)) {
+                        this.showWarStats();
                     }
                     ;
 
@@ -534,8 +541,8 @@ var Bot = BotBase.extend(function () {
                     return hasMatch;
                 }
                 ,
-                addGlobalContextCommands: function(commands){
-                    this.ctx.globalReq=this.ctx.globalReq.concat(commands);
+                addGlobalContextCommands: function (commands) {
+                    this.ctx.globalReq = this.ctx.globalReq.concat(commands);
                 },
                 handleGlobalCtxMsg: function (txt, msg) {
                     var lowerCase = txt.toLowerCase();
@@ -546,16 +553,16 @@ var Bot = BotBase.extend(function () {
                             hasMatch = true;
                         }
                     }.bind(this));
-                    this.ctx.globalReq=[];
+                    this.ctx.globalReq = [];
                     return hasMatch;
                 },
                 updateLastWarResults: function (txt) {
                     this.getRoomPrefs().then(function (roomData) {
                         var matches = roomData.matches || [];
-                        var lastMatch=_.last(matches);
+                        var lastMatch = _.last(matches);
                         var won = /yes/.test(txt) || /won/.test(txt) || /win/.test(txt) || /yep/.test(txt);
-                        if (lastMatch){
-                            lastMatch.warResult=won?'won':'lost';
+                        if (lastMatch) {
+                            lastMatch.warResult = won ? 'won' : 'lost';
                             roomData.save();
                             this.postMessage('Last war results were saved.');
                         }
@@ -580,6 +587,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('sync mm - syncs number of minutes left for current war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
                     helpMsg.push('lastwarresults yes/no - update last war results for the records.');
+                    helpMsg.push('warstats - show current war stats');
 
                     this.postMessage(helpMsg.join('\n'));
                 }
@@ -901,8 +909,8 @@ var Bot = BotBase.extend(function () {
                             var msg = [];
                             msg.push('^^ WAR MODE ON ^^');
 
-                            var lastWarStats=this.getLastWarStats(roomData,guildName);
-                            if (lastWarStats!=''){
+                            var lastWarStats = this.getLastWarStats(roomData, guildName);
+                            if (lastWarStats != '') {
                                 msg.push(lastWarStats);
                             }
 
@@ -1011,21 +1019,21 @@ var Bot = BotBase.extend(function () {
                 }
                 ,
                 endWar: function (roomData) {
-                    var matchStat={
+                    var matchStat = {
                         guildName: roomData.warData.guildName,
                         warTime: roomData.warData.warTime,
-                        warResult:'unknown'
+                        warResult: 'unknown'
                     };
-                    var matches=roomData.matches || [];
+                    var matches = roomData.matches || [];
                     matches.push(matchStat);
-                    roomData.matches=matches;
+                    roomData.matches = matches;
                     roomData.warData.inWar = false;
                     roomData.warData.guildName = '';
                     roomData.save();
                     this.addGlobalContextCommands([{
                         'key': new RegExp('^[Yy]es$'),
                         'cmd': 'lastwarresults yes'
-                    },{
+                    }, {
                         'key': new RegExp('^[Nn]o$'),
                         'cmd': 'lastwarresults no'
                     }
@@ -1033,21 +1041,60 @@ var Bot = BotBase.extend(function () {
                     this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
                 }
                 ,
-                getLastWarStats: function(roomData,guildName){
-                    var matches=roomData.matches || [];
-                    var guildFights= _.filter(matches,function(match){
-                        return match.guildName.toLowerCase()==guildName;
+                getLastWarStats: function (roomData, guildName) {
+                    var matches = roomData.matches || [];
+                    var guildFights = _.filter(matches, function (match) {
+                        return match.guildName.toLowerCase() == guildName;
                     });
-                    if (guildFights===undefined || guildFights.length==0){
+                    if (guildFights === undefined || guildFights.length == 0) {
                         return '';
                     }
-                    var stats=[];
-                    stats.push('you have fought '+guildFights.length+' times in the past,');
-                    var lastwar=_.last(guildFights);
-                    var wartime=moment(lastwar.warTime);
-                    stats.push('last war was '+wartime.fromNow()+' and war result is '+lastwar.warResult+'.');
+                    var stats = [];
+                    stats.push('you have fought ' + guildFights.length + ' times in the past,');
+                    var lastwar = _.last(guildFights);
+                    var wartime = moment(lastwar.warTime);
+                    stats.push('last war was ' + wartime.fromNow() + ' and war result is ' + lastwar.warResult + '.');
                     return stats.join('\n');
-                },
+                }
+                ,
+                showWarStats: function () {
+                    appSettings.getSettings().then(function (settings) {
+                        var today=new Date();
+                        today.setDate(today.getDate() - 30);
+                        var startDate = settings.warStartDate || today;
+                        this.getRoomPrefs().then(function (roomData) {
+                            var matches = roomData.matches || [];
+                            var guildFights = _.filter(matches, function (match) {
+                                return match.warTime.getTime()>=startDate.getTime();
+                            });
+                            if (guildFights === undefined || guildFights.length == 0) {
+                                this.postMessage('Did you fight this war ?');
+                                return;
+                            }
+                            var wons=[],losses=[],unknowns=[];
+                            _.each(guildFights,function(match){
+                               if (match.warResult=='won'){
+                                   wons.push(match);
+                               }else if (match.warResult=='lost'){
+                                losses.push(match);
+                               }else{
+                                   unknowns.push(match);
+                               }
+                            });
+                            var msg=[];
+                            msg.push('War Stats:');
+                            msg.push('Total wars - '+matches.length);
+                            msg.push('Wins - '+wons.length);
+                            msg.push('Losses - '+losses.length);
+                            msg.push('Unknowns - '+unknowns.length);
+                            msg.push('Well done! ;)');
+                            this.postMessage(msg.join('\n'));
+                        }.bind(this));
+
+                    }.bind(this));
+                }
+
+                ,
                 saveRavenDataToSS: function (guildName) {
                     this.getGuildData(guildName).then(function (data) {
                         if (data.ownData != null && data.ownData.players.length != 0) {
