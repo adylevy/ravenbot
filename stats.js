@@ -15,7 +15,7 @@ const NAME = process.env['NAME']; // the name of your bot
 const URL = process.env['URL']; // the domain you're serving from, should be accessible by Groupme.
 const AVATAR = process.env['AVATAR'];
 const CONFIG = {token: TOKEN, name: NAME, url: URL, adminGroup: ADMIN_GROUP, avatar_url: AVATAR, port: process.env.PORT || 5000};
-
+var moment=require('moment');
 
 var listGuilds=function() {
     console.log('mongo is connected');
@@ -24,12 +24,13 @@ var listGuilds=function() {
         var g=[];
         guildData.getAllGuilds().then(function (guilds) {
             _.each(guilds,function(guild) {
-                g.push({id:guild.id,name:guild.name,players:((guild.players ||[]).length)});
+                g.push({id:guild.id,name:guild.name,players:((guild.players ||[]))});
             });
             var sorted= _.sortBy(g,function(gg){
                 return gg.name;
             });
 var exists= 0,notexists=0;
+
             sheetsData.getAllGuilds(null).then(function(guilds){
                 _.each(sorted,function(guild){
                     guild.existsInSS = _.find(guilds,function(p){
@@ -50,18 +51,34 @@ var exists= 0,notexists=0;
                     }
                 });
                 console.log('total guilds in SS and in Raven : '+exists+' not in SS : '+notexists);
-                console.log('exists :')
+               /* console.log('exists :')
                 _.each(sorted,function(guild){
                     if (guild.existsInSS){
-                        console.log(guild.id+' '+guild.name+' - with '+guild.players+' players.');
+                        console.log(guild.id+' '+guild.name+' - with '+guild.players.length+' players.');
                     }
-                })
-                console.log('not exists :')
+                })*/
+                var historical = new Date();
+                historical.setDate(historical.getDate()-31);
+                console.log('not exists :');
+                var ctr=0;
                 _.each(sorted,function(guild){
                     if (!guild.existsInSS){
-                        console.log(guild.id+' '+guild.name+' - with '+guild.players+' players.');
+                        var lastUpdated=historical;
+                        _.each(guild.players,function(player){
+                             try {
+                                 if (player.date.getTime() > lastUpdated.getTime()) {
+                                     lastUpdated = player.date;
+                                 }
+                             }catch(e){}
+                        });
+                        var lastUpdateTime = moment(lastUpdated);
+                        if (lastUpdateTime.date()>4) {
+                            ctr++;
+                            console.log(guild.id + ' ' + guild.name + ' - with ' + guild.players.length + ' players. last update - ' + lastUpdateTime.fromNow());
+                        }
                     }
-                })
+                });
+                console.log('total - '+ctr);
             })
 
         }.bind(this));
@@ -112,7 +129,7 @@ var whenConnected=function(){
                 var roomId = guild.roomId;
                 var stat= _.findWhere(stats,{roomId:roomId});
                 if (stat==undefined){
-                  //  console.warn('NO CONTRIBUTION: '+guild.guildId+' '+guild.guildName);
+                    console.warn('NO CONTRIBUTION: '+guild.roomId+' - '+ guild.guildId+' '+guild.guildName);
                 }
             })
             stats=_.sortBy(stats, function (s) { return s.ctr });
@@ -137,5 +154,5 @@ var whenConnected=function(){
 var mongoData = require('./modules/data/mongoData.js');
 var roomPrefs = require('./modules/data/roomPrefs.js');
 var guildData = require('./modules/data/guildData.js');
-mongoData.on('mongoConnected',listGuilds);
+mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
