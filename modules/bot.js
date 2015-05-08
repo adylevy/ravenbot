@@ -807,7 +807,7 @@ var Bot = BotBase.extend(function () {
                 getGuildData: function (guildName) {
                     var defered = Q.defer();
 
-                    guildData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, function (data) {
                         defered.resolve(data);
                     }.bind(this));
 
