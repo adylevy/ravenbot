@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var Q = require('q');
 var _ = require('underscore');
 //require('./mongoData.js')(process.env['MONGOLAB_URI']);
-
+var Levenshtein = require('levenshtein');
 var NodeCache = require("node-cache");
 var myCache = new NodeCache({stdTTL: 300}); //5m default cache time
 
@@ -45,6 +45,28 @@ module.exports = function () {
     }
 
     return {
+
+        getSimilarGuilds : function(guildName){
+            var defered = Q.defer();
+            var firstLetter = new RegExp('^'+guildName[0]+'+.*', "i");
+            Guild.find({$or: [{name: firstLetter, isDeleted: { $exists: false }},{name: firstLetter,isDeleted: false}]},function(err,guilds){
+                if (err){
+                    defered.resolve([]);
+                }else{
+                    var suggested=[];
+                    _.each(guilds,function(guild){
+                        var dist = new Levenshtein(guild.name, guildName)
+                        if (dist.valueOf() <=2){
+                            suggested.push({name:guild.name,dist:dist.valueOf()});
+                        }
+                    })
+
+                    defered.resolve(suggested);
+                }
+
+            })
+            return defered.promise;
+        },
 
         getGuildData: function (guildName, callback) {
             var that = this;
