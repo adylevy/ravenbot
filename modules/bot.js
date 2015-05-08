@@ -6,7 +6,7 @@ var Q = require('q');
 const _ = require('underscore');
 var jokesExtension = require('./botExtensions/jokesExtension.js');
 var drinksExtension = require('./botExtensions/drinksExtension.js');
-var sheetsData = require('./sheets.js');
+//var sheetsData = require('./sheets.js');
 //var mongoData = require('./data/mongoData.js')(process.env['MONGOLAB_URI']);
 var roomPrefs = require('./data/roomPrefs.js');
 var guildData = require('./data/guildData.js');
@@ -101,35 +101,6 @@ var Bot = BotBase.extend(function () {
                     new jokesExtension(txt, msg, this.postMessage.bind(this));
                     new drinksExtension(txt, msg, this.postMessage.bind(this));
 
-                    if (/^ss\s?targets$/.test(txt)) {
-                        this.getRoomPrefs().then(function (roomData) {
-                            if (roomData.warData.inWar == true) {
-                                self.getGuildData(roomData.warData.guildName).then(function (data) {
-                                    var guild = data.foundGuild;
-                                    var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.SSNew);
-                                });
-                            } else {
-                                this.postMessage('not in war! use matched command to issue a match');
-                            }
-                        }.bind(this));
-                    }
-
-                    if (/^all\s?targets$/.test(txt)) {
-                        this.getRoomPrefs().then(function (roomData) {
-                            if (roomData.warData.inWar == true) {
-                                self.getGuildData(roomData.warData.guildName).then(function (data) {
-                                    var guild = data.foundGuild;
-                                    var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew);
-                                });
-                            } else {
-                                this.postMessage('not in war! use matched command to issue a match');
-                            }
-                        }.bind(this));
-                    }
-
-
                     if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
                     }
@@ -138,22 +109,12 @@ var Bot = BotBase.extend(function () {
                         this.postMessage('Support Room:\nhttps://groupme.com/join_group/11752971/5jvG41');
                     }
 
-                    if (/^targets2$/.test(txt)) {
-                        this.getRoomPrefs().then(function (roomData) {
-                            if (roomData.warData.inWar == true) {
-                                this.sendGuildTargetsUnified(roomData.warData.guildName);
-                            }
-                        }.bind(this));
-                    }
-
                     if (/^targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
-                                self.getGuildData(roomData.warData.guildName, true).then(function (data) {
-                                    var guild = data.foundGuild;
-                                    var ownData = data.ownData;
-                                    self.sendGuildTargets([], roomData.warData.guildName, guild, ownData, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
-                                });
+                                guildData.getGuildData(roomData.warData.guildName).then(function (data) {
+                                    this.sendGuildTargets([], roomData.warData.guildName, data, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
+                                }.bind(this));
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
                             }
@@ -204,29 +165,12 @@ var Bot = BotBase.extend(function () {
                             } else {
                                 var guildName = regexmatch[2];
                                 if (regexmatch[1] == 'new') {
-                                    self.enterWarMode(guildName, null, null, false);
+                                    self.enterWarMode(guildName, null);
                                 } else {
-                                    self.getGuildData(guildName).then(function (data) {
-                                        var guild = data.foundGuild;
-                                        var bestMatch = data.bestMatch;
-                                        var ownData = data.ownData;
-                                        //  console.log('-------------->',guild);
-                                        if (guild == null && (ownData == null || ownData.__v == undefined)) {
-                                            if (bestMatch.guild.guildName) {
-                                                var msg = [];
-                                                msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                                msg.push('or you can use [matchednew GuildName]');
-                                                self.postMessage(msg.join('\n'));
-                                            }
-                                        }
-                                        else {
-                                            self.enterWarMode(guildName, guild, ownData);
-                                        }
-                                    });
+                                    self.tryToEnterWarMode(guildName);
                                 }
                             }
                         }.bind(this));
-
                     }
                     var updateLastWarResults = /^lastwarresults\s?(.*)$/;
                     if (updateLastWarResults.test(txt)) {
@@ -241,7 +185,6 @@ var Bot = BotBase.extend(function () {
                     }
                     ;
 
-
                     var showtargetsRgx = /^targets\sin\s*(.*)/;
                     if (showtargetsRgx.test(txt)) {
                         var mtchs = showtargetsRgx.exec(txt);
@@ -249,31 +192,34 @@ var Bot = BotBase.extend(function () {
                             var guildName = mtchs[1];
                             //  console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
-                                console.log('got guild data');
-                                var guild = data.foundGuild;
-                                var bestMatch = data.bestMatch;
-                                var ownData = data.ownData;
+                              //  console.log('got guild data');
+                                //var guild = data.foundGuild;
+                                //   var bestMatch = data.bestMatch;
+                                var ownData = data;
                                 //  console.log('-------------->',guild);
-                                if (guild == null && (ownData == null || ownData.__v == undefined)) {
-                                    if (bestMatch.guild.guildName) {
+                                if ((ownData == null || ownData.__v == undefined)) {
+                                    guildData.getSimilarGuilds(guildName).then(function (guilds) {
                                         var msg = [];
-                                        msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                        self.postMessage(msg.join('\n'));
-                                    }
+                                        if (guilds.length > 0) {
+                                            msg.push('Found similar guilds:');
+                                        } else {
+                                            msg.push('Can\'t find a guild with that name');
+                                        }
+                                        _.each(guilds, function (guild) {
+                                            msg.push(guild.name);
+                                        })
+                                        this.postMessage(msg.join('\n'));
+                                    }.bind(this));
                                 }
                                 else {
                                     var originSource = OriginSourceType.Smart;
-                                    if (guild && guild.guildName != guildName) {
-                                        guildName = guild.guildName;
-                                    }
-                                    this.sendGuildTargets([], guildName, guild, ownData, originSource);
+                                    this.sendGuildTargets([], guildName, ownData, originSource);
                                 }
 
                             }.bind(this));
                         }
                     }
                     ;
-
 
                     if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -577,8 +523,8 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('matched [guildname] - starts war and war timer');
                     helpMsg.push('we - ends current war and ends timer');
                     helpMsg.push('targets - displays targets from Raven Database');
-                    helpMsg.push('ss targets - displays targets from Intel SpreadSheet');
-                    helpMsg.push('all targets - Raven + SS intel.');
+                    //  helpMsg.push('ss targets - displays targets from Intel SpreadSheet');
+                    //  helpMsg.push('all targets - Raven + SS intel.');
                     helpMsg.push('myt - user targets during war.');
                     helpMsg.push('minit - mini\'s targets during war');
                     helpMsg.push('123 username 1m/2k/3k - adds user.');
@@ -715,16 +661,6 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
 
-                    var tttriskDef = [
-                        {'all': 1.2, 'line1': .35, 'line2': .6, 'line3': .8},
-                        {'all': 1.1, 'line1': .35, 'line2': .65, 'line3': .75},
-                        {'all': 1, 'line1': .3, 'line2': .6, 'line3': .7},
-                        {'all': 0.9, 'line1': .25, 'line2': .5, 'line3': .6},
-                        {'all': 0.7, 'line1': .25, 'line2': .5, 'line3': .5},
-                        {'all': 0.5, 'line1': .25, 'line2': .4, 'line3': .4},
-                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .3}
-                    ];
-
                     var riskFactor;
                     while (riskDef[risk] == undefined) {
                         risk -= 1;
@@ -796,7 +732,7 @@ var Bot = BotBase.extend(function () {
                     _.each(candidates, function (candidate) {
                         var crank = candidate.rank;
                         var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                        msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
+                        msg.push(candidate.toString() + ' [' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
                     });
 
                     return msg;
@@ -851,57 +787,60 @@ var Bot = BotBase.extend(function () {
                 ,
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
-                    sheetsData.getGuildData(guildName, function (ssGuildData) {
-                        var players;
+
+                    guildData.getGuildData(guildName, function (ourData) {
                         var playerCls = new Players();
-                        players = [];//ssGuildData == null ? [] : playerCls.getPlayers(ssGuildData.lastIntel, ssGuildData.lastIntelCell >= 3);
-                        guildData.getGuildData(guildName, function (ourData) {
-                            var ourPlayers = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
-                            players = players.concat(ourPlayers);
-                            defered.resolve(players);
-                        });
+                        var players = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
+                        defered.resolve(players);
                     }.bind(this));
+
                     return defered.promise;
                 }
                 ,
-                getGuildData: function (guildName, getOldIntel) {
+                getGuildData: function (guildName) {
                     var defered = Q.defer();
-                    getOldIntel = (typeof(getOldIntel) == 'undefined' ? true : getOldIntel);
-                    var self = this;
-                    //console.log('looking for data : ', guildName);
-                    sheetsData.getGuildData(guildName).then(function (data) {
-                        //   console.log('got data from SS',data);
-                        /*{
-                         foundGuild:foundGuild,
-                         bestMatch:bestMatch
-                         }*/
-                        //  console.log(data);
 
-                        if (data && data.foundGuild && data.foundGuild.guildName && data.foundGuild.guildName != guildName) {
-                            guildName = data.foundGuild.guildName;
+                    guildData.getGuildData(guildName, function (data) {
+                        defered.resolve(data);
+                    }.bind(this));
+
+                    return defered.promise;
+
+                }
+                ,
+
+                tryToEnterWarMode: function (guildName) {
+                    guildData.getSimilarGuilds(guildName).then(function (guilds) {
+                        var uniqueMatch = _.findWhere(guilds, {dist: 0});
+
+                        if (uniqueMatch) {
+                            this.getGuildData(uniqueMatch.name).then(function (data) {
+                                this.enterWarMode(uniqueMatch.name, data);
+                            }.bind(this));
                         }
 
-                        guildData.getGuildData(guildName, function (item) {
-                            //     console.log('got own data ', item);
-                            data.ownData = item;
-                            defered.resolve(data);
-                        }.bind(this));
+                        if (!uniqueMatch || guilds.length > 1) {
+                            var msg = [];
+                            if (guilds.length > 0) {
+                                msg.push('found some similar guild names, make sure you are writing the name properly.');
+                            } else {
+                                msg.push('couldn\'t find a guild with this name, try different spelling or setup a new guild');
+                            }
+                            _.each(guilds, function (guild) {
+                                msg.push(guild.name);
+                            });
+                            this.postMessage(msg.join('\n'));
+                        }
 
                     }.bind(this));
-                    return defered.promise;
 
-                }
-                ,
+                },
 
-                enterWarMode: function (guildName, ssData, ownData) {
+                enterWarMode: function (guildName, ownData) {
                     //   console.log('enter war mode', arguments);
                     this.getRoomPrefs().then(function (roomData) {
-                        //  console.log('enter war mode with room data', roomData);
-                        try {
-                            if (ssData && ssData.guildName != guildName) {
-                                guildName = ssData.guildName;
-                            }
 
+                        try {
                             roomData.warData.inWar = true;
                             roomData.warData.guildName = guildName;
                             roomData.warData.warTime = Date.now();
@@ -914,12 +853,9 @@ var Bot = BotBase.extend(function () {
                                 msg.push(lastWarStats);
                             }
 
-                            var matchedMode = roomPrefs.getRoomSettingFromRoomPref(roomData, 'matched');
                             var originSource = OriginSourceType.Smart;
-                            if (matchedMode == 'old') {
-                                originSource = OriginSourceType.RavenNew | OriginSourceType.RavenOld | OriginSourceType.SSNew;
-                            }
-                            this.sendGuildTargets(msg, guildName, ssData, ownData, originSource);
+
+                            this.sendGuildTargets(msg, guildName, ownData, originSource);
                         }
                         catch (e) {
                             console.log('-------->', e);
@@ -929,74 +865,25 @@ var Bot = BotBase.extend(function () {
 
                 }
                 ,
-                sendGuildTargetsUnified: function (guildName) {
-                    this.getParsedIntelForGuild(guildName).then(function (ssGuildData) {
-                        try {
-                            var msg = [];
-                            var uniqData = _.uniq(ssGuildData, function (player) {
-                                return player.name + '_' + Math.floor(player.lvl / 10);
-                            });
-                            var candidates = [];
-                            _.each(uniqData, function (player) {
-                                if (player.isPlayer() && player.def != 0 && player.eqDef != 0 && player.heroDef != 0) {
-                                    candidates.push(player);
-                                }
-                            });
-                            candidates = _.sortBy(candidates, function (player) {
-                                return player.lvl;
-                            }).reverse();
-                            // console.log(candidates);
+                sendGuildTargets: function (msg, guildName, ownData, originType) {
 
-                            _.each(candidates, function (candidate) {
-                                var crank = candidate.rank;
-                                var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                                msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + ']');
-                            });
-
-                            this.postMessage(msg.join('\n'));
-                        } catch (e) {
-                            console.log('------->', e);
-                        }
-                    }.bind(this));
-
-                }
-                ,
-                sendGuildTargets: function (msg, guildName, ssData, ownData, originType) {
-                    //   console.log('send guild targets',arguments);
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
-                    var ssGuildData = ssData != null ? ssData.lastIntel : '';
-                    var ravenPlayersCtr = 0;
+
                     if ((originType & OriginSourceType.RavenNew) ||
                         (originType & OriginSourceType.RavenOld) ||
                         (originType == OriginSourceType.Smart)) {
                         if (ownData != null && ownData.players.length != 0) {
-                            msg.push('Raven data:');
+                            //  msg.push('Raven data:');
                             var p = new Players();
                             var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
                             msg.push(ownIntel);
-                            ravenPlayersCtr = (ownIntel.match(/\n/g) || []).length;
                         }
                         else {
-                            msg.push('\nNo Raven data, Please add data.')
+                            msg.push('\nNo data, Please add data.')
                         }
                     }
-                    if ((originType & OriginSourceType.SSNew) ||
-                        (originType & OriginSourceType.SSOld) ||
-                        (originType == OriginSourceType.Smart)) {
-                        if ((originType != OriginSourceType.Smart || (ravenPlayersCtr < 8)) && ssGuildData != null && ssGuildData.length > 5) {
-                            if (ravenPlayersCtr > 0) {
-                                msg.push('');
-                            }
-                            msg.push('SS data:');
-                            ssGuildData = ssGuildData.replace(/\n\s*\n/g, '\n');
-                            msg.push(ssGuildData);
-                        } else {
-                            if (originType != OriginSourceType.Smart) {
-                                msg.push('\nNo SS data.');
-                            }
-                        }
-                    }
+
                     this.postMessage(msg.join('\n'));
 
                 }
@@ -1059,65 +946,45 @@ var Bot = BotBase.extend(function () {
                 ,
                 showWarStats: function () {
                     appSettings.getSettings().then(function (settings) {
-                        var today=new Date();
+                        var today = new Date();
                         today.setDate(today.getDate() - 30);
                         var startDate = settings.warStartDate || today;
                         this.getRoomPrefs().then(function (roomData) {
                             var matches = roomData.matches || [];
                             var guildFights = _.filter(matches, function (match) {
-                                return match.warTime.getTime()>=startDate.getTime();
+                                return match.warTime.getTime() >= startDate.getTime();
                             });
                             if (guildFights === undefined || guildFights.length == 0) {
                                 this.postMessage('Did you fight this war ?');
                                 return;
                             }
-                            var wons=[],losses=[],unknowns=[];
-                            _.each(guildFights,function(match){
-                               if (match.warResult=='won'){
-                                   wons.push(match);
-                               }else if (match.warResult=='lost'){
-                                losses.push(match);
-                               }else{
-                                   unknowns.push(match);
-                               }
+                            var wons = [], losses = [], unknowns = [];
+                            _.each(guildFights, function (match) {
+                                if (match.warResult == 'won') {
+                                    wons.push(match);
+                                } else if (match.warResult == 'lost') {
+                                    losses.push(match);
+                                } else {
+                                    unknowns.push(match);
+                                }
                             });
-                            var msg=[];
+                            var msg = [];
                             msg.push('War Stats:');
-                            msg.push('Total wars - '+matches.length);
-                            msg.push('Wins - '+wons.length);
-                            msg.push('Losses - '+losses.length);
-                            msg.push('Unknowns - '+unknowns.length);
+                            msg.push('Total wars - ' + matches.length);
+                            msg.push('Wins - ' + wons.length);
+                            msg.push('Losses - ' + losses.length);
+                            msg.push('Unknowns - ' + unknowns.length);
                             msg.push('Well done! ;)');
                             this.postMessage(msg.join('\n'));
                         }.bind(this));
 
                     }.bind(this));
                 }
-
-                ,
-                saveRavenDataToSS: function (guildName) {
-                    this.getGuildData(guildName).then(function (data) {
-                        if (data.ownData != null && data.ownData.players.length != 0) {
-                            var msg = [];
-                            msg.push('');
-                            msg.push('----------->>>>');
-                            msg.push('Raven data:');
-                            var p = new Players();
-                            var ownIntel = p.getPlayersIntelFromOwnData(data.ownData.players, '&#10;', false);
-                            msg.push(ownIntel);
-                            msg.push('----------->>>>');
-                            sheetsData.setGuildData(data.foundGuild, msg.join('&#10;'));
-                        }
-
-                    });
-                }
             }
         }
         ()
     )
     ;
-
-//util.inherits(BotsManager, events.EventEmitter);
 
 module.exports = function (options, idx) {
     var md = new Bot(options, idx);

@@ -45,8 +45,20 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/beer.jpg');
         }
 
+        if (/^fuzzy\snavel$/.test(txt)) {
+            postMessage('', baseUrl + '/images/fuzzynavel.jpg');
+        }
+
         if (/^shirley\stemple$/.test(txt)) {
             postMessage('', baseUrl + '/images/shirleytemple.jpg');
+        }
+
+        if (/^coffee\stemple$/.test(txt)) {
+            postMessage('', baseUrl + '/images/coffee.jpg');
+        }
+
+        if (/^scotch$/.test(txt)) {
+            postMessage('', baseUrl + '/images/scotch.jpg');
         }
 
         // Drinks that are hidden from the menu:
@@ -90,7 +102,10 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Gin and Tonic');
         helpMsg.push('Mojito');
         helpMsg.push('Beer');
+        helpMsg.push('Fuzzy Navel');
         helpMsg.push('Shirley Temple');
+        helpMsg.push('Coffee');
+        helpMsg.push('Scotch');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));

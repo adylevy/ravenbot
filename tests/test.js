@@ -1,7 +1,7 @@
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
-var roomPrefs = require('./modules/data/roomPrefs.js');
+var roomPrefs = require('./../modules/data/roomPrefs.js');
 if (typeof process.env['TOKEN'] == 'undefined') {
     env(__dirname + '/.env');
 }
@@ -23,20 +23,20 @@ const CONFIG = {token: TOKEN, groups: GROUPS, name: NAME, url: URL, adminName: A
 //mongoData.reBuildGuildDB();
 
 
-var Bot = require('./modules/bot.js');
+var Bot = require('./../modules/bot.js');
 var whenConnected=function(){
     console.log('mongo is connected');
     roomPrefs.getRoomPrefs(13006255).then(function(data){
        // console.log(data);
         var b=new Bot({},13006255);
-        b.mainSwitch('matched the real killers',{
+        b.mainSwitch('myt',{
             name:'Ady 7000m/700k/700',
             user_id:'5'
         });
     });
 };
 
-var mongoData = require('./modules/data/mongoData.js');
+var mongoData = require('./../modules/data/mongoData.js');
 mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
 
@@ -95,7 +95,7 @@ b.mainSwitch('time',{
         name:'MB 409.8m/109.7k/3.0k',
         user_id:1
     });
-    
+
 },5000)
 
 setTimeout(function(){

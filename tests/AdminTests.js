@@ -18,7 +18,7 @@ const CONFIG = {token: TOKEN, name: NAME, url: URL, adminGroup: ADMIN_GROUP, ava
 var whenConnected=function(){
     console.log('mongo is connected');
    // mongoData.reBuildGuilds();
-    var AdminBot = require('./modules/adminBot.js');
+    var AdminBot = require('./../modules/adminBot.js');
     var b=new AdminBot({},11090615);
    //b.mainSwitch('set 9508170 TRK 466-154-270');
   //  b.mainSwitch('list');
@@ -30,6 +30,6 @@ var whenConnected=function(){
   //  b.mainSwitch('register 23 ady 2039');
 };
 
-var mongoData = require('./modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
+var mongoData = require('./../modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
 mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();
