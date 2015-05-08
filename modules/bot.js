@@ -199,7 +199,18 @@ var Bot = BotBase.extend(function () {
                                 var ownData = data;
                                 //  console.log('-------------->',guild);
                                 if ((ownData == null || ownData.__v == undefined)) {
-                                   //todo: show similar guilds
+                                    guildData.getSimilarGuilds(guildName).then(function (guilds) {
+                                        var msg = [];
+                                        if (guilds.length>0){
+                                            msg.push('Found similar guilds:');
+                                        }else{
+                                            msg.push('Can\'t find a guild with that name');
+                                        }
+                                        _.each(guilds,function(guild){
+                                            msg.push(guild.name);
+                                        })
+                                        this.postMessage(msg.join('\n'));
+                                    }.bind(this));
                                 }
                                 else {
                                     var originSource = OriginSourceType.Smart;
