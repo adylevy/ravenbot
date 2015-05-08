@@ -70,6 +70,7 @@ module.exports = function () {
 
         getGuildData: function (guildName, callback) {
             var that = this;
+            var defered = Q.defer();
             var cacheKey = 'guild_' + guildName.replace(/\s/g, '_');
             var cacheItem = myCache.get(cacheKey);
             if (cacheItem) {
@@ -93,9 +94,13 @@ module.exports = function () {
                         this._save(cb);
                     };
                     myCache.set(cacheKey, item, 600);
-                    callback(item);
-                });
+                    if (callback) {
+                        callback(item);
+                    }
+                    defered.resolve(item);
+                }.bind(this));
             }
+            return defered.promise;
         },
         getAllGuilds: function () {
             var defered = Q.defer();
