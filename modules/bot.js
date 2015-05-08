@@ -113,8 +113,8 @@ var Bot = BotBase.extend(function () {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
                                 guildData.getGuildData(roomData.warData.guildName).then(function (data) {
-                                    self.sendGuildTargets(roomData.warData.guildName, data, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
-                                });
+                                    this.sendGuildTargets([], roomData.warData.guildName, data, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
+                                }.bind(this));
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
                             }
@@ -185,7 +185,6 @@ var Bot = BotBase.extend(function () {
                     }
                     ;
 
-
                     var showtargetsRgx = /^targets\sin\s*(.*)/;
                     if (showtargetsRgx.test(txt)) {
                         var mtchs = showtargetsRgx.exec(txt);
@@ -193,20 +192,20 @@ var Bot = BotBase.extend(function () {
                             var guildName = mtchs[1];
                             //  console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
-                                console.log('got guild data');
+                              //  console.log('got guild data');
                                 //var guild = data.foundGuild;
-                             //   var bestMatch = data.bestMatch;
+                                //   var bestMatch = data.bestMatch;
                                 var ownData = data;
                                 //  console.log('-------------->',guild);
                                 if ((ownData == null || ownData.__v == undefined)) {
                                     guildData.getSimilarGuilds(guildName).then(function (guilds) {
                                         var msg = [];
-                                        if (guilds.length>0){
+                                        if (guilds.length > 0) {
                                             msg.push('Found similar guilds:');
-                                        }else{
+                                        } else {
                                             msg.push('Can\'t find a guild with that name');
                                         }
-                                        _.each(guilds,function(guild){
+                                        _.each(guilds, function (guild) {
                                             msg.push(guild.name);
                                         })
                                         this.postMessage(msg.join('\n'));
@@ -221,7 +220,6 @@ var Bot = BotBase.extend(function () {
                         }
                     }
                     ;
-
 
                     if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
@@ -663,16 +661,6 @@ var Bot = BotBase.extend(function () {
                         {'all': 0, 'line1': .2, 'line2': .4, 'line3': .2}
                     ];
 
-                    var tttriskDef = [
-                        {'all': 1.2, 'line1': .35, 'line2': .6, 'line3': .8},
-                        {'all': 1.1, 'line1': .35, 'line2': .65, 'line3': .75},
-                        {'all': 1, 'line1': .3, 'line2': .6, 'line3': .7},
-                        {'all': 0.9, 'line1': .25, 'line2': .5, 'line3': .6},
-                        {'all': 0.7, 'line1': .25, 'line2': .5, 'line3': .5},
-                        {'all': 0.5, 'line1': .25, 'line2': .4, 'line3': .4},
-                        {'all': 0, 'line1': .2, 'line2': .4, 'line3': .3}
-                    ];
-
                     var riskFactor;
                     while (riskDef[risk] == undefined) {
                         risk -= 1;
@@ -744,7 +732,7 @@ var Bot = BotBase.extend(function () {
                     _.each(candidates, function (candidate) {
                         var crank = candidate.rank;
                         var rank = crank > 2 ? 'A' : crank > 1.5 ? 'B' : 'C';
-                        msg.push(candidate.toString() + ' [' + candidate.origin + '|' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
+                        msg.push(candidate.toString() + ' [' + (candidate.isFresh() ? 'Fresh' : 'Old') + '|' + rank + ']');
                     });
 
                     return msg;
@@ -801,6 +789,7 @@ var Bot = BotBase.extend(function () {
                     var defered = Q.defer();
 
                     guildData.getGuildData(guildName, function (ourData) {
+                        var playerCls = new Players();
                         var players = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                         defered.resolve(players);
                     }.bind(this));
@@ -832,10 +821,10 @@ var Bot = BotBase.extend(function () {
 
                         if (!uniqueMatch || guilds.length > 1) {
                             var msg = [];
-                            if (guilds.length>0){
+                            if (guilds.length > 0) {
                                 msg.push('found some similar guild names, make sure you are writing the name properly.');
-                            }else{
-                               msg.push('couldn\'t find a guild with this name, try different spelling or setup a new guild');
+                            } else {
+                                msg.push('couldn\'t find a guild with this name, try different spelling or setup a new guild');
                             }
                             _.each(guilds, function (guild) {
                                 msg.push(guild.name);
@@ -885,7 +874,7 @@ var Bot = BotBase.extend(function () {
                         (originType & OriginSourceType.RavenOld) ||
                         (originType == OriginSourceType.Smart)) {
                         if (ownData != null && ownData.players.length != 0) {
-                          //  msg.push('Raven data:');
+                            //  msg.push('Raven data:');
                             var p = new Players();
                             var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
                             msg.push(ownIntel);
