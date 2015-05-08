@@ -194,23 +194,16 @@ var Bot = BotBase.extend(function () {
                             //  console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
                                 console.log('got guild data');
-                                var guild = data.foundGuild;
-                                var bestMatch = data.bestMatch;
-                                var ownData = data.ownData;
+                                //var guild = data.foundGuild;
+                             //   var bestMatch = data.bestMatch;
+                                var ownData = data;
                                 //  console.log('-------------->',guild);
-                                if (guild == null && (ownData == null || ownData.__v == undefined)) {
-                                    if (bestMatch.guild.guildName) {
-                                        var msg = [];
-                                        msg.push('can\'t find guild. best match :  (' + bestMatch.guild.guildName + ')');
-                                        self.postMessage(msg.join('\n'));
-                                    }
+                                if ((ownData == null || ownData.__v == undefined)) {
+                                   //todo: show similar guilds
                                 }
                                 else {
                                     var originSource = OriginSourceType.Smart;
-                                    if (guild && guild.guildName != guildName) {
-                                        guildName = guild.guildName;
-                                    }
-                                    this.sendGuildTargets([], guildName, guild, ownData, originSource);
+                                    this.sendGuildTargets([], guildName, ownData, originSource);
                                 }
 
                             }.bind(this));
