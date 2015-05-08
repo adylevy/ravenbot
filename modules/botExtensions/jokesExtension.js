@@ -21,7 +21,7 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
-        if (/gumby/.test(txt)) {
+        if (/^gumby$/.test(txt)) {
             tellGifJoke('unf-gumby');
             return;
         }
