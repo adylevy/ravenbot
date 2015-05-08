@@ -821,7 +821,11 @@ var Bot = BotBase.extend(function () {
 
                         if (!uniqueMatch || guilds.length > 1) {
                             var msg = [];
-                            msg.push('found some similar guild names, make sure you are writing the name properly.');
+                            if (guilds.length>0){
+                                msg.push('found some similar guild names, make sure you are writing the name properly.');
+                            }else{
+                               msg.push('couldn\'t find a guild with this name, try different spelling or setup a new guild');
+                            }
                             _.each(guilds, function (guild) {
                                 msg.push(guild.name);
                             });
