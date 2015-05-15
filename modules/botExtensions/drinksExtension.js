@@ -53,8 +53,12 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/shirleytemple.jpg');
         }
 
-        if (/^coffee\stemple$/.test(txt)) {
+        if (/^coffee$/.test(txt)) {
             postMessage('', baseUrl + '/images/coffee.jpg');
+        }
+
+        if (/^irish\scoffee/.test(txt)) {
+            postMessage('', baseUrl + '/images/irishcoffee.jpg');
         }
 
         if (/^scotch$/.test(txt)) {
