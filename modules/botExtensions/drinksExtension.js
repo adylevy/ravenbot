@@ -45,8 +45,20 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/beer.jpg');
         }
 
+        if (/^vodka\stonic$/.test(txt)) {
+            postMessage('', baseUrl + '/images/vodkatonic.jpg');
+        }
+
+        if (/^mudslide$/.test(txt)) {
+            postMessage('', baseUrl + '/images/mudslide.jpg');
+        }
+
         if (/^fuzzy\snavel$/.test(txt)) {
             postMessage('', baseUrl + '/images/fuzzynavel.jpg');
+        }
+
+        if (/^red\swine$/.test(txt)) {
+            postMessage('', baseUrl + '/images/redwine.jpg');
         }
 
         if (/^shirley\stemple$/.test(txt)) {
@@ -57,7 +69,7 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/coffee.jpg');
         }
 
-        if (/^irish\scoffee/.test(txt)) {
+        if (/^irish\scoffee$/.test(txt)) {
             postMessage('', baseUrl + '/images/irishcoffee.jpg');
         }
 
@@ -102,14 +114,18 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Rum and Coke');
         helpMsg.push('Screwdriver');
         helpMsg.push('Alabama Slammer');
+        helpMsg.push('Irish Coffee');
         helpMsg.push('Long Island Iced Tea');
         helpMsg.push('Gin and Tonic');
         helpMsg.push('Mojito');
+        helpMsg.push('Scotch');
         helpMsg.push('Beer');
+        helpMsg.push('Vodka Tonic');
+        helpMsg.push('Mudslide');
+        helpMsg.push('Red Wine');
         helpMsg.push('Fuzzy Navel');
         helpMsg.push('Shirley Temple');
         helpMsg.push('Coffee');
-        helpMsg.push('Scotch');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));
