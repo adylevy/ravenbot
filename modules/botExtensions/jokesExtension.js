@@ -80,6 +80,13 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
+        //Tribute to DJ - 22 May 2015 war
+
+        if (/^matched\sthe\sancients$/.test(txt)) {
+            postMessage('We fight in memory of DJ. To show your respect, we ask that you fight us with honour, do not hold back and give only 1 love tap to DJ.');
+            return;             
+        }
+
         //Known Joke Images
 
         if (/^minions$/.test(txt)) {
