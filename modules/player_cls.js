@@ -65,7 +65,7 @@ var Player = Class.extend(function () {
             this.lvl = Number(_lvl);
             this.name = utils.capitaliseFirstLetter(_name).trim();
             this.def = this.normalize(_def || 0, 'm', this.lvl > 100 ? 10 : 0);
-            this.eqDef = this.normalize(_eqDef || 0, 'k', this.lvl > 140 ? 100 : 0);
+            this.eqDef = this.normalize(_eqDef || 0, 'k', this.lvl > 80 ? 100 : 0);
             this.heroDef = this.normalize(_heroDef || 0, 'k', 0);
             //  console.log('--->',this);
         },
