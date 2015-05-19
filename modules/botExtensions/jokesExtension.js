@@ -106,7 +106,7 @@ module.exports = function (txt, msg, postMessage) {
     function tellGifJoke(theme) {
 
         theme = typeof(theme) == 'string' ? theme : 'minions';
-        giphy.random(encodeURI(theme), function (err, response) {
+        giphy.search(encodeURI(theme), 1,0,function (err, response) {
             if (err == null) {
                 postMessage('', response.data.image_url);
             } else {
