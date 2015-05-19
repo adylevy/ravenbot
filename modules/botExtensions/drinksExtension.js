@@ -49,6 +49,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/vodkatonic.jpg');
         }
 
+        if (/^vodka\stonic2$/.test(txt)) {
+            postMessage('', baseUrl + '/images/vodkatonic2.jpg');
+        }
+
         if (/^mudslide$/.test(txt)) {
             postMessage('', baseUrl + '/images/mudslide.jpg');
         }
