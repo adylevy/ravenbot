@@ -46,7 +46,7 @@ module.exports = function (txt, msg, postMessage) {
         }
 
         if (/^vodka\stonic$/.test(txt)) {
-            postMessage('', baseUrl + '/images/vodkatonic.jpg');
+            postMessage('', baseUrl + '/images/vodkatonic2.jpg');
         }
 
         if (/^mudslide$/.test(txt)) {
@@ -70,7 +70,7 @@ module.exports = function (txt, msg, postMessage) {
         }
 
         if (/^irish\scoffee$/.test(txt)) {
-            postMessage('', baseUrl + '/images/irishcoffee.jpg');
+            postMessage('', baseUrl + '/images/irishcoffee2.jpg');
         }
 
         if (/^scotch$/.test(txt)) {
