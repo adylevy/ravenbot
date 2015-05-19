@@ -870,18 +870,14 @@ var Bot = BotBase.extend(function () {
                     msg = msg || [];
                     msg.push('Targets in ' + guildName + ' :');
 
-                    if ((originType & OriginSourceType.RavenNew) ||
-                        (originType & OriginSourceType.RavenOld) ||
-                        (originType == OriginSourceType.Smart)) {
-                        if (ownData != null && ownData.players.length != 0) {
-                            //  msg.push('Raven data:');
-                            var p = new Players();
-                            var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
-                            msg.push(ownIntel);
-                        }
-                        else {
-                            msg.push('\nNo data, Please add data.')
-                        }
+                    if (ownData != null && ownData.players.length != 0) {
+                        //  msg.push('Raven data:');
+                        var p = new Players();
+                        var ownIntel = p.getPlayersIntelFromOwnData(ownData.players);
+                        msg.push(ownIntel);
+                    }
+                    else {
+                        msg.push('\nNo data, Please add data.')
                     }
 
                     this.postMessage(msg.join('\n'));
