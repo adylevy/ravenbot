@@ -75,6 +75,7 @@ module.exports = function () {
             var cacheItem = myCache.get(cacheKey);
             if (cacheItem) {
                 callback(cacheItem);
+                defered.resolve(cacheItem);
             } else {
                 Guild.find({$or: [{name: guildName, isDeleted: { $exists: false }},{name: guildName,isDeleted: false}]}, function (err, guilds) {
                     var item;
