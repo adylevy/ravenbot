@@ -1,7 +1,7 @@
 var http = require('http');
 
 var GiphyApiWrapper = function (api_key) {
-  this._base_url = 'api.giphy.com';
+  this._base_url = 'tv.giphy.com';
   this._api_version = 'v1';
   this._api_key = api_key;
 };
