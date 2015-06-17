@@ -77,6 +77,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/scotch.jpg');
         }
 
+        if (/^fireball$/.test(txt)) {
+            postmessage('', baseUrl + '/images/fireball.jpg');
+        }
+
         // Drinks that are hidden from the menu:
 
         if (/^adybeer$/.test(txt)) {
