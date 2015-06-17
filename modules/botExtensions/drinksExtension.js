@@ -77,6 +77,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/scotch.jpg');
         }
 
+        if (/^champagne$/.test(txt)) {
+            postMessage('',baseUrl + '/images/champagne.jpg');
+        }
+
         if (/^fireball$/.test(txt)) {
             postmessage('', baseUrl + '/images/fireball.jpg');
         }
@@ -124,6 +128,8 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Mojito');
         helpMsg.push('Scotch');
         helpMsg.push('Beer');
+        helpMsg.push('Fireball');
+        helpMsg.push('Champagne');
         helpMsg.push('Vodka Tonic');
         helpMsg.push('Mudslide');
         helpMsg.push('Red Wine');
