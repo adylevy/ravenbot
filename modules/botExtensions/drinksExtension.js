@@ -78,11 +78,11 @@ module.exports = function (txt, msg, postMessage) {
         }
 
         if (/^champagne$/.test(txt)) {
-            postMessage('',baseUrl + '/images/champagne.jpg');
+            postMessage('', baseUrl + '/images/champagne.jpg');
         }
 
         if (/^fireball$/.test(txt)) {
-            postmessage('', baseUrl + '/images/fireball.jpg');
+            postMessage('', baseUrl + '/images/fireball.jpg');
         }
 
         // Drinks that are hidden from the menu:
