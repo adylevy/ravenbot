@@ -49,7 +49,7 @@
         });
 
         var admin = nga.application('RavenBot ') // application main title
-            .baseApiUrl('http://localhost:5000/api/'); // main API endpoint
+            .baseApiUrl('http://adybot.herokuapp.com/api/'); // main API endpoint
 
         // define all entities at the top to allow references between them
         var post = nga.entity('guilds'); // the API endpoint for posts will be http://localhost:3000/posts/:id
