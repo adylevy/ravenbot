@@ -7,7 +7,7 @@ var _ = require('underscore');
 var sheetKey = process.env['SS_TOKEN'];
 
 var NodeCache = require( "node-cache" );
-var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time
+var myCache = new NodeCache( { stdTTL: 300 , useClones:false } ); //5m default cache time
 
 var googleAuth = new GoogleClientLogin({
     email: 'gmadybot@gmail.com',
@@ -224,14 +224,14 @@ function getData(guildName, callback) {
 
 function setData(foundGuild,newData){
     var rgx=/.*\/(.*)\/private/.exec(foundGuild.ssRowId);
-    
+
     var sheetIdentifier=rgx[1];
     loginToGoogle().then(getSpreadsheet).then(function(spreadsheet){
         var oldData=foundGuild.lastIntel;
         spreadsheet.updateCell(sheetIdentifier,foundGuild.rowIdx+2,5,oldData,newData);
-        
+
     }.bind(this))
-    
+
 }
 
 exports.getGuildData = getData;

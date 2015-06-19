@@ -2,11 +2,14 @@
 // Generated on Wed Feb 18 2015 00:12:17 GMT+0200 (Jerusalem Standard Time)
 
 module.exports = function(config) {
+  var nodeModulesPath = "./node_modules";
+  console.log("Node modules path: ", nodeModulesPath);
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
+    plugins : ['karma-jasmine','karma-phantomjs-launcher'],
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
@@ -15,6 +18,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'test-main.js',
+      {
+        pattern: 'spec/**/*.spec.js'
+      },
     ],
 
 
@@ -54,11 +61,11 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: true
   });
 };

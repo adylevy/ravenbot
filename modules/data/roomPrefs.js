@@ -8,7 +8,7 @@ var _ = require('underscore');
 require('./mongoData.js');
 
 var NodeCache = require( "node-cache" );
-var myCache = new NodeCache( { stdTTL: 300 } ); //5m default cache time
+var myCache = new NodeCache( { stdTTL: 300 , useClones:false} ); //5m default cache time
 
 module.exports = function () {
 

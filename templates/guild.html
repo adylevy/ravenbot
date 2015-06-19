@@ -1,0 +1,11 @@
+<h1>{{ guild.name }}</h1>
+<ul>
+    {% for player in players %}
+    <li{% if loop.first %} class="first"{% endif %}>
+   {{player.toString()}}
+    <span> {{ player.formattedInsertDate }}</span>
+
+    <span>{{mappings[player.insertedByGuild] || player.insertedByGuild}}</span>
+    </li>
+    {% endfor %}
+</ul>
