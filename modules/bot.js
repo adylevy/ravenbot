@@ -48,7 +48,7 @@ var Bot = BotBase.extend(function () {
                         globalReq: []
                     };
 
-                    console.log('new bot **', this.options, this.roomId);
+                    console.log('new bot **', this.roomId);
                 },
                 getRoomPrefs: function () {
                     return roomPrefs.getRoomPrefs(this.roomId);
@@ -521,18 +521,19 @@ var Bot = BotBase.extend(function () {
                     var helpMsg = [];
                     helpMsg.push('War command list:');
                     helpMsg.push('matched [guildname] - starts war and war timer');
+                    helpMsg.push('matchednew [guildname] - creates new guild');
                     helpMsg.push('we - ends current war and ends timer');
                     helpMsg.push('targets - displays targets from Raven Database');
                     //  helpMsg.push('ss targets - displays targets from Intel SpreadSheet');
                     //  helpMsg.push('all targets - Raven + SS intel.');
                     helpMsg.push('myt - user targets during war.');
                     helpMsg.push('minit - mini\'s targets during war');
-                    helpMsg.push('123 username 1m/2k/3k - adds user.');
-                    helpMsg.push('remove 123 username - removes a user from Raven DB.');
+                    helpMsg.push('123 username 1m/2k/3k - adds a user');
+                    helpMsg.push('remove 123 username - removes a user');
                     helpMsg.push('time - displays minutes left in current war');
                     helpMsg.push('sync mm - syncs number of minutes left for current war');
                     helpMsg.push('myrisk 0-6 - sets user risk for myt & minit');
-                    helpMsg.push('lastwarresults yes/no - update last war results for the records.');
+                    helpMsg.push('lastwarresults yes/no - update last war results for the records');
                     helpMsg.push('warstats - show current war stats');
 
                     this.postMessage(helpMsg.join('\n'));

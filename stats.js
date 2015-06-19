@@ -166,5 +166,5 @@ var whenConnected=function(){
 
 var mongoData = require('./modules/data/mongoData.js');
 
-mongoData.on('mongoConnected',listGuilds);
+mongoData.on('mongoConnected',whenConnected);
 mongoData.connect();

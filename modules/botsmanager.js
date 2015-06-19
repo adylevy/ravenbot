@@ -20,7 +20,7 @@ var BotsManager = Class.extend(function () {
     return {
         init: function (options) {
             this.options = options;
-            console.log(options)
+         //   console.log(options)
             this.allBots = [];
             var e = new events.EventEmitter();
             _.extend(this, e);

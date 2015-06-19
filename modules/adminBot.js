@@ -34,7 +34,7 @@ var AdminBot = BotBase.extend(function () {
                      guildName: '',
                      warTime: null
                      };*/
-                    console.log('new ADMIN bot', this.options, this.roomId);
+                    console.log('new ADMIN bot',  this.roomId);
                 },
                 handleMessage: function (msg) {
                     /*{

@@ -76,6 +76,8 @@ var Players = Class.extend(function () {
                 newP.insertedByUser=p0.insertedByUser;
                 newP.insertDate=p0.date;
                 newP.origin='R';
+                newP._player=p0;
+                newP.formattedInsertDate = newP.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '');
                 players.push(newP);
             })
             return players;
