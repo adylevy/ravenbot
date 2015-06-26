@@ -1,7 +1,7 @@
 {
   "name": "node-js-adybot",
-  "version": "0.1.2",
-  "description": "A sample Node.js AdyBot",
+  "version": "1.0.0",
+  "description": "Raven Bot! Group.me bot for KA",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"

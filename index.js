@@ -29,7 +29,7 @@ var whenConnected = function () {
     var serveStatic = require('serve-static');
     var bodyParser = require('body-parser');
     var app = connect();
-    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
     // route for images
