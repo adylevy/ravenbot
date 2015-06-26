@@ -565,6 +565,7 @@ var Bot = BotBase.extend(function () {
                     helpMsg.push('support - provides link to support room');
                     helpMsg.push('manual - gets Raven manual');
                     helpMsg.push('targets in XXX - show intel for guild XXX');
+                    helpMsg.push('donate amount - ie. donate 10 would provide link for donation via paypal.')
                     // helpMsg.push('bulk on/off - enable/disable bulk mode');
 
                     this.postMessage(helpMsg.join('\n'));
