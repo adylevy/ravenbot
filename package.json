@@ -1,7 +1,7 @@
 {
   "name": "node-js-adybot",
-  "version": "0.1.2",
-  "description": "A sample Node.js AdyBot",
+  "version": "1.0.0",
+  "description": "Raven Bot! Group.me bot for KA",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -37,7 +37,9 @@
     "serve-static": "",
     "swig": "^1.4.2",
     "underscore": "~1.5.1",
-    "xmlbuilder": ""
+    "xmlbuilder": "",
+    "paypal-rest-sdk":"",
+    "body-parser":""
   },
   "engines": {
     "node": "0.12.x"
