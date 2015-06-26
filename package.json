@@ -38,7 +38,7 @@
     "swig": "^1.4.2",
     "underscore": "~1.5.1",
     "xmlbuilder": "",
-    "paypal-rest-sdk":""
+    "paypal-rest-sdk":"",
     "body-parser":""
   },
   "engines": {
