@@ -29,6 +29,7 @@ var Bot = BotBase.extend(function () {
                 'Smart': 16
             }
 
+            var baseUrl = process.env['URL'];
 
             return {
                 /* options :
