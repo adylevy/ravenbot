@@ -121,6 +121,16 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    var donateRgx = /^donate\s*(.*)/;
+                    if (donateRgx.test(txt)) {
+                        var mtch = donateRgx.exec(txt);
+                        var amount = ~~Number(mtch[1]);
+                        if (isNaN(amount) || amount==0){
+                            amount=10;
+                        }
+                        this.postMessage('Please follow this link to donate:\n'+baseUrl+'/paypal/donate?amount='+amount);
+                    }
+
                     if (/^time$/.test(txt)) {
                         // console.log('get prefs');
                         this.getRoomPrefs().then(function (roomData) {

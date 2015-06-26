@@ -163,7 +163,7 @@ var whenConnected = function () {
     });
 
 
-    app.use('/paypal/pay', function (req, res) {
+    app.use('/paypal/donate', function (req, res) {
         var url = require('url');
         var url_parts = url.parse(req.originalUrl, true);
         var amount = url_parts.query.amount;
