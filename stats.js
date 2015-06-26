@@ -164,7 +164,40 @@ var whenConnected=function(){
     })
 };
 
+
+var getOldPlayers=function(){
+    console.log('mongo is connected');
+    appSettings.getSettings().then(function(prefs){
+        // console.log(prefs.guilds);
+
+        guildData.getAllGuilds().then(function(guilds){
+            var submittedGuild={};
+            var submittedPlayer={};
+            var dt=new Date();
+            dt.setDate(dt.getDate()-30);
+            _.each(guilds,function(guild){
+                var newPlayers=[];
+                _.each(guild.players,function(player){
+                    if (player.date==undefined || player.date.getTime()<=dt.getTime()){
+                        return;
+                    }
+                    newPlayers.push(player);
+                });
+                console.log(guild.name,'before:', guild.players.length);
+                guild.players=newPlayers;
+                console.log('after:', guild.players.length);
+                guild.save();
+            });
+
+
+        })
+
+        // console.log();
+    })
+};
+
+
 var mongoData = require('./modules/data/mongoData.js');
 
-mongoData.on('mongoConnected',whenConnected);
+mongoData.on('mongoConnected',getOldPlayers);
 mongoData.connect();

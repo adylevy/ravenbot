@@ -176,7 +176,7 @@ var whenConnected = function () {
         }
         var payment = require('./modules/paypal/paypal-facade.js');
         payment.preparePay(amount,function(url){
-            res.writeHead(301, {Location: url});
+            res.writeHead(302, {Location: url});
             res.end();
         });
 
@@ -192,7 +192,7 @@ var whenConnected = function () {
 
         var payment = require('./modules/paypal/paypal-facade.js');
         payment.doPay(paymentId, payerId, token,function(url){
-            res.writeHead(301, {Location: url});
+            res.writeHead(302, {Location: url});
             res.end();
         });
     });
