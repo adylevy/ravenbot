@@ -27,7 +27,10 @@ var whenConnected = function () {
 
     var connect = require('connect');
     var serveStatic = require('serve-static');
-    var app = connect().use(connect.bodyParser());
+    var bodyParser = require('body-parser');
+    var app = connect();
+    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.json());
 
     // route for images
     app.use('/images', serveStatic(__dirname + "/images/"));
