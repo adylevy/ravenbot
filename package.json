@@ -37,7 +37,8 @@
     "serve-static": "",
     "swig": "^1.4.2",
     "underscore": "~1.5.1",
-    "xmlbuilder": ""
+    "xmlbuilder": "",
+    "paypal-rest-sdk":""
   },
   "engines": {
     "node": "0.12.x"

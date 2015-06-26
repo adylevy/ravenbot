@@ -155,11 +155,50 @@ var whenConnected = function () {
         }
     })
 
-    // catch all
+
     app.use('/ui', function (req, res) {
         var swig = require('swig');
         var output = swig.renderFile('./templates/main.html', {});
         res.end(output);
+    });
+
+
+    app.use('/paypal/pay', function (req, res) {
+        var url = require('url');
+        var url_parts = url.parse(req.originalUrl, true);
+        var amount = url_parts.query.amount;
+        amount = Number(amount);
+        if (isNaN(amount) || amount==0){
+            amount=10;
+        }
+        var payment = require('./modules/paypal/paypal-facade.js');
+        payment.preparePay(amount,function(url){
+            res.writeHead(301, {Location: url});
+            res.end();
+        });
+
+    });
+
+    app.use('/paypal/ok', function (req, res) {
+        var url = require('url');
+        // paymentId=PAY-7RS3381398631591BKWG2IRY&token=EC-21A34313JB1557248&PayerID=XM9G58RX99QAY
+        var url_parts = url.parse(req.originalUrl, true);
+        var paymentId = url_parts.query.paymentId;
+        var payerId = url_parts.query.PayerID;
+        var token = url_parts.query.token;
+
+        var payment = require('./modules/paypal/paypal-facade.js');
+        payment.doPay(paymentId, payerId, token,function(url){
+            res.writeHead(301, {Location: url});
+            res.end();
+        });
+    });
+
+    app.use('/paypal/thankyou', function (req, res) {
+        res.end('Thank you! we love you too!');
+    });
+    app.use('/paypal/cancel', function (req, res) {
+        res.end('ok.')
     });
 
     // catch all
