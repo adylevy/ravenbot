@@ -39,7 +39,8 @@
     "underscore": "~1.5.1",
     "xmlbuilder": "",
     "paypal-rest-sdk":"",
-    "body-parser":""
+    "body-parser":"",
+    "newrelic":""
   },
   "engines": {
     "node": "0.12.x"
