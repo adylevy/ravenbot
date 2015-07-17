@@ -99,6 +99,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/julep.jpg');
         }
 
+        if (/^breakfast\stea$/.test(txt)) {
+            postMessage('', baseUrl + '/images/breakfast_tea.jpg');
+        }
+
         if (/^sex\son\sthe\sbeach$/.test(txt)) {
             postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
         }
@@ -136,6 +140,7 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Fuzzy Navel');
         helpMsg.push('Shirley Temple');
         helpMsg.push('Coffee');
+        helpMsg.push('Breakfast Tea');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));
