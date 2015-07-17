@@ -100,7 +100,7 @@ module.exports = function (txt, msg, postMessage) {
         }
 
         if (/^breakfast\stea$/.test(txt)) {
-            postMessage('', baseUrl + '/images/breakfast_tea.jpg');
+            postMessage('', baseUrl + '/images/breakfasttea.jpg');
         }
 
         if (/^sex\son\sthe\sbeach$/.test(txt)) {
