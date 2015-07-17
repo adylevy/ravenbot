@@ -16,6 +16,10 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
+        if (/^uisge$/.test(txt)) {
+            postMessage('', baseUrl + '/images/uisge.jpg');
+        }
+
         if (/potato/.test(txt)) {
             tellGifJoke('yellow-minions-potato');
             return;
