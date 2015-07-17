@@ -69,6 +69,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/coffee.jpg');
         }
 
+        if (/^breakfast\stea$/.test(txt)) {
+            postMessage('', baseUrl + '/images/breakfast_tea.jpg');
+        }
+
         if (/^irish\scoffee$/.test(txt)) {
             postMessage('', baseUrl + '/images/irishcoffee2.jpg');
         }
@@ -97,10 +101,6 @@ module.exports = function (txt, msg, postMessage) {
 
         if (/^mint\sjulep$/.test(txt)) {
             postMessage('', baseUrl + '/images/julep.jpg');
-        }
-
-        if (/^breakfast\stea$/.test(txt)) {
-            postMessage('', baseUrl + '/images/breakfast_tea.jpg');
         }
 
         if (/^sex\son\sthe\sbeach$/.test(txt)) {
