@@ -107,6 +107,12 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
         }
 
+        // Hidden images:
+
+        if (/^uisge$/.test(txt)) {
+            postMessage('', baseUrl + '/images/uisge.jpg');
+        }
+
         // Calls up the menu:
 
         if (/^bartender$/.test(txt)) {
