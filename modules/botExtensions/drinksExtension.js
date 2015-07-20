@@ -69,6 +69,10 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/coffee.jpg');
         }
 
+        if (/^breakfast\stea$/.test(txt)) {
+            postMessage('', baseUrl + '/images/breakfast_tea.jpg');
+        }
+
         if (/^irish\scoffee$/.test(txt)) {
             postMessage('', baseUrl + '/images/irishcoffee2.jpg');
         }
@@ -101,6 +105,12 @@ module.exports = function (txt, msg, postMessage) {
 
         if (/^sex\son\sthe\sbeach$/.test(txt)) {
             postMessage('', baseUrl + '/images/sex-on-the-beach.jpg');
+        }
+
+        // Hidden images:
+
+        if (/^uisge$/.test(txt)) {
+            postMessage('', baseUrl + '/images/uisge.jpg');
         }
 
         // Calls up the menu:
@@ -136,6 +146,7 @@ module.exports = function (txt, msg, postMessage) {
         helpMsg.push('Fuzzy Navel');
         helpMsg.push('Shirley Temple');
         helpMsg.push('Coffee');
+        helpMsg.push('Breakfast Tea');
         helpMsg.push('Coca-Cola');
 
         postMessage(helpMsg.join('\n'));

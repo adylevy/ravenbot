@@ -1,3 +1,4 @@
+//require('newrelic');
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');

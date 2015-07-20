@@ -126,10 +126,10 @@ var Bot = BotBase.extend(function () {
                     if (donateRgx.test(txt)) {
                         var mtch = donateRgx.exec(txt);
                         var amount = ~~Number(mtch[1]);
-                        if (isNaN(amount) || amount==0){
-                            amount=10;
+                        if (isNaN(amount) || amount == 0) {
+                            amount = 10;
                         }
-                        this.postMessage('Please follow this link to donate:\n'+baseUrl+'/paypal/donate?amount='+amount);
+                        this.postMessage('Please follow this link to donate:\n' + baseUrl + '/paypal/donate?amount=' + amount);
                     }
 
                     if (/^time$/.test(txt)) {
@@ -203,7 +203,7 @@ var Bot = BotBase.extend(function () {
                             var guildName = mtchs[1];
                             //  console.log('getting guild info')
                             self.getGuildData(guildName).then(function (data) {
-                              //  console.log('got guild data');
+                                //  console.log('got guild data');
                                 //var guild = data.foundGuild;
                                 //   var bestMatch = data.bestMatch;
                                 var ownData = data;
@@ -441,6 +441,8 @@ var Bot = BotBase.extend(function () {
                         var addUser = new Player(lines[i]);
                         if (addUser.isPlayer()) {
                             usersToAdd.push(addUser);
+                        } else {
+                            addUser = null;
                         }
                     }
                     if (usersToAdd.length > 0) {
