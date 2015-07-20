@@ -99,7 +99,7 @@ var exists= 0,notexists=0;
     }.bind(this))
 };
 
-var whenConnected=function(){
+var getStats=function(){
     console.log('mongo is connected');
     appSettings.getSettings().then(function(prefs){
         // console.log(prefs.guilds);
@@ -142,12 +142,13 @@ var whenConnected=function(){
                 var roomId = guild.roomId;
                 var stat= _.findWhere(stats,{roomId:roomId});
                 if (stat==undefined){
-                    console.warn('NO CONTRIBUTION: '+guild.roomId+' - '+ guild.guildId+' '+guild.guildName);
+                 //   console.warn('NO CONTRIBUTION: '+guild.roomId+' - '+ guild.guildId+' '+guild.guildName);
                 }
             })
-            stats=_.sortBy(stats, function (s) { return s.ctr });
+            stats=_.sortBy(stats, function (s) { return s.ctr }).reverse();
+            var k=0;
             _.each(stats,function(stat){
-                console.log(stat.name+' '+stat.id+' total:'+stat.ctr);
+                console.log(++k + ' - '+ stat.name+' '+stat.id +' total:'+stat.ctr);
             })
             var submittedPlayersCnt=0;
             _.each(submittedPlayer,function(ctr,idx){
@@ -199,5 +200,5 @@ var getOldPlayers=function(){
 
 var mongoData = require('./modules/data/mongoData.js');
 
-mongoData.on('mongoConnected',getOldPlayers);
+mongoData.on('mongoConnected',getStats);
 mongoData.connect();
