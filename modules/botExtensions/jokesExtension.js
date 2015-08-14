@@ -36,11 +36,6 @@ module.exports = function (txt, msg, postMessage) {
             return;
         }
 
-        if (/^matched\sthe\sbrood$/.test(txt)) {
-            postMessage('', baseUrl + '/images/brood.jpg');
-            return;
-        }
-
         if (/cowbell/.test(txt)) {
             tellGifJoke('whOs1JywNpe6c');
             return;
