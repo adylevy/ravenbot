@@ -113,6 +113,13 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/uisge.jpg');
         }
 
+        // Temp Prize Winnings:
+
+        if (/^matched\sthe\sbrood$/.test(txt)) {
+            postMessage('', baseUrl + '/images/brood.jpg');
+            return;
+        }
+
         // Calls up the menu:
 
         if (/^bartender$/.test(txt)) {
