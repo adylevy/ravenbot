@@ -115,7 +115,7 @@ module.exports = function (txt, msg, postMessage) {
 
         // Temp Prize Winnings:
 
-        if (/^matched\sthe\sbrood$/.test(txt)) {
+        if (/^matched\sthe\srider\$\sof\srohan$/.test(txt)) {
             postMessage('', baseUrl + '/images/brood.jpg');
             return;
         }
