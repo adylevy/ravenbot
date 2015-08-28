@@ -9,19 +9,23 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-    plugins : ['karma-jasmine','karma-phantomjs-launcher'],
+    plugins : ['karma-jasmine','karma-requirejs','karma-phantomjs-launcher'],
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['jasmine', 'requirejs'],
 
 
     // list of files / patterns to load in the browser
     files: [
       'test-main.js',
       {
-        pattern: 'spec/**/*.spec.js'
+        pattern: 'spec/**/*.spec.js', included: true
+
       },
+      {
+        pattern:  'modules/utils.js', included: true
+      }
     ],
 
 

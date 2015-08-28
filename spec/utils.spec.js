@@ -2,9 +2,8 @@
 
 describe('utils tests', function() {
 
-    var utils;
     beforeEach(function() {
-        utils = require('../modules/utils');
+
     });
 
     describe('capitalise testing', function() {

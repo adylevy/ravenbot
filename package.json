@@ -4,7 +4,8 @@
   "description": "Raven Bot! Group.me bot for KA",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
   },
   "dependencies": {
     "async": "~0.2.9",
