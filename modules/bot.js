@@ -149,10 +149,8 @@ var Bot = BotBase.extend(function () {
                                 }
 
                         }
-
                         else {
                                 if (roomData.guildId != null && roomData.guildId != undefined){
-
                                     var guild = guildData.getGuildById(roomData.guildId).then(function(guild){
                                         var connectionId = 'Connected to '+guild.name;
                                         self.postMessage(connectionId);
@@ -161,13 +159,26 @@ var Bot = BotBase.extend(function () {
                                 } else{
                                     self.postMessage( 'Room is not connected to a guild' );
                                 }
-
-
                         }
                         });
 
                     }
                     ;
+
+                    var setThumbRgx = /^guildthumb\s?(.*)$/;
+                    if (setThumbRgx.test(txt)) {
+                        var mtch = setThumbRgx.exec(txt);
+                        this.getRoomPrefs().then(function (roomData) {
+                            if (mtch != null && mtch.length == 2 && mtch[1] != '') {
+                                roomData.roomThumb = mtch[1];
+                                roomData.save(function(){
+                                    self.postMessage('Room has a new thumb!',mtch[1]);
+                                })
+                            } else {
+                                self.postMessage('Rooms thumb is:' , roomData.guildThumb);
+                            }
+                        });
+                    }
 
                     var donateRgx = /^donate\s*(.*)/;
                     if (donateRgx.test(txt)) {
