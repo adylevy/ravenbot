@@ -129,9 +129,9 @@ var Bot = BotBase.extend(function () {
                         if (mtch != null && mtch.length == 2 && mtch[1]!='') {
                             guildName = mtch[1];
 
-                                if (roomData.guildId != null && roomData.guildId != undefined &&  roomData.guildId.length != 0) {
+                              /*  if (roomData.guildId != null && roomData.guildId != undefined &&  roomData.guildId.length != 0) {
                                     self.postMessage('Room already connected. contact an admin if you want to re-connect.');
-                                } else {
+                                } else */{
                                     self.getGuildData(guildName).then(function (data) {
                                         if ((data == null || data.__v == undefined)) {
                                             self.postMessage('Guild with that name was not found');
@@ -142,6 +142,8 @@ var Bot = BotBase.extend(function () {
                                             roomData.save(function(e){
                                                 self.postMessage('guild is now connected to '+guildName);
                                             });
+                                            data.roomId = roomData._id;
+                                            data.save();
                                         }
                                     });
                                 }
@@ -150,6 +152,7 @@ var Bot = BotBase.extend(function () {
 
                         else {
                                 if (roomData.guildId != null && roomData.guildId != undefined){
+
                                     var guild = guildData.getGuildById(roomData.guildId).then(function(guild){
                                         var connectionId = 'Connected to '+guild.name;
                                         self.postMessage(connectionId);

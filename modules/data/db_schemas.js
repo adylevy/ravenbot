@@ -21,7 +21,8 @@ var guildSchema = Schema({
             insertedByUserId: Number,
             isDeleted: {type: Boolean, default: false}
         }
-    ]
+    ],
+    roomId: {type: Schema.Types.ObjectId, required: false , ref: 'RoomPrefs'}
 })
 
 var roomPrefSchema = Schema({
@@ -44,7 +45,8 @@ var roomPrefSchema = Schema({
         guildName: String,
         warTime: Date,
         warResult: String
-    }]
+    }],
+    guildThumb : String
 });
 
 

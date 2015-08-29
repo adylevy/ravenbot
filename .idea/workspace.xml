@@ -20,14 +20,12 @@
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261_old/appsettings.metadata.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261/audits.metadata.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261_old/audits.metadata.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/modules/data/db_schemas.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261/guilds.metadata.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261_old/guilds.metadata.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261/roomprefs.metadata.json" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/db/heroku_app32308261_old/roomprefs.metadata.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/bot.js" afterPath="$PROJECT_DIR$/modules/bot.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/guildData.js" afterPath="$PROJECT_DIR$/modules/data/guildData.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/roomPrefs.js" afterPath="$PROJECT_DIR$/modules/data/roomPrefs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/data/db_schemas.js" afterPath="$PROJECT_DIR$/modules/data/db_schemas.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/test.js" afterPath="$PROJECT_DIR$/tests/test.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -63,11 +61,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bot.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bot.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/bot.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8886463">
-              <caret line="154" column="71" selection-start-line="154" selection-start-column="71" selection-end-line="154" selection-end-column="71" />
+            <state vertical-scroll-proportion="-11.444445">
+              <caret line="145" column="56" selection-start-line="145" selection-start-column="56" selection-end-line="145" selection-end-column="56" />
               <folding />
             </state>
           </provider>
@@ -117,17 +115,17 @@
         <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+              <caret line="15" column="45" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="45" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="db_schemas.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="db_schemas.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/data/db_schemas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.45081967">
+              <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -147,7 +145,7 @@
         <entry file="file://$PROJECT_DIR$/tests/test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+              <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -227,9 +225,9 @@
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/modules/data/roomPrefs.js" />
         <option value="$PROJECT_DIR$/modules/data/guildData.js" />
-        <option value="$PROJECT_DIR$/modules/data/db_schemas.js" />
-        <option value="$PROJECT_DIR$/tests/test.js" />
         <option value="$PROJECT_DIR$/modules/bot.js" />
+        <option value="$PROJECT_DIR$/tests/test.js" />
+        <option value="$PROJECT_DIR$/modules/data/db_schemas.js" />
       </list>
     </option>
   </component>
@@ -850,13 +848,7 @@
       <workItem from="1439874214169" duration="327000" />
       <workItem from="1440103864348" duration="3875000" />
       <workItem from="1440620912795" duration="800000" />
-      <workItem from="1440697215583" duration="5280000" />
-    </task>
-    <task id="LOCAL-00136" summary="cache">
-      <created>1429345497618</created>
-      <option name="number" value="00136" />
-      <option name="project" value="LOCAL" />
-      <updated>1429345497618</updated>
+      <workItem from="1440697215583" duration="5912000" />
     </task>
     <task id="LOCAL-00137" summary="te">
       <created>1429345709082</created>
@@ -1146,11 +1138,17 @@
       <option name="project" value="LOCAL" />
       <updated>1440841513228</updated>
     </task>
-    <option name="localTasksCounter" value="185" />
+    <task id="LOCAL-00185" summary="we are - work in progress.">
+      <created>1440844617501</created>
+      <option name="number" value="00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1440844617501</updated>
+    </task>
+    <option name="localTasksCounter" value="186" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="410793000" />
+    <option name="totallyTimeSpent" value="411425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="0" />
@@ -1164,8 +1162,8 @@
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33333334" sideWeight="0.47847223" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32941177" sideWeight="0.61388886" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32941177" sideWeight="0.3861111" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32941177" sideWeight="0.61388886" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48496732" sideWeight="0.47569445" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24875621" sideWeight="0.75972223" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32711443" sideWeight="0.49444443" order="12" side_tool="false" content_ui="tabs" />
@@ -1174,7 +1172,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14166667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.48496732" sideWeight="0.52708334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.48496732" sideWeight="0.5243056" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32258064" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1200,7 +1198,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="serve image" />
     <MESSAGE value="martini" />
     <MESSAGE value="moved jokes and drinks to sep files." />
     <MESSAGE value="beer" />
@@ -1225,7 +1222,8 @@
     <MESSAGE value="thebrood new name" />
     <MESSAGE value="we are connection for guild" />
     <MESSAGE value="objectId" />
-    <option name="LAST_COMMIT_MESSAGE" value="objectId" />
+    <MESSAGE value="we are - work in progress." />
+    <option name="LAST_COMMIT_MESSAGE" value="we are - work in progress." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1609,22 +1607,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/data/db_schemas.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="41" selection-start-line="28" selection-start-column="41" selection-end-line="28" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/botBase.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1633,10 +1615,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test.js">
+    <entry file="file://$PROJECT_DIR$/modules/data/roomPrefs.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="27" selection-start-line="31" selection-start-column="27" selection-end-line="31" selection-end-column="27" />
+          <caret line="15" column="45" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="45" />
           <folding />
         </state>
       </provider>
@@ -1651,8 +1633,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/bot.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8886463">
-          <caret line="154" column="71" selection-start-line="154" selection-start-column="71" selection-end-line="154" selection-end-column="71" />
+        <state vertical-scroll-proportion="-11.444445">
+          <caret line="145" column="56" selection-start-line="145" selection-start-column="56" selection-end-line="145" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="31" column="32" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/data/db_schemas.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45081967">
+          <caret line="39" column="47" selection-start-line="39" selection-start-column="47" selection-end-line="39" selection-end-column="47" />
           <folding />
         </state>
       </provider>
