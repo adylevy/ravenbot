@@ -9,30 +9,11 @@ var _ = require('underscore');
 var Levenshtein = require('levenshtein');
 var NodeCache = require("node-cache");
 var myCache = new NodeCache({stdTTL: 300 , useClones:false}); //5m default cache time
+var schemas = require('./db_schemas');
 
 module.exports = function () {
 
-    var Guild = mongoose.model('Guilds', {
-        name: String,
-        lastKnownIntel: String,
-        isDeleted: {type: Boolean, default: false},
-        deletedBy: String,
-        deletionDate: Date,
-        players: [
-            {
-                name: String,
-                lvl: Number,
-                def: Number,
-                eqDef: Number,
-                heroDef: Number,
-                date: Date,
-                insertedByGuild: String,
-                insertedByUser: String,
-                insertedByUserId: Number,
-                isDeleted: {type: Boolean, default: false}
-            }
-        ]
-    });
+    var Guild = mongoose.model('Guilds', schemas.guild );
 
     var createNewGuild = function (guildName) {
         var g = new Guild({

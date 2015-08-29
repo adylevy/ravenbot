@@ -6,35 +6,14 @@ var mongoose = require('mongoose');
 var Q = require('q');
 var _ = require('underscore');
 require('./mongoData.js');
+var schemas = require('./db_schemas');
 
 var NodeCache = require( "node-cache" );
 var myCache = new NodeCache( { stdTTL: 300 , useClones:false} ); //5m default cache time
 
 module.exports = function () {
 
-    var RoomPrefs = mongoose.model('RoomPrefs', {
-        roomId: Number,
-        guildId: mongoose.Types.ObjectId,
-        warData: {
-            inWar: Boolean,
-            guildName: String,
-            warTime: Date
-
-        },
-        playersPrefs: [{
-            id: Number,
-            mini: String,
-            minis: [{player: String, idx: Number}],
-            risk: {type: Number, default: 0}
-        }],
-        settings: [],
-        matches:[{
-            guildName: String,
-            warTime: Date,
-            warResult:String
-        }],
-
-    });
+    var RoomPrefs = mongoose.model('RoomPrefs', schemas.roomPref);
 
     var createRoomPrefs = function (roomId) {
         var r = new RoomPrefs({

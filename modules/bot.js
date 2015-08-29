@@ -122,33 +122,46 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
-                    var weAreRgx = /^weare\s(.*)$/;
+                    var weAreRgx = /^weare\s?(.*)$/;
                     if (weAreRgx.test(txt)) {
                         var mtch = weAreRgx.exec(txt);
-                        if (mtch == null || mtch.length == 1) {
-                            guildName = mtch[0];
-                            this.getRoomPrefs().then(function (roomData) {
-                                if (roomData.guildId != null) {
+                        this.getRoomPrefs().then(function (roomData) {
+                        if (mtch != null && mtch.length == 2 && mtch[1]!='') {
+                            guildName = mtch[1];
+
+                                if (roomData.guildId != null && roomData.guildId != undefined &&  roomData.guildId.length != 0) {
                                     self.postMessage('Room already connected. contact an admin if you want to re-connect.');
                                 } else {
                                     self.getGuildData(guildName).then(function (data) {
                                         if ((data == null || data.__v == undefined)) {
                                             self.postMessage('Guild with that name was not found');
                                         } else {
-                                            roomData.guildId = data._id;
-                                            roomData.save();
+                                            var guild = [];
+                                            guild.push(data._id);
+                                            roomData.guildId = guild;
+                                            roomData.save(function(e){
+                                                self.postMessage('guild is now connected to '+guildName);
+                                            });
                                         }
                                     });
                                 }
-                            });
+
                         }
 
                         else {
-                            this.getRoomPrefs().then(function (roomData) {
-                                var connectionId = ( roomData.guildId == null || roomData.guildId == undefined ) ? 'Room is not connected to a guild' : 'Connected to '+roomData.guildId;
-                                self.postMessage(connectionId);
-                            });
+                                if (roomData.guildId != null && roomData.guildId != undefined){
+                                    var guild = guildData.getGuildById(roomData.guildId).then(function(guild){
+                                        var connectionId = 'Connected to '+guild.name;
+                                        self.postMessage(connectionId);
+                                    })
+
+                                } else{
+                                    self.postMessage( 'Room is not connected to a guild' );
+                                }
+
+
                         }
+                        });
 
                     }
                     ;
