@@ -122,6 +122,37 @@ var Bot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    var weAreRgx = /^weare\s(.*)$/;
+                    if (weAreRgx.test(txt)) {
+                        var mtch = weAreRgx.exec(txt);
+                        if (mtch == null || mtch.length == 1) {
+                            guildName = mtch[0];
+                            this.getRoomPrefs().then(function (roomData) {
+                                if (roomData.guildId != null) {
+                                    self.postMessage('Room already connected. contact an admin if you want to re-connect.');
+                                } else {
+                                    self.getGuildData(guildName).then(function (data) {
+                                        if ((data == null || data.__v == undefined)) {
+                                            self.postMessage('Guild with that name was not found');
+                                        } else {
+                                            roomData.guildId = data._id;
+                                            roomData.save();
+                                        }
+                                    });
+                                }
+                            });
+                        }
+
+                        else {
+                            this.getRoomPrefs().then(function (roomData) {
+                                var connectionId = ( roomData.guildId == null || roomData.guildId == undefined ) ? 'Room is not connected to a guild' : 'Connected to '+roomData.guildId;
+                                self.postMessage(connectionId);
+                            });
+                        }
+
+                    }
+                    ;
+
                     var donateRgx = /^donate\s*(.*)/;
                     if (donateRgx.test(txt)) {
                         var mtch = donateRgx.exec(txt);
@@ -502,7 +533,8 @@ var Bot = BotBase.extend(function () {
                 ,
                 addGlobalContextCommands: function (commands) {
                     this.ctx.globalReq = this.ctx.globalReq.concat(commands);
-                },
+                }
+                ,
                 handleGlobalCtxMsg: function (txt, msg) {
                     var lowerCase = txt.toLowerCase();
                     var hasMatch = false;
@@ -514,7 +546,8 @@ var Bot = BotBase.extend(function () {
                     }.bind(this));
                     this.ctx.globalReq = [];
                     return hasMatch;
-                },
+                }
+                ,
                 updateLastWarResults: function (txt) {
                     this.getRoomPrefs().then(function (roomData) {
                         var matches = roomData.matches || [];
@@ -849,7 +882,8 @@ var Bot = BotBase.extend(function () {
 
                     }.bind(this));
 
-                },
+                }
+                ,
 
                 enterWarMode: function (guildName, ownData) {
                     //   console.log('enter war mode', arguments);

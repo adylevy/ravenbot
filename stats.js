@@ -148,7 +148,7 @@ var getStats=function(){
             stats=_.sortBy(stats, function (s) { return s.ctr }).reverse();
             var k=0;
             _.each(stats,function(stat){
-                console.log(++k + ' - '+ stat.name+' '+stat.id +' total:'+stat.ctr);
+                console.log(++k + ' - '+ stat.name+' '+stat.id /*+' total:'+stat.ctr*/);
             })
             var submittedPlayersCnt=0;
             _.each(submittedPlayer,function(ctr,idx){

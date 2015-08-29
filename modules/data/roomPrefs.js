@@ -14,7 +14,7 @@ module.exports = function () {
 
     var RoomPrefs = mongoose.model('RoomPrefs', {
         roomId: Number,
-        guildId: String,
+        guildId: Objectid,
         warData: {
             inWar: Boolean,
             guildName: String,
@@ -32,7 +32,8 @@ module.exports = function () {
             guildName: String,
             warTime: Date,
             warResult:String
-        }]
+        }],
+
     });
 
     var createRoomPrefs = function (roomId) {
