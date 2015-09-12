@@ -167,7 +167,9 @@ var whenConnected = function () {
 
     app.use('/ui', function (req, res) {
         var swig = require('swig');
-        var output = swig.renderFile('./templates/main.html', {});
+        var output = swig.renderFile('./templates/main.html', {
+            domain: URL
+        });
         res.end(output);
     });
 
