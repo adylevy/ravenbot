@@ -51,6 +51,11 @@ var whenConnected = function () {
         res.end('');
     });
 
+    app.use('/killbots', function(){
+        botManager.killAllBots();
+        res.end();
+    })
+
     app.use('/ui/guilds', function (req, res) {
         var rgx = /\/ui\/+([.*])\/+(.*)/.exec(req.originalUrl);
 
