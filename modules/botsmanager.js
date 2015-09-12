@@ -25,7 +25,7 @@ var BotsManager = Class.extend(function () {
             var e = new events.EventEmitter();
             _.extend(this, e);
             console.log('bot manager', this.options);
-            this.getAllBots().then(this.registerMissingBots.bind(this));
+            this.getAllBots().killAllBots().then(this.registerMissingBots.bind(this));
             this.timerInterval = setInterval(function () {
                 this.onTimeTick()
             }.bind(this), 1 * 60 * 1000);
