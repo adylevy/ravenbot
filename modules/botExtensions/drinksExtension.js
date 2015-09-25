@@ -113,10 +113,17 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/uisge.jpg');
         }
 
+        // Test
+
+        if (/^winter\sis\scoming$/.test(txt)) {
+            postMessage('', baseUrl + '/images/war.jpg');
+            return;
+        }
+
         // Temp Prize Winnings:
 
         if (/^matched\sthe\srider\$\sof\srohan$/.test(txt)) {
-            postMessage('', baseUrl + '/images/brood.jpg');
+            postMessage('', baseUrl + '/images/rohan.gif');
             return;
         }
 
