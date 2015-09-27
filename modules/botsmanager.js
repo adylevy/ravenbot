@@ -25,7 +25,7 @@ var BotsManager = Class.extend(function () {
             var e = new events.EventEmitter();
             _.extend(this, e);
             console.log('bot manager', this.options);
-            this.getAllBots()/*.then(this.killAllBots.bind(this))*/.then(this.registerMissingBots.bind(this));
+            this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
             this.timerInterval = setInterval(function () {
                 this.onTimeTick()
             }.bind(this), 1 * 60 * 1000);
@@ -71,19 +71,23 @@ var BotsManager = Class.extend(function () {
         killAllBots: function () {
             var deferred = Q.defer();
             var that = this;
-            var unregArray = [];
-            try {
-                _.each(this.allBots, function (bot) {
-                    unregArray.push(that.unregisterBot(bot.bot_id));
-                });
-            }
-            catch (e) {
-                console.log('------->', e);
-            }
-            Q.all(unregArray).then(function () {
-                this.allBots = [];
+            if (this.options.killAllBots){
+                var unregArray = [];
+                try {
+                    _.each(this.allBots, function (bot) {
+                        unregArray.push(that.unregisterBot(bot.bot_id));
+                    });
+                }
+                catch (e) {
+                    console.log('------->', e);
+                }
+                Q.all(unregArray).then(function () {
+                    this.allBots = [];
+                    deferred.resolve(this.allBots);
+                }.bind(this))
+            }else{
                 deferred.resolve(this.allBots);
-            }.bind(this))
+            }
 
             return deferred.promise;
         },
