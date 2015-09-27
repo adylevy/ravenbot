@@ -19,7 +19,8 @@ const CONFIG = {
     url: URL,
     adminGroup: ADMIN_GROUP,
     avatar_url: AVATAR,
-    port: process.env.PORT || 5000
+    port: process.env.PORT || 5000,
+    killAllBots: process.env['KILLBOTS'] || false
 };
 
 var whenConnected = function () {
