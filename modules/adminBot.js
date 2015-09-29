@@ -300,7 +300,7 @@ var AdminBot = BotBase.extend(function () {
                             outArr.push ('total players - '+ submittedPlayersCnt);
 
                             this.postMessage(outArr.join('\n'));
-                        })
+                        }.bind(this))
                     }.bind(this))
                 }
 
