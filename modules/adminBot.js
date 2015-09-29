@@ -288,7 +288,9 @@ var AdminBot = BotBase.extend(function () {
                             }).reverse();
                             var k = 0;
                             _.each(stats, function (stat) {
-                              outArr.push(++k + ' - ' + stat.name + ' ' + stat.id + ' total:' + stat.ctr);
+                                if (k<=15) {
+                                    outArr.push(++k + ' - ' + stat.name + ' ' + stat.id + (withTotal ? ' total:' + stat.ctr : ''));
+                                }
                             })
                             var submittedPlayersCnt = 0;
                             _.each(submittedPlayer, function (ctr, idx) {
