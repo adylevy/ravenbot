@@ -301,7 +301,7 @@ var AdminBot = BotBase.extend(function () {
 
                             this.postMessage(outArr.join('\n'));
                         })
-                    })
+                    }.bind(this))
                 }
 
 
