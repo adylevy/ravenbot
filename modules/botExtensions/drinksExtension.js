@@ -113,6 +113,14 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/uisge.jpg');
         }
 
+        if (/^jace$/.test(txt)) {
+            postMessage('', baseUrl + '/images/jace.jpg');
+        }
+
+        if (/^kreeo$/.test(txt)) {
+            postMessage('', baseUrl + '/images/kreeo.jpg');
+        }
+
         // Test
 
         if (/^winter\sis\scoming$/.test(txt)) {
@@ -123,7 +131,7 @@ module.exports = function (txt, msg, postMessage) {
         // Temp Prize Winnings:
 
         if (/^matched\sthe\srider\$\sof\srohan$/.test(txt)) {
-            postMessage('', baseUrl + '/images/rohan.gif');
+            postMessage('', baseUrl + '/images/Rohan.gif');
             return;
         }
 
