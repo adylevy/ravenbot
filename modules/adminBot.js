@@ -241,6 +241,8 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('war ended - indicates that war is not ON at the moment');
                     helpMsg.push('war status')
                     helpMsg.push('getstats - get war stats');
+                    helpMsg.push('war winner - show who has the trophy');
+                    helpMsg.push('war winner XXX - passes the trophy to XXX');
                     this.postMessage(helpMsg.join('\n'));
                 },
 
