@@ -158,5 +158,6 @@ module.exports = function () {
             });
             return defered.promise;
         }
+
     };
 }();

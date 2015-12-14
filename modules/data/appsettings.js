@@ -15,7 +15,8 @@ module.exports = function () {
             guildName: String,
             roomId: Number,
             guildId: String
-        }], warStartDate: Date
+        }], warStartDate: Date,
+        trophy: String
     });
 
     return {

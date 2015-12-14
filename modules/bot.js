@@ -183,6 +183,7 @@ var Bot = BotBase.extend(function () {
                             }
                         }.bind(this));
                     }
+
                     var updateLastWarResults = /^lastwarresults\s?(.*)$/;
                     if (updateLastWarResults.test(txt)) {
                         var mtchs = updateLastWarResults.exec(txt);
@@ -853,29 +854,38 @@ var Bot = BotBase.extend(function () {
 
                 enterWarMode: function (guildName, ownData) {
                     //   console.log('enter war mode', arguments);
-                    this.getRoomPrefs().then(function (roomData) {
+                    appSettings.getSettings().then(function (settings) {
 
-                        try {
-                            roomData.warData.inWar = true;
-                            roomData.warData.guildName = guildName;
-                            roomData.warData.warTime = Date.now();
-                            roomData.save();
-                            var msg = [];
-                            msg.push('^^ WAR MODE ON ^^');
+                        var trophy = settings.trophy || '';
+                        var trophyMsg = 'Prepare to be scouted! '+guildName+' currently holds the Raven trophy!';
+                        this.getRoomPrefs().then(function (roomData) {
 
-                            var lastWarStats = this.getLastWarStats(roomData, guildName);
-                            if (lastWarStats != '') {
-                                msg.push(lastWarStats);
+                            try {
+                                roomData.warData.inWar = true;
+                                roomData.warData.guildName = guildName;
+                                roomData.warData.warTime = Date.now();
+                                roomData.save();
+                                var msg = [];
+                                msg.push('^^ WAR MODE ON ^^');
+
+                                if (trophy == guildName){
+                                    msg.push(trophyMsg);
+                                }
+
+                                var lastWarStats = this.getLastWarStats(roomData, guildName);
+                                if (lastWarStats != '') {
+                                    msg.push(lastWarStats);
+                                }
+
+                                var originSource = OriginSourceType.Smart;
+
+                                this.sendGuildTargets(msg, guildName, ownData, originSource);
                             }
-
-                            var originSource = OriginSourceType.Smart;
-
-                            this.sendGuildTargets(msg, guildName, ownData, originSource);
-                        }
-                        catch (e) {
-                            console.log('-------->', e);
-                            console.trace();
-                        }
+                            catch (e) {
+                                console.log('-------->', e);
+                                console.trace();
+                            }
+                        }.bind(this));
                     }.bind(this));
 
                 }

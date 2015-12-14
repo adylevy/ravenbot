@@ -187,7 +187,7 @@ var getOldPlayers=function(){
                 console.log(guild.name,'before:', guild.players.length);
                 guild.players=newPlayers;
                 console.log('after:', guild.players.length);
-                guild.save();
+               // guild.save();
             });
 
 
@@ -200,5 +200,5 @@ var getOldPlayers=function(){
 
 var mongoData = require('./modules/data/mongoData.js');
 
-mongoData.on('mongoConnected',getStats);
+mongoData.on('mongoConnected',getOldPlayers);
 mongoData.connect();

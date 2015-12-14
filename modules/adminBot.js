@@ -154,6 +154,22 @@ var AdminBot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    var winnerRgx = /^war\swinner\s?(.*)/;
+                    if (winnerRgx.test(txt)) {
+                        var mtches = winnerRgx.exec(txt);
+                        var guildname = mtches[1];
+                        appSettings.getSettings().then(function (settings) {
+                            if (guildname && guildname!='') {
+                                settings.trophy = guildname.toLowerCase();
+                                settings.save();
+                                this.postMessage("Congrats! Trophy have moved to "+ guildname);
+                            }else{
+                                this.postMessage(settings.trophy +" owns the Trophy!");
+                            }
+
+                        }.bind(this));
+                    }
+
                     if (/^getstats$/.test(txt)) {
                         this.getStats();
                     }
@@ -225,6 +241,8 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('war ended - indicates that war is not ON at the moment');
                     helpMsg.push('war status')
                     helpMsg.push('getstats - get war stats');
+                    helpMsg.push('war winner - show who has the trophy');
+                    helpMsg.push('war winner XXX - passes the trophy to XXX');
                     this.postMessage(helpMsg.join('\n'));
                 },
 
