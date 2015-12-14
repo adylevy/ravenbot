@@ -154,6 +154,22 @@ var AdminBot = BotBase.extend(function () {
                         }.bind(this));
                     }
 
+                    var winnerRgx = /^war\swinner\s?(.*)/;
+                    if (winnerRgx.test(txt)) {
+                        var mtches = winnerRgx.exec(txt);
+                        var guildname = mtches[1];
+                        appSettings.getSettings().then(function (settings) {
+                            if (guildname && guildname!='') {
+                                settings.trophy = guildname.toLowerCase();
+                                settings.save();
+                                this.postMessage("Congrats! Trophy have moved to "+ guildname);
+                            }else{
+                                this.postMessage(settings.trophy +" owns the Trophy!");
+                            }
+
+                        }.bind(this));
+                    }
+
                     if (/^getstats$/.test(txt)) {
                         this.getStats();
                     }
