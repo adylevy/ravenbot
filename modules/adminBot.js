@@ -138,7 +138,7 @@ var AdminBot = BotBase.extend(function () {
                         });
                     }
 
-                    var renamergx = /^[rR]ename\s(.*)\s*===\s*(.*)/;
+                    var renamergx = /^[rR]ename\s(.*)===(.*)/;
                     if (renamergx.test(txt)) {
                         var mtches = renamergx.exec(txt);
                         var guildname = mtches[1];
