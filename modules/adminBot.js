@@ -141,8 +141,12 @@ var AdminBot = BotBase.extend(function () {
                     var renamergx = /^[rR]ename\s(.*)===(.*)/;
                     if (renamergx.test(txt)) {
                         var mtches = renamergx.exec(txt);
-                        var guildname = mtches[1];
-                        var newname = mtches[2];
+                        if (mtches.length<2){
+                            this.postMessage("Bad usage of rename command.");
+                            return;
+                        }
+                        var guildname = mtches[1].replace(/^\s+|\s+$/g, '');
+                        var newname = mtches[2].replace(/^\s+|\s+$/g, '');
                         guildData.getGuildData(guildname, function (guild) {
                             if (guild.isNew) {
                                 this.postMessage("Can't find guild in DB");
