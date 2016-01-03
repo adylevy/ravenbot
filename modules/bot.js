@@ -626,6 +626,10 @@ var Bot = BotBase.extend(function () {
                     var defered = Q.defer();
                     var lvl = mtch[1];
                     var username = mtch[2];
+                    var user = new Player(lvl+' ' + username);
+                    if (user.isPlayer()) {
+                        username = user.name;
+                    }
                     var self = this;
                     //   console.log('remove', lvl, username);
                     guildData.getGuildData(guildName, function (item) {

@@ -138,6 +138,26 @@ var AdminBot = BotBase.extend(function () {
                         });
                     }
 
+                    var renamergx = /^[rR]ename\s(.*)===(.*)/;
+                    if (renamergx.test(txt)) {
+                        var mtches = renamergx.exec(txt);
+                        if (mtches.length<2){
+                            this.postMessage("Bad usage of rename command.");
+                            return;
+                        }
+                        var guildname = mtches[1].replace(/^\s+|\s+$/g, '');
+                        var newname = mtches[2].replace(/^\s+|\s+$/g, '');
+                        guildData.getGuildData(guildname, function (guild) {
+                            if (guild.isNew) {
+                                this.postMessage("Can't find guild in DB");
+                                return;
+                            }
+                            guild.name = newname;
+                            guild.save();
+                            this.postMessage("name changed.");
+                        }.bind(this));
+                    }
+
                     var broadcastRgx = /^[bB]roadcast\s(all|[\d]+)\s(.*)/;
                     if (broadcastRgx.test(txt)) {
                         var mtches = broadcastRgx.exec(txt);
@@ -236,6 +256,7 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('list - show all rooms registered');
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
+                    helpMsg.push('rename guildA === guildB - rename guild name');
                     helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
                     helpMsg.push('war started - indicates global war is ON');
                     helpMsg.push('war ended - indicates that war is not ON at the moment');
