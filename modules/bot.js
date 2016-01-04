@@ -97,6 +97,7 @@ var Bot = BotBase.extend(function () {
 
                     if (/^hello$/.test(txt)) {
                         this.postMessage('Hey there!');
+                        return;
                     }
 
                     new jokesExtension(txt, msg, this.postMessage.bind(this));
@@ -104,10 +105,12 @@ var Bot = BotBase.extend(function () {
 
                     if (/^manual$/.test(txt)) {
                         this.postMessage('Raven Manual:\nhttps://docs.google.com/document/d/15naOzWKf9z9CT-D4hHZTryTE55l4HyNiR8sahye0TzU/edit');
+                        return;
                     }
 
                     if (/^support$/.test(txt)) {
                         this.postMessage('Support Room:\nhttps://groupme.com/join_group/11752971/5jvG41');
+                        return;
                     }
 
                     if (/^targets$/.test(txt)) {
@@ -120,16 +123,18 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('not in war! use matched command to issue a match');
                             }
                         }.bind(this));
+                        return;
                     }
 
                     var donateRgx = /^donate\s*(.*)/;
                     if (donateRgx.test(txt)) {
                         var mtch = donateRgx.exec(txt);
                         var amount = ~~Number(mtch[1]);
-                        if (isNaN(amount) || amount == 0) {
+                        if (isNaN(amount) || amount == 0 || amount > 1000) {
                             amount = 10;
                         }
                         this.postMessage('Please follow this link to donate:\n' + baseUrl + '/paypal/donate?amount=' + amount);
+                        return;
                     }
 
                     if (/^time$/.test(txt)) {
@@ -143,6 +148,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('not in war.');
                             }
                         }.bind(this));
+                        return;
                     }
 
                     var syncRgx = /^[Ss]ync\s(\d+)$/;
@@ -164,6 +170,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('not in war.');
                             }
                         }.bind(this));
+                        return;
                     }
 
                     var newMatchRgx = /^matched(new){0,1}\s*(.*)/;
@@ -182,18 +189,21 @@ var Bot = BotBase.extend(function () {
                                 }
                             }
                         }.bind(this));
+                        return;
                     }
 
                     var updateLastWarResults = /^lastwarresults\s?(.*)$/;
                     if (updateLastWarResults.test(txt)) {
                         var mtchs = updateLastWarResults.exec(txt);
                         this.updateLastWarResults(mtchs[1]);
+                        return;
                     }
                     ;
 
                     var warStats = /^war\s?stats$/;
                     if (warStats.test(txt)) {
                         this.showWarStats();
+                        return;
                     }
                     ;
 
@@ -229,7 +239,8 @@ var Bot = BotBase.extend(function () {
                                 }
 
                             }.bind(this));
-                        }
+                        };
+                        return;
                     }
                     ;
 
@@ -241,6 +252,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('not in war.');
                             }
                         }.bind(this));
+                        return;
                     }
 
                     if (/^war\s?status$/.test(txt)) {
@@ -248,6 +260,7 @@ var Bot = BotBase.extend(function () {
                             //    console.log('war status', roomData);
                             this.postMessage(roomData.warData.inWar ? 'in war with ' + roomData.warData.guildName : 'not in war');
                         }.bind(this));
+                        return;
                     }
 
                     if (/^myt$/.test(txt) || /^my\stargets$/.test(txt) || /^nut$/.test(txt)) {
@@ -266,6 +279,7 @@ var Bot = BotBase.extend(function () {
                                 console.trace();
                             }
                         }.bind(this));
+                        return;
                     }
 
                     var settingsRgx = /^[Ss]et\s(\w+)\s(\w+)$/;
@@ -286,6 +300,7 @@ var Bot = BotBase.extend(function () {
                             roomPrefs.setRoomSetting(roomData, key, val);
                             this.postMessage('Room setting ' + key + ' was set to ' + val);
                         }.bind(this));
+                        return;
                     }
 
                     var getSettingsRgx = /^[Gg]et\s(\w+)$/;
@@ -304,6 +319,7 @@ var Bot = BotBase.extend(function () {
                             var val = roomPrefs.getRoomSettingFromRoomPref(roomData, key);
                             this.postMessage('Room setting for ' + key + ' is ' + (val == undefined ? 'default value' : val));
                         }.bind(this));
+                        return;
                     }
 
                     var minitRgx = /^minit(\d)?$/;
@@ -333,6 +349,7 @@ var Bot = BotBase.extend(function () {
                                 console.trace();
                             }
                         }.bind(this));
+                        return;
                     }
                     ;
 
@@ -350,6 +367,7 @@ var Bot = BotBase.extend(function () {
                         } else {
                             this.postMessage('can\'t get Mini stats, try something like mymini Name 1m/1k/1k');
                         }
+                        return;
                     }
                     if (/^[mM]ymini$/.test(txt)) {
                         roomPrefs.getRoomPlayer(this.roomId, msg.user_id).then(function (player) {
@@ -368,6 +386,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage(msg.join('\n'));
                             }
                         }.bind(this));
+                        return;
                     }
                     var riskRgx = /^[mM]yrisk\s?(\d?\d?)/;
                     if (riskRgx.test(caseSensitiveTxt)) {
@@ -390,6 +409,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('Current risk for ' + msg.name + ' is ' + (player == undefined ? 0 : player.risk));
                             }.bind(this));
                         }
+                        return;
                     }
 
                     var bulkRgx = /^[bB]ulk\s?\b(on|off)?/;
@@ -406,14 +426,17 @@ var Bot = BotBase.extend(function () {
                             this.postMessage('Bulk mode is ' + (ctxPlayer.bulk ? 'on' : 'off') + ' for ' + msg.name);
 
                         }
+                        return;
                     }
 
                     if (/^help$/.test(txt)) {
                         this.showHelp();
+                        return;
                     }
 
                     if (/^helpwar$/.test(txt)) {
                         this.showHelpwar();
+                        return;
                     }
 
                     var removeRgx = /^[rR][eE][mM][oO][vV][eE]\s*(\d+)\s(.*)/;
@@ -431,6 +454,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('can\'t remove a user while not in war.');
                             }
                         }.bind(this));
+                        return;
                     }
 
                     // handle insertion
