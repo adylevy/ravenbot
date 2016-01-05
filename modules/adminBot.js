@@ -64,6 +64,7 @@ var AdminBot = BotBase.extend(function () {
                     var self = this;
                     if (/^[Hh]ello$/.test(txt)) {
                         this.postMessage('Hey there Admin!');
+                        return;
                     }
 
                     var regMatch = /^[Rr]egister\s(\d+)\s?([^\s]*)\s?(.*)$/;
@@ -78,6 +79,7 @@ var AdminBot = BotBase.extend(function () {
                         this.postMessage('Registering !');
                         // console.log(obj);
                         this.emit('botRegister', this, obj);
+                        return;
                     }
 
                     regMatch = /^[Uu]nregister\s(\d+)$/;
@@ -85,6 +87,7 @@ var AdminBot = BotBase.extend(function () {
                         var regexmatch = regMatch.exec(txt);
                         this.postMessage('Unregistering !', regexmatch[1]);
                         this.emit('botUnregister', this, regexmatch[1]);
+                        return;
                     }
 
                     regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
@@ -104,6 +107,7 @@ var AdminBot = BotBase.extend(function () {
                             }
 
                         }.bind(this));
+                        return;
                     }
                     regMatch = /^list$/;
                     if (regMatch.test(txt)) {
@@ -115,11 +119,12 @@ var AdminBot = BotBase.extend(function () {
                             this.postMessage(postback.join('\n'));
 
                         }.bind(this))
-
+                        return;
                     }
 
                     if (/^help$/.test(txt)) {
                         this.showHelp();
+                        return;
                     }
 
                     var removeRgx = /^[rR]emove\s(.*)/;
@@ -136,6 +141,7 @@ var AdminBot = BotBase.extend(function () {
                             performerName: msg.name,
                             action: 'Remove entire guild'
                         });
+                        return;
                     }
 
                     var renamergx = /^[rR]ename\s(.*)===(.*)/;
@@ -156,6 +162,7 @@ var AdminBot = BotBase.extend(function () {
                             guild.save();
                             this.postMessage("name changed.");
                         }.bind(this));
+                        return;
                     }
 
                     var broadcastRgx = /^[bB]roadcast\s(all|[\d]+)\s(.*)/;
@@ -164,6 +171,7 @@ var AdminBot = BotBase.extend(function () {
                         var guild = mtches[1];
                         var msg = mtches[2];
                         this.emit('broadcast', this, {msg: msg, guild: guild});
+                        return;
                     }
 
                     if (/^war\s*started$/.test(txt)) {
@@ -172,6 +180,7 @@ var AdminBot = BotBase.extend(function () {
                             settings.save();
                             this.postMessage("WAR STARTED!");
                         }.bind(this));
+                        return;
                     }
 
                     var winnerRgx = /^war\swinner\s?(.*)/;
@@ -188,10 +197,12 @@ var AdminBot = BotBase.extend(function () {
                             }
 
                         }.bind(this));
+                        return;
                     }
 
                     if (/^getstats$/.test(txt)) {
                         this.getStats();
+                        return;
                     }
 
                     if (/^war\sended$/.test(txt)) {
@@ -200,6 +211,7 @@ var AdminBot = BotBase.extend(function () {
                             settings.save();
                             this.postMessage("WAR ENDED!");
                         }.bind(this));
+                        return;
                     }
 
                     if (/^war\s*status/.test(txt)) {
@@ -212,6 +224,7 @@ var AdminBot = BotBase.extend(function () {
                             }
 
                         }.bind(this));
+                        return;
                     }
 
                     var showRgx = /^[sS]how\s(.*)/;
@@ -241,6 +254,7 @@ var AdminBot = BotBase.extend(function () {
                                 this.postMessage(retMsg.join('\n'));
                             }.bind(this));
                         }.bind(this));
+                        return;
                     }
 
                 },
