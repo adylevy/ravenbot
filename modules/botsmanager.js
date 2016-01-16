@@ -175,9 +175,14 @@ var BotsManager = Class.extend(function () {
                 }
 
             }.bind(this));
+
             manager.on('broadcast', function (ctx, broadcastObj) {
                 this.broadCast(ctx, broadcastObj.guild, broadcastObj.msg);
 
+            }.bind(this));
+
+            manager.on('registerMissing',function(ctx){
+                this.registerMissingBots();
             }.bind(this));
 
             botObj.manager = manager;

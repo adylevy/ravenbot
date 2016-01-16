@@ -90,6 +90,12 @@ var AdminBot = BotBase.extend(function () {
                         return;
                     }
 
+                    regMatch = /^[Ff]ixraven$/;
+                    if (regMatch.test(txt)){
+                        this.postMessage('Trying..');;
+                        this.emit('registerMissing',this);
+                    }
+
                     regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var matches = regMatch.exec(txt);
