@@ -1,4 +1,4 @@
-//require('newrelic');
+require('newrelic');
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
@@ -217,6 +217,9 @@ var whenConnected = function () {
         res.end('ok.')
     });
 
+    app.use('/health', function (req, res) {
+        res.end('ok.')
+    });
     // catch all
     app.use(function (req, res) {
         res.end('404');
