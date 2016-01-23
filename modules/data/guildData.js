@@ -94,6 +94,7 @@ module.exports = function () {
                         }
                         this._save(cb);
                     };
+
                     myCache.set(cacheKey, item, 600);
                     if (callback) {
                         callback(item);
