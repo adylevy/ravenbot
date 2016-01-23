@@ -118,10 +118,10 @@ var BotsManager = Class.extend(function () {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
                         if (botObj == undefined) {
-                            console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
-                          //  registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                          //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
+                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
                         } else {
-                          //  registerArr.push(this.createManager(guild.roomId, botObj));
+                            registerArr.push(this.createManager(guild.roomId, botObj));
                         }
                     } catch (e) {
                     }
