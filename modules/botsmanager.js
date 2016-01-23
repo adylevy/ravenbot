@@ -125,7 +125,7 @@ var BotsManager = Class.extend(function () {
                                 this.createManager(guild.roomId, botObj);
                                 def.resolve();
                                 return def.promise;
-                            })());
+                            }.bind(this))());
                         }
                     } catch (e) {
                     }
