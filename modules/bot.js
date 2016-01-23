@@ -118,6 +118,8 @@ var Bot = BotBase.extend(function () {
                             if (roomData.warData.inWar == true) {
                                 guildData.getGuildData(roomData.warData.guildName).then(function (data) {
                                     this.sendGuildTargets([], roomData.warData.guildName, data, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
+                                    data=null;
+                                    roomData=null;
                                 }.bind(this));
                             } else {
                                 this.postMessage('not in war! use matched command to issue a match');
@@ -277,6 +279,9 @@ var Bot = BotBase.extend(function () {
                             } catch (e) {
                                 console.log('------->', e);
                                 console.trace();
+                            }
+                            finally {
+                                roomData=null;
                             }
                         }.bind(this));
                         return;
@@ -823,6 +828,9 @@ var Bot = BotBase.extend(function () {
                                 console.trace();
 
                             }
+                        finally {
+                                combinedGuildData=null;
+                            }
                         }.bind(this)
                     )
                     ;
@@ -835,6 +843,7 @@ var Bot = BotBase.extend(function () {
                     guildData.getGuildData(guildName, function (ourData) {
                         var playerCls = new Players();
                         var players = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
+                        ourData=null;
                         defered.resolve(players);
                     }.bind(this));
 
