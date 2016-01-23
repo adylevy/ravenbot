@@ -922,6 +922,10 @@ var Bot = BotBase.extend(function () {
                                 console.log('-------->', e);
                                 console.trace();
                             }
+                            finally{
+                                roomData = null;
+                                settings = null;
+                            }
                         }.bind(this));
                     }.bind(this));
 
@@ -1034,6 +1038,8 @@ var Bot = BotBase.extend(function () {
                             msg.push('Unknowns - ' + unknowns.length);
                             msg.push('Well done! ;)');
                             this.postMessage(msg.join('\n'));
+                            roomData = null;
+                            settings = null;
                         }.bind(this));
 
                     }.bind(this));

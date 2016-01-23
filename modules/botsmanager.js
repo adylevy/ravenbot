@@ -19,7 +19,7 @@ var BotsManager = Class.extend(function () {
     return {
         init: function (options) {
             this.options = options;
-         //   console.log(options)
+            //   console.log(options)
             this.allBots = [];
             var e = new events.EventEmitter();
             _.extend(this, e);
@@ -70,7 +70,7 @@ var BotsManager = Class.extend(function () {
         killAllBots: function () {
             var deferred = Q.defer();
             var that = this;
-            if (this.options.killAllBots === "true" || this.options.killAllBots === true){
+            if (this.options.killAllBots === "true" || this.options.killAllBots === true) {
                 var unregArray = [];
                 try {
                     _.each(this.allBots, function (bot) {
@@ -84,7 +84,7 @@ var BotsManager = Class.extend(function () {
                     this.allBots = [];
                     deferred.resolve(this.allBots);
                 }.bind(this))
-            }else{
+            } else {
                 deferred.resolve(this.allBots);
             }
 
@@ -117,14 +117,20 @@ var BotsManager = Class.extend(function () {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
                         if (botObj == undefined) {
-                          //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
+                            //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
                             registerArr.push(this.registerBotAndCreateManager(guild.roomId));
                         } else {
-                            registerArr.push(this.createManager(guild.roomId, botObj));
+                            registerArr.push(function () {
+                                var def = Q.defer();
+                                this.createManager(guild.roomId, botObj);
+                                def.resolve();
+                                return def.promise;
+                            }());
                         }
                     } catch (e) {
                     }
                 }.bind(this));
+                settings = null;
                 Q.all(registerArr).then(function () {
                     deferred.resolve();
                 })
@@ -143,6 +149,7 @@ var BotsManager = Class.extend(function () {
             return deferred.promise;
         },
         createManager: function (groupIdx, botObj) {
+
             var manager = this.options.adminGroup == groupIdx ? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
             manager.on('botRegister', function (ctx, guild) {
                 var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
@@ -181,7 +188,7 @@ var BotsManager = Class.extend(function () {
 
             }.bind(this));
 
-            manager.on('registerMissing',function(ctx){
+            manager.on('registerMissing', function (ctx) {
                 this.registerMissingBots();
             }.bind(this));
 
@@ -289,7 +296,7 @@ var BotsManager = Class.extend(function () {
              ],
              "attachments": []
              }*/
-            var self=this;
+            var self = this;
             var groupId = msg.group_id;
             if (msg.name != self.options.name) {
                 var botObj = _.findWhere(this.allBots, {group_id: groupId});
@@ -320,6 +327,7 @@ var BotsManager = Class.extend(function () {
                     settings.guilds = guilds;
                     settings.save();
                 }
+                settings = null;
             })
 
         },
@@ -333,6 +341,7 @@ var BotsManager = Class.extend(function () {
                     settings.guilds = guilds;
                     settings.save();
                 }
+                settings = null;
             })
 
         }
