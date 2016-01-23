@@ -71,7 +71,7 @@ var BotsManager = Class.extend(function () {
         killAllBots: function () {
             var deferred = Q.defer();
             var that = this;
-            if (this.options.killAllBots){
+            if (this.options.killAllBots === "true" || this.options.killAllBots === true){
                 var unregArray = [];
                 try {
                     _.each(this.allBots, function (bot) {
@@ -118,6 +118,7 @@ var BotsManager = Class.extend(function () {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
                         if (botObj == undefined) {
+                          //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
                             registerArr.push(this.registerBotAndCreateManager(guild.roomId));
                         } else {
                             registerArr.push(this.createManager(guild.roomId, botObj));
