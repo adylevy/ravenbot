@@ -7,7 +7,6 @@ var Class = require('./Class.js').Class;
 const events = require('events');
 const util = require('util');
 const request = require('request');
-const formidable = require('formidable');
 const _ = require('underscore');
 var Bot = require('./bot.js');
 var AdminBot = require('./adminBot.js');
