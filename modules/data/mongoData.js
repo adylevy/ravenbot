@@ -18,9 +18,9 @@ var singleton = function singleton(){
 
         var db = mongoose.connection;
         db.on('error', console.error.bind(console, 'connection error:'));
-        db.on('error', function(){
+      /*  db.on('error', function(){
             this.emit('mongoFailed');
-        })
+        })*/
         db.once('open', function () {
             console.log('connection opened');
             this.emit('mongoConnected');
