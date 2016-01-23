@@ -23,6 +23,10 @@ const CONFIG = {
     killAllBots: process.env['KILLBOTS'] || false
 };
 
+var whenNotConnected = function(){
+    throw new Error('Connection error');
+}
+
 var whenConnected = function () {
     console.log('mongo is connected');
     var botManager = require('./modules/botsmanager.js')(CONFIG);
@@ -226,6 +230,7 @@ var whenConnected = function () {
 
 var mongoData = require('./modules/data/mongoData.js');
 mongoData.on('mongoConnected', whenConnected);
+mongoData.on('mongoFailed', whenNotConnected);
 mongoData.connect();
 
 
