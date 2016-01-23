@@ -92,7 +92,7 @@ var BotsManager = Class.extend(function () {
         },
         registerMissingBots: function () {
             var self = this;
-            var deferred = Q.defer();
+           // var deferred = Q.defer();
             console.log('register bots');
             appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
@@ -112,31 +112,26 @@ var BotsManager = Class.extend(function () {
                     console.log(e);
                 }
                 //console.log('register',groupIds);
-                var registerArr = [];
+               // var registerArr = [];
                 _.each(guilds, function (guild) {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
                         if (botObj == undefined) {
                             //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
-                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                            this.registerBotAndCreateManager(guild.roomId);
                         } else {
-                            registerArr.push((function () {
-                                var def = Q.defer();
-                                this.createManager(guild.roomId, botObj);
-                                def.resolve();
-                                return def.promise;
-                            }.bind(this))());
+                            this.createManager(guild.roomId, botObj);
                         }
                     } catch (e) {
                     }
                 }.bind(this));
                 settings = null;
-                Q.all(registerArr).then(function () {
+               /* Q.all(registerArr).then(function () {
                     deferred.resolve();
-                })
+                })*/
             }.bind(this))
 
-            return deferred.promise;
+          //  return deferred.promise;
         },
         unregisterBot: function (botId) {
             console.log('unregister', botId);
