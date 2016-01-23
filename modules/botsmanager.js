@@ -120,12 +120,12 @@ var BotsManager = Class.extend(function () {
                             //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
                             registerArr.push(this.registerBotAndCreateManager(guild.roomId));
                         } else {
-                            registerArr.push(function () {
+                            registerArr.push((function () {
                                 var def = Q.defer();
                                 this.createManager(guild.roomId, botObj);
                                 def.resolve();
                                 return def.promise;
-                            }());
+                            })());
                         }
                     } catch (e) {
                     }
