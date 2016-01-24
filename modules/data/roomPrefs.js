@@ -63,11 +63,12 @@ module.exports = function () {
     };
 
     return {
-        getRoomPrefs: function (roomId) {
+        getRoomPrefs: function (roomId, deepObj) {
+            deepObj = deepObj === undefined ? false : deepObj;
             var defered = Q.defer();
             var cacheKey='room_'+roomId;
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem){
+            if (cacheItem && deepObj === false){
               //  console.log('room pref from cache');
                 defered.resolve(cacheItem);
             }else {
@@ -79,25 +80,39 @@ module.exports = function () {
                     } else {
                         item = rooms[0];
                     }
-                    item._save = item.save;
-                    item._cacheKey=cacheKey;
-                    item.save = function (cb) {
-                       // console.log('SAVING !!!', this);
-                        myCache.set(this._cacheKey,this,600);
-                        this._save(cb);
-                    };
 
-                    myCache.set(cacheKey,item,600);
-                    defered.resolve(item);
+                    if (deepObj === false) {
+                        myCache.set(cacheKey, item.toObject(), 600);
+                        defered.resolve(item.toObject());
+                    }
+                    else{
+                        item._save = item.save;
+                        item._cacheKey=cacheKey;
+                        item.save = function (cb) {
+                            // console.log('SAVING !!!', this);
+                            myCache.set(this._cacheKey,this,600);
+                            this._save(cb);
+                        };
+                        defered.resolve(item);
+                    }
+
                 });
             }
             return defered.promise;
         },
         getAllRoomPrefs: function () {
             var defered = Q.defer();
-            RoomPrefs.find({}, function (err, rooms) {
-                defered.resolve(rooms);
-            });
+            var cacheKey='allrooms';
+            var cacheItem = myCache.get(cacheKey);
+            if (cacheItem){
+                //  console.log('room pref from cache');
+                defered.resolve(cacheItem);
+            }else {
+                RoomPrefs.find({}, function (err, rooms) {
+                    myCache.set(rooms.toObject(),item,600);
+                    defered.resolve(rooms);
+                });
+            }
             return defered.promise;
         },
         getRoomPlayer: function (roomId,userId) {
@@ -134,7 +149,7 @@ module.exports = function () {
             return player;
         }, updatePlayerRisk: function (roomId, userId, name, risk) {
             var defered= Q.defer();
-            this.getRoomPrefs(roomId).then(function (roomPref) {
+            this.getRoomPrefs(roomId, true).then(function (roomPref) {
 
                     var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
                     var players = _.filter(roomPref.playersPrefs || [], function (el) {
@@ -152,7 +167,7 @@ module.exports = function () {
         },
         addUpdateMini: function (roomId,userId, idx, miniPlayer) {
             var defered = Q.defer();
-            this.getRoomPrefs(roomId).then(function (roomPref) {
+            this.getRoomPrefs(roomId, true).then(function (roomPref) {
                 var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
                 var players = _.filter(roomPref.playersPrefs || [], function (el) {
                     return el.id != userId;
