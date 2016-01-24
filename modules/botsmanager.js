@@ -124,6 +124,8 @@ var BotsManager = Class.extend(function () {
                     } catch (e) {
                     }
                 }.bind(this));
+                delete guilds;
+                delete settings;
                 settings = null;
 
             }.bind(this))
