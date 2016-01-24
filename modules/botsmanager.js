@@ -25,9 +25,9 @@ var BotsManager = Class.extend(function () {
             _.extend(this, e);
             console.log('bot manager', this.options);
             this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
-           /* this.timerInterval = setInterval(function () {
+            this.timerInterval = setInterval(function () {
                 this.onTimeTick()
-            }.bind(this), 1 * 60 * 1000);*/
+            }.bind(this), 1 * 60 * 1000);
         },
         onTimeTick: function () {
             roomPrefs.getAllRoomPrefs().then(function (rooms) {
