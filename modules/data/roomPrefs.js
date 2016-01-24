@@ -104,8 +104,8 @@ module.exports = function () {
             var defered = Q.defer();
                 RoomPrefs.find({},function (err, rooms) {
                     //myCache.set(rooms.toObject(),item,600);
-                    var myrooms = JSON.parse(JSON.stringify(rooms))
-                    defered.resolve(myrooms);
+                  //  var myrooms = JSON.parse(JSON.stringify(rooms))
+                    defered.resolve(rooms);
                 });
             return defered.promise;
         },
