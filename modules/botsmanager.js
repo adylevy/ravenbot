@@ -290,25 +290,27 @@ var BotsManager = Class.extend(function () {
              ],
              "attachments": []
              }*/
-            var self = this;
-            var groupId = msg.group_id;
-            if (msg.name != self.options.name) {
-                var botObj = _.findWhere(this.allBots, {group_id: groupId});
-                if (botObj == undefined) {
-                    console.log('couldnt find a bot to handle:', msg)
-                    return;
+            (function() {
+                var self = this;
+                var groupId = msg.group_id;
+                if (msg.name != self.options.name) {
+                    var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                    if (botObj == undefined) {
+                        console.log('couldnt find a bot to handle:', msg)
+                        return;
 
-                } else {
-                    try {
-                        botObj.manager.handleMessage(msg);
-                    } catch (e) {
-                        console.warn('FATAL ERROR : ', e);
-                    }
-                    finally {
-                        botObj = null;
+                    } else {
+                        try {
+                            botObj.manager.handleMessage(msg);
+                        } catch (e) {
+                            console.warn('FATAL ERROR : ', e);
+                        }
+                        finally {
+                            botObj = null;
+                        }
                     }
                 }
-            }
+            }.bind(this))();
         },
         addGroupToSettings: function (guild) {
             appSettings.getSettings().then(function (settings) {
