@@ -121,7 +121,7 @@ module.exports = function () {
             } else {
                 Guild.find({}, function (err, guilds) {
                   //  myCache.set(cacheKey, guilds, 600);
-                    defered.resolve(guilds);
+                    defered.resolve(guilds.toObject());
                 });
             }
             return defered.promise;
