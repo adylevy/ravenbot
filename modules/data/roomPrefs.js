@@ -102,12 +102,10 @@ module.exports = function () {
         },
         getAllRoomPrefs: function () {
             var defered = Q.defer();
-
-                RoomPrefs.find({}, function (err, rooms) {
+                RoomPrefs.findOne().lean().exec(function (err, rooms) {
                     //myCache.set(rooms.toObject(),item,600);
                     defered.resolve(rooms);
                 });
-
             return defered.promise;
         },
         getRoomPlayer: function (roomId,userId) {
