@@ -31,7 +31,6 @@ var BotsManager = Class.extend(function () {
         },
         onTimeTick: function () {
             roomPrefs.getAllRoomPrefs().then(function (rooms) {
-
                 try {
                     _.each(rooms, function (room) {
                         if (room.warData.inWar) {
@@ -45,6 +44,10 @@ var BotsManager = Class.extend(function () {
                 }
                 catch (e) {
                     console.warn('error', e);
+                }
+                finally {
+                    delete rooms;
+                    rooms = null;
                 }
 
             }.bind(this));
@@ -68,31 +71,34 @@ var BotsManager = Class.extend(function () {
             return deferred.promise;
         },
         killAllBots: function () {
-            var deferred = Q.defer();
-            var that = this;
-            if (this.options.killAllBots === "true" || this.options.killAllBots === true) {
-                var unregArray = [];
-                try {
-                    _.each(this.allBots, function (bot) {
-                        unregArray.push(that.unregisterBot(bot.bot_id));
-                    });
-                }
-                catch (e) {
-                    console.log('------->', e);
-                }
-                Q.all(unregArray).then(function () {
-                    this.allBots = [];
-                    deferred.resolve(this.allBots);
-                }.bind(this))
-            } else {
-                deferred.resolve(this.allBots);
-            }
 
-            return deferred.promise;
+            return (function () {
+                var deferred = Q.defer();
+                var that = this;
+                if (this.options.killAllBots === "true" || this.options.killAllBots === true) {
+                    var unregArray = [];
+                    try {
+                        _.each(this.allBots, function (bot) {
+                            unregArray.push(that.unregisterBot(bot.bot_id));
+                        });
+                    }
+                    catch (e) {
+                        console.log('------->', e);
+                    }
+                    Q.all(unregArray).then(function () {
+                        deferred.resolve();
+                    }.bind(this))
+                } else {
+                    deferred.resolve();
+                }
+
+                return deferred.promise;
+            }.bind(this))()
+
         },
         registerMissingBots: function () {
             var self = this;
-           // var deferred = Q.defer();
+            // var deferred = Q.defer();
             console.log('register bots');
             appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
@@ -111,7 +117,7 @@ var BotsManager = Class.extend(function () {
                     console.log(e);
                 }
                 //console.log('register',groupIds);
-               // var registerArr = [];
+                // var registerArr = [];
                 _.each(guilds, function (guild) {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
@@ -130,7 +136,7 @@ var BotsManager = Class.extend(function () {
 
             }.bind(this))
 
-          //  return deferred.promise;
+            //  return deferred.promise;
         },
         unregisterBot: function (botId) {
             console.log('unregister', botId);
@@ -205,7 +211,6 @@ var BotsManager = Class.extend(function () {
                     try {
                         var botObj = response.response.bot;
                         var manager = this.createManager(groupIdx, botObj);
-                        botObj.manager = manager;
 
                         deferred.resolve(manager);
                     } catch (e) {
@@ -290,7 +295,7 @@ var BotsManager = Class.extend(function () {
              ],
              "attachments": []
              }*/
-            (function() {
+            (function () {
                 var self = this;
                 var groupId = msg.group_id;
                 if (msg.name != self.options.name) {

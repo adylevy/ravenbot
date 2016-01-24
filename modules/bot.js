@@ -51,8 +51,8 @@ var Bot = BotBase.extend(function () {
 
                     console.log('new bot **', this.roomId);
                 },
-                getRoomPrefs: function () {
-                    return roomPrefs.getRoomPrefs(this.roomId);
+                getRoomPrefs: function (deep) {
+                    return roomPrefs.getRoomPrefs(this.roomId, deep);
                 },
                 handleMessage: function (msg) {
                     /*{
@@ -159,7 +159,7 @@ var Bot = BotBase.extend(function () {
                     var syncRgx = /^[Ss]ync\s(\d+)$/;
                     if (syncRgx.test(txt)) {
                         var mtch = syncRgx.exec(txt);
-                        this.getRoomPrefs().then(function (roomData) {
+                        this.getRoomPrefs(true).then(function (roomData) {
                             if (roomData.warData.inWar == true) {
                                 try {
                                     var newTime = new Date(new Date().getTime() - (60 - Number(mtch[1])) * 60000);
@@ -304,7 +304,7 @@ var Bot = BotBase.extend(function () {
                             this.postMessage('invalid setting key');
                             return;
                         }
-                        this.getRoomPrefs().then(function (roomData) {
+                        this.getRoomPrefs(true).then(function (roomData) {
                             roomPrefs.setRoomSetting(roomData, key, val);
                             this.postMessage('Room setting ' + key + ' was set to ' + val);
                         }.bind(this));
@@ -550,7 +550,7 @@ var Bot = BotBase.extend(function () {
                     return hasMatch;
                 },
                 updateLastWarResults: function (txt) {
-                    this.getRoomPrefs().then(function (roomData) {
+                    this.getRoomPrefs(true).then(function (roomData) {
                         var matches = roomData.matches || [];
                         var lastMatch = _.last(matches);
                         var won = /yes/.test(txt) || /won/.test(txt) || /win/.test(txt) || /yep/.test(txt);
@@ -899,7 +899,7 @@ var Bot = BotBase.extend(function () {
 
                         var trophy = settings.trophy || '';
                         var trophyMsg = 'Prepare to be scouted! '+guildName+' currently holds the Raven trophy!';
-                        this.getRoomPrefs().then(function (roomData) {
+                        this.getRoomPrefs(true).then(function (roomData) {
 
                             try {
                                 roomData.warData.inWar = true;
@@ -956,19 +956,22 @@ var Bot = BotBase.extend(function () {
                 ,
 
                 onTimeTick: function (roomData) {
-
-                    var d = new Date();
-                    var diff = d - roomData.warData.warTime;
-                    var timerSettings = roomPrefs.getRoomSettingFromRoomPref(roomData, 'timer');
-                    var diffInSeconds = Math.round(diff / 1000);
-                    var diffInMinutes = Math.round(diffInSeconds / 60);
-                    if (diffInMinutes >= 60) {
-                        this.endWar(roomData);
-                    } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
-                        if (timerSettings != 'off') {
-                            this.postMessage(60 - diffInMinutes + " minutes left.");
+                    (function(){
+                        var d = new Date();
+                        var diff = d - roomData.warData.warTime;
+                        var timerSettings = roomPrefs.getRoomSettingFromRoomPref(roomData, 'timer');
+                        var diffInSeconds = Math.round(diff / 1000);
+                        var diffInMinutes = Math.round(diffInSeconds / 60);
+                        if (diffInMinutes >= 60) {
+                            this.endWar(roomData);
+                        } else if ((diffInMinutes % 10 == 0 && diffInMinutes > 0) || diffInMinutes == 55) {
+                            if (timerSettings != 'off') {
+                                this.postMessage(60 - diffInMinutes + " minutes left.");
+                            }
                         }
-                    }
+                    }.bind(this))();
+                    delete roomData;
+                    roomData = null;
                 }
                 ,
                 endWar: function (roomData) {
