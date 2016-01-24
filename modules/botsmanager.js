@@ -141,7 +141,9 @@ var BotsManager = Class.extend(function () {
             return deferred.promise;
         },
         createManager: function (groupIdx, _botObj) {
-            var botObj = { "group_id": _botObj.group_id};
+
+            var botObj = { group_id : _botObj.group_id};
+
             var manager = this.options.adminGroup == groupIdx ? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
             manager.on('botRegister', function (ctx, guild) {
                 var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
