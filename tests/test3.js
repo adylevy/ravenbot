@@ -10,7 +10,6 @@ var whenConnected = function () {
 
     var onTimeTick = function (){
         roomPrefs.getAllRoomPrefs().then(function (rooms) {
-
             _.each(rooms, function (room) {
                 if (room.warData.inWar) {
                     //  console.log('onTick',room.roomId,this.allBots);
