@@ -72,14 +72,17 @@ var Bot = BotBase.extend(function () {
                      ],
                      "attachments": []
                      }*/
-                    if (!msg.system) {
-                        try {
-                            this.mainSwitch(msg.text.trim(), msg);
+                    (function(){
+                        if (!msg.system) {
+                            try {
+                                this.mainSwitch(msg.text.trim(), msg);
+                            }
+                            catch (e) {
+                                console.log('-------->', e, ' <<---');
+                            }
                         }
-                        catch (e) {
-                            console.log('-------->', e, ' <<---');
-                        }
-                    }
+                    }.bind(this))()
+
                 },
 
                 mainSwitch: function (txt, msg) {
@@ -484,6 +487,7 @@ var Bot = BotBase.extend(function () {
                                 this.postMessage('Not in war at the moment, cant add users.')
 
                             }
+                            delete roomData;
                         }.bind(this));
 
                     }
