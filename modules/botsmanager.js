@@ -310,7 +310,7 @@ var BotsManager = Class.extend(function () {
                         }
                     }
                 }
-            }.bint(this))();
+            }.bind(this))();
         },
         addGroupToSettings: function (guild) {
             appSettings.getSettings().then(function (settings) {
