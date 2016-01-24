@@ -211,7 +211,7 @@ var BotsManager = Class.extend(function () {
                     try {
                         var botObj = response.response.bot;
                         var manager = this.createManager(groupIdx, botObj);
-
+                        botObj.manager = manager;
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
