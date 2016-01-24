@@ -140,9 +140,7 @@ var BotsManager = Class.extend(function () {
                 }.bind(this));
             return deferred.promise;
         },
-        createManager: function (groupIdx, _botObj) {
-
-            var botObj = { group_id : _botObj.group_id};
+        createManager: function (groupIdx, botObj) {
 
             var manager = this.options.adminGroup == groupIdx ? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
             manager.on('botRegister', function (ctx, guild) {
