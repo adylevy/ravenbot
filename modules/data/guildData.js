@@ -100,8 +100,8 @@ module.exports = function () {
                             item = guilds[0];
                         }
                         if (deepObj === false) {
-                            myCache.set(cacheKey, item.toObject(), 600);
-                            defered.resolve(item.toObject());
+                            myCache.set(cacheKey, item, 600);
+                            defered.resolve(item);
                         }
                         else {
                             item._save = item.save;
