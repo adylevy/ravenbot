@@ -224,7 +224,7 @@ var Bot = BotBase.extend(function () {
                                 //   var bestMatch = data.bestMatch;
                                 var ownData = data;
                                 //  console.log('-------------->',guild);
-                                if ((ownData == null || ownData.__v == undefined)) {
+                                if ((ownData == null || ownData == undefined || ownData.isNew == true)) {
                                     guildData.getSimilarGuilds(guildName).then(function (guilds) {
                                         var msg = [];
                                         if (guilds.length > 0) {
