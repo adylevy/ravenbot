@@ -250,7 +250,7 @@ var Bot = BotBase.extend(function () {
                     ;
 
                     if (/^war\sended$/.test(txt) || /^warended$/.test(txt) || /^we$/.test(txt)) {
-                        this.getRoomPrefs().then(function (roomData) {
+                        this.getRoomPrefs(true).then(function (roomData) {
                             if (roomData.warData.inWar) {
                                 this.endWar(roomData);
                             } else {
@@ -348,7 +348,6 @@ var Bot = BotBase.extend(function () {
                                     } else {
                                         this.findUserTargets(roomData.warData.guildName, mini.player, p.risk, true);
                                     }
-
                                 } else {
                                     this.postMessage('can\'t look for targets while not in war.');
                                 }
