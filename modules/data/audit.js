@@ -7,7 +7,6 @@ var Q = require('q');
 var _ = require('underscore');
 require('./mongoData.js')
 
-
 module.exports = function () {
 
     var Audit = mongoose.model('Audit', {
@@ -41,7 +40,7 @@ module.exports = function () {
                 date: Date.now()
             });
             a.save();
-            
+
         }
     };
 }();

@@ -68,13 +68,13 @@ module.exports = function () {
             return defered.promise;
         },
 
-        getGuildData: function (guildName, callback) {
+        getGuildData: function (guildName, deepObj) {
+            deepObj = deepObj === undefined ? false : deepObj;
             var that = this;
             var defered = Q.defer();
             var cacheKey = 'guild_' + guildName.replace(/\s/g, '_');
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem) {
-                if (callback) {callback(cacheItem);}
+            if (cacheItem && deepObj === false){
                 defered.resolve(cacheItem);
             } else {
                 Guild.find({$or: [{name: guildName, isDeleted: { $exists: false }},{name: guildName,isDeleted: false}]}, function (err, guilds) {
@@ -84,22 +84,24 @@ module.exports = function () {
                     } else {
                         item = guilds[0];
                     }
-                    item._save = item.save;
-                    item._cacheKey = cacheKey;
-                    item.save = function (cb) {
-                        if (this.isDeleted){
-                            myCache.del(this._cacheKey);
-                        }else {
-                        //    myCache.set(this._cacheKey, this, 600);
-                        }
-                        this._save(cb);
-                    };
-
-                 //   myCache.set(cacheKey, item, 600);
-                    if (callback) {
-                        callback(item);
+                    if (deepObj === false) {
+                        myCache.set(cacheKey, item.toObject(), 600);
+                        defered.resolve(item.toObject());
                     }
-                    defered.resolve(item);
+                    else {
+                        item._save = item.save;
+                        item._cacheKey = cacheKey;
+                        item.save = function (cb) {
+                            if (this.isDeleted) {
+                                myCache.del(this._cacheKey);
+                            } else {
+                                myCache.set(this._cacheKey, this, 600);
+                            }
+                            this._save(cb);
+                        };
+                       // myCache.set(cacheKey, item, 600);
+                        defered.resolve(item);
+                    }
                 }.bind(this));
             }
             return defered.promise;
@@ -144,7 +146,7 @@ module.exports = function () {
         },
         removeGuild: function (guildName, deletingUser) {
             var defered = Q.defer();
-            this.getGuildData(guildName, function (guild) {
+            this.getGuildData(guildName).then(function (guild) {
                 if (guild.isNew) {
                     defered.resolve('Guild not found in DB');
                     return;
@@ -156,7 +158,7 @@ module.exports = function () {
                         defered.resolve('Guild [' + guildName + '] removed ');
                     });
                 }
-            });
+            }.bind(this));
             return defered.promise;
         }
 

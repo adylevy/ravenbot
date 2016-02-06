@@ -119,7 +119,7 @@ var Bot = BotBase.extend(function () {
                     if (/^targets$/.test(txt)) {
                         this.getRoomPrefs().then(function (roomData) {
                             if (roomData.warData.inWar == true) {
-                                guildData.getGuildData(roomData.warData.guildName).then(function (data) {
+                                guildData.getGuildData(roomData.warData.guildName, false).then(function (data) {
                                     this.sendGuildTargets([], roomData.warData.guildName, data, OriginSourceType.RavenNew | OriginSourceType.RavenOld);
                                     data=null;
                                     roomData=null;
@@ -218,7 +218,7 @@ var Bot = BotBase.extend(function () {
                         if (mtchs != null) {
                             var guildName = mtchs[1];
                             //  console.log('getting guild info')
-                            self.getGuildData(guildName).then(function (data) {
+                            guildData.getGuildData(guildName, false).then(function (data) {
                                 //  console.log('got guild data');
                                 //var guild = data.foundGuild;
                                 //   var bestMatch = data.bestMatch;
@@ -611,7 +611,7 @@ var Bot = BotBase.extend(function () {
                     var self = this;
                     var ctxPlayer = this.getCtxPlayer(addingUserId);
                     ctxPlayer.options = [];
-                    guildData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, true).then(function (item) {
                         for (var i = 0; i < playersToAdd.length; i++) {
                             var player = playersToAdd[i];
                             var players = _.filter(item.players, function (el) {
@@ -664,7 +664,7 @@ var Bot = BotBase.extend(function () {
                     }
                     var self = this;
                     //   console.log('remove', lvl, username);
-                    guildData.getGuildData(guildName, function (item) {
+                    guildData.getGuildData(guildName, true).then(function (item) {
 
                         var guildPlayers = item.players;
                         var playerToRemove = _.find(guildPlayers, function (el) {
@@ -843,7 +843,7 @@ var Bot = BotBase.extend(function () {
                 getParsedIntelForGuild: function (guildName) {
                     var defered = Q.defer();
 
-                    guildData.getGuildData(guildName, function (ourData) {
+                    guildData.getGuildData(guildName, false).then(function (ourData) {
                         var playerCls = new Players();
                         var players = playerCls.getPlayerObjFromDBPlayers(ourData.players || []);
                         ourData=null;
@@ -851,26 +851,14 @@ var Bot = BotBase.extend(function () {
                     }.bind(this));
 
                     return defered.promise;
-                }
-                ,
-                getGuildData: function (guildName) {
-                    var defered = Q.defer();
-
-                    guildData.getGuildData(guildName, function (data) {
-                        defered.resolve(data);
-                    }.bind(this));
-
-                    return defered.promise;
-
-                }
-                ,
+                },
 
                 tryToEnterWarMode: function (guildName) {
                     guildData.getSimilarGuilds(guildName).then(function (guilds) {
                         var uniqueMatch = _.findWhere(guilds, {dist: 0});
 
                         if (uniqueMatch) {
-                            this.getGuildData(uniqueMatch.name).then(function (data) {
+                            guildData.getGuildData(uniqueMatch.name, false).then(function (data) {
                                 this.enterWarMode(uniqueMatch.name, data);
                             }.bind(this));
                         }
