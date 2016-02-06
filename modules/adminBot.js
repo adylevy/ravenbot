@@ -159,7 +159,7 @@ var AdminBot = BotBase.extend(function () {
                         }
                         var guildname = mtches[1].replace(/^\s+|\s+$/g, '');
                         var newname = mtches[2].replace(/^\s+|\s+$/g, '');
-                        guildData.getGuildData(guildname, function (guild) {
+                        guildData.getGuildData(guildname, true).then(function (guild) {
                             if (guild.isNew) {
                                 this.postMessage("Can't find guild in DB");
                                 return;
@@ -237,7 +237,7 @@ var AdminBot = BotBase.extend(function () {
                     if (showRgx.test(txt)) {
                         var mtches = showRgx.exec(txt);
                         var guildname = mtches[1];
-                        guildData.getGuildData(guildname, function (guild) {
+                        guildData.getGuildData(guildname, false).then(function (guild) {
                             if (guild.isNew) {
                                 this.postMessage("Can't find guild in DB");
                                 return;
