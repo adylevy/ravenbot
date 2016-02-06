@@ -54,7 +54,7 @@ module.exports = function () {
                     name: firstLetter,
                     isDeleted: false
                 }]
-            }, function (err, guilds) {
+            }).lean().exec(function (err, guilds) {
                 if (err) {
                     defered.resolve([]);
                 } else {
