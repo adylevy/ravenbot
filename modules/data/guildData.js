@@ -90,12 +90,12 @@ module.exports = function () {
                         if (this.isDeleted){
                             myCache.del(this._cacheKey);
                         }else {
-                        //    myCache.set(this._cacheKey, this, 600);
+                            myCache.set(this._cacheKey, this, 600);
                         }
                         this._save(cb);
                     };
 
-                 //   myCache.set(cacheKey, item, 600);
+                    myCache.set(cacheKey, item, 600);
                     if (callback) {
                         callback(item);
                     }
