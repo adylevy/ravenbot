@@ -99,7 +99,7 @@ var AdminBot = BotBase.extend(function () {
                     regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var matches = regMatch.exec(txt);
-                        appSettings.getSettings().then(function (settings) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             var guild = _.findWhere(settings.guilds, {roomId: Number(matches[1])});
                             if (guild) {
                                 guild.guildName = matches[2];
@@ -181,7 +181,7 @@ var AdminBot = BotBase.extend(function () {
                     }
 
                     if (/^war\s*started$/.test(txt)) {
-                        appSettings.getSettings().then(function (settings) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             settings.warStartDate = Date.now();
                             settings.save();
                             this.postMessage("WAR STARTED!");
@@ -193,7 +193,7 @@ var AdminBot = BotBase.extend(function () {
                     if (winnerRgx.test(txt)) {
                         var mtches = winnerRgx.exec(txt);
                         var guildname = mtches[1];
-                        appSettings.getSettings().then(function (settings) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             if (guildname && guildname!='') {
                                 settings.trophy = guildname.toLowerCase();
                                 settings.save();
@@ -212,7 +212,7 @@ var AdminBot = BotBase.extend(function () {
                     }
 
                     if (/^war\sended$/.test(txt)) {
-                        appSettings.getSettings().then(function (settings) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             settings.warStartDate = null;
                             settings.save();
                             this.postMessage("WAR ENDED!");

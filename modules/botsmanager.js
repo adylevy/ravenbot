@@ -318,7 +318,7 @@ var BotsManager = Class.extend(function () {
             }.bind(this))();
         },
         addGroupToSettings: function (guild) {
-            appSettings.getSettings().then(function (settings) {
+            appSettings.getSettingsRw().then(function (settings) {
                 var guilds = settings.guilds;
                 if (!_.findWhere(guilds, {roomId: Number(guild.roomId)})) {
                     guilds.push({
@@ -335,7 +335,7 @@ var BotsManager = Class.extend(function () {
 
         },
         removeGroupFromSettings: function (groupId) {
-            appSettings.getSettings().then(function (settings) {
+            appSettings.getSettingsRw().then(function (settings) {
                 var guilds = settings.guilds;
                 if (_.findWhere(guilds, {roomId: Number(groupId)})) {
                     guilds = _.filter(guilds, function (guild) {
