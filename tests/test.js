@@ -29,7 +29,7 @@ var whenConnected=function(){
     roomPrefs.getRoomPrefs(12334465).then(function(data){
        // console.log(data);
         var b=new Bot({},12334465);
-        b.mainSwitch('gif ady',{
+        b.mainSwitch('targets in ady',{
             name:'Ady 7000m/700k/700',
             user_id:'5'
         });

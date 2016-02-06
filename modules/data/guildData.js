@@ -124,19 +124,18 @@ module.exports = function () {
             });
             return defered.promise;
         },
-        getAllGuilds: function () {
+        getAllGuilds: function (lean) {
+            lean = lean === undefined ? true : lean;
             var defered = Q.defer();
-            var cacheKey = 'allguilds';
-            var cacheItem = myCache.get(cacheKey);
-            if (cacheItem) {
 
-                defered.resolve(cacheItem);
-            } else {
-                Guild.find({}, function (err, guilds) {
-                    //  myCache.set(cacheKey, guilds, 600);
-                    defered.resolve(guilds.toObject());
-                });
+            var query = Guild.find({});
+            if (lean){
+                query.lean();
             }
+            query.exec(function (err, guilds) {
+                defered.resolve(guilds);
+            });
+
             return defered.promise;
         },
         getAllGuildsPaginated: function (from, to) {
