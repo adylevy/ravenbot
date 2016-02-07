@@ -961,27 +961,30 @@ var Bot = BotBase.extend(function () {
                     roomData = null;
                 }
                 ,
-                endWar: function (roomData) {
-                    var matchStat = {
-                        guildName: roomData.warData.guildName,
-                        warTime: roomData.warData.warTime,
-                        warResult: 'unknown'
-                    };
-                    var matches = roomData.matches || [];
-                    matches.push(matchStat);
-                    roomData.matches = matches;
-                    roomData.warData.inWar = false;
-                    roomData.warData.guildName = '';
-                    roomData.save();
-                    this.addGlobalContextCommands([{
-                        'key': new RegExp('^[Yy]es$'),
-                        'cmd': 'lastwarresults yes'
-                    }, {
-                        'key': new RegExp('^[Nn]o$'),
-                        'cmd': 'lastwarresults no'
-                    }
-                    ]);
-                    this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
+                endWar: function () {
+                    this.getRoomPrefs(true).then(function(roomData)
+                    {
+                        var matchStat = {
+                            guildName: roomData.warData.guildName,
+                            warTime: roomData.warData.warTime,
+                            warResult: 'unknown'
+                        };
+                        var matches = roomData.matches || [];
+                        matches.push(matchStat);
+                        roomData.matches = matches;
+                        roomData.warData.inWar = false;
+                        roomData.warData.guildName = '';
+                        roomData.save();
+                        this.addGlobalContextCommands([{
+                            'key': new RegExp('^[Yy]es$'),
+                            'cmd': 'lastwarresults yes'
+                        }, {
+                            'key': new RegExp('^[Nn]o$'),
+                            'cmd': 'lastwarresults no'
+                        }
+                        ]);
+                        this.postMessage('War Ended.\ndid we win this one ? (yes/no)');
+                    }.bind(this));
                 }
                 ,
                 getLastWarStats: function (roomData, guildName) {
