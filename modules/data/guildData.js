@@ -8,7 +8,7 @@ var _ = require('underscore');
 //require('./mongoData.js')(process.env['MONGOLAB_URI']);
 var Levenshtein = require('levenshtein');
 var NodeCache = require("node-cache");
-var myCache = new NodeCache({stdTTL: 300, useClones: false}); //5m default cache time
+var myCache = new NodeCache({stdTTL: 300, useClones: true , checkperiod: 60}); //5m default cache time
 
 module.exports = function () {
 
@@ -124,19 +124,18 @@ module.exports = function () {
             });
             return defered.promise;
         },
-        getAllGuilds: function () {
+        getAllGuilds: function (lean) {
+            lean = lean === undefined ? true : lean;
             var defered = Q.defer();
-            var cacheKey = 'allguilds';
-            var cacheItem = myCache.get(cacheKey);
-            if (cacheItem) {
 
-                defered.resolve(cacheItem);
-            } else {
-                Guild.find({}, function (err, guilds) {
-                    //  myCache.set(cacheKey, guilds, 600);
-                    defered.resolve(guilds.toObject());
-                });
+            var query = Guild.find({});
+            if (lean){
+                query.lean();
             }
+            query.exec(function (err, guilds) {
+                defered.resolve(guilds);
+            });
+
             return defered.promise;
         },
         getAllGuildsPaginated: function (from, to) {
@@ -149,7 +148,7 @@ module.exports = function () {
                 defered.resolve(cacheItem);
             } else {
                 Guild.find({}).sort('name').lean().skip(Number(from)).limit(Number(to) - Number(from)).exec(function (err, guilds) {
-                    myCache.set(cacheKey, guilds, 600);
+               //     myCache.set(cacheKey, guilds, 600);
                     defered.resolve(guilds);
                 });
             }
