@@ -8,6 +8,8 @@ var _ = require('underscore');
 //require('./mongoData.js')(process.env['MONGOLAB_URI']);
 var Levenshtein = require('levenshtein');
 var NodeCache = require("node-cache");
+var schemas = require('./db_schemas');
+
 var myCache = new NodeCache({stdTTL: 300, useClones: false , checkperiod: 60}); //5m default cache time
 
 module.exports = function () {
