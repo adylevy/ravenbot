@@ -34,7 +34,7 @@ var AdminBot = BotBase.extend(function () {
                      guildName: '',
                      warTime: null
                      };*/
-                    console.log('new ADMIN bot',  this.roomId);
+                    console.log('new ADMIN bot', this.roomId);
                 },
                 handleMessage: function (msg) {
                     /*{
@@ -61,9 +61,10 @@ var AdminBot = BotBase.extend(function () {
                 },
                 mainSwitch: function (txt, msg) {
                     console.log('admin main switch');
-                    var self=this;
+                    var self = this;
                     if (/^[Hh]ello$/.test(txt)) {
                         this.postMessage('Hey there Admin!');
+                        return;
                     }
 
                     var regMatch = /^[Rr]egister\s(\d+)\s?([^\s]*)\s?(.*)$/;
@@ -78,6 +79,7 @@ var AdminBot = BotBase.extend(function () {
                         this.postMessage('Registering !');
                         // console.log(obj);
                         this.emit('botRegister', this, obj);
+                        return;
                     }
 
                     regMatch = /^[Uu]nregister\s(\d+)$/;
@@ -85,12 +87,19 @@ var AdminBot = BotBase.extend(function () {
                         var regexmatch = regMatch.exec(txt);
                         this.postMessage('Unregistering !', regexmatch[1]);
                         this.emit('botUnregister', this, regexmatch[1]);
+                        return;
+                    }
+
+                    regMatch = /^[Ff]ixraven$/;
+                    if (regMatch.test(txt)){
+                        this.postMessage('Trying..');;
+                        this.emit('registerMissing',this);
                     }
 
                     regMatch = /^[sS]et\s(\d+)\s?([^\s]*)\s?(.*)$/;
                     if (regMatch.test(txt)) {
                         var matches = regMatch.exec(txt);
-                        appSettings.getSettings().then(function (settings) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             var guild = _.findWhere(settings.guilds, {roomId: Number(matches[1])});
                             if (guild) {
                                 guild.guildName = matches[2];
@@ -104,6 +113,7 @@ var AdminBot = BotBase.extend(function () {
                             }
 
                         }.bind(this));
+                        return;
                     }
                     regMatch = /^list$/;
                     if (regMatch.test(txt)) {
@@ -115,11 +125,12 @@ var AdminBot = BotBase.extend(function () {
                             this.postMessage(postback.join('\n'));
 
                         }.bind(this))
-
+                        return;
                     }
 
                     if (/^help$/.test(txt)) {
                         this.showHelp();
+                        return;
                     }
 
                     var removeRgx = /^[rR]emove\s(.*)/;
@@ -136,6 +147,28 @@ var AdminBot = BotBase.extend(function () {
                             performerName: msg.name,
                             action: 'Remove entire guild'
                         });
+                        return;
+                    }
+
+                    var renamergx = /^[rR]ename\s(.*)===(.*)/;
+                    if (renamergx.test(txt)) {
+                        var mtches = renamergx.exec(txt);
+                        if (mtches.length<2){
+                            this.postMessage("Bad usage of rename command.");
+                            return;
+                        }
+                        var guildname = mtches[1].replace(/^\s+|\s+$/g, '');
+                        var newname = mtches[2].replace(/^\s+|\s+$/g, '');
+                        guildData.getGuildData(guildname, true).then(function (guild) {
+                            if (guild.isNew) {
+                                this.postMessage("Can't find guild in DB");
+                                return;
+                            }
+                            guild.name = newname;
+                            guild.save();
+                            this.postMessage("name changed.");
+                        }.bind(this));
+                        return;
                     }
 
                     var broadcastRgx = /^[bB]roadcast\s(all|[\d]+)\s(.*)/;
@@ -143,51 +176,77 @@ var AdminBot = BotBase.extend(function () {
                         var mtches = broadcastRgx.exec(txt);
                         var guild = mtches[1];
                         var msg = mtches[2];
-                        this.emit('broadcast', this, {msg:msg,guild:guild});
+                        this.emit('broadcast', this, {msg: msg, guild: guild});
+                        return;
                     }
 
-                    if (/^war\s*started$/.test(txt)){
-                        appSettings.getSettings().then(function(settings){
+                    if (/^war\s*started$/.test(txt)) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             settings.warStartDate = Date.now();
                             settings.save();
                             this.postMessage("WAR STARTED!");
                         }.bind(this));
+                        return;
                     }
 
-                    if (/^war\sended$/.test(txt)){
-                        appSettings.getSettings().then(function(settings){
+                    var winnerRgx = /^war\swinner\s?(.*)/;
+                    if (winnerRgx.test(txt)) {
+                        var mtches = winnerRgx.exec(txt);
+                        var guildname = mtches[1];
+                        appSettings.getSettingsRw().then(function (settings) {
+                            if (guildname && guildname!='') {
+                                settings.trophy = guildname.toLowerCase();
+                                settings.save();
+                                this.postMessage("Congrats! Trophy have moved to "+ guildname);
+                            }else{
+                                this.postMessage(settings.trophy +" owns the Trophy!");
+                            }
+
+                        }.bind(this));
+                        return;
+                    }
+
+                    if (/^getstats$/.test(txt)) {
+                        this.getStats();
+                        return;
+                    }
+
+                    if (/^war\sended$/.test(txt)) {
+                        appSettings.getSettingsRw().then(function (settings) {
                             settings.warStartDate = null;
                             settings.save();
                             this.postMessage("WAR ENDED!");
                         }.bind(this));
+                        return;
                     }
 
-                    if (/^war\s*status/.test(txt)){
-                        appSettings.getSettings().then(function(settings){
-                            if (settings.warStartDate ==null){
+                    if (/^war\s*status/.test(txt)) {
+                        appSettings.getSettings().then(function (settings) {
+                            if (settings.warStartDate == null) {
                                 this.postMessage('no war now..');
-                            }else{
+                            } else {
 
-                                this.postMessage("War started at "+settings.warStartDate);
+                                this.postMessage("War started at " + settings.warStartDate);
                             }
 
                         }.bind(this));
+                        return;
                     }
-                    
+
                     var showRgx = /^[sS]how\s(.*)/;
                     if (showRgx.test(txt)) {
                         var mtches = showRgx.exec(txt);
                         var guildname = mtches[1];
-                        guildData.getGuildData(guildname, function (guild) {
+                        guildData.getGuildData(guildname, false).then(function (guild) {
                             if (guild.isNew) {
                                 this.postMessage("Can't find guild in DB");
                                 return;
                             }
                             appSettings.getSettings().then(function (settings) {
 
-                                var guilds={};
+                                var guilds = {};
                                 _.each(settings.guilds, function (guild) {
-                                    guilds[guild.roomId]= guild.guildName + ' / ' + guild.guildId;
+                                    guilds[guild.roomId] = guild.guildName + ' / ' + guild.guildId;
                                 });
                                 var retMsg = [];
                                 var playersCls = new Players();
@@ -195,14 +254,13 @@ var AdminBot = BotBase.extend(function () {
                                 retMsg.push(guild.name + ':')
                                 _.each(players, function (player) {
                                     var inserted = new Player('199 ' + player.insertedByUser);
-                                    var insertedBy = inserted.isPlayer()?inserted.name:player.insertedByUser;
-                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' +insertedBy + '] [' +(guilds[player.insertedByGuild] || player.insertedByGuild) +']');
+                                    var insertedBy = inserted.isPlayer() ? inserted.name : player.insertedByUser;
+                                    retMsg.push(player.toString() + ' [' + player.insertDate.toISOString().replace(/T/, ' ').replace(/\..+/, '') + '] [' + insertedBy + '] [' + (guilds[player.insertedByGuild] || player.insertedByGuild) + ']');
                                 });
                                 this.postMessage(retMsg.join('\n'));
                             }.bind(this));
-
-
                         }.bind(this));
+                        return;
                     }
 
                 },
@@ -218,10 +276,14 @@ var AdminBot = BotBase.extend(function () {
                     helpMsg.push('list - show all rooms registered');
                     helpMsg.push('show guildName - fetches info on Guild');
                     helpMsg.push('remove guildName - removes a guild from ravenDB');
+                    helpMsg.push('rename guildA === guildB - rename guild name');
                     helpMsg.push('broadcast [all|roomId] msg - sending msg to room or all rooms');
                     helpMsg.push('war started - indicates global war is ON');
                     helpMsg.push('war ended - indicates that war is not ON at the moment');
                     helpMsg.push('war status')
+                    helpMsg.push('getstats - get war stats');
+                    helpMsg.push('war winner - show who has the trophy');
+                    helpMsg.push('war winner XXX - passes the trophy to XXX');
                     this.postMessage(helpMsg.join('\n'));
                 },
 
@@ -231,8 +293,79 @@ var AdminBot = BotBase.extend(function () {
                 },
                 botUnregistered: function (groupId) {
                     this.postMessage('Bot UnRegistered : ' + groupId);
+                },
+                getStats: function (withTotal) {
+                    appSettings.getSettings().then(function (prefs) {
+                        guildData.getAllGuilds().then(function (guilds) {
+                            var outArr=[];
+                            var submittedGuild = {};
+                            var submittedPlayer = {};
+                            var dt = new Date();
+                            dt.setDate(dt.getDate() - 8);
+                            _.each(guilds, function (guild) {
+                                _.each(guild.players, function (player) {
+                                    if (player.date == undefined || player.date.getTime() <= dt.getTime()) {
+                                        return;
+                                    }
+                                    if (submittedGuild[player.insertedByGuild] == undefined) {
+                                        submittedGuild[player.insertedByGuild] = 0;
+                                    }
+                                    if (submittedPlayer[player.insertedByUser] == undefined) {
+                                        submittedPlayer[player.insertedByUser] = 0;
+                                    }
 
+                                    submittedGuild[player.insertedByGuild] = submittedGuild[player.insertedByGuild] + 1;
+                                    submittedPlayer[player.insertedByUser] = submittedPlayer[player.insertedByUser] + 1;
+                                })
+                            });
+                            var stats = [];
+                            _.each(submittedGuild, function (ctr, idx) {
+
+                                var guildPref = _.findWhere(prefs.guilds, {roomId: Number(idx)});
+                                if (guildPref == undefined) {
+                                    console.log(idx, ctr);
+                                } else {
+                                    stats.push({
+                                        name: guildPref.guildName,
+                                        id: guildPref.guildId,
+                                        ctr: ctr,
+                                        roomId: Number(idx)
+                                    });
+
+                                }
+                            });
+
+                            _.each(prefs.guilds, function (guild) {
+                                var roomId = guild.roomId;
+                                var stat = _.findWhere(stats, {roomId: roomId});
+                                if (stat == undefined) {
+                                    //   console.warn('NO CONTRIBUTION: '+guild.roomId+' - '+ guild.guildId+' '+guild.guildName);
+                                }
+                            })
+                            stats = _.sortBy(stats, function (s) {
+                                return s.ctr
+                            }).reverse();
+                            var k = 0;
+                            _.each(stats, function (stat) {
+                                if (k<=15) {
+                                    outArr.push(++k + ' - ' + stat.name + ' ' + stat.id + (withTotal ? ' total:' + stat.ctr : ''));
+                                }
+                            })
+                            var submittedPlayersCnt = 0;
+                            _.each(submittedPlayer, function (ctr, idx) {
+                                if (ctr > 20) {
+                                    //   console.log(idx,ctr);
+                                }
+                                submittedPlayersCnt++;
+                            })
+                            outArr.push ('total players - '+ submittedPlayersCnt);
+
+                            this.postMessage(outArr.join('\n'));
+                        }.bind(this))
+                    }.bind(this))
                 }
+
+
             }
         }
         ()

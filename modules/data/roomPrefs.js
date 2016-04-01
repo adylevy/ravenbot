@@ -8,8 +8,8 @@ var _ = require('underscore');
 require('./mongoData.js');
 var schemas = require('./db_schemas');
 
-var NodeCache = require( "node-cache" );
-var myCache = new NodeCache( { stdTTL: 300 , useClones:false} ); //5m default cache time
+var NodeCache = require("node-cache");
+var myCache = new NodeCache({stdTTL: 300, useClones: false}); //5m default cache time
 
 module.exports = function () {
 
@@ -43,52 +43,66 @@ module.exports = function () {
     };
 
     return {
-        getRoomPrefs: function (roomId) {
+        getRoomPrefs: function (roomId, deepObj) {
+            deepObj = deepObj === undefined ? false : deepObj;
             var defered = Q.defer();
-            var cacheKey='room_'+roomId;
+            var cacheKey = 'room_' + roomId;
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem){
-              //  console.log('room pref from cache');
+            if (cacheItem && deepObj === false) {
+                //  console.log('room pref from cache');
                 defered.resolve(cacheItem);
-            }else {
-              //  console.log('no cache',cacheItem)
-                RoomPrefs.find({roomId: roomId}, function (err, rooms) {
+            } else {
+                //  console.log('no cache',cacheItem)
+                var query =
+                    RoomPrefs.find({roomId: roomId});
+                if (deepObj===false){
+                    query.lean();
+                }
+                query.exec(function (err, rooms) {
                     var item;
                     if (rooms.length == 0) {
                         item = createRoomPrefs(roomId);
                     } else {
                         item = rooms[0];
                     }
-                    item._save = item.save;
-                    item._cacheKey=cacheKey;
-                    item.save = function (cb) {
-                       // console.log('SAVING !!!', this);
-                        myCache.set(this._cacheKey,this,600);
-                        this._save(cb);
-                    };
 
-                    myCache.set(cacheKey,item,600);
-                    defered.resolve(item);
+                    if (deepObj === false) {
+                        myCache.set(cacheKey, item, 600);
+                        defered.resolve(item);
+                    }
+                    else {
+                        item._save = item.save;
+                        item._cacheKey = cacheKey;
+                        item.save = function (cb) {
+                            // console.log('SAVING !!!', this);
+                            myCache.set(this._cacheKey, this, 600);
+                            this._save(cb);
+                        };
+                        defered.resolve(item);
+                    }
+
                 });
             }
             return defered.promise;
         },
         getAllRoomPrefs: function () {
             var defered = Q.defer();
-            RoomPrefs.find({}, function (err, rooms) {
+            RoomPrefs.find({'warData.inWar': true}).lean().exec(function (err, rooms) {
+                //myCache.set(rooms.toObject(),item,600);
+                //  var myrooms = JSON.parse(JSON.stringify(rooms))
                 defered.resolve(rooms);
             });
             return defered.promise;
         },
-        getRoomPlayer: function (roomId,userId) {
+        getRoomPlayer: function (roomId, userId) {
             var defered = Q.defer();
             this.getRoomPrefs(roomId).then(function (roomPref) {
-                var player = this.getRoomPlayerFromRoomPref( roomPref,userId);
+                var player = this.getRoomPlayerFromRoomPref(roomPref, userId);
                 defered.resolve(player);
             }.bind(this));
             return defered.promise;
         },
-        getRoomPlayerFromRoomPref: function (roomPref,userId) {
+        getRoomPlayerFromRoomPref: function (roomPref, userId) {
             var players = roomPref.playersPrefs || [];
             var player = _.find(players, function (p) {
                 return p.id == userId;
@@ -113,10 +127,10 @@ module.exports = function () {
             }
             return player;
         }, updatePlayerRisk: function (roomId, userId, name, risk) {
-            var defered= Q.defer();
-            this.getRoomPrefs(roomId).then(function (roomPref) {
+            var defered = Q.defer();
+            this.getRoomPrefs(roomId, true).then(function (roomPref) {
 
-                    var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
+                    var player = this.getRoomPlayerFromRoomPref(roomPref, userId);
                     var players = _.filter(roomPref.playersPrefs || [], function (el) {
                         return el.id != userId;
                     });
@@ -130,10 +144,10 @@ module.exports = function () {
             );
             return defered.promise;
         },
-        addUpdateMini: function (roomId,userId, idx, miniPlayer) {
+        addUpdateMini: function (roomId, userId, idx, miniPlayer) {
             var defered = Q.defer();
-            this.getRoomPrefs(roomId).then(function (roomPref) {
-                var player = this.getRoomPlayerFromRoomPref(roomPref,userId);
+            this.getRoomPrefs(roomId, true).then(function (roomPref) {
+                var player = this.getRoomPlayerFromRoomPref(roomPref, userId);
                 var players = _.filter(roomPref.playersPrefs || [], function (el) {
                     return el.id != userId;
                 });

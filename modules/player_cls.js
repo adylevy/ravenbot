@@ -25,8 +25,8 @@ var Player = Class.extend(function () {
             }
             //line=line.toLowerCase();
             this.line = line;
-            var playerRgx = /^(\d+)\s+([\w\-@\.,\s\(\)]{1,35})\s+([\d\.,\s?mkbMKB]+)[\s?\/?,?(]+([\d\.,mkMK]+)[\s?\/?,?()]+([\d\.,mkMK]+)/;
-            var nameLvlRgx = /([\w\-@\.,\s\(\)]{1,35})\s+(\d+)\s+([\d\.,\s?mkbMKB]+)[\s?\/?,?(]+([\d\.,mkMK]+)[\s?\/?,?()]+([\d\.,mkMK]+)/;
+            var playerRgx = /^(\d+)\s+([\w\-@\.,\s\(\)]{1,35})\s+([\d\.,\s?mkbtMKBT]+)[\s?\/?,?(]+([\d\.,mkbMKB]+)[\s?\/?,?()]+([\d\.,mkbMKB]+)/;
+            var nameLvlRgx = /([\w\-@\.,\s\(\)]{1,35})\s+(\d+)\s+([\d\.,\s?mkbtMKBT]+)[\s?\/?,?(]+([\d\.,mkbMKB]+)[\s?\/?,?()]+([\d\.,mkbMKB]+)/;
             var matches = playerRgx.exec(line);
             var secondTry = nameLvlRgx.exec(line);
             if (matches == null && secondTry != null) {
@@ -111,6 +111,8 @@ var Player = Class.extend(function () {
                 num = Number(stat.replace('m', '')) * 1000000;
             } else if (stat.indexOf('b') > -1) {
                 num = Number(stat.replace('b', '')) * 1000000000;
+            } else if (stat.indexOf('t') > -1) {
+                num = Number(stat.replace('t', '')) * 1000000000000;
             }
             return Number(num);
         },
@@ -123,13 +125,19 @@ var Player = Class.extend(function () {
                     if (num.indexOf('.00') != -1) {
                         num = num.substr(0, num.length - 3);
                     }
-                    if (num>1000){
-                        num = (num/1000).toFixed(2);
+                    if (num > 1000) {
+                        num = (num / 1000);
+                        var suffix = "b";
+                        if (num >= 1000) {
+                            num = (num / 1000);
+                            suffix = "t";
+                        }
+                        num = num.toFixed(2);
                         if (num.indexOf('.00') != -1) {
                             num = num.substr(0, num.length - 3);
                         }
-                        num+='b';
-                    }else {
+                        num += suffix;
+                    } else {
                         num += 'm';
                     }
                 } else if (num >= 1000) {
@@ -145,7 +153,7 @@ var Player = Class.extend(function () {
         },
 
         isPlayer: function () {
-            return this.player == true && this.lvl > 0 && this.name != '' && this.name.indexOf('\n')==-1;
+            return this.player == true && this.lvl > 0 && this.name != '' && this.name.indexOf('\n') == -1;
         }
 
 

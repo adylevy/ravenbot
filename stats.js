@@ -2,7 +2,7 @@ var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
 var appSettings = require('./modules/data/appsettings.js');
-var sheetsData = require('./modules/sheets.js');
+//var sheetsData = require('./modules/sheets.js');
 if (typeof process.env['TOKEN'] == 'undefined') {
     env(__dirname + '/.env');
 }
@@ -168,10 +168,10 @@ var getStats=function(){
 
 var getOldPlayers=function(){
     console.log('mongo is connected');
-    appSettings.getSettings().then(function(prefs){
+  //  appSettings.getSettings().then(function(prefs){
         // console.log(prefs.guilds);
 
-        guildData.getAllGuilds().then(function(guilds){
+        guildData.getAllGuilds(false).then(function(guilds){
             var submittedGuild={};
             var submittedPlayer={};
             var dt=new Date();
@@ -187,18 +187,18 @@ var getOldPlayers=function(){
                 console.log(guild.name,'before:', guild.players.length);
                 guild.players=newPlayers;
                 console.log('after:', guild.players.length);
-                guild.save();
+               // guild.save();
             });
 
 
         })
 
         // console.log();
-    })
+   // })
 };
 
 
 var mongoData = require('./modules/data/mongoData.js');
 
-mongoData.on('mongoConnected',getStats);
+mongoData.on('mongoConnected',getOldPlayers);
 mongoData.connect();

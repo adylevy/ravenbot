@@ -93,7 +93,7 @@ var Players = Class.extend(function () {
             d.setDate(d.getDate()-6);
 
             var historical = new Date();
-            historical.setDate(historical.getDate()-21);
+            historical.setDate(historical.getDate()-28);
 
             p = _.sortBy(p, function (player) {
                 return player.lvl;
@@ -126,7 +126,7 @@ var Players = Class.extend(function () {
                 intel.push('Old intel:');
                 intel=intel.concat(oldIntel);
             }
-            
+
             return intel.join(lineBreak);
         }
 

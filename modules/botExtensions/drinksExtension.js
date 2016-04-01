@@ -113,10 +113,25 @@ module.exports = function (txt, msg, postMessage) {
             postMessage('', baseUrl + '/images/uisge.jpg');
         }
 
+        if (/^jace$/.test(txt)) {
+            postMessage('', baseUrl + '/images/jace.jpg');
+        }
+
+        if (/^kreeo$/.test(txt)) {
+            postMessage('', baseUrl + '/images/kreeo.jpg');
+        }
+
+        // Test
+
+        if (/^winter\sis\scoming$/.test(txt)) {
+            postMessage('', baseUrl + '/images/war.jpg');
+            return;
+        }
+
         // Temp Prize Winnings:
 
         if (/^matched\sthe\srider\$\sof\srohan$/.test(txt)) {
-            postMessage('', baseUrl + '/images/brood.jpg');
+            postMessage('', baseUrl + '/images/Rohan.gif');
             return;
         }
 

@@ -1,4 +1,4 @@
-//require('newrelic');
+require('newrelic');
 var env = require('node-env-file');
 var _ = require('underscore');
 var Q = require('q');
@@ -19,8 +19,13 @@ const CONFIG = {
     url: URL,
     adminGroup: ADMIN_GROUP,
     avatar_url: AVATAR,
-    port: process.env.PORT || 5000
+    port: process.env.PORT || 5000,
+    killAllBots: process.env['KILLBOTS'] || false
 };
+
+var whenNotConnected = function(){
+    throw new Error('Connection error');
+}
 
 var whenConnected = function () {
     console.log('mongo is connected');
@@ -50,6 +55,11 @@ var whenConnected = function () {
         }
         res.end('');
     });
+
+    app.use('/killbots', function(){
+        botManager.killAllBots();
+        res.end();
+    })
 
     app.use('/ui/guilds', function (req, res) {
         var rgx = /\/ui\/+([.*])\/+(.*)/.exec(req.originalUrl);
@@ -162,7 +172,9 @@ var whenConnected = function () {
 
     app.use('/ui', function (req, res) {
         var swig = require('swig');
-        var output = swig.renderFile('./templates/main.html', {});
+        var output = swig.renderFile('./templates/main.html', {
+            domain: URL
+        });
         res.end(output);
     });
 
@@ -205,6 +217,9 @@ var whenConnected = function () {
         res.end('ok.')
     });
 
+    app.use('/health', function (req, res) {
+        res.end('ok.')
+    });
     // catch all
     app.use(function (req, res) {
         res.end('404');
@@ -218,6 +233,7 @@ var whenConnected = function () {
 
 var mongoData = require('./modules/data/mongoData.js');
 mongoData.on('mongoConnected', whenConnected);
+mongoData.on('mongoFailed', whenNotConnected);
 mongoData.connect();
 
 

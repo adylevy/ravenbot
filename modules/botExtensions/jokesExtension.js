@@ -124,5 +124,4 @@ module.exports = function (txt, msg, postMessage) {
     }
 
     handleMessage(txt);
-
 }

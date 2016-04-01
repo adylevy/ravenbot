@@ -15,15 +15,26 @@ module.exports = function () {
             guildName: String,
             roomId: Number,
             guildId: String
-        }], warStartDate: Date
+        }], warStartDate: Date,
+        trophy: String
     });
 
     return {
-
+        getSettingsRw: function(){
+            var defered = Q.defer();
+            AppSettings.findOne({}, function (err, settings) {
+                var item = settings;
+                if (item == null) {
+                    item = new AppSettings({groups: []});
+                }
+                defered.resolve(item);
+            });
+            return defered.promise;
+        },
         getSettings: function () {
 
             var defered = Q.defer();
-            AppSettings.findOne({}, function (err, settings) {
+            AppSettings.findOne({}).lean().exec(function (err, settings) {
                 var item = settings;
                 if (item == null) {
                     item = new AppSettings({groups: []});

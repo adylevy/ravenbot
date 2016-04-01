@@ -8,8 +8,7 @@ var _ = require('underscore');
 //require('./mongoData.js')(process.env['MONGOLAB_URI']);
 var Levenshtein = require('levenshtein');
 var NodeCache = require("node-cache");
-var myCache = new NodeCache({stdTTL: 300 , useClones:false}); //5m default cache time
-var schemas = require('./db_schemas');
+var myCache = new NodeCache({stdTTL: 300, useClones: false , checkperiod: 60}); //5m default cache time
 
 module.exports = function () {
 
@@ -27,18 +26,23 @@ module.exports = function () {
 
     return {
 
-        getSimilarGuilds : function(guildName){
+        getSimilarGuilds: function (guildName) {
             var defered = Q.defer();
-            var firstLetter = new RegExp('^'+guildName[0]+'+.*', "i");
-            Guild.find({$or: [{name: firstLetter, isDeleted: { $exists: false }},{name: firstLetter,isDeleted: false}]},function(err,guilds){
-                if (err){
+            var firstLetter = new RegExp('^' + guildName[0] + '+.*', "i");
+            Guild.find({
+                $or: [{name: firstLetter, isDeleted: {$exists: false}}, {
+                    name: firstLetter,
+                    isDeleted: false
+                }]
+            }).lean().exec(function (err, guilds) {
+                if (err) {
                     defered.resolve([]);
-                }else{
-                    var suggested=[];
-                    _.each(guilds,function(guild){
+                } else {
+                    var suggested = [];
+                    _.each(guilds, function (guild) {
                         var dist = new Levenshtein(guild.name, guildName)
-                        if (dist.valueOf() <=2){
-                            suggested.push({name:guild.name,dist:dist.valueOf()});
+                        if (dist.valueOf() <= 2) {
+                            suggested.push({name: guild.name, dist: dist.valueOf()});
                         }
                     })
 
@@ -49,38 +53,47 @@ module.exports = function () {
             return defered.promise;
         },
 
-        getGuildData: function (guildName, callback) {
+        getGuildData: function (guildName, deepObj) {
+            deepObj = deepObj === undefined ? false : deepObj;
             var that = this;
             var defered = Q.defer();
             var cacheKey = 'guild_' + guildName.replace(/\s/g, '_');
             var cacheItem = myCache.get(cacheKey);
-            if (cacheItem) {
-                if (callback) {callback(cacheItem);}
+            if (cacheItem && deepObj === false) {
                 defered.resolve(cacheItem);
             } else {
-                Guild.find({$or: [{name: guildName, isDeleted: { $exists: false }},{name: guildName,isDeleted: false}]}, function (err, guilds) {
-                    var item;
-                    if (guilds.length == 0) {
-                        item = createNewGuild(guildName);
-                    } else {
-                        item = guilds[0];
-                    }
-                    item._save = item.save;
-                    item._cacheKey = cacheKey;
-                    item.save = function (cb) {
-                        if (this.isDeleted){
-                            myCache.del(this._cacheKey);
-                        }else {
-                            myCache.set(this._cacheKey, this, 600);
+                var query = Guild.find({
+                    $or: [{name: guildName, isDeleted: {$exists: false}}, {
+                        name: guildName,
+                        isDeleted: false
+                    }]
+                });
+                if (deepObj===false){
+                    query.lean();
+                }
+                query.exec(
+                    function (err, guilds) {
+                        var item;
+                        if (guilds.length == 0) {
+                            item = createNewGuild(guildName);
+                        } else {
+                            item = guilds[0];
                         }
-                        this._save(cb);
-                    };
-                    myCache.set(cacheKey, item, 600);
-                    if (callback) {
-                        callback(item);
-                    }
-                    defered.resolve(item);
-                }.bind(this));
+                        if (deepObj === false) {
+                            myCache.set(cacheKey, item, 600);
+                            defered.resolve(item);
+                        }
+                        else {
+                            item._save = item.save;
+                            item._cacheKey = cacheKey;
+                            item.save = function (cb) {
+                                myCache.del(this._cacheKey);
+                                this._save(cb);
+                            };
+
+                            defered.resolve(item);
+                        }
+                    }.bind(this));
             }
             return defered.promise;
         },
@@ -91,32 +104,31 @@ module.exports = function () {
             });
             return defered.promise;
         },
-        getAllGuilds: function () {
+        getAllGuilds: function (lean) {
+            lean = lean === undefined ? true : lean;
             var defered = Q.defer();
-            var cacheKey = 'allguilds';
-            var cacheItem = myCache.get(cacheKey);
-            if (cacheItem) {
 
-                defered.resolve(cacheItem);
-            } else {
-                Guild.find({}, function (err, guilds) {
-                  //  myCache.set(cacheKey, guilds, 600);
-                    defered.resolve(guilds);
-                });
+            var query = Guild.find({});
+            if (lean){
+                query.lean();
             }
+            query.exec(function (err, guilds) {
+                defered.resolve(guilds);
+            });
+
             return defered.promise;
         },
-        getAllGuildsPaginated: function(from,to){
+        getAllGuildsPaginated: function (from, to) {
             var defered = Q.defer();
-            from=Number(from)+1;
-            var cacheKey = 'guilds_paginated'+from+'_'+to;
+            from = Number(from) + 1;
+            var cacheKey = 'guilds_paginated' + from + '_' + to;
             var cacheItem = myCache.get(cacheKey);
             if (cacheItem) {
 
                 defered.resolve(cacheItem);
             } else {
-                Guild.find({}).sort('name').lean().skip(Number(from)).limit(Number(to)-Number(from)).exec(function (err, guilds) {
-                    myCache.set(cacheKey, guilds, 600);
+                Guild.find({}).sort('name').lean().skip(Number(from)).limit(Number(to) - Number(from)).exec(function (err, guilds) {
+               //     myCache.set(cacheKey, guilds, 600);
                     defered.resolve(guilds);
                 });
             }
@@ -124,20 +136,21 @@ module.exports = function () {
         },
         removeGuild: function (guildName, deletingUser) {
             var defered = Q.defer();
-            this.getGuildData(guildName, function (guild) {
+            this.getGuildData(guildName).then(function (guild) {
                 if (guild.isNew) {
                     defered.resolve('Guild not found in DB');
                     return;
                 } else {
-                    guild.isDeleted=true;
-                    guild.deletedBy=deletingUser;
-                    guild.deletionDate= Date.now();
+                    guild.isDeleted = true;
+                    guild.deletedBy = deletingUser;
+                    guild.deletionDate = Date.now();
                     guild.save(function () {
                         defered.resolve('Guild [' + guildName + '] removed ');
                     });
                 }
-            });
+            }.bind(this));
             return defered.promise;
         }
+
     };
 }();

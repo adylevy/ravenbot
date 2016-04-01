@@ -1,33 +1,33 @@
-var env = require('node-env-file');
+var roomPrefs = require('./../modules/data/roomPrefs.js');
 var _ = require('underscore');
-var Q = require('q');
-
-if (typeof process.env['TOKEN'] == 'undefined') {
-    env(__dirname + '/.env');
-}
-
-// local configuration read from env.
-const TOKEN = process.env['TOKEN']; // your groupme api token
-const GROUPS = process.env['GROUPS']; // the room you want to join
-const ADMIN_GROUP = process.env['ADMIN_GROUP'];
-const NAME = process.env['NAME']; // the name of your bot
-const URL = process.env['URL']; // the domain you're serving from, should be accessible by Groupme.
-const AVATAR = process.env['AVATAR'];
-const CONFIG = {token: TOKEN, name: NAME, url: URL, adminGroup: ADMIN_GROUP, avatar_url: AVATAR, port: process.env.PORT || 5000};
-
-var Bot = require('./../modules/bot.js');
-var whenConnected=function(){
+var whenConnected = function () {
     console.log('mongo is connected');
-   mongoData.getRoomPrefs(11615018).then(function(data){
+   // this.timerInterval = setInterval(function () {
 
-       var b=new Bot({},11615018);
-       b.onTimeTick(data);
-   })
+   // }.bind(this),  1000);
+
+
+
+    var onTimeTick = function (){
+        roomPrefs.getAllRoomPrefs().then(function (rooms) {
+            _.each(rooms, function (room) {
+                if (room.warData.inWar) {
+                    //  console.log('onTick',room.roomId,this.allBots);
+                    console.log(room);
+                }
+            }.bind(this));
+
+         //   console.log(rooms);
+        });
+    }
+    onTimeTick()
+
+    ;
 
 };
 
-var mongoData = require('./../modules/data/mongoData.js')(process.env['MONGOLAB_URI'],false);
-mongoData.on('mongoConnected',whenConnected);
+var mongoData = require('./../modules/data/mongoData.js');
+mongoData.on('mongoConnected', whenConnected);
 mongoData.connect();
 
 

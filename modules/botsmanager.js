@@ -7,7 +7,6 @@ var Class = require('./Class.js').Class;
 const events = require('events');
 const util = require('util');
 const request = require('request');
-const formidable = require('formidable');
 const _ = require('underscore');
 var Bot = require('./bot.js');
 var AdminBot = require('./adminBot.js');
@@ -20,19 +19,18 @@ var BotsManager = Class.extend(function () {
     return {
         init: function (options) {
             this.options = options;
-         //   console.log(options)
+            //   console.log(options)
             this.allBots = [];
             var e = new events.EventEmitter();
             _.extend(this, e);
             console.log('bot manager', this.options);
-            this.getAllBots().then(this.registerMissingBots.bind(this));
+            this.getAllBots().then(this.killAllBots.bind(this)).then(this.registerMissingBots.bind(this));
             this.timerInterval = setInterval(function () {
                 this.onTimeTick()
             }.bind(this), 1 * 60 * 1000);
         },
         onTimeTick: function () {
             roomPrefs.getAllRoomPrefs().then(function (rooms) {
-
                 try {
                     _.each(rooms, function (room) {
                         if (room.warData.inWar) {
@@ -46,6 +44,10 @@ var BotsManager = Class.extend(function () {
                 }
                 catch (e) {
                     console.warn('error', e);
+                }
+                finally {
+                    delete rooms;
+                    rooms = null;
                 }
 
             }.bind(this));
@@ -69,31 +71,37 @@ var BotsManager = Class.extend(function () {
             return deferred.promise;
         },
         killAllBots: function () {
-            var deferred = Q.defer();
-            var that = this;
-            var unregArray = [];
-            try {
-                _.each(this.allBots, function (bot) {
-                    unregArray.push(that.unregisterBot(bot.bot_id));
-                });
-            }
-            catch (e) {
-                console.log('------->', e);
-            }
-            Q.all(unregArray).then(function () {
-                this.allBots = [];
-                deferred.resolve(this.allBots);
-            }.bind(this))
 
-            return deferred.promise;
+            return (function () {
+                var deferred = Q.defer();
+                var that = this;
+                if (this.options.killAllBots === "true" || this.options.killAllBots === true) {
+                    var unregArray = [];
+                    try {
+                        _.each(this.allBots, function (bot) {
+                            unregArray.push(that.unregisterBot(bot.bot_id));
+                        });
+                    }
+                    catch (e) {
+                        console.log('------->', e);
+                    }
+                    Q.all(unregArray).then(function () {
+                        deferred.resolve();
+                    }.bind(this))
+                } else {
+                    deferred.resolve();
+                }
+
+                return deferred.promise;
+            }.bind(this))()
+
         },
         registerMissingBots: function () {
             var self = this;
-            var deferred = Q.defer();
+            // var deferred = Q.defer();
             console.log('register bots');
             appSettings.getSettings().then(function (settings) {
                 var guilds = settings.guilds;
-                // console.log('got settings',settings,guilds);
                 var adminGroup = self.options.adminGroup;
                 try {
                     if (_.find(guilds, function (guild) {
@@ -109,24 +117,26 @@ var BotsManager = Class.extend(function () {
                     console.log(e);
                 }
                 //console.log('register',groupIds);
-                var registerArr = [];
+                // var registerArr = [];
                 _.each(guilds, function (guild) {
                     try {
                         var botObj = _.findWhere(this.allBots, {group_id: guild.roomId + ''});
                         if (botObj == undefined) {
-                            registerArr.push(this.registerBotAndCreateManager(guild.roomId));
+                            //  console.log('NOT USED - ',guild.roomId,'-',guild.guildName,'-', guild.guildId);
+                            this.registerBotAndCreateManager(guild.roomId);
                         } else {
-                            registerArr.push(this.createManager(guild.roomId, botObj));
+                            this.createManager(guild.roomId, botObj);
                         }
                     } catch (e) {
                     }
                 }.bind(this));
-                Q.all(registerArr).then(function () {
-                    deferred.resolve();
-                })
+                delete guilds;
+                delete settings;
+                settings = null;
+
             }.bind(this))
 
-            return deferred.promise;
+            //  return deferred.promise;
         },
         unregisterBot: function (botId) {
             console.log('unregister', botId);
@@ -139,6 +149,7 @@ var BotsManager = Class.extend(function () {
             return deferred.promise;
         },
         createManager: function (groupIdx, botObj) {
+
             var manager = this.options.adminGroup == groupIdx ? new AdminBot(botObj, groupIdx) : new Bot(botObj, groupIdx);
             manager.on('botRegister', function (ctx, guild) {
                 var botObj = _.findWhere(this.allBots, {group_id: guild.roomId});
@@ -171,9 +182,14 @@ var BotsManager = Class.extend(function () {
                 }
 
             }.bind(this));
+
             manager.on('broadcast', function (ctx, broadcastObj) {
                 this.broadCast(ctx, broadcastObj.guild, broadcastObj.msg);
 
+            }.bind(this));
+
+            manager.on('registerMissing', function (ctx) {
+                this.registerMissingBots();
             }.bind(this));
 
             botObj.manager = manager;
@@ -196,7 +212,6 @@ var BotsManager = Class.extend(function () {
                         var botObj = response.response.bot;
                         var manager = this.createManager(groupIdx, botObj);
                         botObj.manager = manager;
-
                         deferred.resolve(manager);
                     } catch (e) {
                         console.log('------->', e);
@@ -280,26 +295,30 @@ var BotsManager = Class.extend(function () {
              ],
              "attachments": []
              }*/
-            var self=this;
-            var groupId = msg.group_id;
-            if (msg.name != self.options.name) {
-                var botObj = _.findWhere(this.allBots, {group_id: groupId});
-                if (botObj == undefined) {
-                    console.log('couldnt find a bot to handle:', msg)
-                    return;
+            (function () {
+                var self = this;
+                var groupId = msg.group_id;
+                if (msg.name != self.options.name) {
+                    var botObj = _.findWhere(this.allBots, {group_id: groupId});
+                    if (botObj == undefined) {
+                        console.log('couldnt find a bot to handle:', msg)
+                        return;
 
-                } else {
-                    try {
-                        botObj.manager.handleMessage(msg);
-                    } catch (e) {
-                        console.warn('FATAL ERROR : ', e);
-
+                    } else {
+                        try {
+                            botObj.manager.handleMessage(msg);
+                        } catch (e) {
+                            console.warn('FATAL ERROR : ', e);
+                        }
+                        finally {
+                            botObj = null;
+                        }
                     }
                 }
-            }
+            }.bind(this))();
         },
         addGroupToSettings: function (guild) {
-            appSettings.getSettings().then(function (settings) {
+            appSettings.getSettingsRw().then(function (settings) {
                 var guilds = settings.guilds;
                 if (!_.findWhere(guilds, {roomId: Number(guild.roomId)})) {
                     guilds.push({
@@ -311,11 +330,12 @@ var BotsManager = Class.extend(function () {
                     settings.guilds = guilds;
                     settings.save();
                 }
+                settings = null;
             })
 
         },
         removeGroupFromSettings: function (groupId) {
-            appSettings.getSettings().then(function (settings) {
+            appSettings.getSettingsRw().then(function (settings) {
                 var guilds = settings.guilds;
                 if (_.findWhere(guilds, {roomId: Number(groupId)})) {
                     guilds = _.filter(guilds, function (guild) {
@@ -324,6 +344,7 @@ var BotsManager = Class.extend(function () {
                     settings.guilds = guilds;
                     settings.save();
                 }
+                settings = null;
             })
 
         }
