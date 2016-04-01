@@ -141,7 +141,7 @@ var Bot = BotBase.extend(function () {
                               /*  if (roomData.guildId != null && roomData.guildId != undefined &&  roomData.guildId.length != 0) {
                                     self.postMessage('Room already connected. contact an admin if you want to re-connect.');
                                 } else */{
-                                    self.getGuildData(guildName).then(function (data) {
+                                guildData.getGuildData(guildName).then(function (data) {
                                         if ((data == null || data.__v == undefined)) {
                                             self.postMessage('Guild with that name was not found');
                                         } else {
