@@ -251,6 +251,7 @@ var BotsManager = Class.extend(function () {
             var bot = {};
             bot.name = this.options.name;
             bot.group_id = groupId;
+            console.log('registering: '+bot.group_id+' ..');
             bot.callback_url = this.options.url + '/incoming';
             if (this.options.avatar_url) {
                 bot.avatar_url = this.options.avatar_url;
