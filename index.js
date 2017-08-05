@@ -23,7 +23,7 @@ const CONFIG = {
     killAllBots: process.env['KILLBOTS'] || false
 };
 
-var whenNotConnected = function(){
+const whenNotConnected = function(){
     throw new Error('Connection error');
 }
 
