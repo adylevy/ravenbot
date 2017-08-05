@@ -37,9 +37,9 @@
     "swig": "^1.4.2",
     "underscore": "~1.5.1",
     "xmlbuilder": "",
-    "paypal-rest-sdk":"",
-    "body-parser":"",
-    "newrelic":""
+    "paypal-rest-sdk": "",
+    "body-parser": "",
+    "newrelic": ""
   },
   "engines": {
     "node": "0.12.x"
@@ -59,6 +59,12 @@
     "jasmine-node-karma": "^1.6.1",
     "karma": "^0.12.31",
     "karma-chrome-launcher": "^0.1.7",
-    "karma-jasmine": "^0.3.5"
+    "karma-jasmine": "^0.3.5",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "eslint-plugin-react-native": "^2.3.2"
   }
 }
